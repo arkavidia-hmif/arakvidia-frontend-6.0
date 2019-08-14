@@ -1,5 +1,5 @@
 <template>
-  <v-container flex fill-height justify-space-between align-start column class="pa-0">
+  <v-container fluid fill-height justify-space-between align-start column class="pa-0 ma-0" style="background: #E3F3E8">
     <v-layout column>
       <v-flex>
         <v-container fill-height class="pa-0">
@@ -10,15 +10,17 @@
                   <v-img :src="require('~/assets/logo.svg')" width="40"></v-img>
                 </v-flex>
                 <v-flex>
-                  <div class="headline">ARKAVIDIA 6.0</div>
-                  <h1 class="display-2 font-weight-bold">Segera hadir!</h1>
-                  <div class="subtitle-1 mt-2">Lorem ipsum dolor sit amet, Lute plis tolong bikin captionnya biar agak menggelitik oke tks.</div>
+                  <div class="title">ARKAVIDIA 6.0</div>
+                  <h1 class="heading font-weight-bold my-2">Tarik nafas dalam-dalam!</h1>
+                  <div class="subtitle-1 mt-1">
+                    Sebentar lagi jantung kalian bakal terpacu dengan teknologi yang membangun Indonesia ke arah yang lebih baik!
+                  </div>
                   <div class="mt-3">
-                    <a href="https://www.instagram.com/arkavidia" target="_blank" style="text-decoration: none"><font-awesome-icon :icon="['fab', 'instagram']" color="#1D7AA2"/></a>
+                    <a href="https://www.instagram.com/arkavidia" target="_blank" style="text-decoration: none"><v-icon color="#1D7AA2">fab fa-instagram</v-icon></a>
                     &nbsp;
-                    <a href="https://line.me/R/ti/p/%40aab5143y" target="_blank" style="text-decoration: none"><font-awesome-icon :icon="['fab', 'line']" color="#1D7AA2"/></a>
+                    <a href="https://line.me/R/ti/p/%40aab5143y" target="_blank" style="text-decoration: none"><v-icon color="#1D7AA2">fab fa-line</v-icon></a>
                     &nbsp;
-                    <a href="https://www.linkedin.com/company/arkavidia" target="_blank" style="text-decoration: none"><font-awesome-icon :icon="['fab', 'linkedin']" color="#1D7AA2"/></a>
+                    <a href="https://www.linkedin.com/company/arkavidia" target="_blank" style="text-decoration: none"><v-icon color="#1D7AA2">fab fa-linkedin</v-icon></a>
                   </div>
                 </v-flex>
                 <v-flex>
@@ -53,4 +55,7 @@
 </script>
 
 <style scoped>
+  body {
+    background: #E3F3E8 !important;
+  }
 </style>
