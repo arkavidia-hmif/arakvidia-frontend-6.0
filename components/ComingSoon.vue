@@ -10,7 +10,7 @@
                   <v-img :src="require('~/assets/logo.svg')" width="40"></v-img>
                 </v-flex>
                 <v-flex>
-                  <div class="title">ARKAVIDIA 6.0</div>
+                  <div class="font-weight-bold">ARKAVIDIA 6.0</div>
                   <h1 class="heading font-weight-bold my-2">Tarik nafas dalam-dalam!</h1>
                   <div class="subtitle-1 mt-1">
                     Sebentar lagi jantung kalian bakal terpacu dengan teknologi yang membangun Indonesia ke arah yang lebih baik!

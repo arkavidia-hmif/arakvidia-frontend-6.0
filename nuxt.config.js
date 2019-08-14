@@ -6,8 +6,8 @@ export default {
   ** Headers of the page
   */
   head: {
-    titleTemplate: '%s - ' + process.env.npm_package_name,
-    title: process.env.npm_package_name || '',
+    // titleTemplate: '%s - ' + process.env.npm_package_name,
+    title: "Arkavidia 6.0",
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -44,7 +44,8 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa',
+    ['@nuxtjs/dotenv', {filename: getDotEnvFilename()}]
   ],
   /*
   ** Axios module configuration
@@ -83,5 +84,13 @@ export default {
     */
     extend (config, ctx) {
     }
+  }
+}
+
+function getDotEnvFilename() {
+  if(process.env.NODE_ENV === 'production') {
+    return (process.env.BUILD_ENV === 'staging') ? '.env.staging' : '.env.production';
+  } else {
+    return '.env.development';
   }
 }
