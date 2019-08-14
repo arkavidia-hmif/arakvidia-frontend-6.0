@@ -1,5 +1,5 @@
 <template>
-  <v-container flex fill-height justify-space-between align-start column class="pa-0">
+  <v-container fluid fill-height justify-space-between align-start column class="pa-0 ma-0" style="background: #E3F3E8">
     <v-layout column>
       <v-flex>
         <v-container fill-height class="pa-0">
@@ -7,12 +7,14 @@
             <v-flex md6 class="px-4">
               <v-layout align-start column fill-height>
                 <v-flex class="py-4">
-                  <v-img :src="require('../assets/logo.svg')" width="40"></v-img>
+                  <v-img :src="require('~/assets/logo.svg')" width="40"></v-img>
                 </v-flex>
                 <v-flex>
-                  <div class="headline">ARKAVIDIA 6.0</div>
-                  <h1 class="display-2 font-weight-bold">Segera hadir!</h1>
-                  <div class="subtitle-1 mt-2">Lorem ipsum dolor sit amet, Lute plis tolong bikin captionnya biar agak menggelitik oke tks.</div>
+                  <div class="font-weight-bold">ARKAVIDIA 6.0</div>
+                  <h1 class="heading font-weight-bold my-2">Tarik nafas dalam-dalam!</h1>
+                  <div class="subtitle-1 mt-1">
+                    Sebentar lagi jantung kalian bakal terpacu dengan teknologi yang membangun Indonesia ke arah yang lebih baik!
+                  </div>
                   <div class="mt-3">
                     <a href="https://www.instagram.com/arkavidia" target="_blank" style="text-decoration: none"><v-icon color="#1D7AA2">fab fa-instagram</v-icon></a>
                     &nbsp;
@@ -26,14 +28,14 @@
                 </v-flex>
                 <v-spacer></v-spacer>
                 <v-flex shrink style="width: 100%; max-width: 400px;" class="pa-0">
-                  <v-img width="100%" :src="require('../assets/car-tree.svg')"></v-img>
+                  <v-img width="100%" :src="require('~/assets/car-tree.svg')"></v-img>
                 </v-flex>
               </v-layout>
             </v-flex>
             <v-flex md6 hidden-sm-and-down>
               <v-layout align-end row fill-height>
                 <v-flex>
-                  <v-img :src="require('../assets/mine.svg')" width="100%"></v-img>
+                  <v-img :src="require('~/assets/mine.svg')" width="100%"></v-img>
                 </v-flex>
               </v-layout>
             </v-flex>
@@ -53,4 +55,7 @@
 </script>
 
 <style scoped>
+  body {
+    background: #E3F3E8 !important;
+  }
 </style>
