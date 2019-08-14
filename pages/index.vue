@@ -7,17 +7,17 @@
 </template>
 
 <script>
-import ComingSoon from "./components/ComingSoon";
+import ComingSoon from '~/components/ComingSoon';
 
 export default {
-  name: 'App',
+  // name: 'App',
   components: {
     ComingSoon
   },
-  data () {
-    return {
-      //
-    }
-  }
+  // data () {
+  //   return {
+  //     //
+  //   }
+  // }
 }
 </script>
