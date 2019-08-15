@@ -6,18 +6,26 @@
   "private": true,
   "scripts": {
     "dev": "nuxt",
-    "build": "nuxt build",
-    "start": "nuxt start",
     "generate": "nuxt generate",
-    "staging": "BUILD_ENV=staging nuxt build"
+    "generate-staging": "BUILD_ENV=staging nuxt generate",
+    "build": "nuxt build --spa",
+    "staging": "BUILD_ENV=staging nuxt build --spa",
+    "start": "nuxt start --spa",
+    "build:ssr": "nuxt build",
+    "staging:ssr": "BUILD_ENV=staging nuxt build",
+    "start:ssr": "nuxt start"
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.3.6",
     "@nuxtjs/dotenv": "^1.4.0",
+    "@nuxtjs/google-analytics": "^2.2.0",
     "@nuxtjs/pwa": "^3.0.0-0",
-    "nuxt": "^2.0.0"
+    "nuxt": "^2.0.0",
+    "ts-node": "^8.3.0"
   },
   "devDependencies": {
-    "@nuxtjs/vuetify": "^1.2.1"
+    "@nuxt/typescript": "^2.8.1",
+    "@nuxtjs/vuetify": "^1.2.1",
+    "dotenv": "^8.0.0"
   }
 }
