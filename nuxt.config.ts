@@ -2,9 +2,6 @@ require('dotenv').config({ path: getDotEnvFilename() });
 
 export default {
   mode: 'universal',
-  /*
-  ** Headers of the page
-  */
   head: {
     // titleTemplate: '%s - ' + process.env.npm_package_name,
     title: "Arkavidia 6.0",
@@ -19,57 +16,30 @@ export default {
       {rel: 'stylesheet', href: 'https://use.fontawesome.com/releases/v5.0.13/css/all.css'}
     ]
   },
-  /*
-  ** Customize the progress-bar color
-  */
   loading: {color: '#fff'},
-  /*
-  ** Global CSS
-  */
   css: [],
-  /*
-  ** Plugins to load before mounting the App
-  */
   plugins: [],
-  /*
-  ** Nuxt.js dev-modules
-  */
   devModules: [
     '@nuxtjs/vuetify',
   ],
-  /*
-  ** Nuxt.js modules
-  */
+  build: {
+    extractCSS: true,
+  },
+  generate: {
+    exclude: [
+      /^(?=.dashboard\b).*$/
+    ]
+  },
   modules: [
-    // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
     '@nuxtjs/google-analytics',
     ['@nuxtjs/dotenv', {filename: getDotEnvFilename()}]
   ],
-  /*
-  ** Axios module configuration
-  ** See https://axios.nuxtjs.org/options
-  */
   axios: {},
-  /*
-  ** vuetify module configuration
-  ** https://github.com/nuxt-community/vuetify-module
-  */
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
     treeShake: true
-  },
-  /*
-  ** Build configuration
-  */
-  build: {
-    extractCSS: true,
-    /*
-    ** You can extend webpack config here
-    */
-    extend(config, ctx) {
-    }
   },
   googleAnalytics: {
     id: process.env.VUE_APP_GA_ID
