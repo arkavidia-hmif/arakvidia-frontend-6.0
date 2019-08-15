@@ -14,7 +14,7 @@ export default {
       {hid: 'description', name: 'description', content: process.env.npm_package_description || ''}
     ],
     link: [
-      {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'},
+      {rel: 'icon', type: 'image/png', href: '/logo.png'},
       {rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Raleway:400,700'},
       {rel: 'stylesheet', href: 'https://use.fontawesome.com/releases/v5.0.13/css/all.css'}
     ]
@@ -64,6 +64,7 @@ export default {
   ** Build configuration
   */
   build: {
+    extractCSS: true,
     /*
     ** You can extend webpack config here
     */
