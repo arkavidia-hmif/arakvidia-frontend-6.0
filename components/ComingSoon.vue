@@ -11,8 +11,8 @@
                 </v-flex>
                 <v-flex>
                   <div class="font-weight-bold">ARKAVIDIA 6.0</div>
-                  <h1 class="heading font-weight-bold my-2">Tarik nafas dalam-dalam!</h1>
-                  <div class="subtitle-1 mt-1">
+                  <h1 class="heading font-weight-bold mt-2">Tarik nafas dulu!</h1>
+                  <div class="subtitle-1">
                     Sebentar lagi jantung kalian bakal terpacu dengan teknologi yang membangun Indonesia ke arah yang lebih baik!
                   </div>
                   <div class="mt-3">
