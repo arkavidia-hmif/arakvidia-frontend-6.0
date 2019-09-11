@@ -10,6 +10,7 @@ export default {
       {name: 'viewport', content: 'width=device-width, initial-scale=1'},
       {hid: 'description', name: 'description', content: process.env.npm_package_description || ''}
     ],
+    script: [],
     link: [
       {rel: 'icon', type: 'image/png', href: '/logo.png'},
       {rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Raleway:400,700'},
