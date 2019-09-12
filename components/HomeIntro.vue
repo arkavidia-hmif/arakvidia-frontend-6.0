@@ -6,10 +6,10 @@
           <v-layout wrap>
             <v-flex md12 class="px-4">
               <v-layout align-center column fill-height>
-                <v-img :src="require('~/assets/arkav1.svg')" width="100%">
+                <v-img :src="require('~/assets/intro.svg')" width="50%" style="margin: 30px">
                   <v-layout align-center justify-center column fill-height>
                     <p id="typed" class="font-weight-bold text-center display-2" style="background-color: #31e8b4"></p>
-                    <p class="text-center display-1" style="background-color: #e83158">Transforming soon, February 2020.</p>
+                    <p class="text-center display-1" style="color: white; background-color: #e83158">Transforming soon, February 2020.</p>
                     <v-btn rounded class="text-capitalize" color="white">I'm interested!</v-btn>
                   </v-layout>
                 </v-img>

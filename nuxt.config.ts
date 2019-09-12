@@ -14,7 +14,8 @@ export default {
     link: [
       {rel: 'icon', type: 'image/png', href: '/logo.png'},
       {rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Raleway:400,700'},
-      {rel: 'stylesheet', href: 'https://use.fontawesome.com/releases/v5.0.13/css/all.css'}
+      {rel: 'stylesheet', href: 'https://use.fontawesome.com/releases/v5.0.13/css/all.css'},
+      {rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Baloo+Da|Raleway&display=swap'}
     ]
   },
   loading: {color: '#fff'},

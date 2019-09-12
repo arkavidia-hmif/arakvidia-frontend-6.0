@@ -1,5 +1,5 @@
-<template>
-    <div>
+<template >
+    <div color="white">
         <Toolbar />
         <HomeIntro />
     </div>
@@ -18,4 +18,5 @@
 </script>
 
 <style scoped>
+	
 </style>
