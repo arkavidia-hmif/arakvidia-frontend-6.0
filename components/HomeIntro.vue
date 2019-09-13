@@ -5,18 +5,18 @@
         <v-layout align-center column fill-height>
           <v-img :src="require('~/assets/intro.svg')" contain style="height: 60vh" width="100%" class="ma-5">
             <v-layout align-center justify-center column fill-height>
-                <vue-typed-js
-                  :back-delay="1000"
-                  :type-speed="50"
-                  loop
-                  :strings="welcomeStrings"
-                >
-                  <div class="text-center">
-                    <p class="text-center display-2 main-heading">
-                      <span class="typing font-weight-bold" />
-                    </p>
-                  </div>
-                </vue-typed-js>
+              <vue-typed-js
+                :back-delay="1000"
+                :type-speed="50"
+                loop
+                :strings="welcomeStrings"
+              >
+                <div class="text-center">
+                  <p class="text-center display-2 main-heading">
+                    <span class="typing font-weight-bold" />
+                  </p>
+                </div>
+              </vue-typed-js>
               <div class="text-center mt-3">
                 <p class="text-center body-1 main-subtitle">
                   Transforming soon, February 2020.
