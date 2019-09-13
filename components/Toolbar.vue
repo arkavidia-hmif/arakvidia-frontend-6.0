@@ -1,9 +1,8 @@
 <template xmlns:v-slot="http://www.w3.org/1999/XSL/Transform">
   <div>
-    <v-layout>
-      <v-flex xs12 md10 offset-md1 lg8 offset-lg2 xl6 offset-xl3>
+    <v-container class="pa-0">
+      <v-flex>
         <v-toolbar flat color="transparent">
-
           <v-toolbar-title>
             <a :href="landingPageUrl">
               <v-img :src="require('../assets/logo.svg')" width="25" style="margin-right: 15px"></v-img>
@@ -51,7 +50,7 @@
 
         </v-toolbar>
       </v-flex>
-    </v-layout>
+    </v-container>
   </div>
 </template>
 

@@ -1,5 +1,5 @@
-<template >
-    <v-container fluid fill-height justify-space-between align-start column class="pa-0 ma-0" style="background: #FFFFFF">
+<template>
+	<v-container fluid fill-height justify-space-between align-start column class="pa-0 ma-0" style="background: #FFFFFF">
 	    <v-layout column>
 	    	<Toolbar />
 	        <HomeIntro />
