@@ -1,13 +1,15 @@
 <template>
-  <ComingSoon/>
+    <ComingSoon></ComingSoon>
 </template>
 
-<script>
-import ComingSoon from '~/components/ComingSoon';
+<script lang="ts">
+  import Vue from "vue"
 
-export default {
-  components: {
-    ComingSoon
-  },
-}
+  import ComingSoon from '~/components/ComingSoon.vue';
+
+  export default Vue.extend({
+    components: {
+      ComingSoon
+    },
+  });
 </script>
