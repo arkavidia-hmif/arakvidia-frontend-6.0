@@ -1,11 +1,11 @@
 <template>
-    <b>Dashboard login</b>
+  <b>Dashboard login</b>
 </template>
 
 <script>
-    export default {
-        name: "login"
-    }
+export default {
+  name: 'Login'
+}
 </script>
 
 <style scoped>
