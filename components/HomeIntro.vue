@@ -42,7 +42,7 @@
 
 <style scoped>
   .main-heading {
-    background-color: #31e8b4;
+    background-color: #0FFFE2;
     display: inline;
     line-height: 1.5;
     padding: 4px 8px 4px 8px;
