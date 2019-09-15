@@ -17,19 +17,19 @@
           <v-spacer />
 
           <v-toolbar-items class="hidden-sm-and-down">
-            <v-btn class="text-capitalize bold" text>
+            <v-btn class="text-capitalize" text>
               Competitions
             </v-btn>
-            <v-btn class="text-capitalize bold" text>
+            <v-btn class="text-capitalize" text>
               Events
             </v-btn>
-            <v-btn class="text-capitalize bold" text>
+            <v-btn class="text-capitalize" text>
               About
             </v-btn>
-            <v-btn class="text-capitalize bold" text>
+            <v-btn class="text-capitalize" text>
               Login
             </v-btn>
-            <v-btn class="text-capitalize bold" text>
+            <v-btn class="text-capitalize" text>
               Register
             </v-btn>
           </v-toolbar-items>
@@ -65,6 +65,8 @@
 
 <script lang="ts">
 import Vue from 'vue'
+// import ToolbarDropdown from '~/components/ToolbarDropdown.vue'
+// import ToolbarButton from '~/components/ToolbarButton.vue'
 
 export default Vue.extend({
   name: 'Toolbar',
@@ -77,4 +79,7 @@ export default Vue.extend({
 </script>
 
 <style scoped>
+  .v-btn {
+    font-weight: bold
+  }
 </style>
