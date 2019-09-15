@@ -5,7 +5,7 @@
         <v-toolbar flat color="transparent">
           <v-toolbar-title>
             <a :href="landingPageUrl">
-              <v-img :src="require('../assets/logo.svg')" width="25" style="margin-right: 15px" />
+              <v-img :src="require('../../assets/logo.svg')" width="25" style="margin-right: 15px" />
             </a>
           </v-toolbar-title>
           <v-toolbar-title class="subheading font-weight-bold">
@@ -17,9 +17,16 @@
           <v-spacer />
 
           <v-toolbar-items class="hidden-sm-and-down">
-            <v-btn class="text-capitalize" text>
+            <!-- <v-btn class="text-capitalize" text>
               Competitions
-            </v-btn>
+            </v-btn> -->
+            <ToolbarDropdown
+              :title="'Competitions'"
+              :list="[
+                {title: 'Hackathon', route: '/competition/hackathon'},
+                {title: 'Competitive Programming', route: '/competition/competitive-programming'}
+              ]"
+            />
             <v-btn class="text-capitalize" text>
               Events
             </v-btn>
@@ -65,11 +72,12 @@
 
 <script lang="ts">
 import Vue from 'vue'
-// import ToolbarDropdown from '~/components/ToolbarDropdown.vue'
-// import ToolbarButton from '~/components/ToolbarButton.vue'
+import ToolbarDropdown from '~/components/partials/ToolbarDropdown.vue'
+// import ToolbarLink from '~/components/partials/ToolbarLink.vue'
 
 export default Vue.extend({
   name: 'Toolbar',
+  components: {ToolbarDropdown},
   data () {
     return {
       landingPageUrl: '/'
