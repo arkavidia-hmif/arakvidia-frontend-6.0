@@ -9,21 +9,21 @@
     style="background: #FFFFFF"
   >
     <v-layout column>
-      <Toolbar />
       <HomeIntro />
+      <HomeOverview />
     </v-layout>
   </v-container>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import Toolbar from '~/components/Toolbar.vue'
-import HomeIntro from '~/components/HomeIntro.vue'
+import HomeIntro from '~/components/home/HomeIntro.vue'
+import HomeOverview from '~/components/home/HomeOverview.vue'
 
 export default Vue.extend({
   components: {
-    Toolbar,
-    HomeIntro
+    HomeIntro,
+    HomeOverview
   }
 })
 </script>
