@@ -1,6 +1,7 @@
 <template>
 	<v-container style="min-height: 100vh" fill-height pa-4>
 		<v-layout column>
+			<div style="height: 40px"></div>
 			<v-container fill-height>
 				<v-row wrap>
 					<v-col :cols="12" :md="7" align-self="center">
@@ -18,12 +19,12 @@
 							<v-btn large rounded color="primary" class="text-none mt-2" elevation="0">Daftar sekarang</v-btn>
 						</div>
 					</v-col>
-					<v-col :cols="12" :md="4" :offset-md="1" align="center">
+					<v-col :cols="12" :md="4" :offset-md="1" align="center" class="hidden-sm-and-down" align-self="center">
 						<v-img width="100%" fill-height cover :src="require('~/assets/hackathon_intro.jpg')"></v-img>
 					</v-col>
 				</v-row>
 			</v-container>
-			<div align="center" class="pa-2">
+			<div align="center" class="pa-1">
 				<div class="font-weight-bold" style="color: #7608FF">Penasaran?</div>
 				<v-img :src="require('~/assets/down_arrow.svg')" width="20" class="mt-2"></v-img>
 			</div>
