@@ -9,11 +9,13 @@
     style="background: #FFFFFF"
   >
     <v-layout column>
-      <Toolbar />
-      <HackathonIntro></HackathonIntro>
-      <HackathonPrize></HackathonPrize>
-      <HackathonTimeline></HackathonTimeline>
-      <HackathonFAQ></HackathonFAQ>
+      <v-flex>
+        <!--<Toolbar />-->
+        <HackathonIntro></HackathonIntro>
+        <HackathonPrize></HackathonPrize>
+        <HackathonTimeline></HackathonTimeline>
+        <HackathonFAQ></HackathonFAQ>
+      </v-flex>
     </v-layout>
   </v-container>
 </template>

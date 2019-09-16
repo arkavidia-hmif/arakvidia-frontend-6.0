@@ -3,13 +3,12 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-
 import ComingSoon from '~/components/ComingSoon.vue'
 
-export default Vue.extend({
+export default {
+  layout: 'no_toolbar',
   components: {
     ComingSoon
   }
-})
+}
 </script>

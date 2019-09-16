@@ -1,5 +1,5 @@
 <template>
-	<div>Mbehehek</div>
+	<div></div>
 </template>
 
 <script lang="ts">

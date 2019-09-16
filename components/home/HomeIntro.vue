@@ -3,7 +3,10 @@
     <v-container fill-height class="pa-0">
       <v-layout wrap>
         <v-layout align-center column fill-height>
-          <v-img :src="require('~/assets/intro.svg')" contain style="height: 60vh" width="100%" class="ma-5">
+          <v-container :style="{'background-image': `url(${require('~/assets/intro.svg')})`}"
+                       id="bg"
+                       width="100%"
+                       class="ma-0">
             <v-layout align-center justify-center column fill-height>
               <vue-typed-js
                 :back-delay="1000"
@@ -26,7 +29,7 @@
                 I'm interested!
               </v-btn>
             </v-layout>
-          </v-img>
+          </v-container>
         </v-layout>
       </v-layout>
     </v-container>
@@ -47,6 +50,12 @@ export default Vue.extend({
 </script>
 
 <style scoped>
+  #bg {
+    height: 100vh;
+    background-position: center;
+    background-size: 75%;
+    background-repeat: no-repeat;
+  }
   .main-heading {
     display: inline;
     line-height: 1.5;
