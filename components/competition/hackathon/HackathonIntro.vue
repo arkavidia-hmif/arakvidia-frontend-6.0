@@ -1,13 +1,14 @@
 <template>
-	<div>{{ timeline[0].date }}</div>
+	<v-container fill-height>
+		Test
+	</v-container>
 </template>
 
 <script lang="ts">
 	import Vue from 'vue'
 
 	export default Vue.extend({
-	  name: 'CompetitionTimeline',
-	  props: ['timeline']
+	  name: 'HackathonIntro',
 	})
 </script>
 

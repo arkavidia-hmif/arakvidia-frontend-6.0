@@ -1,13 +1,12 @@
 <template>
-	<div>{{ faqs[0].question }}</div>
+	<div></div>
 </template>
 
 <script lang="ts">
 	import Vue from 'vue'
 
 	export default Vue.extend({
-	  name: 'CompetitionFAQ',
-	  props: ['faqs']
+	  name: 'HackathonPrize',
 	})
 </script>
 
