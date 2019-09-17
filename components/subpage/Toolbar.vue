@@ -1,9 +1,8 @@
 <template xmlns:v-slot="http://www.w3.org/1999/XSL/Transform">
   <v-app-bar
       fixed
-      flat
       color="white"
-      :elevate-on-scroll="true"
+      elevate-on-scroll
   >
     <v-container class="pa-0" align="center" fill-height>
       <v-layout>
