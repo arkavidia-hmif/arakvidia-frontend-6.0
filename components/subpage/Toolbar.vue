@@ -1,19 +1,23 @@
 <template xmlns:v-slot="http://www.w3.org/1999/XSL/Transform">
-  <v-app-bar fixed flat color="transparent">
+  <v-app-bar
+      fixed
+      color="white"
+      elevate-on-scroll
+  >
     <v-container class="pa-0" align="center" fill-height>
       <v-layout>
         <v-toolbar-title>
           <v-container fill-height class="pa-0">
-            <a :href="landingPageUrl">
-              <v-img :src="require('../../assets/logo.svg')" width="25" style="margin-right: 15px" />
-            </a>
+            <nuxt-link to="/">
+              <v-img :src="require('~/assets/logo.svg')" width="25" style="margin-right: 15px" />
+            </nuxt-link>
           </v-container>
         </v-toolbar-title>
         <v-toolbar-title class="subheading font-weight-bold">
           <v-container fill-height class="pa-0">
-            <a :href="landingPageUrl" style="color: black; text-decoration: none;">
+            <nuxt-link to="/" style="color: black; text-decoration: none;">
               ARKAVIDIA
-            </a>
+            </nuxt-link>
           </v-container>
         </v-toolbar-title>
 
@@ -79,12 +83,7 @@ import ToolbarDropdown from '~/components/partials/ToolbarDropdown.vue'
 
 export default Vue.extend({
   name: 'Toolbar',
-  components: {ToolbarDropdown},
-  data () {
-    return {
-      landingPageUrl: '/'
-    }
-  }
+  components: {ToolbarDropdown}
 })
 </script>
 
