@@ -4,7 +4,7 @@
       color="white"
       elevate-on-scroll
   >
-    <v-container class="pa-0" align="center" fill-height>
+    <v-container class="py-0 px-4" align="center" fill-height>
       <v-layout>
         <v-toolbar-title>
           <v-container fill-height class="pa-0">

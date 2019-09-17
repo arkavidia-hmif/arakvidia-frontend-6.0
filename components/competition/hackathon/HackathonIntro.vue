@@ -1,5 +1,5 @@
 <template>
-	<v-container fill-height pa-0 class="d-flex flex-column" style="min-height: 100vh">
+	<v-container fill-height py-0 px-4 class="d-flex flex-column" style="min-height: 100vh">
 		<div class="d-flex flex-column" style="flex: 1">
 			<v-container class="d-flex mt-12" style="flex: 1">
 				<v-row wrap>
@@ -25,7 +25,7 @@
 				</v-row>
 			</v-container>
 			<div align="center" class="pa-6">
-				<div class="font-weight-bold" style="color: #7608FF">Penasaran?</div>
+				<div class="font-weight-bold" style="color: #0435B5">Penasaran?</div>
 				<v-img :src="require('~/assets/down_arrow.svg')" width="20" class="mt-2"></v-img>
 			</div>
 		</div>
