@@ -25,7 +25,7 @@
 				</v-row>
 			</v-container>
 			<div align="center" class="pa-6">
-				<div class="font-weight-bold" style="color: #7608FF">Penasaran?</div>
+				<div class="font-weight-bold" style="color: #0435B5">Penasaran?</div>
 				<v-img :src="require('~/assets/down_arrow.svg')" width="20" class="mt-2"></v-img>
 			</div>
 		</div>
