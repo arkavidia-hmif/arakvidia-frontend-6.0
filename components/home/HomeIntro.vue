@@ -51,9 +51,9 @@ export default Vue.extend({
 
 <style scoped>
   #bg {
-    height: 100vh;
+    min-height: 100vh;
     background-position: center;
-    background-size: 75%;
+    background-size: auto 75%;
     background-repeat: no-repeat;
   }
   .main-heading {

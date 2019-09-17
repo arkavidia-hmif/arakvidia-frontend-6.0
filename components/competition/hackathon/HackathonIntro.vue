@@ -1,8 +1,7 @@
 <template>
-	<v-container style="min-height: 100vh" fill-height pa-4>
-		<v-layout column>
-			<div style="height: 40px"></div>
-			<v-container fill-height>
+	<v-container fill-height pa-0 class="d-flex flex-column" style="min-height: 100vh">
+		<div class="d-flex flex-column" style="flex: 1">
+			<v-container class="d-flex mt-12" style="flex: 1">
 				<v-row wrap>
 					<v-col :cols="12" :md="7" align-self="center">
 						<div class="display-1 font-weight-bold" style="color: #0B909A">Hackathon</div>
@@ -24,11 +23,11 @@
 					</v-col>
 				</v-row>
 			</v-container>
-			<div align="center" class="pa-1">
+			<div align="center" class="pa-6">
 				<div class="font-weight-bold" style="color: #7608FF">Penasaran?</div>
 				<v-img :src="require('~/assets/down_arrow.svg')" width="20" class="mt-2"></v-img>
 			</div>
-		</v-layout>
+		</div>
 	</v-container>
 </template>
 
