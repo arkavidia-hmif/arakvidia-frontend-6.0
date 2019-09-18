@@ -52,7 +52,7 @@
 			</v-row>
 			<v-row>
 				<v-col :cols="12" :sm="6">
-					<v-responsive :aspect-ratio="3.3" class="white--text pa-0 ma-0">
+					<v-responsive :aspect-ratio="$vuetify.breakpoint.smAndUp ? 3.3 : 2.2" class="white--text pa-0 ma-0">
 						<v-container fill-height class="pa-0" justify-content-center style="background: #21C7C5">
 							<div style="width: 100%" align="center">
 								<div class="headline font-weight-bold">Rp 1.000.000,-</div>
@@ -62,7 +62,7 @@
 					</v-responsive>
 				</v-col>
 				<v-col :cols="12" :sm="6">
-					<v-responsive :aspect-ratio="3.3" class="white--text pa-0 ma-0">
+					<v-responsive :aspect-ratio="$vuetify.breakpoint.smAndUp ? 3.3 : 2.2" class="white--text pa-0 ma-0">
 						<v-container fill-height class="pa-0" justify-content-center style="background: #FFBA07">
 							<div style="width: 100%" align="center">
 								<div class="headline font-weight-bold">Rp 1.000.000,-</div>
