@@ -3,47 +3,47 @@
 		<div class="headline font-weight-bold">Hadiah Pemenang</div>
 		<div>
 			<v-row class="mt-4">
-				<v-col :cols="12" :sm="4">
-					<v-responsive :aspect-ratio="2.2" class="white--text pa-0 ma-0" style="background: #FF084F">
+				<v-col :cols="12" :sm="4" align-self="end">
+					<v-responsive :aspect-ratio="3" class="white--text pa-0 ma-0" style="background: #FF084F">
 						<v-container fill-height class="pa-0" justify-content-center>
 							<div style="width: 100%" align="center">
-								<div class="headline font-weight-bold">Rp 10.000.000,-</div>
+								<div class="display-1 font-weight-bold">Rp 10.000.000,-</div>
 								<div class="title mt-2">Champion</div>
 							</div>
 						</v-container>
 					</v-responsive>
 				</v-col>
-				<v-col :cols="8" class="hidden-xs-only">
+				<v-col :cols="8" class="hidden-xs-only" align-self="end">
 					<v-img :src="require('~/assets/prize-top.png')"></v-img>
 				</v-col>
 			</v-row>
 			<v-row>
-				<v-col :cols="4" class="hidden-xs-only">
+				<v-col :cols="4" class="hidden-xs-only" align-self="end">
 					<v-img :src="require('~/assets/prize-mid-left.png')"></v-img>
 				</v-col>
-				<v-col :cols="12" :sm="4">
-					<v-responsive :aspect-ratio="2.2" class="white--text pa-0 ma-0" style="background: #0578D3">
+				<v-col :cols="12" :sm="4" align-self="end">
+					<v-responsive :aspect-ratio="3" class="white--text pa-0 ma-0" style="background: #0578D3">
 						<v-container fill-height class="pa-0" justify-content-center>
 							<div style="width: 100%" align="center">
-								<div class="headline font-weight-bold">Rp 8.000.000,-</div>
+								<div class="display-1 font-weight-bold">Rp 8.000.000,-</div>
 								<div class="title mt-2">Runner Up</div>
 							</div>
 						</v-container>
 					</v-responsive>
 				</v-col>
-				<v-col :cols="4" class="hidden-xs-only">
+				<v-col :cols="4" class="hidden-xs-only" align-self="end">
 					<v-img :src="require('~/assets/prize-mid-right.png')"></v-img>
 				</v-col>
 			</v-row>
 			<v-row>
-				<v-col :cols="8" class="hidden-xs-only">
+				<v-col :cols="8" class="hidden-xs-only" align-self="end">
 					<v-img :src="require('~/assets/prize-bottom.png')"></v-img>
 				</v-col>
-				<v-col :cols="12" :sm="4">
-					<v-responsive :aspect-ratio="2.2" class="white--text pa-0 ma-0" style="background: #7608FF">
+				<v-col :cols="12" :sm="4" align-self="end">
+					<v-responsive :aspect-ratio="3" class="white--text pa-0 ma-0" style="background: #7608FF">
 						<v-container fill-height class="pa-0" justify-content-center>
 							<div style="width: 100%" align="center">
-								<div class="headline font-weight-bold">Rp 5.000.000,-</div>
+								<div class="display-1 font-weight-bold">Rp 5.000.000,-</div>
 								<div class="title mt-2">Third Place</div>
 							</div>
 						</v-container>
@@ -51,21 +51,21 @@
 				</v-col>
 			</v-row>
 			<v-row>
-				<v-col :cols="12" :sm="6">
-					<v-responsive :aspect-ratio="$vuetify.breakpoint.smAndUp ? 3.3 : 2.2" class="white--text pa-0 ma-0">
+				<v-col :cols="12" :sm="6" align-self="end">
+					<v-responsive :aspect-ratio="$vuetify.breakpoint.smAndUp ? 4.5 : 3" class="white--text pa-0 ma-0">
 						<v-container fill-height class="pa-0" justify-content-center style="background: #21C7C5">
 							<div style="width: 100%" align="center">
-								<div class="headline font-weight-bold">Rp 1.000.000,-</div>
+								<div class="display-1 font-weight-bold">Rp 1.000.000,-</div>
 								<div class="title mt-2">Best Idea</div>
 							</div>
 						</v-container>
 					</v-responsive>
 				</v-col>
 				<v-col :cols="12" :sm="6">
-					<v-responsive :aspect-ratio="$vuetify.breakpoint.smAndUp ? 3.3 : 2.2" class="white--text pa-0 ma-0">
+					<v-responsive :aspect-ratio="$vuetify.breakpoint.smAndUp ? 4.5 : 3" class="white--text pa-0 ma-0">
 						<v-container fill-height class="pa-0" justify-content-center style="background: #FFBA07">
 							<div style="width: 100%" align="center">
-								<div class="headline font-weight-bold">Rp 1.000.000,-</div>
+								<div class="display-1 font-weight-bold">Rp 1.000.000,-</div>
 								<div class="title mt-2">Best Presentation</div>
 							</div>
 						</v-container>

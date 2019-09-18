@@ -26,7 +26,7 @@
 			</v-container>
 			<div align="center" class="pa-6">
 				<div class="font-weight-bold" style="color: #0435B5">Penasaran?</div>
-				<v-img :src="require('~/assets/down_arrow.svg')" width="20" class="mt-2"></v-img>
+				<v-img :src="require('~/assets/down_arrow.svg')" width="20" class="mt-2 vert-move"></v-img>
 			</div>
 		</div>
 	</v-container>
@@ -41,4 +41,17 @@
 </script>
 
 <style scoped>
+	.vert-move {
+		-webkit-animation: mover .5s infinite  alternate;
+		animation: mover .5s infinite  alternate;
+	}
+	@-webkit-keyframes mover {
+		0% { transform: translateY(-3px); }
+		100% { transform: translateY(7px); }
+	}
+	@keyframes mover {
+		0% { transform: translateY(-3px); }
+		100% { transform: translateY(7px); }
+	}
+
 </style>
