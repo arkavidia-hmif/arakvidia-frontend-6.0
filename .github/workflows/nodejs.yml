@@ -1,14 +1,8 @@
 name: Perform ESLint Checks
 
 on:
-  push:
-    branches:
-    - master
-    - production
-  pull_request:
-    branches:
-    - master
-    - production
+  check_run:
+    types: [created, rerequested, requested_action]
 
 jobs:
   build:
