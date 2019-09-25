@@ -23,6 +23,7 @@
     "@nuxtjs/google-analytics": "^2.2.0",
     "@nuxtjs/pwa": "^3.0.0-0",
     "eslint": "^6.3.0",
+    "fibers": "^4.0.1",
     "nuxt": "^2.9.0",
     "ts-node": "^8.3.0",
     "vue-typed-js": "^0.1.2"
