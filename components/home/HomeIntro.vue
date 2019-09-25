@@ -45,7 +45,7 @@ export default Vue.extend({
   name: 'HomeIntro',
   data () {
     return {
-      welcomeStrings: ['It\'s time for you to embrace the nation.', 'ARKAVIDIA 6.0', 'Coming soon...']
+      welcomeStrings: ['It\'s time for you to embrace the nation.', 'ARKAVIDIA 6.0', 'Coming soon..']
     }
   }
 })
