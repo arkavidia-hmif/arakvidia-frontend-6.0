@@ -3,10 +3,12 @@
     <v-container fill-height class="pa-0">
       <v-layout wrap>
         <v-layout align-center column fill-height>
-          <v-container :style="{'background-image': `url(${require('~/assets/intro.svg')})`}"
-                       id="bg"
-                       width="100%"
-                       class="ma-0">
+          <v-container
+            id="bg"
+            :style="{'background-image': `url(${require('~/assets/intro.svg')})`}"
+            width="100%"
+            class="ma-0"
+          >
             <v-layout align-center justify-center column fill-height>
               <vue-typed-js
                 :back-delay="1000"
@@ -56,6 +58,7 @@ export default Vue.extend({
     background-size: auto 75%;
     background-repeat: no-repeat;
   }
+
   .main-heading {
     display: inline;
     line-height: 1.5;

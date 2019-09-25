@@ -8,11 +8,10 @@
   >
     <v-layout column>
       <v-flex>
-        <!--<Toolbar />-->
-        <HackathonIntro></HackathonIntro>
-        <HackathonPrize></HackathonPrize>
-        <HackathonTimeline></HackathonTimeline>
-        <HackathonFAQ></HackathonFAQ>
+        <HackathonIntro />
+        <HackathonPrize />
+        <HackathonTimeline />
+        <HackathonFAQ />
       </v-flex>
     </v-layout>
   </v-container>
@@ -20,7 +19,6 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import Toolbar from '~/components/subpage/Toolbar.vue'
 import HackathonIntro from '~/components/competition/hackathon/HackathonIntro.vue'
 import HackathonPrize from '~/components/competition/hackathon/HackathonPrize.vue'
 import HackathonTimeline from '~/components/competition/hackathon/HackathonTimeline.vue'
@@ -28,7 +26,6 @@ import HackathonFAQ from '~/components/competition/hackathon/HackathonFAQ.vue'
 
 export default Vue.extend({
   components: {
-    Toolbar,
     HackathonIntro,
     HackathonPrize,
     HackathonTimeline,

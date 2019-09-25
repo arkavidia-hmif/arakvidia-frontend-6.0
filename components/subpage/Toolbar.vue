@@ -1,10 +1,10 @@
 <template xmlns:v-slot="http://www.w3.org/1999/XSL/Transform">
   <v-app-bar
-      fixed
-      color="white"
-      elevate-on-scroll
+    fixed
+    color="white"
+    elevate-on-scroll
   >
-    <v-container class="py-0 px-4" align="center" fill-height>
+    <v-container class="py-0 px-0" align="center" fill-height>
       <v-layout>
         <v-toolbar-title>
           <v-container fill-height class="pa-0">
@@ -28,11 +28,11 @@
             Competitions
           </v-btn> -->
           <ToolbarDropdown
-              :title="'Competitions'"
-              :list="[
-                {title: 'Hackathon', route: '/competition/hackathon'},
-                {title: 'Competitive Programming', route: '/competition/competitive-programming'}
-              ]"
+            :title="'Competitions'"
+            :list="[
+              {title: 'Hackathon', route: '/competition/hackathon'},
+              {title: 'Competitive Programming', route: '/competition/competitive-programming'}
+            ]"
           />
           <v-btn class="text-capitalize" text>
             Events
@@ -79,11 +79,10 @@
 <script lang="ts">
 import Vue from 'vue'
 import ToolbarDropdown from '~/components/partials/ToolbarDropdown.vue'
-// import ToolbarLink from '~/components/partials/ToolbarLink.vue'
 
 export default Vue.extend({
   name: 'Toolbar',
-  components: {ToolbarDropdown}
+  components: { ToolbarDropdown }
 })
 </script>
 
