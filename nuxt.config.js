@@ -1,4 +1,4 @@
-require('dotenv').config({ path: getDotEnvFilename() });
+require('dotenv').config({ path: getDotEnvFilename() })
 
 export default {
   extends: [
@@ -52,11 +52,11 @@ export default {
   googleAnalytics: {
     id: process.env.VUE_APP_GA_ID
   }
-};
+}
 
-function getDotEnvFilename() {
+function getDotEnvFilename () {
   if (process.env.NODE_ENV === 'production') {
-    return (process.env.BUILD_ENV === 'staging') ? '.env.staging' : '.env.production';
+    return (process.env.BUILD_ENV === 'staging') ? '.env.staging' : '.env.production'
   }
-  return '.env.development';
+  return '.env.development'
 }
