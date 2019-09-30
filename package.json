@@ -14,8 +14,8 @@
     "build:ssr": "nuxt build",
     "staging:ssr": "BUILD_ENV=staging nuxt build",
     "start:ssr": "nuxt start",
-    "lint": "eslint --ext .ts,.js,.vue .",
-    "lint-fix": "eslint --fix --ext .ts,.js,.vue ."
+    "lint": "eslint --max-warnings 0 --ext .ts,.js,.vue .",
+    "lint-fix": "eslint --max-warnings 0 --fix --ext .ts,.js,.vue ."
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.3.6",
