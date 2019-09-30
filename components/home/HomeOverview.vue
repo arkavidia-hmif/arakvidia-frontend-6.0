@@ -74,10 +74,14 @@
                 />
                 <div class="pa-4 carousel-buttons">
                   <v-btn fab x-small light @click="aboutCarouselModel--">
-                    <v-icon color="grey darken-2">mdi-chevron-left</v-icon>
+                    <v-icon color="grey darken-2">
+                      mdi-chevron-left
+                    </v-icon>
                   </v-btn>
                   <v-btn fab x-small light class="ml-2" @click="aboutCarouselModel++">
-                    <v-icon color="#e83158">mdi-chevron-right</v-icon>
+                    <v-icon color="#e83158">
+                      mdi-chevron-right
+                    </v-icon>
                   </v-btn>
                 </div>
               </v-carousel>
@@ -109,9 +113,9 @@
                     </div>
                     <div align="end">
                       <nuxt-link
-                          class="subtitle-2 font-weight-bold"
-                          to="/competition/hackathon"
-                          style="color: #21C7C5; text-decoration: none"
+                        class="subtitle-2 font-weight-bold"
+                        to="/competition/hackathon"
+                        style="color: #21C7C5; text-decoration: none"
                       >
                         Info
                         lebih lanjut
@@ -122,10 +126,14 @@
               </v-carousel-item>
               <div class="pa-4 carousel-buttons">
                 <v-btn fab x-small light @click="competitionCarouselModel--">
-                  <v-icon color="grey darken-2">mdi-chevron-left</v-icon>
+                  <v-icon color="grey darken-2">
+                    mdi-chevron-left
+                  </v-icon>
                 </v-btn>
                 <v-btn fab x-small light class="ml-2" @click="competitionCarouselModel++">
-                  <v-icon color="#e83158">mdi-chevron-right</v-icon>
+                  <v-icon color="#e83158">
+                    mdi-chevron-right
+                  </v-icon>
                 </v-btn>
               </div>
             </v-carousel>
@@ -176,10 +184,14 @@
               </v-carousel-item>
               <div class="pa-4 carousel-buttons">
                 <v-btn fab x-small light @click="eventCarouselModel--">
-                  <v-icon color="grey darken-2">mdi-chevron-left</v-icon>
+                  <v-icon color="grey darken-2">
+                    mdi-chevron-left
+                  </v-icon>
                 </v-btn>
                 <v-btn fab x-small light class="ml-2" @click="eventCarouselModel++">
-                  <v-icon color="#e83158">mdi-chevron-right</v-icon>
+                  <v-icon color="#e83158">
+                    mdi-chevron-right
+                  </v-icon>
                 </v-btn>
               </div>
             </v-carousel>
