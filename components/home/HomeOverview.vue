@@ -61,7 +61,7 @@
             <v-container fill-height class="pa-0 ma-0">
               <v-carousel
                 v-model="aboutCarouselModel"
-                show-arrows
+                :show-arrows="false"
                 hide-delimiters
                 height="100%"
               >
@@ -72,6 +72,14 @@
                   height="auto"
                   :aspect-ratio="$vuetify.breakpoint.smAndDown ? 16/9 : 1"
                 />
+                <div class="pa-4 carousel-buttons">
+                  <v-btn fab x-small light @click="aboutCarouselModel--">
+                    <v-icon color="grey darken-2">mdi-chevron-left</v-icon>
+                  </v-btn>
+                  <v-btn fab x-small light class="ml-2" @click="aboutCarouselModel++">
+                    <v-icon color="#e83158">mdi-chevron-right</v-icon>
+                  </v-btn>
+                </div>
               </v-carousel>
             </v-container>
           </v-col>
@@ -80,7 +88,7 @@
           <v-col :cols="12" :md="6" align-self="stretch">
             <v-carousel
               v-model="competitionCarouselModel"
-              show-arrows
+              :show-arrows="false"
               hide-delimiters
               height="100%"
             >
@@ -91,8 +99,8 @@
                 height="auto"
                 :aspect-ratio="16/9"
               >
-                <v-layout justify-end column fill-height align-end>
-                  <div class="white py-3 pl-10 pr-3">
+                <v-layout fill-height align-end justify-end class="pa-0">
+                  <div class="white py-3 pl-8 pr-3">
                     <div class="subtitle-1 font-weight-bold" align="end">
                       Kompetisi baru!
                     </div>
@@ -101,9 +109,9 @@
                     </div>
                     <div align="end">
                       <nuxt-link
-                        class="subtitle-2 font-weight-bold"
-                        to="/competition/hackathon"
-                        style="color: #21C7C5; text-decoration: none"
+                          class="subtitle-2 font-weight-bold"
+                          to="/competition/hackathon"
+                          style="color: #21C7C5; text-decoration: none"
                       >
                         Info
                         lebih lanjut
@@ -112,6 +120,14 @@
                   </div>
                 </v-layout>
               </v-carousel-item>
+              <div class="pa-4 carousel-buttons">
+                <v-btn fab x-small light @click="competitionCarouselModel--">
+                  <v-icon color="grey darken-2">mdi-chevron-left</v-icon>
+                </v-btn>
+                <v-btn fab x-small light class="ml-2" @click="competitionCarouselModel++">
+                  <v-icon color="#e83158">mdi-chevron-right</v-icon>
+                </v-btn>
+              </div>
             </v-carousel>
           </v-col>
           <v-col :cols="12" :md="6" align-self="center">
@@ -129,7 +145,7 @@
           <v-col :cols="12" :md="6" :order="1" :order-md="2" align-self="stretch">
             <v-carousel
               v-model="eventCarouselModel"
-              show-arrows
+              :show-arrows="false"
               hide-delimiters
               height="100%"
             >
@@ -158,6 +174,14 @@
                   </div>
                 </v-layout>
               </v-carousel-item>
+              <div class="pa-4 carousel-buttons">
+                <v-btn fab x-small light @click="eventCarouselModel--">
+                  <v-icon color="grey darken-2">mdi-chevron-left</v-icon>
+                </v-btn>
+                <v-btn fab x-small light class="ml-2" @click="eventCarouselModel++">
+                  <v-icon color="#e83158">mdi-chevron-right</v-icon>
+                </v-btn>
+              </div>
             </v-carousel>
           </v-col>
           <v-col :cols="12" :md="6" :order="2" :order-md="1" align-self="center">
@@ -199,5 +223,10 @@ export default Vue.extend({
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center left;
+  }
+  .carousel-buttons {
+    position: absolute;
+    z-index: 1;
+    bottom: 0
   }
 </style>

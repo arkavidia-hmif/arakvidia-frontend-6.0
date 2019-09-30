@@ -21,7 +21,7 @@ export default {
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Baloo+Da|Raleway&display=swap' }
     ]
   },
-  loading: { color: '#fff' },
+  loading: { color: '#FF084F' },
   css: [],
   plugins: [
     '~/plugins/typedjs'
