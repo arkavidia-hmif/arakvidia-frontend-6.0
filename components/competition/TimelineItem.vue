@@ -30,7 +30,8 @@ export default Vue.extend({
   props: {
     active: {
       type: Boolean,
-      required: true
+      required: false,
+      default: false
     },
     date: {
       type: String,
