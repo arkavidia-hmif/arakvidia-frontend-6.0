@@ -1,14 +1,6 @@
 name: Perform ESLint Checks	
 
-on:	
-  push:
-    branches:
-    - master
-    - production
-  pull_request:
-    branches:
-    - master
-    - production
+on:	[push]
 
 jobs:	
   build:	
