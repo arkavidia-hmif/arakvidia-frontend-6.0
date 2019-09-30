@@ -1,20 +1,12 @@
 <template>
-  <v-container
-    fluid
-    align-start
-    column
-    class="pa-0 ma-0"
-    style="background: #FFFFFF"
-  >
-    <v-layout column>
-      <v-flex>
-        <HackathonIntro />
-        <HackathonPrize />
-        <HackathonTimeline />
-        <CompetitionFAQ :items="faqItems" />
-      </v-flex>
-    </v-layout>
-  </v-container>
+  <v-layout column style="background: white;">
+    <v-flex>
+      <HackathonIntro />
+      <HackathonPrize />
+      <HackathonTimeline />
+      <CompetitionFAQ :items="faqItems" />
+    </v-flex>
+  </v-layout>
 </template>
 
 <script lang="ts">
@@ -42,7 +34,6 @@ export default Vue.extend({
           question: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit?',
           answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
         },
-
         {
           question: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit?',
           answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
