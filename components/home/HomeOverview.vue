@@ -217,7 +217,7 @@ import Vue from 'vue'
 
 export default Vue.extend({
   name: 'HomeOverview',
-  data () {
+  data() {
     return {
       aboutCarouselModel: 0,
       competitionCarouselModel: 0,
