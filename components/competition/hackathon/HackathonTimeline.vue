@@ -1,7 +1,7 @@
 <template>
   <v-container px-4>
     <div class="headline font-weight-bold">Timeline Kegiatan</div>
-    <v-row class="mt-4">
+    <v-row class="mt-4" align="stretch">
       <v-col :cols="6" :sm="3">
         <v-responsive
           :aspect-ratio="$vuetify.breakpoint.smAndUp ? 5 : 3"
