@@ -21,7 +21,7 @@ export default {
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Baloo+Da|Raleway&display=swap' }
     ]
   },
-  loading: { color: '#fff' },
+  loading: { color: '#FF084F' },
   css: [],
   plugins: [
     '~/plugins/typedjs'
@@ -47,7 +47,16 @@ export default {
   axios: {},
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
-    treeShake: true
+    treeShake: true,
+    breakpoint: {
+      thresholds: {
+        xs: 340,
+        sm: 540,
+        md: 800,
+        lg: 1280,
+        xl: 50000
+      }
+    }
   },
   googleAnalytics: {
     id: process.env.VUE_APP_GA_ID

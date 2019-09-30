@@ -52,11 +52,4 @@ export default Vue.extend({
 </script>
 
 <style scoped>
-.color-black {
-  color: black;
-}
-
-.color-red {
-  color: #c14163;
-}
 </style>
