@@ -5,108 +5,37 @@
     </div>
     <v-row class="mt-4" align="stretch">
       <v-col :cols="6" :sm="3">
-        <v-responsive
-          :aspect-ratio="$vuetify.breakpoint.smAndUp ? 5 : 3"
-          class="white--text pa-0 ma-0"
-        >
-          <v-container fill-height justify-content-center style="background: #21C7C5">
-            <div style="width: 100%" align="left">
-              <div class="display-2 font-weight-black">
-                08
-              </div>
-              <div class="title mt-2 font-weight-black">
-                September 2019
-              </div>
-              <div class="subtitle-1 mt-2 font-weight-black">
-                Pembukaan
-              </div>
-              <div class="subtitle-1 font-weight-black">
-                Pendaftaran
-              </div>
-              <div class="caption font-weight-light">
-                Pendaftaran dilakukan secara online
-              </div>
-            </div>
-          </v-container>
-        </v-responsive>
+        <TimelineItem
+          active
+          date="08"
+          month-year="September 2019"
+          title="Pembukaan Pendaftaran"
+          description="Pendaftaran dilakukan secara online"
+        />
       </v-col>
       <v-col :cols="6" :sm="3">
-        <v-responsive
-          :aspect-ratio="$vuetify.breakpoint.smAndUp ? 5 : 3"
-          class="white--text pa-0 ma-0"
-        >
-          <v-container fill-height justify-content-center style="background: #f4f4f4">
-            <div style="width: 100%" align="left">
-              <div class="display-2 font-weight-black color-black">
-                30
-              </div>
-              <div class="title mt-2 font-weight-black color-black">
-                Oktober 2019
-              </div>
-              <div class="subtitle-1 mt-2 font-weight-black color-red">
-                Pembukaan
-              </div>
-              <div class="subtitle-1 font-weight-black color-red">
-                Pendaftaran
-              </div>
-              <div class="caption font-weight-light color-black">
-                Pendaftaran dilakukan secara online
-              </div>
-            </div>
-          </v-container>
-        </v-responsive>
+        <TimelineItem
+          date="08"
+          month-year="September 2019"
+          title="Pembukaan Pendaftaran"
+          description="Pendaftaran dilakukan secara online"
+        />
       </v-col>
       <v-col :cols="6" :sm="3">
-        <v-responsive
-          :aspect-ratio="$vuetify.breakpoint.smAndUp ? 5 : 3"
-          class="white--text pa-0 ma-0"
-        >
-          <v-container fill-height justify-content-center style="background: #f4f4f4">
-            <div style="width: 100%" align="left">
-              <div class="display-2 font-weight-black color-black">
-                30
-              </div>
-              <div class="title mt-2 font-weight-black color-black">
-                Oktober 2019
-              </div>
-              <div class="subtitle-1 mt-2 font-weight-black color-red">
-                Pembukaan
-              </div>
-              <div class="subtitle-1 font-weight-black color-red">
-                Pendaftaran
-              </div>
-              <div class="caption font-weight-light color-black">
-                Pendaftaran dilakukan secara online
-              </div>
-            </div>
-          </v-container>
-        </v-responsive>
+        <TimelineItem
+          date="08"
+          month-year="September 2019"
+          title="Pembukaan Pendaftaran"
+          description="Pendaftaran dilakukan secara online"
+        />
       </v-col>
       <v-col :cols="6" :sm="3">
-        <v-responsive
-          :aspect-ratio="$vuetify.breakpoint.smAndUp ? 5 : 3"
-          class="white--text pa-0 ma-0"
-        >
-          <v-container fill-height justify-content-center style="background: #f4f4f4">
-            <div style="width: 100%" align="left">
-              <div class="display-2 font-weight-black color-black">
-                30
-              </div>
-              <div class="title mt-2 font-weight-black color-black">
-                Oktober 2019
-              </div>
-              <div class="subtitle-1 mt-2 font-weight-black color-red">
-                Pembukaan
-              </div>
-              <div class="subtitle-1 font-weight-black color-red">
-                Pendaftaran
-              </div>
-              <div class="caption font-weight-light color-black">
-                Pendaftaran dilakukan secara online
-              </div>
-            </div>
-          </v-container>
-        </v-responsive>
+        <TimelineItem
+          date="08"
+          month-year="September 2019"
+          title="Pembukaan Pendaftaran"
+          description="Pendaftaran dilakukan secara online"
+        />
       </v-col>
     </v-row>
   </v-container>
@@ -114,9 +43,11 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import TimelineItem from '~/components/competition/TimelineItem.vue'
 
 export default Vue.extend({
-  name: 'HackathonTimeline'
+  name: 'HackathonTimeline',
+  components: { TimelineItem }
 })
 </script>
 
