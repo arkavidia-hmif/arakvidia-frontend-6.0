@@ -1,5 +1,5 @@
 <template>
-  <v-layout column>
+  <v-layout column style="background: white;">
     <HomeIntro />
     <HomeOverview />
   </v-layout>
