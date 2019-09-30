@@ -1,18 +1,18 @@
 <template>
   <v-container
-      id="bg"
-      :style="{'background-image': `url(${require('~/assets/intro.svg')})`}"
-      width="100%"
-      fill-height
-      column
-      align="center"
+    id="bg"
+    :style="{'background-image': `url(${require('~/assets/intro.svg')})`}"
+    width="100%"
+    fill-height
+    column
+    align="center"
   >
     <v-layout align-center justify-center column fill-height>
       <vue-typed-js
-          :back-delay="1000"
-          :type-speed="50"
-          loop
-          :strings="welcomeStrings"
+        :back-delay="1000"
+        :type-speed="50"
+        loop
+        :strings="welcomeStrings"
       >
         <div class="text-center">
           <p class="text-center display-2 main-heading">
