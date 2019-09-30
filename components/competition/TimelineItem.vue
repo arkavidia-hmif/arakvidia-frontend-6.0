@@ -1,6 +1,6 @@
 <template>
   <v-responsive
-    :aspect-ratio="$vuetify.breakpoint.smAndUp ? 5 : 3"
+    :aspect-ratio="$vuetify.breakpoint.smAndUp ? undefined : 1"
     class="pa-0 ma-0"
   >
     <v-container id="timeline-item" fill-height justify-content-center :class="{active}">
