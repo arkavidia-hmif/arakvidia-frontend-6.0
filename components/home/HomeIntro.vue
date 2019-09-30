@@ -1,41 +1,35 @@
 <template>
-  <v-flex>
-    <v-container fill-height class="pa-0">
-      <v-layout wrap>
-        <v-layout align-center column fill-height>
-          <v-container
-            id="bg"
-            :style="{'background-image': `url(${require('~/assets/intro.svg')})`}"
-            width="100%"
-            class="ma-0"
-          >
-            <v-layout align-center justify-center column fill-height>
-              <vue-typed-js
-                :back-delay="1000"
-                :type-speed="50"
-                loop
-                :strings="welcomeStrings"
-              >
-                <div class="text-center">
-                  <p class="text-center display-2 main-heading">
-                    <span class="typing font-weight-bold" />
-                  </p>
-                </div>
-              </vue-typed-js>
-              <div class="text-center mt-3">
-                <p class="text-center body-1 main-subtitle">
-                  Transforming soon, February 2020.
-                </p>
-              </div>
-              <v-btn rounded class="text-capitalize mt-5" color="white">
-                I'm interested!
-              </v-btn>
-            </v-layout>
-          </v-container>
-        </v-layout>
-      </v-layout>
-    </v-container>
-  </v-flex>
+  <v-container
+    id="bg"
+    :style="{'background-image': `url(${require('~/assets/intro.svg')})`}"
+    width="100%"
+    fill-height
+    column
+    align="center"
+  >
+    <v-layout align-center justify-center column fill-height>
+      <vue-typed-js
+        :back-delay="1000"
+        :type-speed="50"
+        loop
+        :strings="welcomeStrings"
+      >
+        <div class="text-center">
+          <p class="text-center display-2 main-heading">
+            <span class="typing font-weight-bold" />
+          </p>
+        </div>
+      </vue-typed-js>
+      <div class="text-center mt-3">
+        <p class="text-center body-1 main-subtitle">
+          Transforming soon, February 2020.
+        </p>
+      </div>
+      <v-btn rounded class="text-capitalize mt-5" color="white">
+        I'm interested!
+      </v-btn>
+    </v-layout>
+  </v-container>
 </template>
 
 <script>

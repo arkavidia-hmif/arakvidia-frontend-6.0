@@ -6,7 +6,7 @@
           <v-col
             id="about-bg"
             :cols="12"
-            :md="4"
+            :md="3"
             :order-md="1"
             class="hidden-sm-and-down"
             align-self="stretch"
@@ -31,7 +31,7 @@
           </v-col>
           <v-col
             :cols="12"
-            :md="5"
+            :md="6"
             :order="3"
             :order-md="2"
             mx-3
