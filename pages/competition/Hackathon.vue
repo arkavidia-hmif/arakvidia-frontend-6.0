@@ -31,7 +31,7 @@ export default Vue.extend({
     HackathonTimeline,
     CompetitionFAQ
   },
-  data() {
+  data () {
     return {
       faqItems: [
         {
