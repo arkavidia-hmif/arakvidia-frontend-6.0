@@ -1,41 +1,33 @@
 <template>
-  <v-layout column style="background: white;">
-    <v-flex>
-      <v-container fill-height class="pt-12">
-        <v-layout wrap>
-          <v-layout align-center column fill-height>
-            <v-img :src="require('~/assets/404.svg')" contain style="height: 40vh" width="100%" class="ma-5" />
-            <v-layout align-center justify-center column fill-height>
-              <div class="text-center">
-                <p
-                  :class="$vuetify.breakpoint.mdAndUp
-                    ? 'text-center display-2 main-heading font-weight-bold'
-                    : 'text-center display-1 main-heading font-weight-bold'"
-                >
-                  Waduh, nyasar!
-                </p>
-              </div>
-              <div class="text-center mt-3">
-                <p
-                  :class="$vuetify.breakpoint.mdAndUp
-                    ? 'text-center headline main-subtitle font-weight-bold'
-                    : 'text-center subtitle-2 main-subtitle font-weight-bold'"
-                >
-                  Tenang. Silakan kembali ke
-                  <nuxt-link
-                    class="link-subtitle"
-                    to="/"
-                  >
-                    homepage.
-                  </nuxt-link>
-                </p>
-              </div>
-            </v-layout>
-          </v-layout>
-        </v-layout>
-      </v-container>
-    </v-flex>
-  </v-layout>
+  <v-container fluid fill-height class="white">
+    <v-layout align-center justify-center column>
+      <div class="text-center" width="100%">
+        <v-img :src="require('~/assets/404.svg')" contain width="100%" class="mb-4" />
+        <p
+          :class="$vuetify.breakpoint.mdAndUp
+            ? 'text-center display-2 main-heading font-weight-bold'
+            : 'text-center display-1 main-heading font-weight-bold'"
+        >
+          Waduh, nyasar!
+        </p>
+      </div>
+      <div class="text-center mt-3">
+        <p
+          :class="$vuetify.breakpoint.mdAndUp
+            ? 'text-center headline main-subtitle font-weight-bold'
+            : 'text-center subtitle-2 main-subtitle font-weight-bold'"
+        >
+          Tenang. Silakan kembali ke
+          <nuxt-link
+            class="link-subtitle"
+            to="/"
+          >
+            homepage.
+          </nuxt-link>
+        </p>
+      </div>
+    </v-layout>
+  </v-container>
 </template>
 
 <script>
