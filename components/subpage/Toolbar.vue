@@ -24,19 +24,26 @@
         <v-spacer />
 
         <v-toolbar-items class="hidden-sm-and-down">
-          <!-- <v-btn class="text-capitalize" text>
-            Competitions
-          </v-btn> -->
           <ToolbarDropdown
             :title="'Competitions'"
             :list="[
-              {title: 'Hackathon', route: '/competition/hackathon'},
-              {title: 'Competitive Programming', route: '/competition/competitive-programming'}
+              {title: 'Competitive Programming', route: '/competition/competitive-programming'},
+              {title: 'Capture the Flag', route: '/competition/capture-the-flag'},
+              {title: 'Hackavidia', route: '/competition/hackavidia'},
+              {title: 'Datavidia', route: '/competition/datavidia'},
+              {title: 'Arkalogica', route: '/competition/arkalogica'},
             ]"
           />
-          <v-btn class="text-capitalize" text>
-            Events
-          </v-btn>
+          <ToolbarDropdown
+            :title="'Events'"
+            :list="[
+              {title: 'Arkavidia Academy', route: '/event/academy'},
+              {title: 'Technocamp', route: '/event/technocamp'},
+              {title: 'Arkavidia Goes To School', route: '/event/arkavidia-goes-to-school'},
+              {title: 'IT Festival', route: '/event/it-festival'},
+              {title: 'Arkavidia Talk', route: '/event/talk'},
+            ]"
+          />
           <v-btn class="text-capitalize" text>
             About
           </v-btn>

@@ -5,7 +5,7 @@
         <v-row wrap>
           <v-col :cols="12" :md="7" align-self="center">
             <div class="display-1 font-weight-bold" style="color: #0B909A">
-              Hackathon
+              Hackavidia
             </div>
             <p class="mt-4 grey--text text--darken-1">
               Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
