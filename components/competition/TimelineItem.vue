@@ -1,9 +1,9 @@
 <template>
-  <v-responsive
-    :aspect-ratio="$vuetify.breakpoint.smAndUp ? undefined : 1"
-    class="pa-0 ma-0"
-  >
-    <v-container id="timeline-item" fill-height justify-content-center :class="{active}">
+  <v-container id="timeline-item" fill-height :class="{active}">
+    <v-responsive
+      :aspect-ratio="$vuetify.breakpoint.mdAndUp ? undefined : 1"
+      class="pa-0 ma-0 align-self-start"
+    >
       <div style="width: 100%" align="left">
         <div class="display-2 font-weight-black date">
           {{ date }}
@@ -18,8 +18,8 @@
           {{ description }}
         </div>
       </div>
-    </v-container>
-  </v-responsive>
+    </v-responsive>
+  </v-container>
 </template>
 
 <script lang="ts">
@@ -47,7 +47,8 @@ export default Vue.extend({
     },
     description: {
       type: String,
-      required: true
+      required: false,
+      default: ''
     }
   }
 })
