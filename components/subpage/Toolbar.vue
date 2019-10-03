@@ -35,11 +35,16 @@
             ]"
           />
           <ToolbarDropdown
+            :title="'Pre-Events'"
+            :list="[
+              {title: 'Arkavidia Academy', route: '/preevent/academy'},
+              {title: 'Technocamp', route: '/preevent/technocamp'},
+              {title: 'Arkavidia Goes To School', route: '/preevent/arkavidia-goes-to-school'}
+            ]"
+          />
+          <ToolbarDropdown
             :title="'Events'"
             :list="[
-              {title: 'Arkavidia Academy', route: '/event/academy'},
-              {title: 'Technocamp', route: '/event/technocamp'},
-              {title: 'Arkavidia Goes To School', route: '/event/arkavidia-goes-to-school'},
               {title: 'IT Festival', route: '/event/it-festival'},
               {title: 'Arkavidia Talk', route: '/event/talk'},
             ]"
@@ -62,6 +67,9 @@
             <v-list>
               <v-list-item exact>
                 <v-list-item-title>Competitions</v-list-item-title>
+              </v-list-item>
+              <v-list-item exact>
+                <v-list-item-title>Pre-Events</v-list-item-title>
               </v-list-item>
               <v-list-item exact>
                 <v-list-item-title>Events</v-list-item-title>
