@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import Vue, { ComponentOptions } from 'vue'
 import CompetitiveProgrammingIntro from '~/components/competition/competitiveProgramming/CompetitiveProgrammingIntro.vue'
 import CompetitiveProgrammingPrize from '~/components/competition/competitiveProgramming/CompetitiveProgrammingPrize.vue'
 import CompetitiveProgrammingTimeline from '~/components/competition/competitiveProgramming/CompetitiveProgrammingTimeline.vue'
@@ -41,6 +41,11 @@ export default Vue.extend({
         }
       ]
     }
+  },
+  head() {
+    return {
+      title: 'Competitive Programming'
+    }
   }
-})
+} as ComponentOptions<Vue>)
 </script>
