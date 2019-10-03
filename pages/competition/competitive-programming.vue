@@ -4,7 +4,7 @@
       <CompetitiveProgrammingIntro />
       <CompetitiveProgrammingPrize />
       <CompetitiveProgrammingTimeline />
-      <CompetitionFAQ :items="faqItems" />
+      <!-- <CompetitionFAQ :items="faqItems" /> -->
     </v-flex>
   </v-layout>
 </template>
@@ -14,14 +14,14 @@ import Vue from 'vue'
 import CompetitiveProgrammingIntro from '~/components/competition/competitiveProgramming/CompetitiveProgrammingIntro.vue'
 import CompetitiveProgrammingPrize from '~/components/competition/competitiveProgramming/CompetitiveProgrammingPrize.vue'
 import CompetitiveProgrammingTimeline from '~/components/competition/competitiveProgramming/CompetitiveProgrammingTimeline.vue'
-import CompetitionFAQ from '~/components/competition/CompetitionFAQ.vue'
+// import CompetitionFAQ from '~/components/competition/CompetitionFAQ.vue'
 
 export default Vue.extend({
   components: {
     CompetitiveProgrammingIntro,
     CompetitiveProgrammingPrize,
-    CompetitiveProgrammingTimeline,
-    CompetitionFAQ
+    CompetitiveProgrammingTimeline
+    // CompetitionFAQ
   },
   data() {
     return {
