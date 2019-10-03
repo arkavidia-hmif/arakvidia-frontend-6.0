@@ -6,8 +6,8 @@
     <div>
       <v-expansion-panels class="mt-4">
         <v-expansion-panel
-          v-for="item in items"
-          :key="item.question"
+          v-for="(item, i) in items"
+          :key="i"
           disable-icon-rotate
         >
           <v-expansion-panel-header>
