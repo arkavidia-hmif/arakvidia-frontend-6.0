@@ -5,12 +5,12 @@
         <v-row wrap>
           <v-col :cols="12" :md="7" align-self="center">
             <div class="display-1 font-weight-bold" style="color: #0B909A">
-              Hackathon
+              Hackavidia
             </div>
             <p class="mt-4 grey--text text--darken-1">
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-              been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
-              galley of type and scrambled it to make a type specimen book.
+              Hackavidia adalah sebuah kompetisi yang memberikan wadah bagi para pengembang perangkat lunak untuk berkumpul dan berkolaborasi dalam memberikan solusi pada suatu permasalahan.
+              Kompetisi ini meliputi babak penyisihan dan babak final.
+              Babak penyisihan dilakukan secara online sedangkan babak final dilakukan di Institut Teknologi Bandung.
             </p>
             <div class="mt-8 caption">
               Kategori

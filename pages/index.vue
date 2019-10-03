@@ -1,18 +1,8 @@
 <template>
-  <v-container
-    fluid
-    fill-height
-    justify-space-between
-    align-start
-    column
-    class="pa-0 ma-0"
-    style="background: #FFFFFF"
-  >
-    <v-layout column>
-      <HomeIntro />
-      <HomeOverview />
-    </v-layout>
-  </v-container>
+  <v-layout column style="background: white;">
+    <HomeIntro />
+    <HomeOverview />
+  </v-layout>
 </template>
 
 <script lang="ts">

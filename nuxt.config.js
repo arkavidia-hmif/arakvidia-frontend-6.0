@@ -63,7 +63,7 @@ export default {
   }
 }
 
-function getDotEnvFilename () {
+function getDotEnvFilename() {
   if (process.env.NODE_ENV === 'production') {
     return (process.env.BUILD_ENV === 'staging') ? '.env.staging' : '.env.production'
   }
