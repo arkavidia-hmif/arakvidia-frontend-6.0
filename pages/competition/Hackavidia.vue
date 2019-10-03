@@ -14,14 +14,14 @@ import Vue from 'vue'
 import HackathonIntro from '~/components/competition/hackathon/HackathonIntro.vue'
 import HackathonPrize from '~/components/competition/hackathon/HackathonPrize.vue'
 import HackathonTimeline from '~/components/competition/hackathon/HackathonTimeline.vue'
-import CompetitionFAQ from '~/components/competition/CompetitionFAQ.vue'
+// import CompetitionFAQ from '~/components/competition/CompetitionFAQ.vue'
 
 export default Vue.extend({
   components: {
     HackathonIntro,
     HackathonPrize,
-    HackathonTimeline,
-    CompetitionFAQ
+    HackathonTimeline
+    // CompetitionFAQ
   },
   data() {
     return {

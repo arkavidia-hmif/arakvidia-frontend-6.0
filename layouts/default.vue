@@ -1,15 +1,10 @@
 <template>
   <v-app>
-    <Toolbar v-if="this.$vuetify.breakpoint.mdAndUp" class="front"/>
-    <NavigationDrawer v-else class="front"/>
+    <Toolbar v-if="this.$vuetify.breakpoint.mdAndUp" class="front" />
+    <NavigationDrawer v-else class="front" />
     <v-content>
       <nuxt />
     </v-content>
-
-    <!-- <Toolbar />
-    <v-content>
-      <nuxt />
-    </v-content> -->
     <Footer />
   </v-app>
 </template>
