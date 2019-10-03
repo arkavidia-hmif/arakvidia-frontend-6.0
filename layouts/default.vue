@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <Toolbar />
+    <Toolbar class="front" />
     <v-content>
       <nuxt />
     </v-content>
@@ -9,8 +9,8 @@
 </template>
 
 <script>
-import Toolbar from '~/components/subpage/Toolbar.vue'
-import Footer from '~/components/subpage/Footer'
+import Toolbar from '~/components/partials/Toolbar.vue'
+import Footer from '~/components/partials/Footer.vue'
 
 export default {
   components: {

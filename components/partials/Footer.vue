@@ -43,29 +43,9 @@
                 Competitions
               </div>
               <div class="mt-2">
-                <div>
-                  <nuxt-link to="/competition/competitive-programming" class="nav-item">
-                    Competitive Programming
-                  </nuxt-link>
-                </div>
-                <div>
-                  <nuxt-link to="/competition/capture-the-flag" class="nav-item">
-                    Capture the Flag
-                  </nuxt-link>
-                </div>
-                <div>
-                  <nuxt-link to="/competition/hackavidia" class="nav-item">
-                    Hackavidia
-                  </nuxt-link>
-                </div>
-                <div>
-                  <nuxt-link to="/competition/datavidia" class="nav-item">
-                    Datavidia
-                  </nuxt-link>
-                </div>
-                <div>
-                  <nuxt-link to="/competition/arkalogica" class="nav-item">
-                    Arkalogica
+                <div v-for="(menu, i) in competitionMenus" :key="i">
+                  <nuxt-link :to="menu.route" class="nav-item">
+                    {{ menu.title }}
                   </nuxt-link>
                 </div>
               </div>
@@ -75,19 +55,9 @@
                 Pre-Events
               </div>
               <div class="mt-2">
-                <div>
-                  <nuxt-link to="/event/academy" class="nav-item">
-                    Arkavidia Academy
-                  </nuxt-link>
-                </div>
-                <div>
-                  <nuxt-link to="/event/technocamp" class="nav-item">
-                    Technocamp
-                  </nuxt-link>
-                </div>
-                <div>
-                  <nuxt-link to="/event/arkavidia-goes-to-school" class="nav-item">
-                    Arkavidia Goes To School
+                <div v-for="(menu, i) in preEventMenus" :key="i">
+                  <nuxt-link :to="menu.route" class="nav-item">
+                    {{ menu.title }}
                   </nuxt-link>
                 </div>
               </div>
@@ -97,14 +67,9 @@
                 Main Events
               </div>
               <div class="mt-2">
-                <div>
-                  <nuxt-link to="/event/it-festival" class="nav-item">
-                    IT Festival
-                  </nuxt-link>
-                </div>
-                <div>
-                  <nuxt-link to="/event/talk" class="nav-item">
-                    Arkavidia Talk
+                <div v-for="(menu, i) in mainEventMenus" :key="i">
+                  <nuxt-link :to="menu.route" class="nav-item">
+                    {{ menu.title }}
                   </nuxt-link>
                 </div>
               </div>
@@ -120,9 +85,19 @@
 </template>
 
 <script>
-export default {
-  name: 'Footer'
-}
+import Vue from 'vue'
+import { competitionMenus, preEventMenus, mainEventMenus } from '~/constants/menus'
+
+export default Vue.extend({
+  name: 'Footer',
+  data() {
+    return {
+      competitionMenus,
+      preEventMenus,
+      mainEventMenus
+    }
+  }
+})
 </script>
 
 <style scoped>
