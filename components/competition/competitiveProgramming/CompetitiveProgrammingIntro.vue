@@ -5,12 +5,11 @@
         <v-row wrap>
           <v-col :cols="12" :md="7" align-self="center">
             <div class="display-1 font-weight-bold" style="color: #0B909A">
-              Competitive<br>Programming
+              Competitive Programming
             </div>
             <p class="mt-4 grey--text text--darken-1">
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-              been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
-              galley of type and scrambled it to make a type specimen book.
+              Competitive Programming Arkavidia adalah sebuah kompetisi pemrograman.
+              Kompetisi ini menguji kemampuan analisis pemecahan masalah dan berpikir komputasional dengan menyelesaikan persoalan yang diberikan dengan bahasa pemrograman tertentu dalam batasan waktu dan memori yang telah ditentukan.
             </p>
             <div class="mt-8 caption">
               Kategori

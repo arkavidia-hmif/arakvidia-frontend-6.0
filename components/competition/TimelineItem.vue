@@ -1,7 +1,7 @@
 <template>
   <v-container id="timeline-item" fill-height :class="{active}">
     <v-responsive
-      :aspect-ratio="$vuetify.breakpoint.mdAndUp ? undefined : 1"
+      :aspect-ratio="$vuetify.breakpoint.mdAndUp ? 3 : 1"
       class="pa-0 ma-0 align-self-start"
     >
       <div style="width: 100%" align="left">

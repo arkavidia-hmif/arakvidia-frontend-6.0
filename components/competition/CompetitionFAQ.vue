@@ -36,7 +36,7 @@ interface FaqItem {
 }
 
 export default Vue.extend({
-  name: 'HackathonFAQ',
+  name: 'CompetitionFAQ',
   props: {
     items: {
       type: Array,

@@ -7,8 +7,8 @@
     </v-list>
     <v-list class="pl-4 grey lighten-4">
       <nuxt-link
-        v-for="item in items"
-        :key="item"
+        v-for="(item, i) in items"
+        :key="i"
         :to="item.route"
         style="text-decoration: none;"
         class="black--text"

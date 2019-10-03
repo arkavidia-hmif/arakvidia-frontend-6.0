@@ -13,7 +13,7 @@
                   Rp 10.000.000,-
                 </div>
                 <div class="title mt-2">
-                  Champion
+                  Juara 1
                 </div>
               </div>
             </v-container>
@@ -35,7 +35,7 @@
                   Rp 7.500.000,-
                 </div>
                 <div class="title mt-2">
-                  Runner Up
+                  Juara 2
                 </div>
               </div>
             </v-container>
@@ -57,7 +57,7 @@
                   Rp 5.000.000,-
                 </div>
                 <div class="title mt-2">
-                  Third Place
+                  Juara 3
                 </div>
               </div>
             </v-container>

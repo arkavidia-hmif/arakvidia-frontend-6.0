@@ -25,9 +25,9 @@
           <v-spacer />
 
           <v-toolbar-items class="hidden-sm-and-down">
-            <template v-for="menuItem in mainMenus">
-              <ToolbarDropdown v-if="menuItem.children" :key="menuItem" :title="menuItem.title" :list="menuItem.children" />
-              <v-btn v-else :key="menuItem" class="text-capitalize" text :to="menuItem.route || ''">
+            <template v-for="(menuItem, i) in mainMenus">
+              <ToolbarDropdown v-if="menuItem.children" :key="i" :title="menuItem.title" :list="menuItem.children" />
+              <v-btn v-else :key="i" class="text-capitalize" text :to="menuItem.route || ''">
                 {{ menuItem.title }}
               </v-btn>
             </template>
@@ -42,9 +42,9 @@
     </v-app-bar>
     <v-navigation-drawer v-model="drawer" app disable-resize-watcher>
       <v-list>
-        <template v-for="menuItem in mainMenus">
-          <DrawerListGroup v-if="menuItem.children" :key="menuItem" :title="menuItem.title" :items="menuItem.children" />
-          <DrawerListItem v-else :key="menuItem" :to="menuItem.route" :title="menuItem.title" />
+        <template v-for="(menuItem, i) in mainMenus">
+          <DrawerListGroup v-if="menuItem.children" :key="i" :title="menuItem.title" :items="menuItem.children" />
+          <DrawerListItem v-else :key="i" :to="menuItem.route" :title="menuItem.title" />
         </template>
       </v-list>
     </v-navigation-drawer>

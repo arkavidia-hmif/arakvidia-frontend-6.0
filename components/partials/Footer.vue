@@ -43,7 +43,7 @@
                 Competitions
               </div>
               <div class="mt-2">
-                <div v-for="menu in competitionMenus" :key="menu">
+                <div v-for="(menu, i) in competitionMenus" :key="i">
                   <nuxt-link :to="menu.route" class="nav-item">
                     {{ menu.title }}
                   </nuxt-link>
@@ -55,7 +55,7 @@
                 Pre-Events
               </div>
               <div class="mt-2">
-                <div v-for="menu in preEventMenus" :key="menu">
+                <div v-for="(menu, i) in preEventMenus" :key="i">
                   <nuxt-link :to="menu.route" class="nav-item">
                     {{ menu.title }}
                   </nuxt-link>
@@ -67,7 +67,7 @@
                 Main Events
               </div>
               <div class="mt-2">
-                <div v-for="menu in mainEventMenus" :key="menu">
+                <div v-for="(menu, i) in mainEventMenus" :key="i">
                   <nuxt-link :to="menu.route" class="nav-item">
                     {{ menu.title }}
                   </nuxt-link>
@@ -86,7 +86,7 @@
 
 <script>
 import Vue from 'vue'
-import { competitionMenus, preEventMenus, mainEventMenus } from '../../constants/menus'
+import { competitionMenus, preEventMenus, mainEventMenus } from '~/constants/menus'
 
 export default Vue.extend({
   name: 'Footer',

@@ -7,34 +7,55 @@
       <v-col :cols="6" :sm="3">
         <TimelineItem
           active
+          date="28"
+          month-year="Oktober 2019"
+          title="Pembukaan Pendaftaran"
+          description="Pendaftaran dilakukan secara online"
+        />
+      </v-col>
+      <v-col :cols="6" :sm="3">
+        <TimelineItem
+          date="24"
+          month-year="November 2019"
+          title="Penutupan Pendaftaran & Batas Pembayaran"
+        />
+      </v-col>
+      <v-col :cols="6" :sm="3">
+        <TimelineItem
+          date="04"
+          month-year="Januari 2020"
+          title="Warmup"
+        />
+      </v-col>
+      <v-col :cols="6" :sm="3">
+        <TimelineItem
+          date="05"
+          month-year="Januari 2020"
+          title="Penyisihan"
+        />
+      </v-col>
+      <v-col :cols="6" :sm="3">
+        <TimelineItem
+          date="10-17"
+          month-year="Januari 2020"
+          title="Pengumuman Finalis"
+          description="Finalis akan diumumkan di website Arkavidia"
+        />
+      </v-col>
+      <v-col :cols="6" :sm="3">
+        <TimelineItem
           date="08"
-          month-year="September 2019"
-          title="Pembukaan Pendaftaran"
-          description="Pendaftaran dilakukan secara online"
+          month-year="Februari 2020"
+          title="Final"
+          description="Final dilaksanakan di Institut Teknologi Bandung"
         />
       </v-col>
       <v-col :cols="6" :sm="3">
         <TimelineItem
-          date="30"
-          month-year="Oktober 2019"
-          title="Pembukaan Pendaftaran"
-          description="Pendaftaran dilakukan secara online"
-        />
-      </v-col>
-      <v-col :cols="6" :sm="3">
-        <TimelineItem
-          date="30"
-          month-year="Oktober 2019"
-          title="Pembukaan Pendaftaran"
-          description="Pendaftaran dilakukan secara online"
-        />
-      </v-col>
-      <v-col :cols="6" :sm="3">
-        <TimelineItem
-          date="30"
-          month-year="Oktober 2019"
-          title="Pembukaan Pendaftaran"
-          description="Pendaftaran dilakukan secara online"
+          date="09"
+          month-year="Februari 2020"
+          title="Awarding Night"
+          description="Awarding Night dilaksanakan di Institut Teknologi Bandung"
         />
       </v-col>
     </v-row>

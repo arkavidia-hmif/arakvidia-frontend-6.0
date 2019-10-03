@@ -1,20 +1,12 @@
 <template>
-  <v-container
-    fluid
-    align-start
-    column
-    class="pa-0 ma-0"
-    style="background: #FFFFFF"
-  >
-    <v-layout column>
-      <v-flex>
-        <CompetitiveProgrammingIntro />
-        <CompetitiveProgrammingPrize />
-        <CompetitiveProgrammingTimeline />
-        <CompetitionFAQ :items="faqItems" />
-      </v-flex>
-    </v-layout>
-  </v-container>
+  <v-layout column style="background: white;">
+    <v-flex>
+      <CompetitiveProgrammingIntro />
+      <CompetitiveProgrammingPrize />
+      <CompetitiveProgrammingTimeline />
+      <CompetitionFAQ :items="faqItems" />
+    </v-flex>
+  </v-layout>
 </template>
 
 <script lang="ts">
