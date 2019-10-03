@@ -42,7 +42,8 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
     '@nuxtjs/google-analytics',
-    ['@nuxtjs/dotenv', { filename: getDotEnvFilename() }]
+    ['@nuxtjs/dotenv', { filename: getDotEnvFilename() }],
+    '@nuxtjs/sentry'
   ],
   axios: {},
   vuetify: {
@@ -60,6 +61,10 @@ export default {
   },
   googleAnalytics: {
     id: process.env.VUE_APP_GA_ID
+  },
+  sentry: {
+    dsn: 'https://13376353d3054dc08d96ce19e3c8e0c8@sentry.io/1769431', // Enter your project's DSN here
+    config: {} // Additional config
   }
 }
 
