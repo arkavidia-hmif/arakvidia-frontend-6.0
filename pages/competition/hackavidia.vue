@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import Vue, { ComponentOptions } from 'vue'
 import HackathonIntro from '~/components/competition/hackathon/HackathonIntro.vue'
 import HackathonPrize from '~/components/competition/hackathon/HackathonPrize.vue'
 import HackathonTimeline from '~/components/competition/hackathon/HackathonTimeline.vue'
@@ -40,6 +40,11 @@ export default Vue.extend({
         }
       ]
     }
+  },
+  head() {
+    return {
+      title: 'Hackavidia'
+    }
   }
-})
+} as ComponentOptions<Vue>)
 </script>
