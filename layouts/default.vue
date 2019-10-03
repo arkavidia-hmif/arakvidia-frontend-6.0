@@ -1,7 +1,6 @@
 <template>
   <v-app>
-    <Toolbar v-if="this.$vuetify.breakpoint.mdAndUp" class="front" />
-    <NavigationDrawer v-else class="front" />
+    <Toolbar class="front" />
     <v-content>
       <nuxt />
     </v-content>
@@ -10,15 +9,13 @@
 </template>
 
 <script>
-import Toolbar from '~/components/subpage/Toolbar.vue'
-import Footer from '~/components/subpage/Footer.vue'
-import NavigationDrawer from '~/components/subpage/NavigationDrawer.vue'
+import Toolbar from '~/components/partials/Toolbar.vue'
+import Footer from '~/components/partials/Footer.vue'
 
 export default {
   components: {
     Footer,
-    Toolbar,
-    NavigationDrawer
+    Toolbar
   }
 }
 </script>

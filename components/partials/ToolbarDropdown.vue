@@ -14,7 +14,8 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import Vue, { PropOptions } from 'vue'
+import { Menu } from '~/constants/menus'
 
 export default Vue.extend({
   name: 'ToolbarDropdown',
@@ -26,7 +27,7 @@ export default Vue.extend({
     list: {
       type: Array,
       required: true
-    }
+    } as PropOptions<Array<Menu>>
   }
 })
 </script>
