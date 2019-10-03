@@ -1,7 +1,7 @@
 <template>
   <v-menu offset-y>
     <template v-slot:activator="{ on }">
-      <v-btn class="text-capitalize" text v-on="on">
+      <v-btn class="text-capitalize" text style="height: 100%" v-on="on">
         {{ title }}
       </v-btn>
     </template>
