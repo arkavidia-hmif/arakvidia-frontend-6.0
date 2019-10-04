@@ -43,7 +43,7 @@
               <v-btn to="/dashboard" class="text-capitalize" text>
                 Dashboard
               </v-btn>
-              <v-btn class="text-capitalize" text @click.prevent="attemptLogout">
+              <v-btn class="text-capitalize" text @click="attemptLogout">
                 Logout
               </v-btn>
             </template>
@@ -67,12 +67,8 @@
           <DrawerListItem to="/dashboard/register" title="Register" />
         </template>
         <template v-else>
-          <nuxt-link to="/dashboard">
-            <v-list-item>
-              <v-list-item-title>Dashboard</v-list-item-title>
-            </v-list-item>
-          </nuxt-link>
-          <v-list-item @click.prevent="attemptLogout">
+          <DrawerListItem to="/dashboard" title="Dashboard" />
+          <v-list-item @click="attemptLogout">
             <v-list-item-title>Logout</v-list-item-title>
           </v-list-item>
         </template>
