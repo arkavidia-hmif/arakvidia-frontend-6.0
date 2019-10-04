@@ -5,17 +5,17 @@
         <v-row wrap>
           <v-col :cols="12" :md="7" align-self="center">
             <div class="display-1 font-weight-bold" style="color: #0B909A">
-              Competitive Programming
+              Arkalogica
             </div>
             <p class="mt-4 grey--text text--darken-1">
-              Competitive Programming Arkavidia adalah sebuah kompetisi pemrograman.
-              Kompetisi ini menguji kemampuan analisis pemecahan masalah dan berpikir komputasional dengan menyelesaikan persoalan yang diberikan dengan bahasa pemrograman tertentu dalam batasan waktu dan memori yang telah ditentukan.
+              Arkalogica adalah kompetisi yang mengasah kemampuan peserta dalam penggunaan logika dan menyelesaikan masalah secara logis.
+              Jenis-jenis permasalahan yang diberikan antara lain berbagai soal logika dan game menarik.
             </p>
             <div class="mt-8 caption">
               Kategori
               &nbsp;
               <v-chip small color="black" class="black white--text caption">
-                Mahasiswa
+                SMA/Sederajat
               </v-chip>
             </div>
             <div class="mt-8">
@@ -37,7 +37,7 @@
             class="hidden-sm-and-down"
             align-self="center"
           >
-            <v-img width="100%" fill-height cover :src="require('~/assets/hackathon_intro.jpg')" />
+            <v-img width="100%" fill-height cover :src="require('~/assets/images/hackathon_intro.jpg')" />
           </v-col>
         </v-row>
       </v-container>
@@ -55,7 +55,7 @@
 import Vue from 'vue';
 
 export default Vue.extend({
-  name: 'CompetitiveProgrammingIntro'
+  name: 'ArkalogicaIntro'
 });
 </script>
 

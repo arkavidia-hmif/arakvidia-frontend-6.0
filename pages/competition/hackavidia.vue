@@ -11,9 +11,9 @@
 
 <script lang="ts">
 import Vue, { ComponentOptions } from 'vue';
-import HackathonIntro from '~/components/competition/hackathon/HackathonIntro.vue';
-import HackathonPrize from '~/components/competition/hackathon/HackathonPrize.vue';
-import HackathonTimeline from '~/components/competition/hackathon/HackathonTimeline.vue';
+import HackathonIntro from '~/components/competition/hackavidia/Intro.vue';
+import HackathonPrize from '~/components/competition/hackavidia/Prize.vue';
+import HackathonTimeline from '~/components/competition/hackavidia/Timeline.vue';
 // import CompetitionFAQ from '~/components/competition/CompetitionFAQ.vue'
 
 export default Vue.extend({

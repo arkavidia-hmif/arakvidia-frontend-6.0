@@ -1,9 +1,9 @@
 <template>
   <v-layout column style="background: white;">
     <v-flex>
-      <CompetitiveProgrammingIntro />
-      <CompetitiveProgrammingPrize />
-      <CompetitiveProgrammingTimeline />
+      <CaptureTheFlagIntro />
+      <CaptureTheFlagPrize />
+      <CaptureTheFlagTimeline />
       <!-- <CompetitionFAQ :items="faqItems" /> -->
     </v-flex>
   </v-layout>
@@ -11,16 +11,16 @@
 
 <script lang="ts">
 import Vue, { ComponentOptions } from 'vue';
-import CompetitiveProgrammingIntro from '~/components/competition/cp/Intro.vue';
-import CompetitiveProgrammingPrize from '~/components/competition/cp/Prize.vue';
-import CompetitiveProgrammingTimeline from '~/components/competition/cp/Timeline.vue';
+import CaptureTheFlagIntro from '~/components/competition/ctf/Intro.vue';
+import CaptureTheFlagPrize from '~/components/competition/ctf/Prize.vue';
+import CaptureTheFlagTimeline from '~/components/competition/ctf/Timeline.vue';
 // import CompetitionFAQ from '~/components/competition/CompetitionFAQ.vue'
 
 export default Vue.extend({
   components: {
-    CompetitiveProgrammingIntro,
-    CompetitiveProgrammingPrize,
-    CompetitiveProgrammingTimeline
+    CaptureTheFlagIntro,
+    CaptureTheFlagPrize,
+    CaptureTheFlagTimeline
     // CompetitionFAQ
   },
   data() {
@@ -44,7 +44,7 @@ export default Vue.extend({
   },
   head() {
     return {
-      title: 'Competitive Programming'
+      title: 'Capture the Flag'
     };
   }
 } as ComponentOptions<Vue>);

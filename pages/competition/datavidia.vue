@@ -1,9 +1,9 @@
 <template>
   <v-layout column style="background: white;">
     <v-flex>
-      <CompetitiveProgrammingIntro />
-      <CompetitiveProgrammingPrize />
-      <CompetitiveProgrammingTimeline />
+      <DatavidiaIntro />
+      <DatavidiaPrize />
+      <DatavidiaTimeline />
       <!-- <CompetitionFAQ :items="faqItems" /> -->
     </v-flex>
   </v-layout>
@@ -11,32 +11,31 @@
 
 <script lang="ts">
 import Vue, { ComponentOptions } from 'vue';
-import CompetitiveProgrammingIntro from '~/components/competition/cp/Intro.vue';
-import CompetitiveProgrammingPrize from '~/components/competition/cp/Prize.vue';
-import CompetitiveProgrammingTimeline from '~/components/competition/cp/Timeline.vue';
+import DatavidiaIntro from '~/components/competition/datavidia/Intro.vue';
+import DatavidiaPrize from '~/components/competition/datavidia/Prize.vue';
+import DatavidiaTimeline from '~/components/competition/datavidia/Timeline.vue';
 // import CompetitionFAQ from '~/components/competition/CompetitionFAQ.vue'
 
 export default Vue.extend({
   components: {
-    CompetitiveProgrammingIntro,
-    CompetitiveProgrammingPrize,
-    CompetitiveProgrammingTimeline
+    DatavidiaIntro,
+    DatavidiaPrize,
+    DatavidiaTimeline
     // CompetitionFAQ
   },
   data() {
     return {
       faqItems: [
         {
-          question: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit?',
+          question: 'Lorem ipsum dolor sit amet, consectetur adipiscing elita?',
           answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
         },
         {
-          question: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit?',
+          question: 'Lorem ipsum dolor sit amet, consectetur adipiscing elite?',
           answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
         },
-
         {
-          question: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit?',
+          question: 'Lorem ipsum dolor sit amet, consectetur adipiscing eliti?',
           answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
         }
       ]
@@ -44,7 +43,7 @@ export default Vue.extend({
   },
   head() {
     return {
-      title: 'Competitive Programming'
+      title: 'Datavidia'
     };
   }
 } as ComponentOptions<Vue>);

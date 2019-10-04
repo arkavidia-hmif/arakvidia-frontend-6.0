@@ -5,12 +5,11 @@
         <v-row wrap>
           <v-col :cols="12" :md="7" align-self="center">
             <div class="display-1 font-weight-bold" style="color: #0B909A">
-              Hackavidia
+              Datavidia
             </div>
             <p class="mt-4 grey--text text--darken-1">
-              Hackavidia adalah sebuah kompetisi yang memberikan wadah bagi para pengembang perangkat lunak untuk berkumpul dan berkolaborasi dalam memberikan solusi pada suatu permasalahan.
-              Kompetisi ini meliputi babak penyisihan dan babak final.
-              Babak penyisihan dilakukan secara online sedangkan babak final dilakukan di Institut Teknologi Bandung.
+              Datavidia adalah kompetisi data science dimana peserta diberikan data dan kemudian harus memprediksi sebuah variabel tertentu menggunakan wawasan dan kakas yang beragam.
+              Peserta juga akan diberikan kesempatan untuk mempresentasikan cara yang peserta gunakan.
             </p>
             <div class="mt-8 caption">
               Kategori
@@ -38,7 +37,7 @@
             class="hidden-sm-and-down"
             align-self="center"
           >
-            <v-img width="100%" fill-height cover :src="require('~/assets/hackathon_intro.jpg')" />
+            <v-img width="100%" fill-height cover :src="require('~/assets/images/hackathon_intro.jpg')" />
           </v-col>
         </v-row>
       </v-container>
@@ -56,7 +55,7 @@
 import Vue from 'vue';
 
 export default Vue.extend({
-  name: 'HackathonIntro'
+  name: 'DatavidiaIntro'
 });
 </script>
 
