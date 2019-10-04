@@ -6,7 +6,7 @@
     <v-row class="mt-4" align="stretch">
       <v-col :cols="6" :sm="3">
         <TimelineItem
-          active
+          :active-before="Date.parse('2019-11-23 23:59:59')"
           date="28"
           month-year="Oktober 2019"
           title="Pembukaan Pendaftaran"
@@ -15,6 +15,8 @@
       </v-col>
       <v-col :cols="6" :sm="3">
         <TimelineItem
+          :active-after="Date.parse('2019-11-24 00:00:00')"
+          :active-before="Date.parse('2019-11-24 23:59:59')"
           date="24"
           month-year="November 2019"
           title="Penutupan Pendaftaran & Batas Pembayaran"
@@ -22,6 +24,8 @@
       </v-col>
       <v-col :cols="6" :sm="3">
         <TimelineItem
+          :active-after="Date.parse('2019-11-25 00:00:00')"
+          :active-before="Date.parse('2019-12-22 23:59:59')"
           date="16"
           month-year="Desember 2019"
           title="Mulai Babak Penyisihan"
@@ -29,6 +33,8 @@
       </v-col>
       <v-col :cols="6" :sm="3">
         <TimelineItem
+          :active-after="Date.parse('2019-12-23 00:00:00')"
+          :active-before="Date.parse('2019-12-23 23:59:59')"
           date="23"
           month-year="Desember 2019"
           title="Batas Akhir Penyisihan"
@@ -36,6 +42,8 @@
       </v-col>
       <v-col :cols="6" :sm="3">
         <TimelineItem
+          :active-after="Date.parse('2019-12-24 00:00:00')"
+          :active-before="Date.parse('2020-01-17 23:59:59')"
           date="10-17"
           month-year="Januari 2020"
           title="Pengumuman Finalis"
@@ -44,6 +52,8 @@
       </v-col>
       <v-col :cols="6" :sm="3">
         <TimelineItem
+          :active-after="Date.parse('2020-01-18 00:00:00')"
+          :active-before="Date.parse('2020-02-08 23:59:59')"
           date="08"
           month-year="Februari 2020"
           title="Final"
@@ -52,6 +62,8 @@
       </v-col>
       <v-col :cols="6" :sm="3">
         <TimelineItem
+          :active-after="Date.parse('2020-02-09 00:00:00')"
+          :active-before="Date.parse('2020-02-09 23:59:59')"
           date="09"
           month-year="Februari 2020"
           title="Awarding Night"

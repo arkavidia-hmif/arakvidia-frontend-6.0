@@ -1,5 +1,5 @@
 <template>
-  <v-container id="timeline-item" fill-height :class="{active}">
+  <v-container id="timeline-item" fill-height :class="{active: isActive}">
     <v-responsive
       :aspect-ratio="$vuetify.breakpoint.mdAndUp ? 3 : 1"
       class="pa-0 ma-0 align-self-start"
@@ -33,6 +33,16 @@ export default Vue.extend({
       required: false,
       default: false
     },
+    activeAfter: {
+      type: Number,
+      required: false,
+      default: 0
+    },
+    activeBefore: {
+      type: Number,
+      required: false,
+      default: 0
+    },
     date: {
       type: String,
       required: true
@@ -49,6 +59,16 @@ export default Vue.extend({
       type: String,
       required: false,
       default: ''
+    }
+  },
+  computed: {
+    isActive() {
+      if (this.active) {
+        return true;
+      }
+
+      const currentDate = Date.now();
+      return currentDate >= this.activeAfter && currentDate <= this.activeBefore;
     }
   }
 });
