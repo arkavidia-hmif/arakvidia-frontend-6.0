@@ -33,16 +33,16 @@
 </template>
 
 <script>
-import Vue from 'vue'
+import Vue from 'vue';
 
 export default Vue.extend({
   name: 'HomeIntro',
   data() {
     return {
       welcomeStrings: ['It\'s time for you to embrace the nation.', 'ARKAVIDIA 6.0', 'Coming soon..']
-    }
+    };
   }
-})
+});
 </script>
 
 <style scoped>

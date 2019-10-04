@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import NotFound from '~/components/NotFound'
+import NotFound from '~/components/NotFound';
 
 export default {
   layout: 'empty',
@@ -26,18 +26,18 @@ export default {
   },
   head() {
     const title =
-        this.error.statusCode === 404 ? this.pageNotFound : this.otherError
+        this.error.statusCode === 404 ? this.pageNotFound : this.otherError;
     return {
       title
-    }
+    };
   },
   data() {
     return {
       pageNotFound: '404 Not Found',
       otherError: 'An error occurred'
-    }
+    };
   }
-}
+};
 </script>
 
 <style scoped>

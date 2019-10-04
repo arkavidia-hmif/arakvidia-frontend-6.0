@@ -85,8 +85,8 @@
 </template>
 
 <script>
-import Vue from 'vue'
-import { competitionMenus, preEventMenus, mainEventMenus } from '~/constants/menus'
+import Vue from 'vue';
+import { competitionMenus, preEventMenus, mainEventMenus } from '~/constants/menus';
 
 export default Vue.extend({
   name: 'Footer',
@@ -95,9 +95,9 @@ export default Vue.extend({
       competitionMenus,
       preEventMenus,
       mainEventMenus
-    }
+    };
   }
-})
+});
 </script>
 
 <style scoped>

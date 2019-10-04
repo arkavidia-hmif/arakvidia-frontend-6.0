@@ -19,6 +19,7 @@ module.exports = {
     "key-spacing": [2, {"beforeColon": false, "afterColon": true}],
     "semi-spacing": [2, {"before": false, "after": true}],
     "keyword-spacing": 2,
-    "space-before-function-paren": [2, "never"]
+    "space-before-function-paren": [2, "never"],
+    "semi": ["error", "always"]
   }
 };

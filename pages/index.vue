@@ -6,9 +6,9 @@
 </template>
 
 <script lang="ts">
-import Vue, { ComponentOptions } from 'vue'
-import HomeIntro from '~/components/home/HomeIntro.vue'
-import HomeOverview from '~/components/home/HomeOverview.vue'
+import Vue, { ComponentOptions } from 'vue';
+import HomeIntro from '~/components/home/HomeIntro.vue';
+import HomeOverview from '~/components/home/HomeOverview.vue';
 
 export default Vue.extend({
   components: {
@@ -18,7 +18,7 @@ export default Vue.extend({
   head() {
     return {
       title: 'Beranda'
-    }
+    };
   }
-} as ComponentOptions<Vue>)
+} as ComponentOptions<Vue>);
 </script>

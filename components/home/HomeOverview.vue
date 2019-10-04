@@ -213,7 +213,7 @@
 </template>
 
 <script>
-import Vue from 'vue'
+import Vue from 'vue';
 
 export default Vue.extend({
   name: 'HomeOverview',
@@ -225,9 +225,9 @@ export default Vue.extend({
       aboutImages: ['hackathon_intro.jpg', 'logo.svg', 'mine.svg'],
       competitionImages: ['hackathon_intro.jpg', 'logo.svg'],
       eventImages: ['hackathon_intro.jpg', 'logo.svg']
-    }
+    };
   }
-})
+});
 </script>
 
 <style scoped>
