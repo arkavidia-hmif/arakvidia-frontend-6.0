@@ -30,7 +30,7 @@ export const competitionMenus: Menu[] = [
     title: 'Arkalogica',
     route: '/competition/arkalogica'
   }
-]
+];
 
 export const preEventMenus: Menu[] = [
   {
@@ -45,7 +45,7 @@ export const preEventMenus: Menu[] = [
     title: 'Arkavidia Goes To School',
     route: '/preevent/arkavidia-goes-to-school'
   }
-]
+];
 
 export const mainEventMenus: Menu[] = [
   {
@@ -56,7 +56,7 @@ export const mainEventMenus: Menu[] = [
     title: 'Arkavidia Talk',
     route: '/event/arkavidia-talk'
   }
-]
+];
 
 export const mainMenus: TopLevelMenu[] = [
   {
@@ -74,9 +74,5 @@ export const mainMenus: TopLevelMenu[] = [
   {
     title: 'About',
     route: '/about'
-  },
-  {
-    title: 'Dashboard',
-    route: '/dashboard'
   }
-]
+];

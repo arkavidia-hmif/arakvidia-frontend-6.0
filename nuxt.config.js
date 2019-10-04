@@ -1,4 +1,4 @@
-require('dotenv').config({ path: getDotEnvFilename() })
+require('dotenv').config({ path: getDotEnvFilename() });
 
 export default {
   extends: [
@@ -24,7 +24,9 @@ export default {
   loading: { color: '#FF084F' },
   css: [],
   plugins: [
-    '~/plugins/typedjs'
+    '~/plugins/typedjs',
+    '~/plugins/definitions',
+    { src: '~/plugins/vuex-persist', ssr: false }
   ],
   buildModules: [
     '@nuxt/typescript-build',
@@ -66,11 +68,11 @@ export default {
     dsn: 'https://13376353d3054dc08d96ce19e3c8e0c8@sentry.io/1769431', // Enter your project's DSN here
     config: {} // Additional config
   }
-}
+};
 
 function getDotEnvFilename() {
   if (process.env.NODE_ENV === 'production') {
-    return (process.env.BUILD_ENV === 'staging') ? '.env.staging' : '.env.production'
+    return (process.env.BUILD_ENV === 'staging') ? '.env.staging' : '.env.production';
   }
-  return '.env.development'
+  return '.env.development';
 }

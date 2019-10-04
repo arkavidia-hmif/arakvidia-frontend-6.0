@@ -9,7 +9,7 @@
 <script>
 export default {
   name: 'MenuIcon'
-}
+};
 </script>
 
 <style lang="scss" scoped>

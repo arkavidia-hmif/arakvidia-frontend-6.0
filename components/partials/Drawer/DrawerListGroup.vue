@@ -22,8 +22,8 @@
 </template>
 
 <script lang="ts">
-import Vue, { PropOptions } from 'vue'
-import { Menu } from '~/constants/menus'
+import Vue, { PropOptions } from 'vue';
+import { Menu } from '~/constants/menus';
 
 export default Vue.extend({
   name: 'DrawerListItem',
@@ -37,5 +37,5 @@ export default Vue.extend({
       required: true
     } as PropOptions<Array<Menu>>
   }
-})
+});
 </script>

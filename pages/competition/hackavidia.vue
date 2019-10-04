@@ -10,10 +10,10 @@
 </template>
 
 <script lang="ts">
-import Vue, { ComponentOptions } from 'vue'
-import HackathonIntro from '~/components/competition/hackathon/HackathonIntro.vue'
-import HackathonPrize from '~/components/competition/hackathon/HackathonPrize.vue'
-import HackathonTimeline from '~/components/competition/hackathon/HackathonTimeline.vue'
+import Vue, { ComponentOptions } from 'vue';
+import HackathonIntro from '~/components/competition/hackathon/HackathonIntro.vue';
+import HackathonPrize from '~/components/competition/hackathon/HackathonPrize.vue';
+import HackathonTimeline from '~/components/competition/hackathon/HackathonTimeline.vue';
 // import CompetitionFAQ from '~/components/competition/CompetitionFAQ.vue'
 
 export default Vue.extend({
@@ -39,12 +39,12 @@ export default Vue.extend({
           answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
         }
       ]
-    }
+    };
   },
   head() {
     return {
       title: 'Hackavidia'
-    }
+    };
   }
-} as ComponentOptions<Vue>)
+} as ComponentOptions<Vue>);
 </script>

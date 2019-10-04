@@ -1,10 +1,8 @@
 <template>
   <nuxt-link :to="to" style="color: black; text-decoration: none;">
-    <v-list>
-      <v-list-item>
-        <v-list-item-title>{{ title }}</v-list-item-title>
-      </v-list-item>
-    </v-list>
+    <v-list-item>
+      <v-list-item-title>{{ title }}</v-list-item-title>
+    </v-list-item>
   </nuxt-link>
 </template>
 
@@ -21,7 +19,7 @@ export default {
       required: true
     }
   }
-}
+};
 </script>
 
 <style scoped>

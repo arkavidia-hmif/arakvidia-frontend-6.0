@@ -28,7 +28,7 @@
 </template>
 
 <script lang="ts">
-import Vue, { PropOptions } from 'vue'
+import Vue, { PropOptions } from 'vue';
 
 interface FaqItem {
   question: string;
@@ -43,7 +43,7 @@ export default Vue.extend({
       required: true
     } as PropOptions<Array<FaqItem>>
   }
-})
+});
 </script>
 
 <style scoped>

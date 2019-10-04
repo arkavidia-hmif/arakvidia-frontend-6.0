@@ -1,17 +1,22 @@
 <template>
-  <b>Dashboard index</b>
+  <v-container v-if="loggedIn" class="mt-12">
+    Is logged in: {{ loggedIn }}
+  </v-container>
 </template>
 
 <script lang="ts">
-import Vue, { ComponentOptions } from 'vue'
+import { Component, Vue, State } from 'nuxt-property-decorator';
 
-export default Vue.extend({
+@Component
+export default class DashboardIndex extends Vue {
+  @State loggedIn!: boolean;
+
   head() {
     return {
       title: 'Dashboard'
-    }
+    };
   }
-} as ComponentOptions<Vue>)
+}
 </script>
 
 <style scoped>

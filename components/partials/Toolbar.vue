@@ -31,6 +31,22 @@
                 {{ menuItem.title }}
               </v-btn>
             </template>
+            <template v-if="!loggedIn">
+              <v-btn to="/dashboard/login" class="text-capitalize" text>
+                Login
+              </v-btn>
+              <v-btn to="/dashboard/register" class="text-capitalize" text>
+                Register
+              </v-btn>
+            </template>
+            <template v-else>
+              <v-btn to="/dashboard" class="text-capitalize" text>
+                Dashboard
+              </v-btn>
+              <v-btn class="text-capitalize" text @click="attemptLogout">
+                Logout
+              </v-btn>
+            </template>
           </v-toolbar-items>
           <v-toolbar-items class="hidden-md-and-up">
             <v-btn icon @click="drawer = !drawer">
@@ -46,29 +62,44 @@
           <DrawerListGroup v-if="menuItem.children" :key="i" :title="menuItem.title" :items="menuItem.children" />
           <DrawerListItem v-else :key="i" :to="menuItem.route" :title="menuItem.title" />
         </template>
+        <template v-if="!loggedIn">
+          <DrawerListItem to="/dashboard/login" title="Login" />
+          <DrawerListItem to="/dashboard/register" title="Register" />
+        </template>
+        <template v-else>
+          <DrawerListItem to="/dashboard" title="Dashboard" />
+          <v-list-item @click="attemptLogout">
+            <v-list-item-title>Logout</v-list-item-title>
+          </v-list-item>
+        </template>
       </v-list>
     </v-navigation-drawer>
   </div>
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-import { mainMenus } from '../../constants/menus'
-import ToolbarDropdown from '~/components/partials/ToolbarDropdown.vue'
-import DrawerListItem from '~/components/partials/Drawer/DrawerListItem.vue'
-import DrawerListGroup from '~/components/partials/Drawer/DrawerListGroup.vue'
-import MenuIcon from '~/components/partials/Drawer/MenuIcon.vue'
+import { Component, Vue, State, Mutation } from 'nuxt-property-decorator';
+import { mainMenus, TopLevelMenu } from '../../constants/menus';
+import ToolbarDropdown from '~/components/partials/ToolbarDropdown.vue';
+import DrawerListItem from '~/components/partials/Drawer/DrawerListItem.vue';
+import DrawerListGroup from '~/components/partials/Drawer/DrawerListGroup.vue';
+import MenuIcon from '~/components/partials/Drawer/MenuIcon.vue';
 
-export default Vue.extend({
+@Component({
   name: 'Toolbar',
-  components: { ToolbarDropdown, DrawerListItem, DrawerListGroup, MenuIcon },
-  data() {
-    return {
-      mainMenus,
-      drawer: false
-    }
-  }
+  components: { ToolbarDropdown, DrawerListItem, DrawerListGroup, MenuIcon }
 })
+export default class DashboardIndex extends Vue {
+  @State loggedIn!: boolean;
+  @Mutation('logout') mutationLogout;
+
+  mainMenus: TopLevelMenu[] = mainMenus;
+  drawer: boolean = false;
+
+  attemptLogout() {
+    this.mutationLogout();
+  }
+}
 </script>
 
 <style scoped>

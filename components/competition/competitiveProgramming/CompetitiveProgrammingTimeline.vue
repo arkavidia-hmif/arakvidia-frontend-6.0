@@ -63,13 +63,13 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-import TimelineItem from '~/components/competition/TimelineItem.vue'
+import Vue from 'vue';
+import TimelineItem from '~/components/competition/TimelineItem.vue';
 
 export default Vue.extend({
   name: 'CompetitiveProgrammingTimeline',
   components: { TimelineItem }
-})
+});
 </script>
 
 <style scoped>
