@@ -1,5 +1,5 @@
 <template>
-  <v-app dark>
+  <v-app style="background: white">
     <NotFound v-if="error.statusCode === 404" />
     <div v-else class="pa-10">
       <h1>
