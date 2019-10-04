@@ -1,6 +1,6 @@
 <template>
   <v-container fill-height>
-    <v-row align="center">
+    <v-row align="center" style="width: 100%">
       <v-col :cols="12" :md="4" :offset-md="4">
         <div class="text-center" width="100%">
           <v-img :src="require('~/assets/404.svg')" contain width="100%" class="mb-4" />
