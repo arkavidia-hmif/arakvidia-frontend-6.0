@@ -1,4 +1,3 @@
-// ~/plugins/vuex-persist.js
 import VuexPersistence from 'vuex-persist';
 
 const options = {

@@ -1,7 +1,7 @@
 <template>
-  <v-container fill-height class="mt-12">
+  <v-container fill-height class="pa-12" style="min-height: 100vh">
     <v-row class="mt-8 mb-12">
-      <v-col :cols="12" :md="4">
+      <v-col :cols="12" :lg="4" :md="5">
         <div class="headline font-weight-bold section-title">
           Login ke Dashboard
         </div>
