@@ -98,6 +98,7 @@ export default class DashboardIndex extends Vue {
 
   attemptLogout() {
     this.mutationLogout();
+    this.$router.push('/');
   }
 }
 </script>
