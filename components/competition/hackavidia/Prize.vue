@@ -20,12 +20,12 @@
           </v-responsive>
         </v-col>
         <v-col :cols="8" class="hidden-xs-only" align-self="end">
-          <v-img :src="require('~/assets/prize-top.png')" />
+          <v-img :src="require('~/assets/ornaments/prize-top.png')" />
         </v-col>
       </v-row>
       <v-row>
         <v-col :cols="4" class="hidden-xs-only" align-self="end">
-          <v-img :src="require('~/assets/prize-mid-left.png')" />
+          <v-img :src="require('~/assets/ornaments/prize-mid-left.png')" />
         </v-col>
         <v-col :cols="12" :sm="4" align-self="end">
           <v-responsive :aspect-ratio="3" class="white--text pa-0 ma-0" style="background: #0578D3">
@@ -42,12 +42,12 @@
           </v-responsive>
         </v-col>
         <v-col :cols="4" class="hidden-xs-only" align-self="end">
-          <v-img :src="require('~/assets/prize-mid-right.png')" />
+          <v-img :src="require('~/assets/ornaments/prize-mid-right.png')" />
         </v-col>
       </v-row>
       <v-row>
         <v-col :cols="8" class="hidden-xs-only" align-self="end">
-          <v-img :src="require('~/assets/prize-bottom.png')" />
+          <v-img :src="require('~/assets/ornaments/prize-bottom.png')" />
         </v-col>
         <v-col :cols="12" :sm="4" align-self="end">
           <v-responsive :aspect-ratio="3" class="white--text pa-0 ma-0" style="background: #7608FF">

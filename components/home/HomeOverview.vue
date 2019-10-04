@@ -10,7 +10,7 @@
             :order-md="1"
             class="hidden-sm-and-down"
             align-self="stretch"
-            :style="{'background-image': `url(${require('~/assets/home-overview.svg')})`}"
+            :style="{'background-image': `url(${require('~/assets/ornaments/home-overview.svg')})`}"
           >
             <v-layout justify-center column fill-height float-right>
               <div class="display-1 font-weight-bold">
@@ -68,7 +68,7 @@
                 <v-carousel-item
                   v-for="(image) in aboutImages"
                   :key="image"
-                  :src="require(`~/assets/${image}`)"
+                  :src="image"
                   height="auto"
                   :aspect-ratio="$vuetify.breakpoint.smAndDown ? 16/9 : 1"
                 />
@@ -99,7 +99,7 @@
               <v-carousel-item
                 v-for="(image) in competitionImages"
                 :key="image"
-                :src="require(`~/assets/${image}`)"
+                :src="image"
                 height="auto"
                 :aspect-ratio="16/9"
               >
@@ -160,7 +160,7 @@
               <v-carousel-item
                 v-for="(image) in eventImages"
                 :key="image"
-                :src="require(`~/assets/${image}`)"
+                :src="image"
                 height="auto"
                 :aspect-ratio="16/9"
               >
@@ -222,9 +222,22 @@ export default Vue.extend({
       aboutCarouselModel: 0,
       competitionCarouselModel: 0,
       eventCarouselModel: 0,
-      aboutImages: ['hackathon_intro.jpg', 'logo.svg', 'mine.svg'],
-      competitionImages: ['hackathon_intro.jpg', 'logo.svg'],
-      eventImages: ['hackathon_intro.jpg', 'logo.svg']
+      aboutImages:
+        [
+          require('~/assets/images/hackathon_intro.jpg'),
+          require('~/assets/images/hackathon_intro.jpg'),
+          require('~/assets/images/hackathon_intro.jpg')
+        ],
+      competitionImages: [
+        require('~/assets/images/hackathon_intro.jpg'),
+        require('~/assets/images/hackathon_intro.jpg'),
+        require('~/assets/images/hackathon_intro.jpg')
+      ],
+      eventImages: [
+        require('~/assets/images/hackathon_intro.jpg'),
+        require('~/assets/images/hackathon_intro.jpg'),
+        require('~/assets/images/hackathon_intro.jpg')
+      ]
     };
   }
 });

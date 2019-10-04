@@ -1,0 +1,76 @@
+<template>
+  <v-container px-4>
+    <div class="headline font-weight-bold">
+      Timeline Kegiatan
+    </div>
+    <v-row class="mt-4" align="stretch">
+      <v-col :cols="6" :sm="3">
+        <TimelineItem
+          active
+          date="28"
+          month-year="Oktober 2019"
+          title="Pembukaan Pendaftaran"
+          description="Pendaftaran dilakukan secara online"
+        />
+      </v-col>
+      <v-col :cols="6" :sm="3">
+        <TimelineItem
+          date="24"
+          month-year="November 2019"
+          title="Penutupan Pendaftaran & Batas Pembayaran"
+        />
+      </v-col>
+      <v-col :cols="6" :sm="3">
+        <TimelineItem
+          date="16"
+          month-year="Desember 2019"
+          title="Mulai Babak Penyisihan"
+        />
+      </v-col>
+      <v-col :cols="6" :sm="3">
+        <TimelineItem
+          date="23"
+          month-year="Desember 2019"
+          title="Batas Akhir Penyisihan"
+        />
+      </v-col>
+      <v-col :cols="6" :sm="3">
+        <TimelineItem
+          date="10-17"
+          month-year="Januari 2020"
+          title="Pengumuman Finalis"
+          description="Finalis akan diumumkan di website Arkavidia"
+        />
+      </v-col>
+      <v-col :cols="6" :sm="3">
+        <TimelineItem
+          date="08"
+          month-year="Februari 2020"
+          title="Final"
+          description="Final dilaksanakan di Institut Teknologi Bandung"
+        />
+      </v-col>
+      <v-col :cols="6" :sm="3">
+        <TimelineItem
+          date="09"
+          month-year="Februari 2020"
+          title="Awarding Night"
+          description="Awarding Night dilaksanakan di Institut Teknologi Bandung"
+        />
+      </v-col>
+    </v-row>
+  </v-container>
+</template>
+
+<script lang="ts">
+import Vue from 'vue';
+import TimelineItem from '~/components/competition/TimelineItem.vue';
+
+export default Vue.extend({
+  name: 'DatavidiaTimeline',
+  components: { TimelineItem }
+});
+</script>
+
+<style scoped>
+</style>
