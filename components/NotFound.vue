@@ -1,8 +1,8 @@
 <template>
-  <v-container fill-height>
+  <v-container fill-height class="mt-12">
     <v-row align="center" style="width: 100%">
       <v-col :cols="12" :md="4" :offset-md="4">
-        <div class="text-center" width="100%">
+        <div class="text-center">
           <v-img :src="require('~/assets/404.svg')" contain width="100%" class="mb-4" />
           <p class="text-center display-1 main-heading font-weight-bold">
             Waduh, nyasar!

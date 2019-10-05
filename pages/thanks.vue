@@ -1,6 +1,6 @@
 <template>
   <v-container fill-height style="min-height: 100vh;">
-    <v-row align="center" style="width: 100%">
+    <v-row align="center" style="width: 100%" class="mt-12">
       <v-col :cols="12" :sm="6" :offset-sm="3">
         <v-row>
           <v-col :cols="12" :sm="8" :offset-sm="2">
@@ -12,7 +12,7 @@
             Terima kasih!
           </div>
           <div class="subtitle-2 mt-3">
-            Terima kasih telah mendaftar! Sebentar lagi kami akan mengirimkan e-mail untuk memastikan bahwa e-mail kamu benar.
+            Terima kasih telah mendaftar! Sebentar lagi kami akan mengirimkan e-mail untuk memastikan bahwa alamat e-mail kamu benar.
             <b>Tolong buka e-mailnya dan klik linknya ya!</b>
           </div>
           <v-btn to="/dashboard/login" large outlined class="text-none mt-6" color="#0B909A">

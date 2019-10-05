@@ -97,28 +97,27 @@
               height="100%"
             >
               <v-carousel-item
-                v-for="(image) in competitionImages"
-                :key="image"
-                :src="image"
+                v-for="(item, i) in competitionImages"
+                :key="i"
+                :src="item.image"
                 height="auto"
                 :aspect-ratio="16/9"
               >
                 <v-layout fill-height align-end justify-end class="pa-0">
                   <div class="white py-3 pl-8 pr-3">
-                    <div class="subtitle-1 font-weight-bold" align="end">
-                      Kompetisi baru!
+                    <div v-if="item.subtitle" class="subtitle-1 font-weight-bold" align="end">
+                      {{ item.subtitle }}
                     </div>
                     <div class="display-1 font-weight-bold" align="end" style="color: #e83158">
-                      Hackathon
+                      {{ item.title }}
                     </div>
                     <div align="end">
                       <nuxt-link
                         class="subtitle-2 font-weight-bold"
-                        to="/competition/hackathon"
+                        :to="item.route"
                         style="color: #21C7C5; text-decoration: none"
                       >
-                        Info
-                        lebih lanjut
+                        Info lebih lanjut
                       </nuxt-link>
                     </div>
                   </div>
@@ -158,25 +157,27 @@
               height="100%"
             >
               <v-carousel-item
-                v-for="(image) in eventImages"
-                :key="image"
-                :src="image"
+                v-for="(item, i) in eventImages"
+                :key="i"
+                :src="item.image"
                 height="auto"
                 :aspect-ratio="16/9"
               >
-                <v-layout justify-end column fill-height align-end>
-                  <div class="white py-3 pl-10 pr-3">
+                <v-layout fill-height align-end justify-end class="pa-0">
+                  <div class="white py-3 pl-8 pr-3">
+                    <div v-if="item.subtitle" class="subtitle-1 font-weight-bold" align="end">
+                      {{ item.subtitle }}
+                    </div>
                     <div class="display-1 font-weight-bold" align="end" style="color: #e83158">
-                      Gala Dinner
+                      {{ item.title }}
                     </div>
                     <div align="end">
                       <nuxt-link
                         class="subtitle-2 font-weight-bold"
-                        to="/competition/hackathon"
+                        :to="item.route"
                         style="color: #21C7C5; text-decoration: none"
                       >
-                        Info
-                        lebih lanjut
+                        Info lebih lanjut
                       </nuxt-link>
                     </div>
                   </div>
@@ -229,14 +230,60 @@ export default Vue.extend({
           require('~/assets/images/hackathon_intro.jpg')
         ],
       competitionImages: [
-        require('~/assets/images/hackathon_intro.jpg'),
-        require('~/assets/images/hackathon_intro.jpg'),
-        require('~/assets/images/hackathon_intro.jpg')
+        {
+          image: require('~/assets/images/competition/arkalogica.jpg'),
+          route: '/competition/arkalogica',
+          title: 'Arkalogica'
+        },
+        {
+          image: require('~/assets/images/competition/cp.jpg'),
+          route: '/competition/competitive-programming',
+          title: 'Competitive Programming'
+        },
+        {
+          image: require('~/assets/images/competition/ctf.jpg'),
+          route: '/competition/capture-the-flag',
+          title: 'Capture the Flag'
+        },
+        {
+          image: require('~/assets/images/competition/datavidia.jpg'),
+          route: '/competition/datavidia',
+          title: 'Datavidia',
+          subtitle: 'Kompetisi baru!'
+        },
+        {
+          image: require('~/assets/images/competition/hackavidia.jpg'),
+          route: '/competition/hackavidia',
+          title: 'Hackavidia',
+          subtitle: 'Kompetisi baru!'
+        }
       ],
       eventImages: [
-        require('~/assets/images/hackathon_intro.jpg'),
-        require('~/assets/images/hackathon_intro.jpg'),
-        require('~/assets/images/hackathon_intro.jpg')
+        {
+          image: require('~/assets/images/competition/arkalogica.jpg'),
+          route: '/preevent/arkavidia-academy',
+          title: 'Arkavidia Academy'
+        },
+        {
+          image: require('~/assets/images/competition/cp.jpg'),
+          route: '/preevent/technocamp',
+          title: 'Technocamp'
+        },
+        {
+          image: require('~/assets/images/competition/ctf.jpg'),
+          route: '/preevent/arkavidia-goes-to-school',
+          title: 'Arkavidia Goes To School'
+        },
+        {
+          image: require('~/assets/images/competition/datavidia.jpg'),
+          route: '/event/arkavidia-talk',
+          title: 'Arkavidia Talk'
+        },
+        {
+          image: require('~/assets/images/competition/hackavidia.jpg'),
+          route: '/event/it-festival',
+          title: 'IT Festival'
+        }
       ]
     };
   }

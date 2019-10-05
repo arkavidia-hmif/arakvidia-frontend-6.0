@@ -6,7 +6,7 @@
     <v-row class="mt-4" align="stretch">
       <v-col :cols="6" :sm="3">
         <TimelineItem
-          :active-before="Date.parse('2019-11-23 23:59:59')"
+          :active-before="Date.parse('2019-11-23T23:59:59+07:00')"
           date="28"
           month-year="Oktober 2019"
           title="Pembukaan Pendaftaran"
@@ -15,8 +15,8 @@
       </v-col>
       <v-col :cols="6" :sm="3">
         <TimelineItem
-          :active-after="Date.parse('2019-11-24 00:00:00')"
-          :active-before="Date.parse('2019-11-24 23:59:59')"
+          :active-after="Date.parse('2019-11-24T00:00:00+07:00')"
+          :active-before="Date.parse('2019-11-24T23:59:59+07:00')"
           date="24"
           month-year="November 2019"
           title="Penutupan Pendaftaran & Batas Pembayaran"
@@ -24,8 +24,8 @@
       </v-col>
       <v-col :cols="6" :sm="3">
         <TimelineItem
-          :active-after="Date.parse('2019-11-25 00:00:00')"
-          :active-before="Date.parse('2019-12-14 23:59:59')"
+          :active-after="Date.parse('2019-11-25T00:00:00+07:00')"
+          :active-before="Date.parse('2019-12-14T23:59:59+07:00')"
           date="02"
           month-year="Desember 2019"
           title="Babak Penyisihan 1"
@@ -34,8 +34,8 @@
       </v-col>
       <v-col :cols="6" :sm="3">
         <TimelineItem
-          :active-after="Date.parse('2019-12-15 00:00:00')"
-          :active-before="Date.parse('2019-12-15 23:59:59')"
+          :active-after="Date.parse('2019-12-15T00:00:00+07:00')"
+          :active-before="Date.parse('2019-12-15T23:59:59+07:00')"
           date="15"
           month-year="Desember 2019"
           title="Batas Pengumpulan Proposal"
@@ -43,8 +43,8 @@
       </v-col>
       <v-col :cols="6" :sm="3">
         <TimelineItem
-          :active-after="Date.parse('2019-12-16 00:00:00')"
-          :active-before="Date.parse('2019-12-21 23:59:59')"
+          :active-after="Date.parse('2019-12-16T00:00:00+07:00')"
+          :active-before="Date.parse('2019-12-21T23:59:59+07:00')"
           date="16"
           month-year="Desember 2019"
           title="Babak Penyisihan 2"
@@ -53,8 +53,8 @@
       </v-col>
       <v-col :cols="6" :sm="3">
         <TimelineItem
-          :active-after="Date.parse('2019-12-22 00:00:00')"
-          :active-before="Date.parse('2019-12-22 23:59:59')"
+          :active-after="Date.parse('2019-12-22T00:00:00+07:00')"
+          :active-before="Date.parse('2019-12-22T23:59:59+07:00')"
           date="22"
           month-year="Desember 2019"
           title="Batas Pengumpulan Video"
@@ -62,9 +62,9 @@
       </v-col>
       <v-col :cols="6" :sm="3">
         <TimelineItem
-          :active-after="Date.parse('2019-12-23 00:00:00')"
-          :active-before="Date.parse('2020-01-11 23:59:59')"
-          date="11"
+          :active-after="Date.parse('2019-12-23T00:00:00+07:00')"
+          :active-before="Date.parse('2020-01-17T23:59:59+07:00')"
+          date="10-17"
           month-year="Januari 2020"
           title="Pengumuman Finalis"
           description="Finalis akan diumumkan di website Arkavidia"
@@ -72,12 +72,12 @@
       </v-col>
       <v-col :cols="6" :sm="3">
         <TimelineItem
-          :active-after="Date.parse('2019-02-09 00:00:00')"
-          :active-before="Date.parse('2019-02-09 23:59:59')"
-          date="09"
+          :active-after="Date.parse('2019-02-09T00:00:00+07:00')"
+          :active-before="Date.parse('2019-02-09T23:59:59+07:00')"
+          date="08-09"
           month-year="Februari 2020"
           title="Final & Awarding Night"
-          description="Final dilaksanakan di Institut Teknologi Bandung"
+          description="Final & Awarding Night dilaksanakan di Institut Teknologi Bandung"
         />
       </v-col>
     </v-row>
