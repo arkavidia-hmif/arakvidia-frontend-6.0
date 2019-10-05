@@ -76,3 +76,26 @@ export const mainMenus: TopLevelMenu[] = [
     route: '/about'
   }
 ];
+
+export const dashboardMenus: Menu[] = [
+  {
+    title: 'Announcement',
+    route: '/dashboard/'
+  },
+  {
+    title: 'Profile',
+    route: '/dashboard/profile'
+  },
+  {
+    title: 'Competition',
+    route: '/dashboard/competition'
+  },
+  {
+    title: 'Pre-event',
+    route: '/dashboard/pre-event'
+  },
+  {
+    title: 'Main Event',
+    route: '/dashboard/main-event'
+  }
+];

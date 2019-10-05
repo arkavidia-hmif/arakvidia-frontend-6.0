@@ -13,7 +13,7 @@
     </v-tabs>
     <v-divider />
     <p class="mt-4 grey--text text--darken-1">
-      There is no announcement yet
+      main event
     </p>
   </v-container>
 </template>
