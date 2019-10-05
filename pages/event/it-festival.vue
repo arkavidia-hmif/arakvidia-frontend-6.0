@@ -14,7 +14,7 @@ import Vue, { ComponentOptions } from 'vue';
 import ITFestIntro from '~/components/event/it-festival/Intro.vue';
 import ITFestAbout from '~/components/event/it-festival/About.vue';
 import ITFestTimeline from '~/components/event/it-festival/Timeline.vue';
-import FAQ from '~/components/partials/FAQ.vue'
+import FAQ from '~/components/partials/FAQ.vue';
 
 export default Vue.extend({
   components: {

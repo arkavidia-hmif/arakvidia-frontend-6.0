@@ -14,7 +14,7 @@ import Vue, { ComponentOptions } from 'vue';
 import AcademyIntro from '~/components/preevent/academy/Intro.vue';
 import AcademyAbout from '~/components/preevent/academy/About.vue';
 import AcademyTimeline from '~/components/preevent/academy/Timeline.vue';
-import FAQ from '~/components/partials/FAQ.vue'
+import FAQ from '~/components/partials/FAQ.vue';
 
 export default Vue.extend({
   components: {

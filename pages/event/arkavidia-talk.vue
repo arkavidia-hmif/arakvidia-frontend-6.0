@@ -14,7 +14,7 @@ import Vue, { ComponentOptions } from 'vue';
 import ArkavTalkIntro from '~/components/event/arkavidia-talk/Intro.vue';
 import ArkavTalkAbout from '~/components/event/arkavidia-talk/About.vue';
 import ArkavTalkTimeline from '~/components/event/arkavidia-talk/Timeline.vue';
-import FAQ from '~/components/partials/FAQ.vue'
+import FAQ from '~/components/partials/FAQ.vue';
 
 export default Vue.extend({
   components: {
