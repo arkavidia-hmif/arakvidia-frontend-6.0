@@ -37,7 +37,7 @@
             class="hidden-sm-and-down"
             align-self="center"
           >
-            <v-img width="100%" fill-height cover :src="require('~/assets/images/hackathon_intro.jpg')" />
+            <v-img width="100%" fill-height cover :aspect-ratio="4/5" :src="require('~/assets/images/competition/ctf.jpg')" />
           </v-col>
         </v-row>
       </v-container>
