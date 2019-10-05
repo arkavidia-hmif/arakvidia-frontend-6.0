@@ -4,7 +4,7 @@
       <HackathonIntro />
       <HackathonPrize />
       <HackathonTimeline />
-      <!-- <CompetitionFAQ :items="faqItems" /> -->
+      <!-- <FAQ :items="faqItems" /> -->
     </v-flex>
   </v-layout>
 </template>
@@ -14,14 +14,14 @@ import Vue, { ComponentOptions } from 'vue';
 import HackathonIntro from '~/components/competition/hackavidia/Intro.vue';
 import HackathonPrize from '~/components/competition/hackavidia/Prize.vue';
 import HackathonTimeline from '~/components/competition/hackavidia/Timeline.vue';
-// import CompetitionFAQ from '~/components/competition/CompetitionFAQ.vue'
+// import FAQ from '~/components/partials/FAQ.vue'
 
 export default Vue.extend({
   components: {
     HackathonIntro,
     HackathonPrize,
     HackathonTimeline
-    // CompetitionFAQ
+    // FAQ
   },
   data() {
     return {

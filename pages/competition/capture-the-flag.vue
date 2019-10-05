@@ -4,7 +4,7 @@
       <CaptureTheFlagIntro />
       <CaptureTheFlagPrize />
       <CaptureTheFlagTimeline />
-      <!-- <CompetitionFAQ :items="faqItems" /> -->
+      <!-- <FAQ :items="faqItems" /> -->
     </v-flex>
   </v-layout>
 </template>
@@ -14,14 +14,14 @@ import Vue, { ComponentOptions } from 'vue';
 import CaptureTheFlagIntro from '~/components/competition/ctf/Intro.vue';
 import CaptureTheFlagPrize from '~/components/competition/ctf/Prize.vue';
 import CaptureTheFlagTimeline from '~/components/competition/ctf/Timeline.vue';
-// import CompetitionFAQ from '~/components/competition/CompetitionFAQ.vue'
+// import FAQ from '~/components/partials/FAQ.vue'
 
 export default Vue.extend({
   components: {
     CaptureTheFlagIntro,
     CaptureTheFlagPrize,
     CaptureTheFlagTimeline
-    // CompetitionFAQ
+    // FAQ
   },
   data() {
     return {
