@@ -10,11 +10,14 @@
         </div>
         <div class="text-center mt-3">
           <p class="text-center subtitle-2 main-subtitle font-weight-bold">
-            Wah, kalau mau ke sini harus login dulu.
+            Wah, kalau mau ke sini harus
+            <nuxt-link
+              class="link-subtitle"
+              to="/login"
+            >
+              login dulu.
+            </nuxt-link>
           </p>
-          <v-btn outlined large class="text-none" to="/login">
-            Login
-          </v-btn>
         </div>
       </v-col>
     </v-row>
@@ -39,5 +42,14 @@ export default Vue.extend({
 
   .main-subtitle {
     color: #e83158;
+  }
+
+  .link-subtitle {
+    color: white;
+    background-color: #e83158;
+    padding: 10px;
+    display: inline;
+    box-decoration-break: clone;
+    text-decoration: none;
   }
 </style>
