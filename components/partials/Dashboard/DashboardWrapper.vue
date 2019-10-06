@@ -16,15 +16,18 @@
       <slot />
     </div>
   </v-container>
+  <Forbidden v-else />
 </template>
 
 <script lang="ts">
 import { Component, Vue, State } from 'nuxt-property-decorator';
 import { dashboardMenus, Menu } from '~/constants/menus';
 import { User } from '~/api/user';
+import Forbidden from '~/components/Forbidden.vue';
 
 @Component({
-  name: 'DashboardWrapper'
+  name: 'DashboardWrapper',
+  components: { Forbidden }
 })
 export default class DashboardWrapper extends Vue {
     @State loggedIn!: boolean;

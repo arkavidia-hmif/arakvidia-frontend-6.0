@@ -39,6 +39,11 @@
           <v-btn class="mt-1 text-none" type="submit" block outlined :loading="isRegistering">
             Daftar
           </v-btn>
+          <div class="mt-2">
+            <nuxt-link to="/login" style="text-decoration: none">
+              Sudah punya akun?
+            </nuxt-link>
+          </div>
         </form>
       </v-col>
     </v-row>
@@ -49,8 +54,12 @@
 import { Component, Vue } from 'nuxt-property-decorator';
 import { register } from '~/api/user';
 
+interface QueryParameters {
+  continue?: string;
+}
+
 @Component
-export default class DashboardLogin extends Vue {
+export default class DashboardRegister extends Vue {
   isRegistering: boolean = false;
   fullName: String = '';
   email: String = '';
@@ -94,7 +103,10 @@ export default class DashboardLogin extends Vue {
     this.error = '';
     register(this.email, this.fullName, this.password)
       .then(() => {
-        this.$router.push('/thanks');
+        const queryParams = this.$route.query as QueryParameters;
+        const nextRoute = queryParams.continue;
+        const redirectUrl = (nextRoute) ? `/thanks?continue=${nextRoute}` : '/thanks';
+        this.$router.push(redirectUrl);
       })
       .catch((e) => {
         this.error = e.toString();

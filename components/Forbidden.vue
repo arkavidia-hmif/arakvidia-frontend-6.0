@@ -3,19 +3,19 @@
     <v-row align="center" style="width: 100%">
       <v-col :cols="12" :md="4" :offset-md="4">
         <div class="text-center">
-          <v-img :src="require('~/assets/404.svg')" contain width="100%" class="mb-4" />
+          <v-img :src="require('~/assets/403.svg')" contain width="100%" class="mb-4" />
           <p class="text-center display-1 main-heading font-weight-bold">
-            Waduh, nyasar!
+            Belum login ya?
           </p>
         </div>
         <div class="text-center mt-3">
           <p class="text-center subtitle-2 main-subtitle font-weight-bold">
-            Tenang. Silakan kembali ke
+            Wah, kalau mau ke sini harus
             <nuxt-link
               class="link-subtitle"
-              to="/"
+              to="/login"
             >
-              homepage.
+              login dulu.
             </nuxt-link>
           </p>
         </div>
@@ -28,7 +28,7 @@
 import Vue from 'vue';
 
 export default Vue.extend({
-  name: 'NotFound'
+  name: 'Forbidden'
 });
 </script>
 

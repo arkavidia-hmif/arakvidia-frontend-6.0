@@ -41,6 +41,10 @@
 import { Component, Vue, State, Mutation } from 'nuxt-property-decorator';
 import { login, AuthenticationResult } from '~/api/user';
 
+interface QueryParameters {
+  continue?: string;
+}
+
 @Component
 export default class DashboardLogin extends Vue {
   @State loggedIn!: boolean;
@@ -68,7 +72,10 @@ export default class DashboardLogin extends Vue {
           bearerToken: authResult.bearerToken
         });
 
-        this.$router.push('/dashboard');
+        const queryParams = this.$route.query as QueryParameters;
+        const nextRoute = queryParams.continue;
+        const redirectUrl = (nextRoute) ? nextRoute as string : '/dashboard';
+        this.$router.push(redirectUrl);
       })
       .catch((e) => {
         this.error = e.toString();

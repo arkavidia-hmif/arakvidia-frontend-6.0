@@ -15,7 +15,7 @@
             Terima kasih telah mendaftar! Sebentar lagi kami akan mengirimkan e-mail untuk memastikan bahwa alamat e-mail kamu benar.
             <b>Tolong buka e-mailnya dan klik linknya ya!</b>
           </div>
-          <v-btn to="/login" large outlined class="text-none mt-6" color="#0B909A">
+          <v-btn :to="redirectUrl" large outlined class="text-none mt-6" color="#0B909A">
             Login ke Dashboard
           </v-btn>
         </div>
@@ -27,11 +27,26 @@
 <script lang="ts">
 import Vue, { ComponentOptions } from 'vue';
 
+interface QueryParameters {
+  continue?: string;
+}
 export default Vue.extend({
   head() {
     return {
       title: 'Pendaftaran berhasil!'
     };
+  },
+  data() {
+    return {
+      query: this.$route.query
+    };
+  },
+  computed: {
+    redirectUrl() {
+      const queryParams = this.query as QueryParameters;
+      const nextRoute = queryParams.continue;
+      return (nextRoute !== undefined) ? `/login?continue=${encodeURIComponent(nextRoute as string)}` : '/login';
+    }
   }
 } as ComponentOptions<Vue>);
 </script>
