@@ -23,10 +23,10 @@ import { Component, Vue, State } from 'nuxt-property-decorator';
 import { dashboardMenus, Menu } from '~/constants/menus';
 import { User } from '~/api/user';
 
-  @Component({
-    name: 'DashboardWrapper'
-  })
-export default class DashboardIndex extends Vue {
+@Component({
+  name: 'DashboardWrapper'
+})
+export default class DashboardWrapper extends Vue {
     @State loggedIn!: boolean;
     @State user!: User;
     dashboardMenus: Menu[] = dashboardMenus;

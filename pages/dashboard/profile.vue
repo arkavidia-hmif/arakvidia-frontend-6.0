@@ -8,7 +8,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator';
-import DashboardWrapper from '~/components/partials/Dashboard/DashboardWrapper';
+import DashboardWrapper from '~/components/partials/Dashboard/DashboardWrapper.vue';
 @Component({
   components: { DashboardWrapper }
 })
