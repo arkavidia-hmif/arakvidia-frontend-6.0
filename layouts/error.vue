@@ -1,5 +1,5 @@
 <template>
-  <v-app style="background: white">
+  <v-layout style="background: white">
     <NotFound v-if="error.statusCode === 404" />
     <div v-else class="pa-10">
       <h1>
@@ -9,7 +9,7 @@
         Home page
       </NuxtLink>
     </div>
-  </v-app>
+  </v-layout>
 </template>
 
 <script>
