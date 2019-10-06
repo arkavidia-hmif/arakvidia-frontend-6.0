@@ -54,6 +54,10 @@
 import { Component, Vue } from 'nuxt-property-decorator';
 import { register } from '~/api/user';
 
+interface QueryParameters {
+  continue?: string;
+}
+
 @Component
 export default class DashboardRegister extends Vue {
   isRegistering: boolean = false;
@@ -99,7 +103,8 @@ export default class DashboardRegister extends Vue {
     this.error = '';
     register(this.email, this.fullName, this.password)
       .then(() => {
-        const nextRoute = this.$route.query.continue;
+        const queryParams = this.$route.query as QueryParameters;
+        const nextRoute = queryParams.continue;
         const redirectUrl = (nextRoute) ? `/thanks?continue=${nextRoute}` : '/thanks';
         this.$router.push(redirectUrl);
       })

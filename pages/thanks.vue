@@ -27,6 +27,9 @@
 <script lang="ts">
 import Vue, { ComponentOptions } from 'vue';
 
+interface QueryParameters {
+  continue?: string;
+}
 export default Vue.extend({
   head() {
     return {
@@ -35,8 +38,15 @@ export default Vue.extend({
   },
   data() {
     return {
-      redirectUrl: (this.$route.query.continue !== undefined) ? `/login?continue=${encodeURIComponent(this.$route.query.continue as string)}` : '/login'
+      query: this.$route.query
     };
+  },
+  computed: {
+    redirectUrl() {
+      const queryParams = this.query as QueryParameters;
+      const nextRoute = queryParams.continue;
+      return (nextRoute !== undefined) ? `/login?continue=${encodeURIComponent(nextRoute as string)}` : '/login';
+    }
   }
 } as ComponentOptions<Vue>);
 </script>
