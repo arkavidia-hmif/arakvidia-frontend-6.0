@@ -20,6 +20,7 @@ module.exports = {
     "semi-spacing": [2, {"before": false, "after": true}],
     "keyword-spacing": 2,
     "space-before-function-paren": [2, "never"],
-    "semi": ["error", "always"]
+    "semi": ["error", "always"],
+    "import/no-relative-parent-imports": "error"
   }
 };
