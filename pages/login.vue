@@ -68,7 +68,9 @@ export default class DashboardLogin extends Vue {
           bearerToken: authResult.bearerToken
         });
 
-        this.$router.push('/dashboard');
+        const nextRoute = this.$route.query.continue;
+        const redirectUrl = (nextRoute) ? nextRoute as string : '/dashboard';
+        this.$router.push(redirectUrl);
       })
       .catch((e) => {
         this.error = e.toString();
