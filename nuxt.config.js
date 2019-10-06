@@ -45,7 +45,8 @@ export default {
     '@nuxtjs/pwa',
     '@nuxtjs/google-analytics',
     ['@nuxtjs/dotenv', { filename: getDotEnvFilename() }],
-    '@nuxtjs/sentry'
+    '@nuxtjs/sentry',
+    '@nuxtjs/sitemap'
   ],
   axios: {},
   vuetify: {
