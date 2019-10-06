@@ -66,8 +66,8 @@
                 height="100%"
               >
                 <v-carousel-item
-                  v-for="(image) in aboutImages"
-                  :key="image"
+                  v-for="(image, i) in aboutImages"
+                  :key="i"
                   :src="image"
                   height="auto"
                   :aspect-ratio="$vuetify.breakpoint.smAndDown ? 16/9 : 1"
