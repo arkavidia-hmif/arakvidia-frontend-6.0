@@ -30,3 +30,8 @@ export async function register(email: String, fullName: String, password: String
     userId: 'afahmip128d'
   };
 }
+
+export async function recover(email: String): Promise<void> {
+  // TODO implement
+  return;
+}
