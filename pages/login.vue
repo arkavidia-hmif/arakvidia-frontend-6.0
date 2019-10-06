@@ -27,7 +27,7 @@
             Login
           </v-btn>
           <div class="mt-2">
-            <nuxt-link to="/dashboard/recover" style="text-decoration: none">
+            <nuxt-link to="/recover" style="text-decoration: none">
               Lupa kata sandi?
             </nuxt-link>
           </div>

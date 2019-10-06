@@ -4,7 +4,7 @@
       <DatavidiaIntro />
       <DatavidiaPrize />
       <DatavidiaTimeline />
-      <!-- <CompetitionFAQ :items="faqItems" /> -->
+      <!-- <FAQ :items="faqItems" /> -->
     </v-flex>
   </v-layout>
 </template>
@@ -14,14 +14,14 @@ import Vue, { ComponentOptions } from 'vue';
 import DatavidiaIntro from '~/components/competition/datavidia/Intro.vue';
 import DatavidiaPrize from '~/components/competition/datavidia/Prize.vue';
 import DatavidiaTimeline from '~/components/competition/datavidia/Timeline.vue';
-// import CompetitionFAQ from '~/components/competition/CompetitionFAQ.vue'
+// import FAQ from '~/components/partials/FAQ.vue'
 
 export default Vue.extend({
   components: {
     DatavidiaIntro,
     DatavidiaPrize,
     DatavidiaTimeline
-    // CompetitionFAQ
+    // FAQ
   },
   data() {
     return {

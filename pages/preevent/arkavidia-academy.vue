@@ -1,27 +1,27 @@
 <template>
   <v-layout column style="background: white;">
     <v-flex>
-      <HackathonIntro />
-      <HackathonPrize />
-      <HackathonTimeline />
-      <!-- <FAQ :items="faqItems" /> -->
+      <AcademyIntro />
+      <AcademyAbout />
+      <AcademyTimeline />
+      <FAQ :items="faqItems" />
     </v-flex>
   </v-layout>
 </template>
 
 <script lang="ts">
 import Vue, { ComponentOptions } from 'vue';
-import HackathonIntro from '~/components/competition/hackavidia/Intro.vue';
-import HackathonPrize from '~/components/competition/hackavidia/Prize.vue';
-import HackathonTimeline from '~/components/competition/hackavidia/Timeline.vue';
-// import FAQ from '~/components/partials/FAQ.vue'
+import AcademyIntro from '~/components/preevent/academy/Intro.vue';
+import AcademyAbout from '~/components/preevent/academy/About.vue';
+import AcademyTimeline from '~/components/preevent/academy/Timeline.vue';
+import FAQ from '~/components/partials/FAQ.vue';
 
 export default Vue.extend({
   components: {
-    HackathonIntro,
-    HackathonPrize,
-    HackathonTimeline
-    // FAQ
+    AcademyIntro,
+    AcademyAbout,
+    AcademyTimeline,
+    FAQ
   },
   data() {
     return {
@@ -43,7 +43,7 @@ export default Vue.extend({
   },
   head() {
     return {
-      title: 'Hackavidia'
+      title: 'Arkavidia Academy'
     };
   }
 } as ComponentOptions<Vue>);

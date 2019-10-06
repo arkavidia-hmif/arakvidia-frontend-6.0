@@ -15,7 +15,7 @@
             Terima kasih telah mendaftar! Sebentar lagi kami akan mengirimkan e-mail untuk memastikan bahwa alamat e-mail kamu benar.
             <b>Tolong buka e-mailnya dan klik linknya ya!</b>
           </div>
-          <v-btn to="/dashboard/login" large outlined class="text-none mt-6" color="#0B909A">
+          <v-btn to="/login" large outlined class="text-none mt-6" color="#0B909A">
             Login ke Dashboard
           </v-btn>
         </div>

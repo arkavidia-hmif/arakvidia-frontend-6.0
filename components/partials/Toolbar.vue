@@ -32,10 +32,10 @@
               </v-btn>
             </template>
             <template v-if="!loggedIn">
-              <v-btn to="/dashboard/login" class="text-capitalize" text>
+              <v-btn to="/login" class="text-capitalize" text>
                 Login
               </v-btn>
-              <v-btn to="/dashboard/register" class="text-capitalize" text>
+              <v-btn to="/register" class="text-capitalize" text>
                 Register
               </v-btn>
             </template>
@@ -63,8 +63,8 @@
           <DrawerListItem v-else :key="i" :to="menuItem.route" :title="menuItem.title" />
         </template>
         <template v-if="!loggedIn">
-          <DrawerListItem to="/dashboard/login" title="Login" />
-          <DrawerListItem to="/dashboard/register" title="Register" />
+          <DrawerListItem to="/login" title="Login" />
+          <DrawerListItem to="/register" title="Register" />
         </template>
         <template v-else>
           <DrawerListItem to="/dashboard" title="Dashboard" />

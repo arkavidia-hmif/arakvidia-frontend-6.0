@@ -4,7 +4,7 @@
       <ArkalogicaIntro />
       <ArkalogicaPrize />
       <ArkalogicaTimeline />
-      <!-- <CompetitionFAQ :items="faqItems" /> -->
+      <!-- <FAQ :items="faqItems" /> -->
     </v-flex>
   </v-layout>
 </template>
@@ -14,14 +14,14 @@ import Vue, { ComponentOptions } from 'vue';
 import ArkalogicaIntro from '~/components/competition/arkalogica/Intro.vue';
 import ArkalogicaPrize from '~/components/competition/arkalogica/Prize.vue';
 import ArkalogicaTimeline from '~/components/competition/arkalogica/Timeline.vue';
-// import CompetitionFAQ from '~/components/competition/CompetitionFAQ.vue'
+// import FAQ from '~/components/partials/FAQ.vue'
 
 export default Vue.extend({
   components: {
     ArkalogicaIntro,
     ArkalogicaPrize,
     ArkalogicaTimeline
-    // CompetitionFAQ
+    // FAQ
   },
   data() {
     return {
