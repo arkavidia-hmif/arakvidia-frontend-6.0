@@ -68,6 +68,9 @@ export default {
   sentry: {
     dsn: process.env.SENTRY_DSN, // Enter your project's DSN here
     config: {} // Additional config
+  },
+  sitemap: {
+    hostname: process.env.HOSTNAME
   }
 };
 
