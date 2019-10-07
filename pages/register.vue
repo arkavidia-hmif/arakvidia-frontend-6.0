@@ -40,7 +40,7 @@
             Daftar
           </v-btn>
           <div class="mt-2">
-            <nuxt-link to="/login" style="text-decoration: none">
+            <nuxt-link :to="(nextRoute) ? `/login?continue=${nextRoute}` : '/login'" style="text-decoration: none">
               Sudah punya akun?
             </nuxt-link>
           </div>
@@ -73,6 +73,11 @@ export default class DashboardRegister extends Vue {
     };
   }
 
+  get nextRoute(): string|undefined {
+    const queryParams = this.$route.query as QueryParameters;
+    return queryParams.continue;
+  }
+
   attemptRegister() {
     if (!this.fullName) {
       this.error = 'Nama lengkap harus diisi';
@@ -103,9 +108,7 @@ export default class DashboardRegister extends Vue {
     this.error = '';
     register(this.email, this.fullName, this.password)
       .then(() => {
-        const queryParams = this.$route.query as QueryParameters;
-        const nextRoute = queryParams.continue;
-        const redirectUrl = (nextRoute) ? `/thanks?continue=${nextRoute}` : '/thanks';
+        const redirectUrl = (this.nextRoute) ? `/thanks?continue=${this.nextRoute}` : '/thanks';
         this.$router.push(redirectUrl);
       })
       .catch((e) => {

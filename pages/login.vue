@@ -26,9 +26,16 @@
           <v-btn class="mt-1 text-none" type="submit" block outlined :loading="isLoggingIn">
             Login
           </v-btn>
-          <div class="mt-2">
+          <div class="mt-4">
+            Lupa kata sandi?
             <nuxt-link to="/recover" style="text-decoration: none">
-              Lupa kata sandi?
+              Reset
+            </nuxt-link>
+          </div>
+          <div>
+            Belum terdaftar?
+            <nuxt-link :to="(nextRoute) ? `/register?continue=${nextRoute}` : '/register'" style="text-decoration: none">
+              Daftar
             </nuxt-link>
           </div>
         </form>
@@ -62,6 +69,11 @@ export default class DashboardLogin extends Vue {
     };
   }
 
+  get nextRoute(): string|undefined {
+    const queryParams = this.$route.query as QueryParameters;
+    return queryParams.continue;
+  }
+
   attemptLogin() {
     this.isLoggingIn = true;
     this.error = '';
@@ -72,9 +84,7 @@ export default class DashboardLogin extends Vue {
           bearerToken: authResult.bearerToken
         });
 
-        const queryParams = this.$route.query as QueryParameters;
-        const nextRoute = queryParams.continue;
-        const redirectUrl = (nextRoute) ? nextRoute as string : '/dashboard';
+        const redirectUrl = (this.nextRoute) ? this.nextRoute : '/dashboard';
         this.$router.push(redirectUrl);
       })
       .catch((e) => {

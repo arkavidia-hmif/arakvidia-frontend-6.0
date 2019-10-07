@@ -1,15 +1,15 @@
 <template>
   <v-container fill-height py-0 px-4 class="d-flex flex-column" style="min-height: 100vh">
-    <div class="d-flex flex-column" style="flex: 1">
-      <v-container class="d-flex mt-12" style="flex: 1">
-        <v-row wrap>
+    <div class="d-flex flex-column" style="flex: 1; width: 100%">
+      <div class="d-flex mt-12" style="flex: 1">
+        <v-row style="width: 100%">
           <v-col
             :cols="12"
             :md="6"
             align="center"
             align-self="center"
           >
-            <v-img width="100%" fill-height cover :src="require('~/assets/images/preevent/dummy_asset.JPG')" :style="$vuetify.breakpoint.mdAndUp ? 'max-width: 70vh' : 'max-width: 50vh'" />
+            <v-img width="100%" cover :src="require('~/assets/images/preevent/dummy_asset.JPG')" />
           </v-col>
           <v-col :cols="12" :md="6" align-self="center">
             <div class="display-1 font-weight-bold" style="color: #0B909A">
@@ -20,7 +20,7 @@
             </p>
           </v-col>
         </v-row>
-      </v-container>
+      </div>
       <div align="center" class="pa-6">
         <div class="font-weight-bold" style="color: #0435B5">
           Penasaran?
