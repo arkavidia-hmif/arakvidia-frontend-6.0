@@ -1,7 +1,7 @@
 <template>
   <v-container fill-height py-0 px-4 class="d-flex flex-column" style="min-height: 100vh">
     <div class="d-flex flex-column" style="flex: 1">
-      <v-container class="d-flex mt-12" style="flex: 1">
+      <div class="d-flex mt-12" style="flex: 1">
         <v-row wrap>
           <v-col :cols="12" :md="7" align-self="center">
             <div class="display-1 font-weight-bold" style="color: #0B909A">
@@ -40,7 +40,7 @@
             <v-img width="100%" fill-height cover :aspect-ratio="4/5" :src="require('~/assets/images/competition/cp.jpg')" />
           </v-col>
         </v-row>
-      </v-container>
+      </div>
       <div align="center" class="pa-6">
         <div class="font-weight-bold" style="color: #0435B5">
           Penasaran?
