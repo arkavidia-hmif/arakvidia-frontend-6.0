@@ -8,7 +8,7 @@
         Halo, {{ user.fullName }}!
       </div>
       <v-tabs slider-color="#E44D4B" slider-size="5">
-        <v-tab v-for="(item, i) in dashboardMenus" :key="i" :to="item.route" class="font-weight-bold black--text caption text-none">
+        <v-tab v-for="(item, i) in dashboardMenus" :key="i" :to="item.route" :id="'tabs-'+i" class="font-weight-bold black--text caption text-none">
           {{ item.title }}
         </v-tab>
       </v-tabs>
@@ -55,5 +55,7 @@ export default class DashboardWrapper extends Vue {
 </script>
 
 <style scoped>
-
+#tabs-3 , #tabs-4{
+  pointer-events:none;
+}
 </style>
