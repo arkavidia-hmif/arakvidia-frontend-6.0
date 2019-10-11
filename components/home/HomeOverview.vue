@@ -52,6 +52,7 @@
                 class="text-none mt-2"
                 elevation="0"
                 style="color: white"
+                to="/about"
               >
                 Baca lebih lanjut
               </v-btn>
@@ -260,27 +261,27 @@ export default Vue.extend({
       ],
       eventImages: [
         {
-          image: require('~/assets/images/competition/arkalogica.jpg'),
+          image: require('~/assets/images/preevent/academy/hero.jpg'),
           route: '/preevent/arkavidia-academy',
           title: 'Arkavidia Academy'
         },
         {
-          image: require('~/assets/images/competition/cp.jpg'),
+          image: require('~/assets/images/preevent/technocamp/hero.jpg'),
           route: '/preevent/technocamp',
           title: 'Technocamp'
         },
         {
-          image: require('~/assets/images/competition/ctf.jpg'),
+          image: require('~/assets/images/preevent/agts/hero.jpg'),
           route: '/preevent/arkavidia-goes-to-school',
           title: 'Arkavidia Goes To School'
         },
         {
-          image: require('~/assets/images/competition/datavidia.jpg'),
+          image: require('~/assets/images/event/arkavtalk/hero.jpg'),
           route: '/event/arkavidia-talk',
           title: 'Arkavidia Talk'
         },
         {
-          image: require('~/assets/images/competition/hackavidia.jpg'),
+          image: require('~/assets/images/event/itfest/hero.jpg'),
           route: '/event/it-festival',
           title: 'IT Festival'
         }
