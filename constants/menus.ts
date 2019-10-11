@@ -1,6 +1,7 @@
 export interface Menu {
   title: String;
   route: String;
+  disabled?: boolean;
 }
 
 export interface TopLevelMenu {
@@ -92,10 +93,12 @@ export const dashboardMenus: Menu[] = [
   },
   {
     title: 'Pre-event',
-    route: '/dashboard/pre-event'
+    route: '/dashboard/pre-event',
+    disabled: true
   },
   {
     title: 'Main Event',
-    route: '/dashboard/main-event'
+    route: '/dashboard/main-event',
+    disabled: true
   }
 ];

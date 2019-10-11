@@ -6,7 +6,9 @@
           Apa itu Technocamp?
         </div>
         <p class="mt-4 grey--text text--darken-1">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          Technocamp adalah sebuah acara akademi coding untuk anak SMA/Sederajat.
+          Technocamp mengajarkan dasar-dasar coding untuk anak SMA sehingga cocok untuk peserta yang baru ingin mengenal dunia coding.
+          Peserta akan mengikuti rangkaian kegiatan selama 2 hari yang mencakup dasar teori, hands on, dan kegiatan tambahan seperti seminar IT dan sharing IT.
         </p>
       </v-col>
       <v-col
@@ -16,8 +18,8 @@
         align="center"
         align-self="center"
       >
-        <v-img width="100%" cover :src="require('~/assets/images/preevent/dummy_asset.JPG')" />
-        <v-img width="100%" cover :src="require('~/assets/images/preevent/dummy_asset.JPG')" />
+        <v-img width="100%" cover :src="require('~/assets/images/preevent/technocamp/img1.jpg')" />
+        <v-img width="100%" cover :src="require('~/assets/images/preevent/technocamp/img2.jpg')" />
       </v-col>
     </v-row>
   </v-container>

@@ -18,6 +18,13 @@
                 SMA/Sederajat
               </v-chip>
             </div>
+            <div class="mt-2 caption">
+              Biaya Pendaftaran
+
+              <v-chip small color="#21C7C5" class="white--text caption">
+                Rp90.000,-
+              </v-chip>
+            </div>
             <div class="mt-8">
               <v-btn large rounded outlined color="#0B909A" class="text-none mr-2 mt-2">
                 Download guidebook
