@@ -6,7 +6,10 @@
           Apa itu Arkavidia Academy?
         </div>
         <p class="mt-4 grey--text text--darken-1">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          Di dalam Arkavidia Academy, akan diajarkan dasar-dasar dari sebuah skill yang diperlukan untuk bersaing di dalam era digital ini.
+          Peserta Arkavidia Academy akan mengikuti kegiatan yang dilaksanakan dalam 2 minggu dan mencakup teori dan hands-on, serta kegiatan tambahan berupa pekerjaan rumah yang akan diberikan di sela 2 minggu tersebut.
+          Peserta juga akan dibimbing selama masa Arkavidia Academy oleh mentor dari startup ternama Indonesia.
+          Arkavidia Academy bertujuan agar peserta tidak hanya tahu tentang apa yang dibutuhkan untuk bersaing di dunia teknologi, tetapi juga mengerti dan memahami dengan baik.
         </p>
       </v-col>
       <v-col
@@ -16,8 +19,8 @@
         align="center"
         align-self="center"
       >
-        <v-img width="100%" cover :src="require('~/assets/images/preevent/dummy_asset.JPG')" />
-        <v-img width="100%" cover :src="require('~/assets/images/preevent/dummy_asset.JPG')" />
+        <v-img width="100%" cover :src="require('~/assets/images/preevent/academy/img1.jpg')" />
+        <v-img width="100%" cover :src="require('~/assets/images/preevent/academy/img2.jpg')" />
       </v-col>
     </v-row>
   </v-container>

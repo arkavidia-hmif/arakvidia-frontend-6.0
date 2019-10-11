@@ -9,7 +9,7 @@
             align="center"
             align-self="center"
           >
-            <v-img width="100%" cover :src="require('~/assets/images/preevent/dummy_asset.JPG')" />
+            <v-img width="100%" cover :src="require('~/assets/images/event/arkavtalk/hero.jpg')" />
           </v-col>
           <v-col :cols="12" :md="6" align-self="center">
             <div class="display-1 font-weight-bold" style="color: #0B909A">
@@ -19,8 +19,15 @@
               Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever
             </p>
             <div class="mt-8">
-              <v-btn large rounded color="primary" class="text-none mt-2" elevation="0">
-                Daftar sekarang
+              <v-btn
+                large
+                rounded
+                color="primary"
+                class="text-none mt-2"
+                elevation="0"
+                disabled
+              >
+                Segera hadir
               </v-btn>
             </div>
           </v-col>

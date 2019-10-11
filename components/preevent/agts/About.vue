@@ -6,7 +6,10 @@
           Apa itu Arkavidia Goes To School?
         </div>
         <p class="mt-4 grey--text text--darken-1">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          Arkavidia Goes to School merupakan salah satu rangkaian acara pre-event Arkavidia 6.0.
+          Acara ini merupakan kunjungan ke salah satu Sekolah Menengah Atas yang dilakukan bersama-sama oleh panitia Arkavidia 6.
+          Kegiatan ini bertujuan umum untuk mempersiapkan masyarakat yang dapat menerima teknologi.
+          Secara konkret, panitia Arkavidia 6 akan mengajarkan teknologi dan topik-topik yang berhubungan dengan keinformatikaan serta sekaligus mengenalkan jurusan IF dan STI.
         </p>
       </v-col>
       <v-col
@@ -16,8 +19,8 @@
         align="center"
         align-self="center"
       >
-        <v-img width="100%" cover :src="require('~/assets/images/preevent/dummy_asset.JPG')" />
-        <v-img width="100%" cover :src="require('~/assets/images/preevent/dummy_asset.JPG')" />
+        <v-img width="100%" cover :src="require('~/assets/images/preevent/agts/img1.jpg')" />
+        <v-img width="100%" cover :src="require('~/assets/images/preevent/agts/img2.jpg')" />
       </v-col>
     </v-row>
   </v-container>

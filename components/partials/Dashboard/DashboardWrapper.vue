@@ -8,7 +8,7 @@
         Halo, {{ user.fullName }}!
       </div>
       <v-tabs slider-color="#E44D4B" slider-size="5">
-        <v-tab v-for="(item, i) in dashboardMenus" :key="i" :to="item.route" :id="'tabs-'+i" class="font-weight-bold black--text caption text-none">
+        <v-tab v-for="(item, i) in dashboardMenus" :id="'tabs-'+i" :key="i" :to="item.route" class="font-weight-bold black--text caption text-none">
           {{ item.title }}
         </v-tab>
       </v-tabs>

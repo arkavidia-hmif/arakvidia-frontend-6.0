@@ -6,7 +6,8 @@
           Apa itu IT Festival?
         </div>
         <p class="mt-4 grey--text text--darken-1">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          IT Festival merupakan sebuah acara pameran IT yang diisi oleh perusahaan-perusahaan dan startup-startup teknologi informasi yang ada untuk berkontribusi kepada masyarakat.
+          Kurang lebih sekitar 40 startup akan mengisi stand-stand IT Festival dan akan menunjukkan perannya ke masyarakat dengan berbagai metode santai, ceria, tetapi serius seperti pendeskripsian langsung atau interactive challenges.
         </p>
       </v-col>
       <v-col
@@ -16,8 +17,8 @@
         align="center"
         align-self="center"
       >
-        <v-img width="100%" cover :src="require('~/assets/images/preevent/dummy_asset.JPG')" />
-        <v-img width="100%" cover :src="require('~/assets/images/preevent/dummy_asset.JPG')" />
+        <v-img width="100%" cover :src="require('~/assets/images/event/itfest/img1.jpg')" />
+        <v-img width="100%" cover :src="require('~/assets/images/event/itfest/img2.jpg')" />
       </v-col>
     </v-row>
   </v-container>

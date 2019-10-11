@@ -6,7 +6,10 @@
           Apa itu Arkavidia Talk?
         </div>
         <p class="mt-4 grey--text text--darken-1">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          Arkavidia Talk merupakan suatu acara pada main event Arkavidia 6.0.
+          Arkavidia Talk ini berupa seminar yang mengundang para praktisi dan profesional dalam industri IT.
+          Tujuan dari diadakan Arkavidia Talk adalah sebagai ajang pertukaran ide antara penggerak industri dengan masyarakat guna menambahkan wawasan mengenai perkembangan teknologi dan membuka kesempatan untuk kolaborasi.
+          Tahun ini, Arkavidia Talk akan memiliki fokus utama untuk memperkenalkan masyarakat pada berbagai macam perkembangan dan aplikasi teknologi informasi terbaru dalam berbagai bidang.
         </p>
       </v-col>
       <v-col
@@ -16,8 +19,8 @@
         align="center"
         align-self="center"
       >
-        <v-img width="100%" cover :src="require('~/assets/images/preevent/dummy_asset.JPG')" />
-        <v-img width="100%" cover :src="require('~/assets/images/preevent/dummy_asset.JPG')" />
+        <v-img width="100%" cover :src="require('~/assets/images/event/arkavtalk/img1.jpg')" />
+        <v-img width="100%" cover :src="require('~/assets/images/event/arkavtalk/img2.jpg')" />
       </v-col>
     </v-row>
   </v-container>
