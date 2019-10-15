@@ -1,6 +1,6 @@
 <template>
   <DashboardWrapper>
-    <v-card width="350" class="d-inline-block mx-auto my-5" elevation="3">
+    <v-card width="350" class="d-inline-block mx-4 my-5" elevation="3">
       <v-container>
         <v-list-item three-line class="px-0">
           <v-list-item-content>
@@ -19,7 +19,7 @@
       </v-card-actions>
     </v-card>
 
-    <v-card width="350" class="d-inline-block mx-5 my-5" elevation="3">
+    <v-card width="350" class="d-inline-block mx-4 my-5" elevation="3">
       <v-container>
         <v-list-item three-line class="px-0">
           <v-list-item-content>
@@ -38,7 +38,7 @@
       </v-card-actions>
     </v-card>
 
-    <v-card width="350" class="d-inline-block mx-5 my-5" elevation="3">
+    <v-card width="350" class="d-inline-block mx-4 my-5" elevation="3">
       <v-container>
         <v-list-item three-line class="px-0">
           <v-list-item-content>
@@ -57,7 +57,7 @@
       </v-card-actions>
     </v-card>
 
-    <v-card width="350" class="d-inline-block mx-5 my-5" elevation="3">
+    <v-card width="350" class="d-inline-block mx-4 my-5" elevation="3">
       <v-container>
         <v-list-item three-line class="px-0">
           <v-list-item-content>
@@ -76,7 +76,7 @@
       </v-card-actions>
     </v-card>
 
-    <v-card disabled width="350" class="d-inline-block mx-5 my-5" elevation="3">
+    <v-card disabled width="350" class="d-inline-block mx-4 my-5" elevation="3">
       <v-container>
         <v-list-item three-line class="px-0">
           <v-list-item-content>
