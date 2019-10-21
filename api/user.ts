@@ -1,6 +1,6 @@
 // TODO remove eslint disable
 /*eslint-disable */
-import axios from '~/api/api-axios';
+import axios, { ApiError } from '~/api/api';
 
 export interface User {
   email: String;
@@ -16,6 +16,10 @@ export enum RegistrationStatus {
   SUCCESS, EMAIL_EXISTS, ERROR
 }
 
+export enum LoginStatus {
+  INVALID_CREDS, ERROR
+}
+
 export interface RegistrationResult {
   status: RegistrationStatus,
   message?: string
@@ -27,20 +31,30 @@ export interface AuthenticationResult {
 }
 
 export async function login(email: String, password: String): Promise<AuthenticationResult> {
-  const data = { email, password };
-  const response = await axios.post(`${process.env.API_BASE_URL}/api/auth/login/`, data, { withCredentials: false });
-  console.log(response);
-
-  return {
-    bearerToken: 'jwt-here',
-    user: response.data as User
-  };
+  try {
+    const data = {email, password};
+    const response = await axios.post(`/api/auth/login/`, data);
+    console.log(response);
+  
+    return {
+      bearerToken: 'jwt-here',
+      user: response.data as User
+    };
+  } catch (e) {
+    if (e.response) {
+      if (e.response.data.code === "login_failed" || e.response.data.code === "unknown_error") {
+        throw new ApiError<LoginStatus>(LoginStatus.INVALID_CREDS, e.response.data.detail);
+      }
+    }
+    
+    throw new ApiError<LoginStatus>(LoginStatus.ERROR, e.toString());
+  }
 }
 
 export async function register(email: String, fullName: String, password: String): Promise<RegistrationResult> {
   try {
     const data = {email, password};
-    const response = await axios.post(`${process.env.API_BASE_URL}/api/auth/register/`, data, { withCredentials: false });
+    const response = await axios.post(`/api/auth/register/`, data);
     const code = response.data.error;
     let status;
 
