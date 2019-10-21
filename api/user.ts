@@ -5,7 +5,11 @@ import axios from '~/api/api-axios';
 export interface User {
   email: String;
   fullName: String;
-  userId: String;
+  isStaff: boolean;
+  isActive: boolean;
+  isEmailConfirmed: boolean;
+  lastLogin: Date;
+  dateJoined: Date
 }
 
 export enum RegistrationStatus {
@@ -24,23 +28,19 @@ export interface AuthenticationResult {
 
 export async function login(email: String, password: String): Promise<AuthenticationResult> {
   const data = { email, password };
-  const response = await axios.post(`${process.env.API_BASE_URL}/api/auth/login/`, data);
+  const response = await axios.post(`${process.env.API_BASE_URL}/api/auth/login/`, data, { withCredentials: false });
   console.log(response);
 
   return {
     bearerToken: 'jwt-here',
-    user: {
-      email,
-      fullName: 'Ahmad Fahmi Pratama',
-      userId: 'afahmip128d'
-    }
+    user: response.data as User
   };
 }
 
 export async function register(email: String, fullName: String, password: String): Promise<RegistrationResult> {
   try {
     const data = {email, password};
-    const response = await axios.post(`${process.env.API_BASE_URL}/api/auth/register/`, data);
+    const response = await axios.post(`${process.env.API_BASE_URL}/api/auth/register/`, data, { withCredentials: false });
     const code = response.data.error;
     let status;
 
