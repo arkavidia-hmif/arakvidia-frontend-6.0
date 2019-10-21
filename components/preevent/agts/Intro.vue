@@ -16,7 +16,7 @@
               Arkavidia Goes To School
             </div>
             <p class="mt-4 mr-5 grey--text text--darken-1">
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever
+              Acara seharian berisi seminar dan demo IT untuk anak-anak SMA yang pastinya seru!
             </p>
           </v-col>
         </v-row>
