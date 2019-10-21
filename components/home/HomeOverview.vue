@@ -38,11 +38,9 @@
             align-self="center"
           >
             <p class="mt-4 grey--text text--darken-1">
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-              been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
-              galley of type and scrambled it to make a type specimen book. Lorem Ipsum has been the
-              industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
-              of type and scrambled it to make a type specimen book.
+              Arkavidia 6.0 adalah acara prestisius tahunan yang diselenggarakan oleh Himpunan Mahasiswa Informatika Institut Teknologi Bandung (HMIF ITB).
+              Bertemakan "Embracing Our Nation in Digital Transformation," Arkavidia hadir untuk menyelaraskan dan menyebarluaskan transformasi digital yang sedang kita hadapi.
+              Dengan pengalaman lebih dari 6 tahun dan 2000 peserta, Arkavidia berkembang lebih jauh lagi untuk memajukan pemahaman teknologi Indonesia.
             </p>
             <div class="mt-8">
               <v-btn
@@ -143,9 +141,8 @@
               Kompetisi
             </div>
             <p class="mt-4 grey--text text--darken-1">
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-              been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
-              galley of type and scrambled it to make a type specimen book.
+              Asah logika, pengetahuan, dan talentamu lalu tunjukkan kemampuanmu di Arkavidia tahun ini.
+              Arkavidia memiliki berbagai macam kompetisi bergengsi yang dapat membantu mengasah dan mempertajam kemampuanmu dengan bersaing menghadapi lawan dari seluruh Indonesia.
             </p>
           </v-col>
         </v-row>
@@ -203,9 +200,9 @@
               Mata Acara
             </div>
             <p class="mt-4 grey--text text--darken-1">
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-              been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
-              galley of type and scrambled it to make a type specimen book.
+              Tertarik mendalami ilmu dan teknologi terbaru?
+              Atau sekadar penasaran dengan transformasi digital apa saja yang sudah dan akan terjadi di sekitar kita?
+              Tenang, Arkavidia hadir dengan berbagai acara menarik yang dapat memenuhi rasa ingin tahu Anda.
             </p>
           </v-col>
         </v-row>

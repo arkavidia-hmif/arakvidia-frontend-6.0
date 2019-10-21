@@ -46,7 +46,8 @@
 
 <script lang="ts">
 import { Component, Vue, State, Mutation } from 'nuxt-property-decorator';
-import { login, AuthenticationResult } from '~/api/user';
+import { ApiError } from '~/api/api';
+import { login, AuthenticationResult, LoginStatus } from '~/api/user';
 
 interface QueryParameters {
   continue?: string;
@@ -75,6 +76,11 @@ export default class DashboardLogin extends Vue {
   }
 
   attemptLogin() {
+    if (!this.email || !this.password) {
+      this.error = 'Alamat e-mail dan kata sandi tidak boleh kosong';
+      return;
+    }
+
     this.isLoggingIn = true;
     this.error = '';
     login(this.email, this.password)
@@ -88,6 +94,16 @@ export default class DashboardLogin extends Vue {
         this.$router.push(redirectUrl);
       })
       .catch((e) => {
+        if (e instanceof ApiError) {
+          if (e.errorCode === LoginStatus.INVALID_CREDS) {
+            this.error = 'Alamat e-mail dan/atau kata sandi salah';
+            return;
+          }
+
+          this.error = e.message;
+          return;
+        }
+
         this.error = e.toString();
       })
       .finally(() => {

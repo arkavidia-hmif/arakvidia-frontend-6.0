@@ -16,7 +16,7 @@
               Arkavidia Talk
             </div>
             <p class="mt-4 mr-5 grey--text text--darken-1">
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever
+              Untuk kamu yang haus akan wawasan di bidang IT, Arkavidia Talk mengundang berbagai pembicara untuk membahas topik-topik yang menarik.
             </p>
             <div class="mt-8">
               <v-btn

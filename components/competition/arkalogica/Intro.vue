@@ -26,9 +26,11 @@
               </v-chip>
             </div>
             <div class="mt-8">
-              <v-btn large rounded outlined color="#0B909A" class="text-none mr-2 mt-2">
-                Download guidebook
-              </v-btn>
+              <a href="https://arkav.me/guidebook-arkalogica" style="text-decoration: none;">
+                <v-btn large rounded outlined color="#0B909A" class="text-none mr-2 mt-2">
+                  Download guidebook
+                </v-btn>
+              </a>
               <v-btn large rounded color="primary" class="text-none mt-2" elevation="0">
                 Daftar sekarang
               </v-btn>

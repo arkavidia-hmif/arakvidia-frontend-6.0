@@ -16,11 +16,20 @@
               Arkavidia Academy
             </div>
             <p class="mt-4 mr-5 grey--text text--darken-1">
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever
+              Ingin punya kemampuan teknis yang jago tapi bingung harus mulai dari mana?
+              Temukan jawabannya di Arkavidia Academy!
+              Kamu akan belajar dari nol tentang <i>skill</i> teknis yang dibutuhkan di dunia kerja.
             </p>
             <div class="mt-8">
-              <v-btn large rounded color="primary" class="text-none mt-2" elevation="0">
-                Daftar sekarang
+              <v-btn
+                large
+                rounded
+                color="primary"
+                class="text-none mt-2"
+                elevation="0"
+                disabled
+              >
+                Segera hadir
               </v-btn>
             </div>
           </v-col>

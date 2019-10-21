@@ -16,7 +16,7 @@
               IT Festival
             </div>
             <p class="mt-4 mr-5 grey--text text--darken-1">
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever
+              Kunjungi stand-stand puluhan perusahaan start up, mainkan permainannya, dan dapatkan poin untuk ditukarkan dengan <i>merchandise</i> yang keren!
             </p>
           </v-col>
         </v-row>

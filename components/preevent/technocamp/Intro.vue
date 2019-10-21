@@ -16,11 +16,18 @@
               Technocamp
             </div>
             <p class="mt-4 mr-5 grey--text text--darken-1">
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever
+              Kegiatan selama dua hari yang mencakup dasar teori, hands on, dan seminar IT untuk kamu yang haus akan pengetahuan IT!
             </p>
             <div class="mt-8">
-              <v-btn large rounded color="primary" class="text-none mt-2" elevation="0">
-                Daftar sekarang
+              <v-btn
+                large
+                rounded
+                color="primary"
+                class="text-none mt-2"
+                elevation="0"
+                disabled
+              >
+                Segera hadir
               </v-btn>
             </div>
           </v-col>

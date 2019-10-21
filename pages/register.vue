@@ -52,7 +52,8 @@
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator';
-import { register } from '~/api/user';
+import { ApiError } from '~/api/api';
+import { register, RegistrationStatus } from '~/api/user';
 
 interface QueryParameters {
   continue?: string;
@@ -112,6 +113,16 @@ export default class DashboardRegister extends Vue {
         this.$router.push(redirectUrl);
       })
       .catch((e) => {
+        if (e instanceof ApiError) {
+          if (e.errorCode === RegistrationStatus.EMAIL_EXISTS) {
+            this.error = 'Alamat e-mail sudah terdaftar';
+            return;
+          }
+
+          this.error = e.message;
+          return;
+        }
+
         this.error = e.toString();
       })
       .finally(() => {
