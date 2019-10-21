@@ -2,7 +2,7 @@
   <DashboardWrapper>
   <v-container>
     <v-row>
-        <v-col :cols="6" :md="3" align-self="center">
+        <v-col :cols="6" :md="3">
             <TabMenu :id="'ctf'"> </TabMenu>
         </v-col>
         <v-col :cols="6" :md="8" align-self="center">
