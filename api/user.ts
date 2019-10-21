@@ -20,11 +20,6 @@ export enum LoginStatus {
   INVALID_CREDS, ERROR
 }
 
-export interface RegistrationResult {
-  status: RegistrationStatus,
-  message?: string
-}
-
 export interface AuthenticationResult {
   user: User;
   bearerToken: String;
@@ -51,31 +46,19 @@ export async function login(email: String, password: String): Promise<Authentica
   }
 }
 
-export async function register(email: String, fullName: String, password: String): Promise<RegistrationResult> {
+export async function register(email: String, fullName: String, password: String): Promise<void> {
   try {
-    const data = {email, password};
-    const response = await axios.post(`/api/auth/register/`, data);
-    const code = response.data.error;
-    let status;
-
-    switch (code) {
-      case "registration_successful":
-        status = RegistrationStatus.SUCCESS;
-        break;
-      default:
-        status = RegistrationStatus.EMAIL_EXISTS;
-        break;
-    }
-
-    return {
-      status: status,
-      message: response.data.detail
-    }
+    const data = {email, password, fullName};
+    await axios.post(`/api/auth/register/`, data);
   } catch (e) {
-    throw {
-      status: RegistrationStatus.ERROR,
-      message: e.toString()
+    if (e.response) {
+      if (e.response.data.code === "unknown_error") {
+        // TODO change with actual code
+        throw new ApiError<RegistrationStatus>(RegistrationStatus.EMAIL_EXISTS, e.response.data.detail);
+      }
     }
+    
+    throw new ApiError<RegistrationStatus>(RegistrationStatus.ERROR, e.toString());
   }
 }
 
