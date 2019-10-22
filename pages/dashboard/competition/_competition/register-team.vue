@@ -1,21 +1,21 @@
 <template>
   <DashboardWrapper>
     <v-container>
-        <div class="px-12 mx-12">
+      <div class="px-12 mx-12">
         <h5 class="mt-4 title font-weight-black">
-            Competitive Programming
+          Competitive Programming
         </h5>
         <v-text-field v-model="team" label="Team Name" />
         <v-text-field v-model="school" label="Institute / School" />
         <div class="my-2">
-            <v-btn text large color="error">
+          <v-btn text large color="error">
             Delete Team
-            </v-btn>
-            <v-btn text large color="primary">
+          </v-btn>
+          <v-btn text large color="primary">
             Save Team
-            </v-btn>
+          </v-btn>
         </div>
-        </div>
+      </div>
     </v-container>
   </DashboardWrapper>
 </template>

@@ -1,15 +1,15 @@
 <template>
   <DashboardWrapper>
-  <v-container>
-    <v-row>
+    <v-container>
+      <v-row>
         <v-col :cols="6" :md="3">
-            <TabMenu :id="'ctf'"> </TabMenu>
+          <TabMenu :id="'ctf'" />
         </v-col>
         <v-col :cols="6" :md="8" align-self="center">
-            <AnggotaTim> </AnggotaTim>
+          <AnggotaTim />
         </v-col>
-    </v-row>
-  </v-container>
+      </v-row>
+    </v-container>
   </DashboardWrapper>
 </template>
 
