@@ -70,7 +70,11 @@ export default {
     config: {} // Additional config
   },
   sitemap: {
-    hostname: process.env.HOSTNAME
+    hostname: process.env.HOSTNAME,
+    exclude: [
+      '/thanks',
+      '/coming-soon'
+    ]
   }
 };
 
