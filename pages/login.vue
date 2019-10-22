@@ -2,43 +2,69 @@
   <v-container fill-height class="py-12 px-4" style="min-height: 100vh">
     <v-row class="mt-8 mb-12">
       <v-col :cols="12" :lg="4" :md="5">
-        <div class="headline font-weight-bold section-title">
-          Login ke Dashboard
-        </div>
-        <v-alert v-if="error" type="error" class="mt-4">
-          {{ error }}
-        </v-alert>
-        <form @submit.prevent="attemptLogin">
-          <v-text-field
-            v-model="email"
-            class="mt-8"
-            label="Alamat E-mail"
-            outlined
-            dense
-          />
-          <v-text-field
-            v-model="password"
-            label="Kata sandi"
-            type="password"
-            outlined
-            dense
-          />
-          <v-btn class="mt-1 text-none" type="submit" block outlined :loading="isLoggingIn">
-            Login
+        <template v-if="!emailNotConfirmedPrompt">
+          <div class="headline font-weight-bold section-title">
+            Login ke Dashboard
+          </div>
+          <v-alert v-if="error" type="error" class="mt-4">
+            {{ error }}
+          </v-alert>
+          <form @submit.prevent="attemptLogin">
+            <v-text-field
+              v-model="email"
+              class="mt-8"
+              label="Alamat E-mail"
+              outlined
+              dense
+            />
+            <v-text-field
+              v-model="password"
+              label="Kata sandi"
+              type="password"
+              outlined
+              dense
+            />
+            <v-btn class="mt-1 text-none" type="submit" block outlined :loading="isLoggingIn">
+              Login
+            </v-btn>
+            <div class="mt-4">
+              Lupa kata sandi?
+              <nuxt-link to="/recover" style="text-decoration: none">
+                Reset
+              </nuxt-link>
+            </div>
+            <div>
+              Belum terdaftar?
+              <nuxt-link :to="(nextRoute) ? `/register?continue=${nextRoute}` : '/register'" style="text-decoration: none">
+                Daftar
+              </nuxt-link>
+            </div>
+          </form>
+        </template>
+        <template v-else>
+          <v-btn
+            fab
+            elevation="0"
+            small
+            dark
+            color="#FF084F"
+            @click="emailNotConfirmedPrompt = false"
+          >
+            <v-icon color="white">
+              fa fa-arrow-left
+            </v-icon>
           </v-btn>
-          <div class="mt-4">
-            Lupa kata sandi?
-            <nuxt-link to="/recover" style="text-decoration: none">
-              Reset
-            </nuxt-link>
+
+          <div class="headline font-weight-bold mt-6">
+            Kamu belum melakukan konfirmasi alamat e-mail :(
           </div>
-          <div>
-            Belum terdaftar?
-            <nuxt-link :to="(nextRoute) ? `/register?continue=${nextRoute}` : '/register'" style="text-decoration: none">
-              Daftar
-            </nuxt-link>
-          </div>
-        </form>
+          <p class="subtitle mt-4 grey--text text--darken-1">
+            Sebelum kamu bisa login, coba buka e-mail kamu, kemudian klik tautan yang ada di sana untuk melakukan konfirmasi.
+            <br><br>
+            Apabila kamu tidak mendapat e-mail, cek folder spam kamu.
+            Kalau tidak ada juga, silakan hubungi panitia.
+          </p>
+        </template>
       </v-col>
     </v-row>
   </v-container>
@@ -58,11 +84,12 @@ export default class DashboardLogin extends Vue {
   @Getter('isLoggedIn') loggedIn!: boolean;
   @Mutation('login') mutationLogin;
 
+  emailNotConfirmedPrompt: boolean = false;
   isLoggingIn: boolean = false;
-  email: String = '';
-  password: String = '';
+  email: string = '';
+  password: string = '';
 
-  error: String = '';
+  error: string = '';
 
   head() {
     return {
@@ -98,6 +125,10 @@ export default class DashboardLogin extends Vue {
         if (e instanceof ApiError) {
           if (e.errorCode === LoginStatus.INVALID_CREDS) {
             this.error = 'Alamat e-mail dan/atau kata sandi salah';
+            return;
+          }
+          else if (e.errorCode === LoginStatus.EMAIL_NOT_CONFIRMED) {
+            this.emailNotConfirmedPrompt = true;
             return;
           }
 

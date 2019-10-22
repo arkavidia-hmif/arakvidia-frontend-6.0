@@ -3,7 +3,7 @@ import { User } from '~/api/user';
 export interface LoginState {
   loggedIn: boolean;
   user?: User;
-  bearerToken?: String;
+  bearerToken?: string;
   loggedInAt?: number;
   expiresAt?: number;
 }

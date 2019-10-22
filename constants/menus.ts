@@ -1,13 +1,13 @@
 export interface Menu {
-  title: String;
-  route: String;
+  title: string;
+  route: string;
   disabled?: boolean;
 }
 
 export interface TopLevelMenu {
-  title: String;
+  title: string;
   children?: Menu[];
-  route?: String;
+  route?: string;
 }
 
 export const competitionMenus: Menu[] = [

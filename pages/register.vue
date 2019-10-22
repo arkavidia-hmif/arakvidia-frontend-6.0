@@ -62,11 +62,11 @@ interface QueryParameters {
 @Component
 export default class DashboardRegister extends Vue {
   isRegistering: boolean = false;
-  fullName: String = '';
-  email: String = '';
-  password: String = '';
-  rePassword: String = '';
-  error: String = '';
+  fullName: string = '';
+  email: string = '';
+  password: string = '';
+  rePassword: string = '';
+  error: string = '';
 
   head() {
     return {
