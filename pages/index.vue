@@ -1,7 +1,7 @@
 <template>
   <v-layout column style="background: white;">
     <HomeIntro />
-    <HomeOverview />
+    <HomeOverview id="home-overview" class="pt-12" />
   </v-layout>
 </template>
 

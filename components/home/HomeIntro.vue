@@ -25,7 +25,7 @@
           Transforming soon, February 2020.
         </p>
       </div>
-      <v-btn rounded class="text-capitalize mt-5" color="white">
+      <v-btn rounded class="text-none mt-5" color="white" @click="() => $vuetify.goTo('#home-overview')">
         I'm interested!
       </v-btn>
     </v-layout>
