@@ -10,9 +10,18 @@
       >
         <p> Tidak ada anggota lain yang terdaftar dalam tim </p>
       </v-col>
-      <v-col v-else cols="12" style="display: flex;">
+      <v-col v-else cols="12">
         <div v-for="(member, i) in members" :key="i" style="padding: 1rem;">
-          <p> Anggota {{ i + 1 }}</p>
+          <v-row>
+            <p style="margin-bottom: 0 !important;"> Anggota {{ i + 1 }}</p>
+            <v-flex>
+              <v-btn :id="'delete-' + i" class="my-5 subtitle-2 text-none px-5 font-weight-bold"
+              style="border-radius: 50px; margin: 0 !important; background: #E44D4B;
+                color: white; float: right;">
+                Hapus Anggota
+              </v-btn>
+            </v-flex>
+          </v-row>
           <ProfileField title="Name" :value="member.name" />
           <ProfileField title="Email" :value="member.email" />
         </div>
