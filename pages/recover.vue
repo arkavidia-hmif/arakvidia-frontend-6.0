@@ -8,7 +8,7 @@
         <v-alert v-if="error" type="error" class="mt-4">
           {{ error }}
         </v-alert>
-        <template v-if="!isConfirmed">
+        <template v-if="!emailSent">
           <div class="mt-4 grey--text text--darken-1">
             Jangan khawatir! Masukkan alamat e-mail kamu, nanti kami akan mengirimkan e-mail untuk membuat kata sandi baru.
           </div>
@@ -20,7 +20,7 @@
               outlined
               dense
             />
-            <v-btn class="mt-1 text-none" type="submit" block outlined :loading="isResetting">
+            <v-btn class="mt-1 text-none" type="submit" block outlined :loading="isRecovering">
               Kirim
             </v-btn>
           </form>
