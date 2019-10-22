@@ -37,7 +37,6 @@
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator';
-import { recover } from '~/api/user';
 
 @Component
 export default class DashboardLogin extends Vue {
@@ -60,7 +59,7 @@ export default class DashboardLogin extends Vue {
 
     this.isRecovering = true;
     this.error = '';
-    recover(this.email)
+    this.$arkavidiaApi.user.recover(this.email)
       .then(() => {
         this.emailSent = true;
       })

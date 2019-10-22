@@ -21,7 +21,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, State } from 'nuxt-property-decorator';
+import { Component, Vue, State, Getter } from 'nuxt-property-decorator';
 import { dashboardMenus, Menu } from '~/constants/menus';
 import { User } from '~/api/user';
 import Forbidden from '~/components/Forbidden.vue';
@@ -35,7 +35,7 @@ interface NuxtWindow {
   components: { Forbidden }
 })
 export default class DashboardWrapper extends Vue {
-  @State loggedIn!: boolean;
+  @Getter('isLoggedIn') loggedIn!: boolean;
   @State user!: User;
   dashboardMenus: Menu[] = dashboardMenus;
 

@@ -52,8 +52,8 @@
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator';
-import { ApiError } from '~/api/api';
-import { register, RegistrationStatus } from '~/api/user';
+import { ApiError } from '~/api/base';
+import { RegistrationStatus } from '~/api/user';
 
 interface QueryParameters {
   continue?: string;
@@ -107,7 +107,7 @@ export default class DashboardRegister extends Vue {
 
     this.isRegistering = true;
     this.error = '';
-    register(this.email, this.fullName, this.password)
+    this.$arkavidiaApi.user.register(this.email, this.fullName, this.password)
       .then(() => {
         const redirectUrl = (this.nextRoute) ? `/thanks?continue=${this.nextRoute}` : '/thanks';
         this.$router.push(redirectUrl);

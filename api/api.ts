@@ -1,28 +1,21 @@
 import axios from 'axios';
+import { ArkavidiaUserApi } from '~/api/user';
 axios.defaults.xsrfCookieName = 'csrftoken';
 axios.defaults.xsrfHeaderName = 'X-CSRFTOKEN';
 axios.defaults.withCredentials = true;
-axios.defaults.baseURL = process.env.API_BASE_URL;
 
 export default axios;
 
-export class ApiError<E> extends Error {
-  errCode: E;
-  msg: string;
+export class ArkavidiaApi {
+  token: string = '';
 
-  constructor(errorCode: E, message?: string) {
-    super(message);
-    this.errCode = errorCode;
-    this.msg = message || '';
-
-    Object.setPrototypeOf(this, ApiError.prototype);
+  constructor(baseUrl: string) {
+    axios.defaults.baseURL = baseUrl;
   }
 
-  get errorCode(): E {
-    return this.errCode;
+  set accessToken(token) {
+    this.token = token;
   }
 
-  get message(): string {
-    return this.msg;
-  }
+  user: ArkavidiaUserApi = new ArkavidiaUserApi(axios);
 }

@@ -1,14 +1,13 @@
 // TODO remove eslint disable
 /*eslint-disable */
-import axios, { ApiError } from '~/api/api';
+import {ApiError, ArkavidiaBaseApi} from '~/api/base';
 
 export interface User {
   email: String;
   fullName: String;
-  isStaff: boolean;
-  isActive: boolean;
-  isEmailConfirmed: boolean;
-  lastLogin: Date;
+  currentEducation: string;
+  institution: string;
+  phoneNumber: string;
   dateJoined: Date
 }
 
@@ -23,46 +22,50 @@ export enum LoginStatus {
 export interface AuthenticationResult {
   user: User;
   bearerToken: String;
+  expiresAt: number
 }
 
-export async function login(email: String, password: String): Promise<AuthenticationResult> {
-  try {
-    const data = {email, password};
-    const response = await axios.post(`/api/auth/login/`, data);
-    console.log(response);
+export class ArkavidiaUserApi extends ArkavidiaBaseApi {
+  async login(email: String, password: String): Promise<AuthenticationResult> {
+    try {
+      const data = {email, password};
+      const response = await this.axios.post(`/api/auth/login/`, data);
+      console.log(response);
+      
+      return {
+        bearerToken: response.data.token,
+        expiresAt: response.data.exp * 1000,
+        user: response.data.user as User
+      };
+    } catch (e) {
+      if (e.response) {
+        if (e.response.data.code === "login_failed" || e.response.data.code === "unknown_error") {
+          throw new ApiError<LoginStatus>(LoginStatus.INVALID_CREDS, e.response.data.detail);
+        }
+      }
+      
+      throw new ApiError<LoginStatus>(LoginStatus.ERROR, e.toString());
+    }
+  }
   
-    return {
-      bearerToken: 'jwt-here',
-      user: response.data as User
-    };
-  } catch (e) {
-    if (e.response) {
-      if (e.response.data.code === "login_failed" || e.response.data.code === "unknown_error") {
-        throw new ApiError<LoginStatus>(LoginStatus.INVALID_CREDS, e.response.data.detail);
+  async register(email: String, fullName: String, password: String): Promise<void> {
+    try {
+      const data = {email, password, fullName};
+      await this.axios.post(`/api/auth/register/`, data);
+    } catch (e) {
+      if (e.response) {
+        if (e.response.data.code === "unknown_error") {
+          throw new ApiError<RegistrationStatus>(RegistrationStatus.EMAIL_EXISTS, e.response.data.detail);
+        }
       }
+      
+      throw new ApiError<RegistrationStatus>(RegistrationStatus.ERROR, e.toString());
     }
-    
-    throw new ApiError<LoginStatus>(LoginStatus.ERROR, e.toString());
   }
-}
-
-export async function register(email: String, fullName: String, password: String): Promise<void> {
-  try {
-    const data = {email, password, fullName};
-    await axios.post(`/api/auth/register/`, data);
-  } catch (e) {
-    if (e.response) {
-      if (e.response.data.code === "unknown_error") {
-        // TODO change with actual code
-        throw new ApiError<RegistrationStatus>(RegistrationStatus.EMAIL_EXISTS, e.response.data.detail);
-      }
-    }
-    
-    throw new ApiError<RegistrationStatus>(RegistrationStatus.ERROR, e.toString());
+  
+  async recover(email: String): Promise<void> {
+    // TODO implement
+    return;
   }
-}
-
-export async function recover(email: String): Promise<void> {
-  // TODO implement
-  return;
+  
 }
