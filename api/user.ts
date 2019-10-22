@@ -33,7 +33,7 @@ export class ArkavidiaUserApi extends ArkavidiaBaseApi {
   async login(email: string, password: string): Promise<AuthenticationResult> {
     try {
       const data = { email, password };
-      const response = await this.axios.post(`/api/auth/login/`, data);
+      const response = await this.axios.post(`/auth/login/`, data);
 
       return {
         bearerToken: response.data.token,
@@ -59,7 +59,7 @@ export class ArkavidiaUserApi extends ArkavidiaBaseApi {
   async register(email: string, fullName: string, password: string): Promise<void> {
     try {
       const data = { email, password, fullName };
-      await this.axios.post(`/api/auth/register/`, data);
+      await this.axios.post(`/auth/register/`, data);
     }
     catch (e) {
       if (e.response) {
@@ -75,7 +75,7 @@ export class ArkavidiaUserApi extends ArkavidiaBaseApi {
   async recover(email: string): Promise<void> {
     try {
       const data = { email };
-      await this.axios.post(`/api/auth/password-reset/`, data);
+      await this.axios.post(`/auth/password-reset/`, data);
     }
     catch (e) {
       throw new ApiError<boolean>(false, e.toString());
@@ -85,7 +85,7 @@ export class ArkavidiaUserApi extends ArkavidiaBaseApi {
   async resetPassword(token: string, newPassword: string): Promise<void> {
     try {
       const data = { token, newPassword };
-      await this.axios.post(`/api/auth/confirm-password-reset/`, data);
+      await this.axios.post(`/auth/confirm-password-reset/`, data);
     }
     catch (e) {
       if (e.response) {
@@ -101,7 +101,7 @@ export class ArkavidiaUserApi extends ArkavidiaBaseApi {
   async confirmEmailAddress(token: string): Promise<void> {
     try {
       const data = { token };
-      await this.axios.post(`/api/auth/confirm-registration/`, data);
+      await this.axios.post(`/auth/confirm-registration/`, data);
     }
     catch (e) {
       if (e.response) {

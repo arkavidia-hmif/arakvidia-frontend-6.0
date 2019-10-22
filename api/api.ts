@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { ArkavidiaUserApi } from '~/api/user';
+import { ArkavidiaAnnouncementApi } from '~/api/announcement';
 axios.defaults.xsrfCookieName = 'csrftoken';
 axios.defaults.xsrfHeaderName = 'X-CSRFTOKEN';
 axios.defaults.withCredentials = true;
@@ -14,8 +15,12 @@ export class ArkavidiaApi {
   }
 
   set accessToken(token) {
-    this.token = token;
+    if (token) {
+      this.token = token;
+      axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+    }
   }
 
   user: ArkavidiaUserApi = new ArkavidiaUserApi(axios);
+  announcement: ArkavidiaAnnouncementApi = new ArkavidiaAnnouncementApi(axios);
 }
