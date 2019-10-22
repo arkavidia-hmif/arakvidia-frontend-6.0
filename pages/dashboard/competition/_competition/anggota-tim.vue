@@ -1,15 +1,8 @@
 <template>
   <DashboardWrapper>
-    <v-container>
-      <v-row>
-        <v-col :cols="6" :md="3">
-          <TabMenu :id="id" />
-        </v-col>
-        <v-col :cols="6" :md="8" align-self="center">
-          <AnggotaTim />
-        </v-col>
-      </v-row>
-    </v-container>
+    <CompetitionWrapper :competition-id="id">
+      <AnggotaTim />
+    </CompetitionWrapper>
   </DashboardWrapper>
 </template>
 
@@ -18,20 +11,21 @@ import { Component, Vue } from 'nuxt-property-decorator';
 import DashboardWrapper from '~/components/partials/Dashboard/DashboardWrapper.vue';
 import TabMenu from '~/components/partials/Dashboard/TabMenu.vue';
 import AnggotaTim from '~/components/partials/Dashboard/AnggotaTim.vue';
-@Component({
-  components: { DashboardWrapper, TabMenu, AnggotaTim }
-})
-export default class DashboardIndex extends Vue {
-  id: string = '';
+import CompetitionWrapper from '~/components/partials/Dashboard/CompetitionWrapper.vue';
 
+@Component({
+  components: { CompetitionWrapper, DashboardWrapper, TabMenu, AnggotaTim }
+})
+export default class DashboardAnggotaTim extends Vue {
   head() {
     return {
       title: 'Dashboard'
     };
   }
 
-  mounted() {
-    this.id = this.$route.params.competition;
+  get id() {
+    // eslint-disable-next-line dot-notation
+    return this.$route.params['competition'];
   }
 }
 </script>
