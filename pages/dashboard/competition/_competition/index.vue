@@ -1,7 +1,33 @@
 <template>
   <DashboardWrapper>
     <CompetitionWrapper :competition-id="id">
-      <!--<InformasiTim />-->
+      <div class="px-auto mx-auto">
+        <h5 class="mt-4 title font-weight-black">
+          Competitive Programming
+        </h5>
+        <v-text-field v-model="team" label="Nama Tim" />
+        <v-text-field v-model="school" label="Universitas / SMA" />
+        <div class="my-2">
+          <v-btn
+            id="delete"
+            text
+            large
+            class="mx-5 subtitle-2 text-none px-5 font-weight-bold"
+            style="border-radius: 50px; border: 2px solid #E44D4B;  color: #E44D4B; float: left;"
+          >
+            Hapus Tim
+          </v-btn>
+          <v-btn
+            id="add"
+            text
+            large
+            class="mx-5 subtitle-2 text-none px-5 font-weight-bold"
+            style="border-radius: 50px; color: white; float: left; background-color: #197AD2;"
+          >
+            Simpan Tim
+          </v-btn>
+        </div>
+      </div>
     </CompetitionWrapper>
   </DashboardWrapper>
 </template>
@@ -17,9 +43,15 @@ import CompetitionWrapper from '~/components/partials/Dashboard/CompetitionWrapp
   components: { CompetitionWrapper, DashboardWrapper, TabMenu }
 })
 export default class DashboardCompetitionIndex extends Vue {
+  data() {
+    return {
+      team: '',
+      school: ''
+    };
+  }
   head() {
     return {
-      title: 'Dashboard'
+      title: 'Informasi Tim'
     };
   }
 
@@ -31,5 +63,4 @@ export default class DashboardCompetitionIndex extends Vue {
 </script>
 
 <style scoped>
-
 </style>
