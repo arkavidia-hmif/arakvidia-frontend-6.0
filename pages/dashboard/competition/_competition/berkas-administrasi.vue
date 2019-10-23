@@ -1,7 +1,7 @@
 <template>
   <DashboardWrapper>
     <CompetitionWrapper :competition-id="id">
-      <!--<BerkasAdministrasi />-->
+      <BerkasAdministrasi />
     </CompetitionWrapper>
   </DashboardWrapper>
 </template>
@@ -10,10 +10,11 @@
 import { Component, Vue } from 'nuxt-property-decorator';
 import DashboardWrapper from '~/components/partials/Dashboard/DashboardWrapper.vue';
 import TabMenu from '~/components/partials/Dashboard/TabMenu.vue';
+import BerkasAdministrasi from '~/components/partials/Dashboard/BerkasAdministrasi.vue';
 import CompetitionWrapper from '~/components/partials/Dashboard/CompetitionWrapper.vue';
 
 @Component({
-  components: { CompetitionWrapper, DashboardWrapper, TabMenu }
+  components: { CompetitionWrapper, DashboardWrapper, TabMenu, BerkasAdministrasi }
 })
 export default class DashboardBerkasAdministrasi extends Vue {
   head() {

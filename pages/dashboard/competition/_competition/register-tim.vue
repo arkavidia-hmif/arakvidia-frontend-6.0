@@ -12,8 +12,12 @@
           <v-text-field v-model="team" label="Team Name" />
           <v-text-field v-model="institution" label="Institute / School" />
           <div class="my-2">
-            <v-btn class="my-5 primary subtitle-2 text-none px-5 font-weight-bold"
-              style="border-radius: 50px" type="submit" :loading="isRegistering">
+            <v-btn
+              class="my-5 primary subtitle-2 text-none px-5 font-weight-bold"
+              style="border-radius: 50px"
+              type="submit"
+              :loading="isRegistering"
+            >
               Register Team
             </v-btn>
           </div>
@@ -43,7 +47,7 @@ export default class RegisterTeam extends Vue {
   title: string = '';
   error: string = '';
   isRegistering: boolean = false;
-  competitionId: number  = 0;
+  competitionId: number = 0;
 
   get id() {
     // eslint-disable-next-line dot-notation
@@ -119,7 +123,7 @@ export default class RegisterTeam extends Vue {
   }
 
   validateTeam(team): boolean {
-    return team.length >= 3 ? true : false;
+    return team.length >= 3;
   }
 }
 </script>
