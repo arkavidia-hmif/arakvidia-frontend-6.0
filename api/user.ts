@@ -89,7 +89,7 @@ export class ArkavidiaUserApi extends ArkavidiaBaseApi {
     }
     catch (e) {
       if (e.response) {
-        if (e.response.data.code === 'invalid_token') {
+        if (e.response.data.code === 'invalid_token' || e.response.data.code === 'token_used') {
           throw new ApiError<EmailOperationStatus>(EmailOperationStatus.INVALID_TOKEN, e.response.data.detail);
         }
       }
