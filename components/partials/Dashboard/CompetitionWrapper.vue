@@ -5,7 +5,7 @@
         <TabMenu :id="competitionId" />
       </v-col>
       <v-col :cols="12" :sm="8" :lg="9" align-self="center">
-        <slot :competitions="competitions" />
+        <slot />
       </v-col>
     </v-row>
   </v-container>
