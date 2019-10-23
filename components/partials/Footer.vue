@@ -10,15 +10,15 @@
               Arkavidia Informatics & IT Festival 6.0
             </div>
             <div class="mt-3">
-              <a href="https://www.instagram.com/arkavidia" target="_blank" style="text-decoration: none"><v-icon color="#1D7AA2">fab fa-instagram</v-icon></a>
+              <a href="https://www.instagram.com/arkavidia" target="_blank" style="text-decoration: none"><v-icon>fab fa-instagram</v-icon></a>
               &nbsp;
-              <a href="https://line.me/R/ti/p/%40arkavidia" target="_blank" style="text-decoration: none"><v-icon color="#1D7AA2">fab fa-line</v-icon></a>
+              <a href="https://line.me/R/ti/p/%40arkavidia" target="_blank" style="text-decoration: none"><v-icon>fab fa-line</v-icon></a>
               &nbsp;
-              <a href="https://www.linkedin.com/company/arkavidia" target="_blank" style="text-decoration: none"><v-icon color="#1D7AA2">fab fa-linkedin</v-icon></a>
+              <a href="https://www.linkedin.com/company/arkavidia" target="_blank" style="text-decoration: none"><v-icon>fab fa-linkedin</v-icon></a>
               &nbsp;
-              <a href="https://twitter.com/arkavidia_hmif" target="_blank" style="text-decoration: none"><v-icon color="#1D7AA2">fab fa-twitter</v-icon></a>
+              <a href="https://twitter.com/arkavidia_hmif" target="_blank" style="text-decoration: none"><v-icon>fab fa-twitter</v-icon></a>
               &nbsp;
-              <a href="https://www.facebook.com/arkavidia/" target="_blank" style="text-decoration: none"><v-icon color="#1D7AA2">fab fa-facebook</v-icon></a>
+              <a href="https://www.facebook.com/arkavidia/" target="_blank" style="text-decoration: none"><v-icon>fab fa-facebook</v-icon></a>
             </div>
           </div>
         </v-col>
