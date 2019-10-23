@@ -1,11 +1,11 @@
 import { ApiError, ArkavidiaBaseApi } from '~/api/base';
 
 export interface Competition {
-    id: number;
+    id?: number;
     name: string;
-    maxTeamMembers: string;
-    minTeamMembers: string;
-    isRegistrationOpen: boolean;
+    maxTeamMembers?: string;
+    minTeamMembers?: string;
+    isRegistrationOpen?: boolean;
 }
 
 export interface Team {
@@ -32,9 +32,9 @@ export enum RegistrationStatus {
 }
 
 export class ArkavidiaCompetitionApi extends ArkavidiaBaseApi {
-  async register(team: string, institution: string, email: string): Promise<void> {
+  async registerTeam(competitionId: number, name: string, institution: string): Promise<void> {
     try {
-      const data = { team, institution, email };
+      const data = { competitionId, name, institution };
       await this.axios.post(`/competition/register-team/`, data);
     }
     catch (e) {
@@ -48,3 +48,11 @@ export class ArkavidiaCompetitionApi extends ArkavidiaBaseApi {
     }
   }
 }
+
+export const competitionMap: Record<string, number> = {
+  'competitive-programming' : 1,
+  'capture-the-flag' : 2,
+  'datavidia': 3,
+  'arkalogica': 4,
+  'hackavidia': 5
+} as const;
