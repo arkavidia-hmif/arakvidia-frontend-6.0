@@ -1,5 +1,5 @@
 <template>
-  <div v-if="isLoading == false" class="ml-3 mb-5">
+  <div v-if="!isLoading" class="ml-3 mb-5">
     <div>
       <p style="font-weight: 700 !important; margin-bottom: 0 !important;">
         Daftar Anggota
@@ -67,7 +67,8 @@ interface QueryParameters {
   continue?: string;
 }
 
-export default class RegisterTeam extends Vue {
+@Component
+export default class AnggotaTim extends Vue {
   team: Team | null = null;
   error: string = '';
   name: string = '';
@@ -96,18 +97,20 @@ export default class RegisterTeam extends Vue {
 
     this.$arkavidiaApi.competition.getTeamList()
       .then((results) => {
-        if (results.length) {
-          var competition;
-          for (var i = 0; i < results.length; i++) {
-            if (results[i].competition) {
-              competition = results[i].competition;
-              if (competition.id) {
-                if (competition.id == this.competitionId) {
-                  this.team = results[i];
+        if (results) {
+          if (results.length) {
+            var competition;
+            for (var i = 0; i < results.length; i++) {
+              if (results[i].competition) {
+                competition = results[i].competition;
+                if (competition.id) {
+                  if (competition.id == this.competitionId) {
+                    this.team = results[i];
+                  }
                 }
               }
             }
-          }
+        }
         }
 
         if (this.team) {
