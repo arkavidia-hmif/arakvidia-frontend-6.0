@@ -1,5 +1,5 @@
 import { ArkavidiaApi } from '~/api/api';
-import { LoginState } from '~/store';
+import { LoginState } from '~/store/auth';
 
 interface NuxtWindow {
   onNuxtReady?: Function;
@@ -13,7 +13,7 @@ export default ({ store }, inject) => {
 
   if (nuxtWindow.onNuxtReady) {
     nuxtWindow.onNuxtReady(() => {
-      const loginState: LoginState = store.state as LoginState;
+      const loginState: LoginState = store.auth.state as LoginState;
       api.accessToken = loginState.bearerToken;
     });
   }

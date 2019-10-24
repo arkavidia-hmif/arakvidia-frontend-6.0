@@ -15,47 +15,11 @@ export enum RegistrationStatus {
   EMAIL_EXISTS, ERROR
 }
 
-export enum LoginStatus {
-  INVALID_CREDS, ERROR, EMAIL_NOT_CONFIRMED
-}
-
 export enum EmailOperationStatus {
   INVALID_TOKEN, ERROR
 }
 
-export interface AuthenticationResult {
-  user: User;
-  bearerToken: string;
-  expiresAt: number
-}
-
 export class ArkavidiaUserApi extends ArkavidiaBaseApi {
-  async login(email: string, password: string): Promise<AuthenticationResult> {
-    try {
-      const data = { email, password };
-      const response = await this.axios.post(`/auth/login/`, data);
-
-      return {
-        bearerToken: response.data.token,
-        expiresAt: response.data.exp * 1000,
-        user: response.data.user as User
-      };
-    }
-    catch (e) {
-      if (e.response) {
-        const errorCode = e.response.data.code;
-        if (errorCode === 'login_failed' || errorCode === 'unknown_error') {
-          throw new ApiError<LoginStatus>(LoginStatus.INVALID_CREDS, e.response.data.detail);
-        }
-        else if (errorCode === 'account_email_not_confirmed') {
-          throw new ApiError<LoginStatus>(LoginStatus.EMAIL_NOT_CONFIRMED, e.response.data.detail);
-        }
-      }
-
-      throw new ApiError<LoginStatus>(LoginStatus.ERROR, e.toString());
-    }
-  }
-
   async register(email: string, fullName: string, password: string): Promise<void> {
     try {
       const data = { email, password, fullName };

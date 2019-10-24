@@ -90,7 +90,7 @@ import MenuIcon from '~/components/partials/Drawer/MenuIcon.vue';
   components: { ToolbarDropdown, DrawerListItem, DrawerListGroup, MenuIcon }
 })
 export default class DashboardIndex extends Vue {
-  @Getter('isLoggedIn') loggedIn!: boolean;
+  @Getter('auth/isLoggedIn') loggedIn!: boolean;
   @Mutation('logout') mutationLogout;
 
   mainMenus: TopLevelMenu[] = mainMenus;

@@ -71,9 +71,9 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Getter, Mutation } from 'nuxt-property-decorator';
+import { Component, Action, Vue } from 'nuxt-property-decorator';
 import { ApiError } from '~/api/base';
-import { AuthenticationResult, LoginStatus } from '~/api/user';
+import { LoginStatus } from '~/store/auth';
 
 interface QueryParameters {
   continue?: string;
@@ -81,15 +81,14 @@ interface QueryParameters {
 
 @Component
 export default class DashboardLogin extends Vue {
-  @Getter('isLoggedIn') loggedIn!: boolean;
-  @Mutation('login') mutationLogin;
-
   emailNotConfirmedPrompt: boolean = false;
   isLoggingIn: boolean = false;
   email: string = '';
   password: string = '';
 
   error: string = '';
+
+  @Action('auth/login') loginAction;
 
   head() {
     return {
@@ -110,14 +109,10 @@ export default class DashboardLogin extends Vue {
 
     this.isLoggingIn = true;
     this.error = '';
-    this.$arkavidiaApi.user.login(this.email, this.password)
-      .then((authResult: AuthenticationResult) => {
-        this.mutationLogin({
-          user: authResult.user,
-          bearerToken: authResult.bearerToken,
-          expiresAt: authResult.expiresAt
-        });
-
+    const email = this.email;
+    const password = this.password;
+    this.loginAction({ email, password })
+      .then(() => {
         const redirectUrl = (this.nextRoute) ? this.nextRoute : '/dashboard';
         this.$router.push(redirectUrl);
       })
