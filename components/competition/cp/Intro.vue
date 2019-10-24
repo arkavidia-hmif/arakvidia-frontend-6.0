@@ -1,5 +1,5 @@
 <template>
-  <v-container fill-height py-0 px-4 class="d-flex flex-column" style="min-height: 100vh">
+  <v-container py-0 px-4 class="d-flex flex-column" style="min-height: 100vh">
     <div class="d-flex flex-column" style="flex: 1">
       <div class="d-flex mt-12" style="flex: 1">
         <v-row wrap>
