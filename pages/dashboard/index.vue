@@ -3,7 +3,7 @@
     <p v-if="!announcements.length" class="mt-4 grey--text text--darken-1">
       There is no announcement yet
     </p>
-    <AnnouncementCard v-for="(item, i) in announcements" :message="item.message" :date-sent="item.dateSent" />
+    <AnnouncementCard v-for="(item, i) in announcements" :key="i" :message="item.message" :date-sent="item.dateSent" />
   </DashboardWrapper>
 </template>
 
@@ -11,7 +11,7 @@
 import { Component, Vue } from 'nuxt-property-decorator';
 import DashboardWrapper from '~/components/partials/Dashboard/DashboardWrapper.vue';
 import AnnouncementCard from '~/components/partials/Dashboard/AnnouncementCard.vue';
-import { Announcement, ArkavidiaAnnouncementApi } from '~/api/announcement.ts';
+// import { Announcement, ArkavidiaAnnouncementApi } from '~/api/announcement.ts';
 @Component({
   components: { DashboardWrapper, AnnouncementCard }
 })

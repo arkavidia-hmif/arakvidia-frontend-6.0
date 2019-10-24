@@ -86,7 +86,7 @@ export default class BerkasAdministrasi extends Vue {
   submitFile() {
     const formData = new FormData();
     formData.append('file', this.originFile);
-    console.log('>> formData >> ', formData);
+    // console.log('>> formData >> ', formData);
 
     if (!this.originFile) {
       this.error = 'Pilih file terlebih dahulu';
@@ -102,8 +102,8 @@ export default class BerkasAdministrasi extends Vue {
     this.error = '';
 
     this.$arkavidiaApi.competition.uploadFile(formData, this.description)
-      .then((results) => {
-        console.log(results);
+      .then(() => {
+        // console.log(results);
         // this.file = results;
       })
       .catch((e) => {
@@ -125,7 +125,7 @@ export default class BerkasAdministrasi extends Vue {
   handleFileUpload(e) {
     // this.originFile = this.$refs.file.files[0];
     this.originFile = e.target.files || e.dataTransfer.files;
-    console.log('>>>> 1st element in files array >>>> ', this.originFile);
+    // console.log('>>>> 1st element in files array >>>> ', this.originFile);
   }
 
   /* mounted() {

@@ -1,6 +1,6 @@
 <template>
   <DashboardWrapper>
-    <div v-if="this.user">
+    <div v-if="user">
       <v-layout row wrap class="mt-4">
         <v-flex md3 xs12>
           <ProfileField title="Name" :value="user.fullName" />
@@ -67,7 +67,7 @@ export default class Profile extends Vue {
             this.$arkavidiaApi.user.auth()
               .then((val) => {
                 this.user = val;
-                console.log(val);
+                // console.log(val);
               }
               );
           }
