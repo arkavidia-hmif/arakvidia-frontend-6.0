@@ -34,7 +34,7 @@ export class ArkavidiaUserApi extends ArkavidiaBaseApi {
     try {
       const data = { email, password };
       const response = await this.axios.post(`/auth/login/`, data);
-
+      console.log(response.data);
       return {
         bearerToken: response.data.token,
         expiresAt: response.data.exp * 1000,
@@ -111,24 +111,6 @@ export class ArkavidiaUserApi extends ArkavidiaBaseApi {
       }
 
       throw new ApiError<EmailOperationStatus>(EmailOperationStatus.ERROR, e.toString());
-    }
-  }
-  async auth(): Promise<User> {
-    try {
-      const response = await this.axios.get(`/auth/`);
-      return {
-        fullName: response.data.fullName,
-        email: response.data.email,
-        dateJoined: response.data.dateJoined,
-        currentEducation: response.data.currentEducation,
-        institution: response.data.institution,
-        phoneNumber: response.data.phoneNumber,
-        birthDate: response.data.birthDate,
-        address: response.data.address
-      };
-    }
-    catch (e) {
-      throw new ApiError<boolean>(false, e.toString());
     }
   }
   async editUser(fullName: string, currentEducation : string, institution: string, phoneNumber: string, birthDate: string, address: string): Promise<User> {

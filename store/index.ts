@@ -30,6 +30,9 @@ export const mutations = {
     state.bearerToken = undefined;
     state.loggedInAt = undefined;
     state.expiresAt = undefined;
+  },
+  editUser(state:LoginState, {user}){
+    state.user = user;
   }
 };
 
