@@ -134,10 +134,6 @@ export default class AnggotaTim extends Vue {
             this.members = this.team.teamMembers;
           }
         }
-        console.log(this.competitionId);
-        console.log(this.teamId);
-        console.log(this.maxCapacity);
-        console.log(this.team);
       })
       .catch((e) => {
         if (e instanceof ApiError) {

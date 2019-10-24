@@ -35,6 +35,16 @@ export interface Member {
     isTeamLeader?: boolean;
 }
 
+export interface File {
+    id?: string;
+    originalFilename?: string;
+    fileSize: number;
+    description?: string;
+    uploadedBy?: string;
+    uploadedAt: string;
+    fileLink: string;
+}
+
 export enum RegistrationStatus {
   NAME_EXISTS, ERROR
 }
@@ -48,6 +58,10 @@ export enum GetListTeamStatus {
 }
 
 export enum DeleteMemberStatus {
+  ERROR
+}
+
+export enum FileStatus {
   ERROR
 }
 
@@ -113,11 +127,34 @@ export class ArkavidiaCompetitionApi extends ArkavidiaBaseApi {
       throw new ApiError<DeleteMemberStatus>(DeleteMemberStatus.ERROR, e.toString());
     }
   }
+  
+  async uploadFile(file: FormData, description: string): Promise<void> {
+    try {
+      const data = { file, description };
+      await this.axios.post(`/uploader/uploaded-file`, data, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      });
+    }
+    catch (e) {
+      throw new ApiError<FileStatus>(FileStatus.ERROR, e.toString());
+    }
+  }
+
+  async retrieveFile(fileId: string): Promise<void> {
+    try {
+      await this.axios.get(`/uploader/uploaded-file` + fileId);
+    }
+    catch (e) {
+      throw new ApiError<FileStatus>(FileStatus.ERROR, e.toString());
+    }
+  }
 }
 
 export const competitionMap: Record<string, number> = {
-  'competitive-programming' : 1,
-  'capture-the-flag' : 2,
+  'competitive-programming': 1,
+  'capture-the-flag': 2,
   'datavidia': 3,
   'arkalogica': 4,
   'hackavidia': 5
