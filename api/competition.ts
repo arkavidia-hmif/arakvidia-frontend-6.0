@@ -1,11 +1,19 @@
 import { ApiError, ArkavidiaBaseApi } from '~/api/base';
 
+export interface CompetitionList {
+  competitions?: Array<Competition>;
+}
+
 export interface Competition {
     id?: number;
     name: string;
     maxTeamMembers?: number;
     minTeamMembers?: number;
     isRegistrationOpen?: boolean;
+}
+
+export interface TeamList {
+  teams?: Array<Team>;
 }
 
 export interface Team {
@@ -35,7 +43,7 @@ export enum CreateMemberStatus {
   EMAIL_EXISTS, ERROR
 }
 
-export enum GetCompetitionStatus {
+export enum GetListTeamStatus {
   ERROR
 }
 
@@ -76,18 +84,18 @@ export class ArkavidiaCompetitionApi extends ArkavidiaBaseApi {
     }
   }
 
-  async getTeam(teamId: number): Promise<Team> {
+  async getTeamList(): Promise<Array<Team>> {
     try {
-      return await this.axios.get(`/competition/teams/` + teamId);
+      return await this.axios.get(`/competition/teams/`);
     }
     catch (e) {
       if (e.response) {
         if (e.response.data.code === 'unknown_error') {
-          throw new ApiError<GetCompetitionStatus>(GetCompetitionStatus.ERROR, e.response.data.detail);
+          throw new ApiError<GetListTeamStatus>(GetListTeamStatus.ERROR, e.response.data.detail);
         }
       }
 
-      throw new ApiError<GetCompetitionStatus>(GetCompetitionStatus.ERROR, e.toString());
+      throw new ApiError<GetListTeamStatus>(GetListTeamStatus.ERROR, e.toString());
     }
   }
 

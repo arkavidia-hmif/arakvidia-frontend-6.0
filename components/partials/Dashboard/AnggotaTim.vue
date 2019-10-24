@@ -1,5 +1,5 @@
 <template>
-  <div v-if="isLoding == false" class="ml-3 mb-5">
+  <div v-if="!isLoading" class="ml-3 mb-5">
     <div>
       <p style="font-weight: 700 !important; margin-bottom: 0 !important;">
         Daftar Anggota
@@ -66,13 +66,16 @@
 import { Component, Vue } from 'nuxt-property-decorator';
 import ProfileField from '~/components/partials/Dashboard/ProfileField.vue';
 import { ApiError } from '~/api/base';
-import { CreateMemberStatus, GetCompetitionStatus ,DeleteMemberStatus, Member } from '~/api/competition';
+import { CreateMemberStatus, GetListTeamStatus ,
+ DeleteMemberStatus, Competition, Team, Member, competitionMap } from '~/api/competition';
 
 interface QueryParameters {
   continue?: string;
 }
 
-export default class RegisterTeam extends Vue {
+@Component
+export default class AnggotaTim extends Vue {
+  team: Team | null = null;
   error: string = '';
   name: string = '';
   email: string = '';
@@ -83,6 +86,7 @@ export default class RegisterTeam extends Vue {
   isCreating: boolean = false;
   isDeleting: boolean = false;
   isLoading: boolean = true;
+  competitionId: number  = 0;
 
   get id() {
     // eslint-disable-next-line dot-notation
@@ -95,26 +99,49 @@ export default class RegisterTeam extends Vue {
   }
 
   mounted() {
-    // TO DO: replace teamId with variabel from API
+    this.competitionId = competitionMap[this.id];
 
-    this.$arkavidiaApi.competition.getTeam(this.teamId)
-      .then((res) => {
-        if (res.competition) {
-          if (res.competition.maxTeamMembers) {
-            this.maxCapacity = res.competition.maxTeamMembers;
+    this.$arkavidiaApi.competition.getTeamList()
+      .then((results) => {
+        if (results) {
+          if (results.length) {
+            var competition;
+            for (var i = 0; i < results.length; i++) {
+              if (results[i].competition) {
+                competition = results[i].competition;
+                if (competition.id) {
+                  if (competition.id == this.competitionId) {
+                    this.team = results[i];
+                  }
+                }
+              }
+            }
+        }
+        }
+
+        if (this.team) {
+          if (this.team.id) {
+            this.teamId = this.team.id;  
+          }
+
+          if (this.team.competition) {
+            if (this.team.competition.maxTeamMembers) {
+              this.maxCapacity = this.team.competition.maxTeamMembers;
+            }
+          }
+
+          if (this.team.teamMembers) {
+            this.members = this.team.teamMembers;
           }
         }
-
-        if (res.teamMembers) {
-          this.members = res.teamMembers;
-        }
-
-        const redirectUrl = (this.nextRoute) ? this.nextRoute : '/dashboard/competition/' + this.id + 'anggota-tim';
-        this.$router.push(redirectUrl);
+        console.log(this.competitionId);
+        console.log(this.teamId);
+        console.log(this.maxCapacity);
+        console.log(this.team);
       })
       .catch((e) => {
         if (e instanceof ApiError) {
-          if (e.errorCode === GetCompetitionStatus.ERROR) {
+          if (e.errorCode === GetListTeamStatus.ERROR) {
             this.error = 'Gagal saat Mengambil Data Anggota';
             return;
           }
