@@ -5,11 +5,13 @@ export interface CompetitionList {
 }
 
 export interface Competition {
-    id?: number;
-    name: string;
-    maxTeamMembers?: number;
-    minTeamMembers?: number;
-    isRegistrationOpen?: boolean;
+  id?: number;
+  name: string;
+  maxTeamMembers?: number;
+  minTeamMembers?: number;
+  isRegistrationOpen?: boolean;
+  slug: string;
+  viewIcon: string;
 }
 
 export interface TeamList {
@@ -17,32 +19,58 @@ export interface TeamList {
 }
 
 export interface Team {
-    id?: number;
-    competition?: Competition;
-    name: string;
-    teamLeaderEmail?: string;
-    institution: string;
-    isParticipating?: boolean;
-    category?: string;
-    teamMembers?: Array<Member>;
+  id: number;
+  competition?: Competition;
+  name: string;
+  teamLeaderEmail?: string;
+  institution: string;
+  isParticipating?: boolean;
+  category?: string;
+  teamMembers?: Array<Member>;
+  activeStageId?: number;
+  stages?: Array<Stage>;
+  taskResponses?: Array<TaskResponse>;
+  createdAt?: string;
 }
 
 export interface Member {
-    id?: number;
-    fullName?: string;
-    email: string;
-    hasAccount?: boolean;
-    isTeamLeader?: boolean;
+  id?: number;
+  fullName?: string;
+  email: string;
+  hasAccount?: boolean;
+  isTeamLeader?: boolean;
+}
+
+export interface Stage {
+  id?: number;
+  name?: string;
+  order: number;
+  tasks: Array<Task>;
+}
+
+export interface Task {
+  id?: number;
+  name?: string;
+  category?: string;
+  widget?: string;
+  widgetParameters?: string;
+}
+
+export interface TaskResponse {
+  taskId?: number;
+  response?: string;
+  status: string;
+  lastSubmittedAt: string;
 }
 
 export interface File {
-    id?: string;
-    originalFilename?: string;
-    fileSize: number;
-    description?: string;
-    uploadedBy?: string;
-    uploadedAt: string;
-    fileLink: string;
+  id?: string;
+  originalFilename?: string;
+  fileSize: number;
+  description?: string;
+  uploadedBy?: string;
+  uploadedAt: string;
+  fileLink: string;
 }
 
 export enum RegistrationStatus {
@@ -65,6 +93,14 @@ export enum FileStatus {
   ERROR
 }
 
+export enum CompetitionListStatus {
+  ERROR
+}
+
+export enum TeamDetailStatus {
+  ERROR
+}
+
 export class ArkavidiaCompetitionApi extends ArkavidiaBaseApi {
   async getCompetitionList() : Promise<Array<Competition>> {
     try {
@@ -72,7 +108,17 @@ export class ArkavidiaCompetitionApi extends ArkavidiaBaseApi {
       return response.data;
     }
     catch (e) {
-      throw new ApiError<RegistrationStatus>(RegistrationStatus.ERROR, e.toString());
+      throw new ApiError<CompetitionListStatus>(CompetitionListStatus.ERROR, e.toString());
+    }
+  }
+
+  async getTeamDetail(teamId: number): Promise<Team> {
+    try {
+      const response = await this.axios.get(`/competition/teams/${teamId}`);
+      return response.data;
+    }
+    catch (e) {
+      throw new ApiError<TeamDetailStatus>(TeamDetailStatus.ERROR, e.toString());
     }
   }
 
