@@ -1,5 +1,5 @@
 import arkavidiaApi from '~/api/api';
-import { Competition, Team } from '~/api/competition';
+import { Competition, Team } from '~/api/competition/types';
 
 
 export interface CompetitionState {

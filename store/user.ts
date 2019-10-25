@@ -1,5 +1,5 @@
-import { User } from '~/api/user';
 import arkavidiaApi from '~/api/api';
+import { User, LoginStatus } from '~/api/user/types';
 
 export interface AuthState {
   loggedIn: boolean;
@@ -7,10 +7,6 @@ export interface AuthState {
   bearerToken?: string;
   loggedInAt?: number;
   expiresAt?: number;
-};
-
-export enum LoginStatus {
-  INVALID_CREDS, ERROR, EMAIL_NOT_CONFIRMED
 };
 
 export const namespaced = true;
@@ -58,5 +54,8 @@ export const actions = {
     const response = await arkavidiaApi.user.login(email, password);
     commit('setLogin', response);
     window.localStorage.setItem('arkav-token', response.bearerToken);
+  },
+  async register({ }, { email, fullName, password }) {
+    await arkavidiaApi.user.register(email, fullName, password);
   },
 };

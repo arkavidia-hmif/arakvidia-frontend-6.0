@@ -73,7 +73,7 @@
 <script lang="ts">
 import { Component, Action, Vue } from 'nuxt-property-decorator';
 import { ApiError } from '~/api/base';
-import { LoginStatus } from '~/api/user';
+import { LoginStatus } from '~/api/user/types';
 
 interface QueryParameters {
   continue?: string;
@@ -85,7 +85,6 @@ export default class DashboardLogin extends Vue {
   isLoggingIn: boolean = false;
   email: string = '';
   password: string = '';
-
   error: string = '';
 
   @Action('user/login') loginAction;

@@ -60,7 +60,7 @@
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator';
 import { ApiError } from '~/api/base';
-import { EmailOperationStatus } from '~/api/user';
+import { EmailOperationStatus } from '~/api/user/types';
 
 @Component
 export default class DashboardRecoverReset extends Vue {

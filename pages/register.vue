@@ -51,9 +51,9 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'nuxt-property-decorator';
+import { Component, Action, Vue } from 'nuxt-property-decorator';
 import { ApiError } from '~/api/base';
-import { RegistrationStatus } from '~/api/user';
+import { RegistrationStatus } from '~/api/user/types';
 
 interface QueryParameters {
   continue?: string;
@@ -73,6 +73,8 @@ export default class DashboardRegister extends Vue {
       title: 'Daftar'
     };
   }
+
+  @Action('user/register') registerAction;
 
   get nextRoute(): string|undefined {
     const queryParams = this.$route.query as QueryParameters;
@@ -107,7 +109,7 @@ export default class DashboardRegister extends Vue {
 
     this.isRegistering = true;
     this.error = '';
-    this.$arkavidiaApi.user.register(this.email, this.fullName, this.password)
+    this.registerAction(this.email, this.fullName, this.password)
       .then(() => {
         const redirectUrl = (this.nextRoute) ? `/thanks?continue=${this.nextRoute}` : '/thanks';
         this.$router.push(redirectUrl);

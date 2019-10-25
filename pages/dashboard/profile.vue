@@ -32,7 +32,7 @@ import { Component, Vue, State } from 'nuxt-property-decorator';
 import DashboardWrapper from '~/components/partials/Dashboard/DashboardWrapper.vue';
 import ProfileField from '~/components/partials/Dashboard/ProfileField.vue';
 import ModalProfile from '~/components/partials/Dashboard/ModalProfile.vue';
-import { User } from '~/api/user';
+import { User } from '~/api/user/types';
 interface NuxtWindow {
   onNuxtReady?: Function;
 }

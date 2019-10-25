@@ -31,7 +31,6 @@
 import { Component, Vue } from 'nuxt-property-decorator';
 import DashboardWrapper from '~/components/partials/Dashboard/DashboardWrapper.vue';
 import { ApiError } from '~/api/base';
-import { RegistrationStatus, competitionMap } from '~/api/competition';
 
 interface QueryParameters {
   continue?: string;
