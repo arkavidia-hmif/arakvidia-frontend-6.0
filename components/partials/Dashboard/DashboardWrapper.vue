@@ -35,7 +35,7 @@ interface NuxtWindow {
   components: { Forbidden }
 })
 export default class DashboardWrapper extends Vue {
-  @Getter('auth/isLoggedIn') loggedIn!: boolean;
+  @Getter('user/isLoggedIn') loggedIn!: boolean;
   @State user!: User;
   dashboardMenus: Menu[] = dashboardMenus;
 

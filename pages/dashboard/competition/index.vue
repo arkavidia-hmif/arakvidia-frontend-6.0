@@ -35,7 +35,7 @@ export default class DashboardIndex extends Vue {
   }
 
   mounted() {
-    this.getCompetitionListAction()
+    this.getCompetitionListAction();
   }
 }
 </script>

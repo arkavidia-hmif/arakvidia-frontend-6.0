@@ -1,28 +1,36 @@
 import axios from 'axios';
-import { ArkavidiaUserApi } from '~/api/user';
-import { ArkavidiaAnnouncementApi } from '~/api/announcement';
-import { ArkavidiaCompetitionApi } from '~/api/competition';
-axios.defaults.xsrfCookieName = 'csrftoken';
-axios.defaults.xsrfHeaderName = 'X-CSRFTOKEN';
-axios.defaults.withCredentials = true;
+import { ArkavidiaAnnouncementApi } from './announcement';
+import { ArkavidiaCompetitionApi } from './competition';
+import { ArkavidiaUserApi } from './user';
 
-export default axios;
+const apiClient = axios.create({
+  // Prevent sending cookies with cross-domain requests
+  withCredentials: false,
+
+  // Django sends the XSRF token in a cookie named csrftoken
+  // https://docs.djangoproject.com/en/2.1/ref/csrf/#ajax
+  xsrfCookieName: 'csrftoken',
+  xsrfHeaderName: 'X-CSRFToken',
+});
+
+apiClient.interceptors.request.use((config) => {
+  const bearerToken = window.localStorage.getItem('arkav-token');
+  if (!!bearerToken) {
+    config.headers.common['Authorization'] = bearerToken;
+  }
+  return config;
+});
 
 export class ArkavidiaApi {
-  token: string = '';
-
   constructor(baseUrl: string) {
-    axios.defaults.baseURL = baseUrl;
+    apiClient.defaults.baseURL = baseUrl;
   }
 
-  set accessToken(token) {
-    if (token) {
-      this.token = token;
-      axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-    }
-  }
-
-  user: ArkavidiaUserApi = new ArkavidiaUserApi(axios);
-  announcement: ArkavidiaAnnouncementApi = new ArkavidiaAnnouncementApi(axios);
-  competition: ArkavidiaCompetitionApi = new ArkavidiaCompetitionApi(axios);
+  user: ArkavidiaUserApi = new ArkavidiaUserApi(apiClient);
+  announcement: ArkavidiaAnnouncementApi = new ArkavidiaAnnouncementApi(apiClient);
+  competition: ArkavidiaCompetitionApi = new ArkavidiaCompetitionApi(apiClient);
 }
+
+const arkavidiaApi = new ArkavidiaApi(process.env.API_BASE_URL || '');
+
+export default arkavidiaApi;

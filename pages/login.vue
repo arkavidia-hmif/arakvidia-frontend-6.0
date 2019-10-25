@@ -73,7 +73,7 @@
 <script lang="ts">
 import { Component, Action, Vue } from 'nuxt-property-decorator';
 import { ApiError } from '~/api/base';
-import { LoginStatus } from '~/store/auth';
+import { LoginStatus } from '~/api/user';
 
 interface QueryParameters {
   continue?: string;
@@ -88,7 +88,7 @@ export default class DashboardLogin extends Vue {
 
   error: string = '';
 
-  @Action('auth/login') loginAction;
+  @Action('user/login') loginAction;
 
   head() {
     return {

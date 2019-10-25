@@ -66,6 +66,16 @@ export enum FileStatus {
 }
 
 export class ArkavidiaCompetitionApi extends ArkavidiaBaseApi {
+  async getCompetitionList() : Promise<Array<Competition>> {
+    try {
+      const response = await this.axios.get(`/competition/`);
+      return response.data;
+    }
+    catch (e) {
+      throw new ApiError<RegistrationStatus>(RegistrationStatus.ERROR, e.toString());
+    }
+  }
+
   async registerTeam(competitionId: number, name: string, institution: string): Promise<void> {
     try {
       const data = { competitionId, name, institution };
