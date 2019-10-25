@@ -8,45 +8,27 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'nuxt-property-decorator';
+import { Component, Vue, Action } from 'nuxt-property-decorator';
 import DashboardWrapper from '~/components/partials/Dashboard/DashboardWrapper.vue';
 import AnnouncementCard from '~/components/partials/Dashboard/AnnouncementCard.vue';
-// import { Announcement, ArkavidiaAnnouncementApi } from '~/api/announcement.ts';
+
 @Component({
   components: { DashboardWrapper, AnnouncementCard }
 })
 export default class DashboardIndex extends Vue {
-  data() {
-    return {
-      // announcements: ''
-      announcements: [
-        {
-          message: 'Jangan lupa melakukan pembayaran CTF',
-          dateSent: '2019-10-10'
-        }
-      ]
-    };
-  }
+  @Action('announcement/announcementlist') announcementAction;
+  announcements: any = '';
   head() {
     return {
       title: 'Dashboard'
     };
   }
-  // data dari server masih kosong
-  // mounted() {
-  //   if (window) {
-  //     const nuxtWindow: NuxtWindow = window as NuxtWindow;
-  //     if (nuxtWindow.onNuxtReady !== undefined) {
-  //       nuxtWindow.onNuxtReady(() => {
-  //         this.$arkavidiaApi.announcement.listAnnouncements()
-  //           .then((val) => {
-  //             this.announcements = val;
-  //             console.log(val);
-  //           });
-  //       });
-  //     }
-  //   }
-  // }
+  mounted() {
+    this.announcementAction()
+      .then((val) => {
+        this.announcements = val;
+      });
+  }
 }
 </script>
 

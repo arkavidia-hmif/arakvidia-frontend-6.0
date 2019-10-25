@@ -1,5 +1,5 @@
 import arkavidiaApi from '~/api/api';
-import { User, LoginStatus } from '~/api/user/types';
+import { User } from '~/api/user/types';
 
 export interface AuthState {
   loggedIn: boolean;
@@ -7,7 +7,7 @@ export interface AuthState {
   bearerToken?: string;
   loggedInAt?: number;
   expiresAt?: number;
-};
+}
 
 export const namespaced = true;
 
@@ -16,12 +16,12 @@ export const state = () => ({
   user: null,
   bearerToken: null,
   loggedIntAt: null,
-  expiresAt: null,
+  expiresAt: null
 });
 
 export const getters = {
   isLoggedIn(state: AuthState) {
-    if (!!state.expiresAt) {
+    if (state.expiresAt) {
       return state.loggedIn && Date.now() <= state.expiresAt;
     }
 
@@ -30,6 +30,9 @@ export const getters = {
   getToken(state: AuthState) {
     return state.bearerToken;
   },
+  getUser(state: AuthState) {
+    return state.user;
+  }
 };
 
 export const mutations = {
@@ -47,6 +50,9 @@ export const mutations = {
     state.loggedInAt = undefined;
     state.expiresAt = undefined;
   },
+  editProfile(state: AuthState, user) {
+    state.user = user;
+  }
 };
 
 export const actions = {
@@ -58,4 +64,9 @@ export const actions = {
   async register({ }, { email, fullName, password }) {
     await arkavidiaApi.user.register(email, fullName, password);
   },
+  async editProfile({ commit }, user) {
+    const response = await arkavidiaApi.user.editProfile(user);
+    // console.log(user);
+    commit('editProfile', response);
+  }
 };

@@ -1,5 +1,5 @@
-import { ApiError, ArkavidiaBaseApi } from '~/api/base';
 import { Announcement, InternalAnnouncement } from './types';
+import { ApiError, ArkavidiaBaseApi } from '~/api/base';
 
 export class ArkavidiaAnnouncementApi extends ArkavidiaBaseApi {
   async getAnnouncementList(): Promise<Announcement[]> {
@@ -21,4 +21,4 @@ export class ArkavidiaAnnouncementApi extends ArkavidiaBaseApi {
       throw new ApiError<boolean>(false, e.toString());
     }
   }
-};
+}

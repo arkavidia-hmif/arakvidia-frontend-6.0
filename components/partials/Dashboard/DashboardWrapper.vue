@@ -5,9 +5,9 @@
         Dashboard
       </div>
       <div class="display-1 font-weight-bold mt-2 mb-5" style="color: #0B909A">
-        Halo, {{ user.fullName }}!
+        Halo, {{ user.fullName }}
       </div>
-      <v-tabs slider-color="#E44D4B" slider-size="5">
+      <v-tabs slider-color="#E44D4B" slider-size="5" class="noprevpadding">
         <v-tab v-for="(item, i) in dashboardMenus" :key="i" :to="item.route" :disabled="item.disabled || false" class="font-weight-bold black--text sub-title-1 text-none">
           {{ item.title }}
         </v-tab>
@@ -21,7 +21,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, State, Getter } from 'nuxt-property-decorator';
+import { Component, Vue, Getter } from 'nuxt-property-decorator';
 import { dashboardMenus, Menu } from '~/constants/menus';
 import { User } from '~/api/user/types';
 import Forbidden from '~/components/Forbidden.vue';
@@ -36,7 +36,7 @@ interface NuxtWindow {
 })
 export default class DashboardWrapper extends Vue {
   @Getter('user/isLoggedIn') loggedIn!: boolean;
-  @State user!: User;
+  @Getter('user/getUser') user !: User;
   dashboardMenus: Menu[] = dashboardMenus;
 
   mounted() {
@@ -55,4 +55,7 @@ export default class DashboardWrapper extends Vue {
 </script>
 
 <style scoped>
+  .noprevpadding /deep/.v-slide-group__prev {
+    display: none !important;
+  }
 </style>
