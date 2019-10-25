@@ -3,7 +3,7 @@ export interface Announcement {
   dateSent: number;
 }
 
-interface InternalAnnouncement {
+export interface InternalAnnouncement {
   message: string;
   dateSent: string;
 }
