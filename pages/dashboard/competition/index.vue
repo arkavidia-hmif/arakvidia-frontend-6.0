@@ -27,7 +27,7 @@ export default class DashboardIndex extends Vue {
       title: 'Dashboard'
     };
   };
-  @Action('competition/getCompetitionList') getCompetitionListAction;
+  @Action('competition/fetchCompetitionList') fetchCompetitionListAction;
   @Getter('competition/getCompetitions') getCompetitions;
 
   get competitions() {
@@ -35,7 +35,7 @@ export default class DashboardIndex extends Vue {
   }
 
   mounted() {
-    this.getCompetitionListAction();
+    this.fetchCompetitionListAction();
   }
 }
 </script>

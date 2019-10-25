@@ -16,7 +16,7 @@ const apiClient = axios.create({
 apiClient.interceptors.request.use((config) => {
   const bearerToken = window.localStorage.getItem('arkav-token');
   if (!!bearerToken) {
-    config.headers.common['Authorization'] = bearerToken;
+    config.headers.common['Authorization'] = `Bearer ${bearerToken}`;
   }
   return config;
 });
