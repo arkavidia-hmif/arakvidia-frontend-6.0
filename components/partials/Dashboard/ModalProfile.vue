@@ -9,7 +9,7 @@
       <v-alert v-if="error" type="error">
         {{ error }}
       </v-alert>
-      <form @submit.prevent="attemptEdit" v-if="fUser">
+      <form v-if="fUser" @submit.prevent="attemptEdit">
         <v-card justify="center">
           <v-card-title>
             <span class="headline">Edit Profile</span>
@@ -18,7 +18,7 @@
             <v-container>
               <v-row>
                 <v-col cols="12">
-                  <v-text-field v-model="fUser.fullName" label="Name*" :value="fUser.fullName"  />
+                  <v-text-field v-model="fUser.fullName" label="Name*" :value="fUser.fullName" />
                 </v-col>
                 <v-col cols="12">
                   <v-text-field v-model="fUser.currentEducation" label="Education*" :value="fUser.currentEducation" />
@@ -81,28 +81,25 @@
 </template>
 
 <script lang='ts'>
-import { Mutation,Component, State } from 'nuxt-property-decorator';
+import { Mutation, Component, State } from 'nuxt-property-decorator';
 import Vue from 'vue';
 import { User } from '~/api/user';
 
 @Component
-export default class ModalProfile extends Vue{
+export default class ModalProfile extends Vue {
   @Mutation('editUser') mutationEditUser;
   @State user!: User;
-  data(){
-    return{
-      dialog: false,
-      menu: false,
-      isEdit: false,
-      error: '',
-      fUser: '',
-    }
+  dialog: boolean = false;
+  menu: boolean = false;
+  isEdit: boolean =false;
+  error: string = '';
+  fUser: User = Object.assign({}, this.user);
+  data() {
+    return {
+
+    };
   }
-  get nextRoute(): string|undefined {
-    const queryParams = this.$route.query as QueryParameters;
-    return queryParams.continue;
-  }
-  
+
   attemptEdit() {
     if (!this.fUser.fullName) {
       this.error = 'Nama lengkap harus diisi';
@@ -130,25 +127,23 @@ export default class ModalProfile extends Vue{
     }
     this.error = '';
     this.isEdit = true;
-    this.$arkavidiaApi.user.editUser(this.fUser.fullName, this.fUser.currentEducation, this.fUser.institution,this.fUser.phoneNumber,this.fUser.birthDate,this.fUser.address)
-    .then((val) => {
-      this.mutationEditUser({
-        user:val
+    this.$arkavidiaApi.user.editUser(this.fUser.fullName, this.fUser.currentEducation, this.fUser.institution, this.fUser.phoneNumber, this.fUser.birthDate, this.fUser.address)
+      .then((val) => {
+        this.mutationEditUser({
+          user: val
+        });
+        this.$router.push('/dashboard/');
       })
-        const redirectUrl = (this.nextRoute) ? this.nextRoute : '/dashboard/profile/';
-        this.$router.push(redirectUrl);
-    })
-    .catch((e) => {
-      console.log('error');
-      this.error = e.toString();
-    })
-    .finally(() => {
-      this.isEdit = false;
-    });
-    return;
+      .catch((e) => {
+        // console.log('error');
+        this.error = e.toString();
+      })
+      .finally(() => {
+        this.isEdit = false;
+      });
   }
 
-  mounted(){
+  mounted() {
     this.fUser = Object.assign({}, this.user);
   }
 }

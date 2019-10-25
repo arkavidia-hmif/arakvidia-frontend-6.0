@@ -1,22 +1,22 @@
 <template>
   <DashboardWrapper>
-    <div v-if="this.user">
-    <v-layout row wrap class="mt-4">
-      <v-flex md3 xs12>
-        <ProfileField title="Name" :value="user.fullName" />
-        <ProfileField title="Email" :value="user.email" />
-        <ProfileField title="Education" :value="user.currentEducation" />
-        <!-- <div>{{user}}</div> -->
-        <ProfileField title="Institution" :value="user.institution" />
-      </v-flex>
-      <v-flex md6 xs12>
-        <ProfileField title="Phone Number" :value="user.phoneNumber" />
-        <ProfileField title="Birth Date" :value="user.birthDate" />
-        <ProfileField title="Address" :value="user.address" />
-      </v-flex>
-    </v-layout>
-    <ModalProfile />
-  </div>
+    <div v-if="user">
+      <v-layout row wrap class="mt-4">
+        <v-flex md3 xs12>
+          <ProfileField title="Name" :value="user.fullName" />
+          <ProfileField title="Email" :value="user.email" />
+          <ProfileField title="Education" :value="user.currentEducation" />
+          <!-- <div>{{user}}</div> -->
+          <ProfileField title="Institution" :value="user.institution" />
+        </v-flex>
+        <v-flex md6 xs12>
+          <ProfileField title="Phone Number" :value="user.phoneNumber" />
+          <ProfileField title="Birth Date" :value="user.birthDate" />
+          <ProfileField title="Address" :value="user.address" />
+        </v-flex>
+      </v-layout>
+      <ModalProfile />
+    </div>
   </DashboardWrapper>
 </template>
 
@@ -46,10 +46,10 @@ export default class Profile extends Vue {
       title: 'Dashboard'
     };
   }
-  data(){
-    return{
-      isMounted : false
-    }
+  data() {
+    return {
+      isMounted: false
+    };
   }
 }
 </script>

@@ -1,14 +1,13 @@
 <template>
   <v-card elevation="1" class="px-5 py-3 mt-4">
-        <div class="black--text font-weight-bold">
-          {{ tgl }}
-        </div>
-        <div style="text-align: justify">
-          {{ message }}
-        </div>
+    <div class="black--text font-weight-bold">
+      {{ tgl }}
+    </div>
+    <div style="text-align: justify">
+      {{ message }}
+    </div>
   </v-card>
 </template>
-
 
 <script lang="ts">
 import Vue from 'vue';

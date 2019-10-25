@@ -34,7 +34,6 @@ export class ArkavidiaUserApi extends ArkavidiaBaseApi {
     try {
       const data = { email, password };
       const response = await this.axios.post(`/auth/login/`, data);
-      console.log(response.data);
       return {
         bearerToken: response.data.token,
         expiresAt: response.data.exp * 1000,

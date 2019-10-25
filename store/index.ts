@@ -31,7 +31,7 @@ export const mutations = {
     state.loggedInAt = undefined;
     state.expiresAt = undefined;
   },
-  editUser(state:LoginState, {user}){
+  editUser(state:LoginState, { user }) {
     state.user = user;
   }
 };
