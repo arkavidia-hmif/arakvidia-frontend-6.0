@@ -13,19 +13,34 @@
     "start": "nuxt start --spa",
     "build:ssr": "nuxt build",
     "staging:ssr": "BUILD_ENV=staging nuxt build",
-    "start:ssr": "nuxt start"
+    "start:ssr": "nuxt start",
+    "lint": "eslint --max-warnings 0 --ext .ts,.js,.vue .",
+    "lint-fix": "eslint --max-warnings 0 --fix --ext .ts,.js,.vue ."
   },
   "dependencies": {
+    "@mdi/js": "^4.5.95",
     "@nuxtjs/axios": "^5.3.6",
     "@nuxtjs/dotenv": "^1.4.0",
     "@nuxtjs/google-analytics": "^2.2.0",
     "@nuxtjs/pwa": "^3.0.0-0",
-    "nuxt": "^2.0.0",
-    "ts-node": "^8.3.0"
+    "@nuxtjs/sentry": "^3.0.0",
+    "@nuxtjs/sitemap": "^2.0.0",
+    "axios": "^0.19.0",
+    "eslint": "^6.3.0",
+    "fibers": "^4.0.1",
+    "nuxt": "^2.9.0",
+    "nuxt-property-decorator": "^2.4.0",
+    "ts-node": "^8.3.0",
+    "vue-class-component": "^7.1.0",
+    "vue-property-decorator": "^8.2.2",
+    "vue-typed-js": "^0.1.2",
+    "vuex-class": "^0.3.2",
+    "vuex-persist": "^2.1.0"
   },
   "devDependencies": {
-    "@nuxt/typescript": "^2.8.1",
-    "@nuxtjs/vuetify": "^1.2.1",
+    "@nuxt/typescript-build": "^0.2.6",
+    "@nuxtjs/eslint-config-typescript": "^0.1.3",
+    "@nuxtjs/vuetify": "^1.9.0",
     "dotenv": "^8.0.0"
   }
 }
