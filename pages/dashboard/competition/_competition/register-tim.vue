@@ -31,7 +31,7 @@
 import { Component, Vue } from 'nuxt-property-decorator';
 import DashboardWrapper from '~/components/partials/Dashboard/DashboardWrapper.vue';
 import { ApiError } from '~/api/base';
-import { RegistrationStatus, competitionMap } from '~/api/competition';
+import { RegisterTeamStatus } from '~/api/competition/types';
 
 interface QueryParameters {
   continue?: string;
@@ -64,7 +64,7 @@ export default class RegisterTeam extends Vue {
       }
     }
 
-    this.competitionId = competitionMap[this.id];
+    this.competitionId = 1; // hardcoded, previously competitionMap[this.id];
   }
 
   head() {
@@ -106,7 +106,7 @@ export default class RegisterTeam extends Vue {
       })
       .catch((e) => {
         if (e instanceof ApiError) {
-          if (e.errorCode === RegistrationStatus.NAME_EXISTS) {
+          if (e.errorCode === RegisterTeamStatus.NAME_EXISTS) {
             this.error = 'Nama tim sudah terdaftar';
             return;
           }

@@ -50,7 +50,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'nuxt-property-decorator';
+import { Component, Vue, Action } from 'nuxt-property-decorator';
 
 @Component
 export default class DashboardLogin extends Vue {
@@ -58,6 +58,8 @@ export default class DashboardLogin extends Vue {
   emailSent: boolean = false;
   email: string = '';
   error: string = '';
+
+  @Action('user/recover') recoverAction;
 
   head() {
     return {
@@ -73,7 +75,8 @@ export default class DashboardLogin extends Vue {
 
     this.isRecovering = true;
     this.error = '';
-    this.$arkavidiaApi.user.recover(this.email)
+
+    this.recoverAction({ email: this.email })
       .then(() => {
         this.emailSent = true;
       })

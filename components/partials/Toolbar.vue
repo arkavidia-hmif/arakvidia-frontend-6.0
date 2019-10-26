@@ -78,7 +78,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Getter, Mutation } from 'nuxt-property-decorator';
+import { Component, Vue, Getter, Action } from 'nuxt-property-decorator';
 import { mainMenus, TopLevelMenu } from '../../constants/menus';
 import ToolbarDropdown from '~/components/partials/ToolbarDropdown.vue';
 import DrawerListItem from '~/components/partials/Drawer/DrawerListItem.vue';
@@ -90,14 +90,14 @@ import MenuIcon from '~/components/partials/Drawer/MenuIcon.vue';
   components: { ToolbarDropdown, DrawerListItem, DrawerListGroup, MenuIcon }
 })
 export default class DashboardIndex extends Vue {
-  @Getter('isLoggedIn') loggedIn!: boolean;
-  @Mutation('logout') mutationLogout;
+  @Getter('user/isLoggedIn') loggedIn!: boolean;
+  @Action('user/logout') actionLogout;
 
   mainMenus: TopLevelMenu[] = mainMenus;
   drawer: boolean = false;
 
   attemptLogout() {
-    this.mutationLogout();
+    this.actionLogout();
     this.$router.push('/');
   }
 }

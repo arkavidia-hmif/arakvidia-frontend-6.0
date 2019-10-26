@@ -1,17 +1,8 @@
+import { Announcement, InternalAnnouncement } from './types';
 import { ApiError, ArkavidiaBaseApi } from '~/api/base';
 
-export interface Announcement {
-  message: string;
-  dateSent: number;
-}
-
-interface InternalAnnouncement {
-  message: string;
-  dateSent: string;
-}
-
 export class ArkavidiaAnnouncementApi extends ArkavidiaBaseApi {
-  async listAnnouncements(): Promise<Announcement[]> {
+  async getAnnouncementList(): Promise<Announcement[]> {
     try {
       const response = await this.axios.get(`/announcement/announcements/`);
       const announcements: Announcement[] = [];

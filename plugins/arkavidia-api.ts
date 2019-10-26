@@ -1,26 +1,25 @@
-import { ArkavidiaApi } from '~/api/api';
-import { LoginState } from '~/store';
+import arkavidiaApi, { ArkavidiaApi } from '~/api/api';
 
 interface NuxtWindow {
   onNuxtReady?: Function;
 }
 
-export default ({ store }, inject) => {
-  const api = new ArkavidiaApi(process.env.API_BASE_URL || '');
-  inject('arkavidiaApi', api);
+// eslint-disable-next-line no-empty-pattern
+export default ({}, inject) => {
+  inject('arkavidiaApi', arkavidiaApi);
 
   const nuxtWindow = window as NuxtWindow;
 
   if (nuxtWindow.onNuxtReady) {
     nuxtWindow.onNuxtReady(() => {
-      const loginState: LoginState = store.state as LoginState;
-      api.accessToken = loginState.bearerToken;
+    //   const loginState: LoginState = store.state as LoginState;
+    //   arkavidiaApi.accessToken = loginState.bearerToken;
     });
   }
 };
 
 declare module 'vue/types/vue' {
   interface Vue {
-    $arkavidiaApi: ArkavidiaApi
+    $arkavidiaApi: ArkavidiaApi,
   }
 }

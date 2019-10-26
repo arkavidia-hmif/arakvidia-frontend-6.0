@@ -18,9 +18,9 @@
             </p>
             <v-flex>
               <v-btn
-                :memberId="member.id"
+                :member-id="member.id"
                 class="my-5 subtitle-2 text-none px-5 font-weight-bold"
-                style="border-radius: 50px; margin: 0 !important; border: 2px solid #E44D4B; 
+                style="border-radius: 50px; margin: 0 !important; border: 2px solid #E44D4B;
                 color: #E44D4B; float: right; background: white;"
               >
                 Hapus Anggota
@@ -52,8 +52,12 @@
             v-model="email"
             label="Email"
           />
-          <v-btn class="my-5 primary subtitle-2 text-none px-5 font-weight-bold"
-          style="border-radius: 50px" type="submit" :loading="isCreating">
+          <v-btn
+            class="my-5 primary subtitle-2 text-none px-5 font-weight-bold"
+            style="border-radius: 50px"
+            type="submit"
+            :loading="isCreating"
+          >
             Tambah Anggota
           </v-btn>
         </form>
@@ -66,8 +70,14 @@
 import { Component, Vue } from 'nuxt-property-decorator';
 import ProfileField from '~/components/partials/Dashboard/ProfileField.vue';
 import { ApiError } from '~/api/base';
-import { CreateMemberStatus, GetListTeamStatus ,
- DeleteMemberStatus, Competition, Team, Member, competitionMap } from '~/api/competition';
+import {
+  Team,
+  Member,
+  GetTeamListStatus,
+  AddMemberStatus,
+  RemoveMemberStatus,
+  Competition
+} from '~/api/competition/types';
 
 interface QueryParameters {
   continue?: string;
@@ -86,7 +96,7 @@ export default class AnggotaTim extends Vue {
   isCreating: boolean = false;
   isDeleting: boolean = false;
   isLoading: boolean = true;
-  competitionId: number  = 0;
+  competitionId: number = 0;
 
   get id() {
     // eslint-disable-next-line dot-notation
@@ -99,14 +109,14 @@ export default class AnggotaTim extends Vue {
   }
 
   mounted() {
-    this.competitionId = competitionMap[this.id];
+    this.competitionId = 1; // hardcoded temporarily, previously was competitionMap[this.id];
 
     this.$arkavidiaApi.competition.getTeamList()
       .then((results) => {
         if (results) {
           if (results.length) {
-            var competition;
-            for (var i = 0; i < results.length; i++) {
+            let competition;
+            for (let i = 0; i < results.length; i++) {
               if (results[i].competition) {
                 competition = results[i].competition;
                 if (competition.id) {
@@ -116,12 +126,12 @@ export default class AnggotaTim extends Vue {
                 }
               }
             }
-        }
+          }
         }
 
         if (this.team) {
           if (this.team.id) {
-            this.teamId = this.team.id;  
+            this.teamId = this.team.id;
           }
 
           if (this.team.competition) {
@@ -137,7 +147,7 @@ export default class AnggotaTim extends Vue {
       })
       .catch((e) => {
         if (e instanceof ApiError) {
-          if (e.errorCode === GetListTeamStatus.ERROR) {
+          if (e.errorCode === GetTeamListStatus.ERROR) {
             this.error = 'Gagal saat Mengambil Data Anggota';
             return;
           }
@@ -171,14 +181,14 @@ export default class AnggotaTim extends Vue {
 
     this.isCreating = true;
     this.error = '';
-    this.$arkavidiaApi.competition.registerMember(this.teamId, this.name, this.email)
+    this.$arkavidiaApi.competition.addMember(this.teamId, this.name, this.email)
       .then(() => {
         const redirectUrl = (this.nextRoute) ? this.nextRoute : '/dashboard/competition/' + this.id + 'anggota-tim';
         this.$router.push(redirectUrl);
       })
       .catch((e) => {
         if (e instanceof ApiError) {
-          if (e.errorCode === CreateMemberStatus.EMAIL_EXISTS) {
+          if (e.errorCode === AddMemberStatus.EMAIL_EXISTS) {
             this.error = 'E-mail sudah terdaftar';
             return;
           }
@@ -203,14 +213,14 @@ export default class AnggotaTim extends Vue {
   attemptDelete() {
     this.isDeleting = true;
     this.error = '';
-    this.$arkavidiaApi.competition.DeleteMember(this.teamId, this.memberId)
+    this.$arkavidiaApi.competition.removeMember(this.teamId, this.memberId)
       .then(() => {
         const redirectUrl = (this.nextRoute) ? this.nextRoute : '/dashboard/competition/' + this.id + 'anggota-tim';
         this.$router.push(redirectUrl);
       })
       .catch((e) => {
         if (e instanceof ApiError) {
-          if (e.errorCode === DeleteMemberStatus.ERROR) {
+          if (e.errorCode === RemoveMemberStatus.ERROR) {
             this.error = 'Penghapusan Anggota Gagal';
             return;
           }

@@ -22,13 +22,13 @@
             </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-        <v-list-item :to="`/dashboard/competition/${id}/berkas-administrasi`" exact>
+        <v-list-item :to="`/dashboard/competition/${id}/upload-berkas`" exact>
           <v-list-item-content>
             <v-list-item-title>
               <v-icon left>
                 {{ berkas }}
               </v-icon>
-              Berkas Administrasi
+              Upload Berkas
             </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
