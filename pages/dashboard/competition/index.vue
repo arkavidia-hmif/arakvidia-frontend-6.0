@@ -12,7 +12,7 @@
             :title="competition.name"
             subtitle=""
             :to="'/dashboard/competition/' + competition.slug + '/register-tim'"
-            button-title="View Application"
+            button-title="Register"
             :enabled="true" />
           <CompetitionCard v-else
             :title="competition.name"
