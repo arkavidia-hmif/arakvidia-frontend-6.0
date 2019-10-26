@@ -9,7 +9,7 @@
           {{ error }}
         </v-alert>
         <form @submit.prevent="attemptRegister">
-          <v-text-field v-model="team" label="Team Name" />
+          <v-text-field v-model="name" label="Team Name" />
           <v-text-field v-model="institution" label="Institute / School" />
           <div class="my-2">
             <v-btn
@@ -42,7 +42,7 @@ interface QueryParameters {
 })
 
 export default class RegisterTeam extends Vue {
-  team: string = '';
+  name: string = '';
   institution: string = '';
   title: string = '';
   error: string = '';
@@ -95,12 +95,12 @@ export default class RegisterTeam extends Vue {
   }
 
   attemptRegister() {
-    if (!this.team) {
+    if (!this.name) {
       this.error = 'Nama tim harus diisi';
       return;
     }
 
-    if (!this.validateTeam(this.team)) {
+    if (!this.validateTeam(this.name)) {
       this.error = 'Nama tim minimal 3 karakter';
       return;
     }
@@ -114,18 +114,18 @@ export default class RegisterTeam extends Vue {
     this.error = '';
 
     let competitionId = this.competitionId;
-    let team = this.team;
+    let name = this.name;
     let institution = this.institution;
 
-    this.registerTeamAction({ competitionId, team, institution })
+    this.registerTeamAction({ competitionId, name, institution })
     .then(() => {
       const redirectUrl = (this.nextRoute) ? this.nextRoute : '/dashboard/competition/' + this.competitionId;
       this.$router.push(redirectUrl);
     })
     .catch((e) => {
       if (e instanceof ApiError) {
-        if (e.errorCode === RegisterTeamStatus.NAME_EXISTS) {
-          this.error = 'Nama tim sudah terdaftar';
+        if (e.errorCode === RegisterTeamStatus.ERROR) {
+          this.error = 'Tidak dapat melakukan pendaftaran tim';
           return;
         }
 

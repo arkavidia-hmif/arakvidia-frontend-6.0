@@ -39,7 +39,7 @@ export class ArkavidiaCompetitionApi extends ArkavidiaBaseApi {
     catch (e) {
       if (e.response) {
         if (e.response.data.code === 'unknown_error') {
-          throw new ApiError<RegisterTeamStatus>(RegisterTeamStatus.NAME_EXISTS, e.response.data.detail);
+          throw new ApiError<RegisterTeamStatus>(RegisterTeamStatus.ERROR, e.response.data.detail);
         }
       }
 
