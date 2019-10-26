@@ -223,9 +223,8 @@ export default Vue.extend({
       eventCarouselModel: 0,
       aboutImages:
         [
-          require('~/assets/images/hackathon_intro.jpg'),
-          require('~/assets/images/hackathon_intro.jpg'),
-          require('~/assets/images/hackathon_intro.jpg')
+          require('~/assets/images/home/about-home-1.jpg'),
+          require('~/assets/images/home/about-home-2.jpg')
         ],
       competitionImages: [
         {

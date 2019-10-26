@@ -1,6 +1,11 @@
 import arkavidiaApi from '~/api/api';
 import { User } from '~/api/user/types';
 
+const TOKEN_NAME = 'arkav-token';
+
+if (typeof window !== 'undefined') {
+  arkavidiaApi.bearerToken = () => window.localStorage.getItem(TOKEN_NAME);
+}
 export interface AuthState {
   loggedIn: boolean;
   user?: User;
@@ -59,14 +64,31 @@ export const actions = {
   async login({ commit }, { email, password }) {
     const response = await arkavidiaApi.user.login(email, password);
     commit('setLogin', response);
-    window.localStorage.setItem('arkav-token', response.bearerToken);
+    window.localStorage.setItem(TOKEN_NAME, response.bearerToken);
   },
+  logout({ commit }) {
+    commit('setLogout');
+    window.localStorage.removeItem(TOKEN_NAME);
+  },
+
+  // eslint-disable-next-line no-empty-pattern
   async register({ }, { email, fullName, password }) {
     await arkavidiaApi.user.register(email, fullName, password);
   },
-  async editProfile({ commit }, user) {
-    const response = await arkavidiaApi.user.editProfile(user);
-    // console.log(user);
-    commit('editProfile', response);
+
+
+  // eslint-disable-next-line no-empty-pattern
+  async recover({ }, { email }) {
+    await arkavidiaApi.user.recover(email);
+  },
+
+  // eslint-disable-next-line no-empty-pattern
+  async confirmEmailAddress({ }, { token }) {
+    await arkavidiaApi.user.confirmEmailAddress(token);
+  },
+
+  // eslint-disable-next-line no-empty-pattern
+  async resetPassword({ }, { token, newPassword }) {
+    await arkavidiaApi.user.resetPassword(token, newPassword);
   }
 };

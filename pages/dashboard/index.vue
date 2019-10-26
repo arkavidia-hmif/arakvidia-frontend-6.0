@@ -11,6 +11,11 @@
 import { Component, Vue, Action } from 'nuxt-property-decorator';
 import DashboardWrapper from '~/components/partials/Dashboard/DashboardWrapper.vue';
 import AnnouncementCard from '~/components/partials/Dashboard/AnnouncementCard.vue';
+import { Announcement } from '~/api/announcement.ts';
+
+interface NuxtWindow {
+  onNuxtReady?: Function;
+}
 
 @Component({
   components: { DashboardWrapper, AnnouncementCard }
@@ -30,6 +35,19 @@ export default class DashboardIndex extends Vue {
       });
   }
 }
+//             this.$arkavidiaApi.announcement.listAnnouncements()
+//             .then((val) => {
+//               this.announcements = val;
+//               console.log(val);
+//             })
+//             .catch((e) =>{
+//               console.log(e);
+//             })
+//             .finally(()=>{
+//               this.isMounted = true;
+//             });
+//           }
+// }
 </script>
 
 <style scoped>

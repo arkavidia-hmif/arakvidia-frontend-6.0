@@ -4,7 +4,8 @@ interface NuxtWindow {
   onNuxtReady?: Function;
 }
 
-export default ({ store }, inject) => {
+// eslint-disable-next-line no-empty-pattern
+export default ({}, inject) => {
   inject('arkavidiaApi', arkavidiaApi);
 
   const nuxtWindow = window as NuxtWindow;
@@ -21,4 +22,4 @@ declare module 'vue/types/vue' {
   interface Vue {
     $arkavidiaApi: ArkavidiaApi,
   }
-};
+}
