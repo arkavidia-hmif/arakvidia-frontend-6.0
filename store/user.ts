@@ -52,6 +52,9 @@ export const mutations = {
     state.bearerToken = undefined;
     state.loggedInAt = undefined;
     state.expiresAt = undefined;
+  },
+  setUser(state: AuthState, { user }) {
+    state.user = user;
   }
 };
 
@@ -84,5 +87,14 @@ export const actions = {
   // eslint-disable-next-line no-empty-pattern
   async resetPassword({ }, { token, newPassword }) {
     await arkavidiaApi.user.resetPassword(token, newPassword);
+  },
+
+  async fetchUserData({ commit }) {
+    const user = await arkavidiaApi.user.getUserDetails();
+    commit('setUser', { user });
+  },
+  async editUser({ commit }, { user }) {
+    const userData = await arkavidiaApi.user.editUser(user);
+    commit('setUser', { user: userData });
   }
 };

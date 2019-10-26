@@ -90,20 +90,30 @@ export class ArkavidiaUserApi extends ArkavidiaBaseApi {
       throw new ApiError<EmailOperationStatus>(EmailOperationStatus.ERROR, e.toString());
     }
   }
-  async editUser(fullName: string, currentEducation : string, institution: string, phoneNumber: string, birthDate: string, address: string): Promise<User> {
+
+  async getUserDetails(): Promise<User> {
     try {
-      const data = { fullName, currentEducation, institution, phoneNumber, birthDate, address };
-      const response = await this.axios.patch(`/auth/edit-user/`, data);
-      return {
-        fullName: response.data.fullName,
-        email: response.data.email,
-        dateJoined: response.data.dateJoined,
-        currentEducation: response.data.currentEducation,
-        institution: response.data.institution,
-        phoneNumber: response.data.phoneNumber,
-        birthDate: response.data.birthDate,
-        address: response.data.address
-      };
+      const response = await this.axios.get(`/auth/`);
+      const [user] = response.data;
+      return user as User;
+    }
+    catch (e) {
+      throw new ApiError<boolean>(false, e.toString());
+    }
+  }
+
+  async editUser(user: User): Promise<User> {
+    try {
+      const response = await this.axios.patch(`/auth/edit-user/`, {
+        fullName: user.fullName,
+        currentEducation: user.currentEducation,
+        institution: user.institution,
+        phoneNumber: user.phoneNumber,
+        address: user.address,
+        birthDate: user.birthDate
+      });
+      const userData = response.data;
+      return userData as User;
     }
     catch (e) {
       throw new ApiError<boolean>(false, e.toString());
