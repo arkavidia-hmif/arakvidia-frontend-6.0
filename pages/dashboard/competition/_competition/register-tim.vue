@@ -28,7 +28,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'nuxt-property-decorator';
+import { Component, Vue, Action, Getter } from 'nuxt-property-decorator';
 import DashboardWrapper from '~/components/partials/Dashboard/DashboardWrapper.vue';
 import { ApiError } from '~/api/base';
 import { RegisterTeamStatus } from '~/api/competition/types';
@@ -47,24 +47,36 @@ export default class RegisterTeam extends Vue {
   title: string = '';
   error: string = '';
   isRegistering: boolean = false;
-  competitionId: number = 0;
 
-  get id() {
+  @Action('competition/registerTeam') registerTeamAction;
+  @Getter('competition/getCompetitions') getCompetitions;
+
+  get competitions() {
+    return this.getCompetitions;
+  }
+
+  get slug() {
     // eslint-disable-next-line dot-notation
     return this.$route.params['competition'];
   }
 
+  get competitionId() {
+    let currentCompetition = this.competitions.find(competition => competition.slug == this.slug);
+    if (currentCompetition != null) {
+      return currentCompetition.id;
+    }
+    return null;
+  }
+
   mounted() {
     let i;
-    const temp = this.id.split('-');
+    const temp = this.slug.split('-');
     for (i = 0; i < temp.length; i++) {
       this.title += RegisterTeam.jsUcfirst(temp[i]);
       if (i !== temp.length - 1) {
         this.title += ' ';
       }
     }
-
-    this.competitionId = 1; // hardcoded, previously competitionMap[this.id];
   }
 
   head() {
@@ -72,6 +84,7 @@ export default class RegisterTeam extends Vue {
       title: 'Pendaftaran' + this.title
     };
   }
+
   static jsUcfirst(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
@@ -99,27 +112,32 @@ export default class RegisterTeam extends Vue {
 
     this.isRegistering = true;
     this.error = '';
-    this.$arkavidiaApi.competition.registerTeam(this.competitionId, this.team, this.institution)
-      .then(() => {
-        const redirectUrl = (this.nextRoute) ? this.nextRoute : '/dashboard/competition/' + this.id;
-        this.$router.push(redirectUrl);
-      })
-      .catch((e) => {
-        if (e instanceof ApiError) {
-          if (e.errorCode === RegisterTeamStatus.NAME_EXISTS) {
-            this.error = 'Nama tim sudah terdaftar';
-            return;
-          }
 
-          this.error = e.message;
+    let competitionId = this.competitionId;
+    let team = this.team;
+    let institution = this.institution;
+
+    this.registerTeamAction({ competitionId, team, institution })
+    .then(() => {
+      const redirectUrl = (this.nextRoute) ? this.nextRoute : '/dashboard/competition/' + this.competitionId;
+      this.$router.push(redirectUrl);
+    })
+    .catch((e) => {
+      if (e instanceof ApiError) {
+        if (e.errorCode === RegisterTeamStatus.NAME_EXISTS) {
+          this.error = 'Nama tim sudah terdaftar';
           return;
         }
 
-        this.error = e.toString();
-      })
-      .finally(() => {
-        this.isRegistering = false;
-      });
+        this.error = e.message;
+        return;
+      }
+
+      this.error = e.toString();
+    })
+    .finally(() => {
+      this.isRegistering = false;
+    });
   }
 
   validateTeam(team): boolean {
