@@ -18,9 +18,9 @@
             </p>
             <v-flex>
               <v-btn
-                :memberId="member.id"
+                :member-id="member.id"
                 class="my-5 subtitle-2 text-none px-5 font-weight-bold"
-                style="border-radius: 50px; margin: 0 !important; border: 2px solid #E44D4B; 
+                style="border-radius: 50px; margin: 0 !important; border: 2px solid #E44D4B;
                 color: #E44D4B; float: right; background: white;"
               >
                 Hapus Anggota
@@ -52,8 +52,12 @@
             v-model="email"
             label="Email"
           />
-          <v-btn class="my-5 primary subtitle-2 text-none px-5 font-weight-bold"
-          style="border-radius: 50px" type="submit" :loading="isCreating">
+          <v-btn
+            class="my-5 primary subtitle-2 text-none px-5 font-weight-bold"
+            style="border-radius: 50px"
+            type="submit"
+            :loading="isCreating"
+          >
             Tambah Anggota
           </v-btn>
         </form>
@@ -72,7 +76,7 @@ import {
   GetTeamListStatus,
   AddMemberStatus,
   RemoveMemberStatus,
-  Competition,
+  Competition
 } from '~/api/competition/types';
 
 interface QueryParameters {
@@ -92,7 +96,7 @@ export default class AnggotaTim extends Vue {
   isCreating: boolean = false;
   isDeleting: boolean = false;
   isLoading: boolean = true;
-  competitionId: number  = 0;
+  competitionId: number = 0;
 
   get id() {
     // eslint-disable-next-line dot-notation
@@ -111,8 +115,8 @@ export default class AnggotaTim extends Vue {
       .then((results) => {
         if (results) {
           if (results.length) {
-            var competition;
-            for (var i = 0; i < results.length; i++) {
+            let competition;
+            for (let i = 0; i < results.length; i++) {
               if (results[i].competition) {
                 competition = results[i].competition;
                 if (competition.id) {
@@ -127,7 +131,7 @@ export default class AnggotaTim extends Vue {
 
         if (this.team) {
           if (this.team.id) {
-            this.teamId = this.team.id;  
+            this.teamId = this.team.id;
           }
 
           if (this.team.competition) {

@@ -11,9 +11,6 @@
 import { Component, Vue, Action } from 'nuxt-property-decorator';
 import DashboardWrapper from '~/components/partials/Dashboard/DashboardWrapper.vue';
 import AnnouncementCard from '~/components/partials/Dashboard/AnnouncementCard.vue';
-interface NuxtWindow {
-  onNuxtReady?: Function;
-}
 
 @Component({
   components: { DashboardWrapper, AnnouncementCard }
@@ -23,7 +20,7 @@ export default class DashboardIndex extends Vue {
   announcements: any = '';
   head() {
     return {
-      title: 'Dashboard'
+      title: 'Announcement'
     };
   }
   mounted() {

@@ -9,8 +9,10 @@
           <v-file-input
             v-if="dummyCurrentTask == 'file_upload'"
 
+            id="file_submission"
+            ref="file_submission"
             show-size
-            type="file" id="file_submission" ref="file_submission"
+            type="file"
             accept=".zip"
             :loading="isUploading"
             :disabled="isUploading"
@@ -23,8 +25,7 @@
             :label="dummyCurrentwidgetParameters"
             :loading="isUploading"
             :disabled="isUploading"
-          >
-          </v-text-field>
+          />
           <!--  v-if textfield, checkbox, radiogroup, dll  -->
           <!-- <div v-if="file != null" class="subtitle-2 font-weight-black">
             {{ file.originalFilename }} - {{ file.uploadedAt }}
@@ -131,7 +132,7 @@ export default class UploadBerkas extends Vue {
     // console.warn('>>>> 1st element in files array >>>> ', this.inputFile);
 
     const file = this.$refs.file_submission.files[0];
-    let formData = new FormData();
+    const formData = new FormData();
     formData.append('file', file);
 
     console.log(file);
@@ -161,14 +162,12 @@ export default class UploadBerkas extends Vue {
   }
 
   mounted() {
-
     // Get global state
     this.stage();
     this.taskResponse();
     this.file();
 
     // RETRIEVE FILE
-
   }
 }
 </script>
