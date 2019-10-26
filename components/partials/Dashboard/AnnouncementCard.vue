@@ -1,3 +1,4 @@
+
 <template>
   <v-card elevation="1" class="px-5 py-3 mt-4">
     <div class="grey--text text--darken-1 font-weight-bold">
@@ -13,7 +14,6 @@
 
 <script lang="ts">
 import Vue from 'vue';
-
 export default Vue.extend({
   name: 'AnnouncementCard',
   props: {
@@ -30,5 +30,4 @@ export default Vue.extend({
 </script>
 
 <style scoped>
-
 </style>

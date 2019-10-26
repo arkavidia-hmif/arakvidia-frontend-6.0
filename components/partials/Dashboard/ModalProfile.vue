@@ -81,25 +81,19 @@
 </template>
 
 <script lang='ts'>
-import { Mutation, Component, State } from 'nuxt-property-decorator';
+import { Component, Getter, Action } from 'nuxt-property-decorator';
 import Vue from 'vue';
-import { User } from '~/api/user';
+import { User } from '~/api/user/types.ts';
 
 @Component
 export default class ModalProfile extends Vue {
-  @Mutation('editUser') mutationEditUser;
-  @State user!: User;
+  @Getter('user/getUser') user !: User;
+  @Action('user/editProfile') editProfileAction;
   dialog: boolean = false;
   menu: boolean = false;
   isEdit: boolean =false;
   error: string = '';
   fUser: User = Object.assign({}, this.user);
-  data() {
-    return {
-
-    };
-  }
-
   attemptEdit() {
     if (!this.fUser.fullName) {
       this.error = 'Nama lengkap harus diisi';
@@ -125,24 +119,20 @@ export default class ModalProfile extends Vue {
       this.error = 'Alamat harus diisi';
       return;
     }
-    this.error = '';
     this.isEdit = true;
-    this.$arkavidiaApi.user.editUser(this.fUser.fullName, this.fUser.currentEducation, this.fUser.institution, this.fUser.phoneNumber, this.fUser.birthDate, this.fUser.address)
-      .then((val) => {
-        this.mutationEditUser({
-          user: val
-        });
-        this.$router.push('/dashboard/');
+    const fUser = this.fUser;
+    // console.log(fUser);
+    this.editProfileAction(fUser)
+      .then(() => {
+        this.$router.go(0);
       })
       .catch((e) => {
-        // console.log('error');
         this.error = e.toString();
       })
       .finally(() => {
         this.isEdit = false;
       });
   }
-
   mounted() {
     this.fUser = Object.assign({}, this.user);
   }

@@ -6,7 +6,6 @@ const TOKEN_NAME = 'arkav-token';
 if (typeof window !== 'undefined') {
   arkavidiaApi.bearerToken = () => window.localStorage.getItem(TOKEN_NAME);
 }
-
 export interface AuthState {
   loggedIn: boolean;
   user?: User;
@@ -35,6 +34,9 @@ export const getters = {
   },
   getToken(state: AuthState) {
     return state.bearerToken;
+  },
+  getUser(state: AuthState) {
+    return state.user;
   }
 };
 
@@ -52,6 +54,9 @@ export const mutations = {
     state.bearerToken = undefined;
     state.loggedInAt = undefined;
     state.expiresAt = undefined;
+  },
+  editProfile(state: AuthState, user) {
+    state.user = user;
   }
 };
 
@@ -71,6 +76,7 @@ export const actions = {
     await arkavidiaApi.user.register(email, fullName, password);
   },
 
+
   // eslint-disable-next-line no-empty-pattern
   async recover({ }, { email }) {
     await arkavidiaApi.user.recover(email);
@@ -84,5 +90,10 @@ export const actions = {
   // eslint-disable-next-line no-empty-pattern
   async resetPassword({ }, { token, newPassword }) {
     await arkavidiaApi.user.resetPassword(token, newPassword);
+  },
+
+  async editProfile({ commit }, user) {
+    const response = await arkavidiaApi.user.editProfile(user);
+    commit('editProfile', response);
   }
 };

@@ -11,24 +11,20 @@
 import { Component, Vue, Action } from 'nuxt-property-decorator';
 import DashboardWrapper from '~/components/partials/Dashboard/DashboardWrapper.vue';
 import AnnouncementCard from '~/components/partials/Dashboard/AnnouncementCard.vue';
-import { Announcement } from '~/api/announcement.ts';
 
 @Component({
   components: { DashboardWrapper, AnnouncementCard }
 })
 export default class DashboardIndex extends Vue {
-  announcements: Announcement[] = [];
-
-  @Action('announcements/getAnnouncements') actionGetAnnouncements;
-
+  @Action('announcement/announcementlist') announcementAction;
+  announcements: any = '';
   head() {
     return {
       title: 'Announcement'
     };
   }
-
   mounted() {
-    this.actionGetAnnouncements()
+    this.announcementAction()
       .then((val) => {
         this.announcements = val;
       });
