@@ -1,13 +1,14 @@
 <template>
   <DashboardWrapper>
     <v-row class="mt-4">
-      <v-col :cols="12" :lg="4" :sm="6" v-for="competition in competitions" :key="competition.id">
+      <v-col v-for="competition in competitions" :key="competition.id" :cols="12" :lg="4" :sm="6">
         <CompetitionCard
           :title="competition.name"
           subtitle=""
           :to="'/dashboard/competition/' + competition.slug"
           button-title="Anda tidak dapat mendaftar"
-          :enabled="false" />
+          :enabled="false"
+        />
       </v-col>
     </v-row>
   </DashboardWrapper>
@@ -26,7 +27,7 @@ export default class DashboardIndex extends Vue {
     return {
       title: 'Dashboard'
     };
-  };
+  }
   @Action('competition/fetchCompetitionList') fetchCompetitionListAction;
   @Getter('competition/getCompetitions') getCompetitions;
 

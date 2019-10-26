@@ -1,7 +1,7 @@
 <template>
   <v-card elevation="1" class="px-5 py-3 mt-4">
     <div class="black--text font-weight-bold">
-      {{ tgl }}
+      {{ $moment(dateSent).fromNow() }}
     </div>
     <div style="text-align: justify">
       {{ message }}
@@ -20,18 +20,19 @@ export default Vue.extend({
       required: true
     },
     dateSent: {
-      type: String,
+      type: Number,
       required: true
     }
   },
-  data() {
-    return {
-      tgl: ''
-    };
-  },
-  created() {
-    const d = new Date(this.dateSent);
-    this.tgl = d.toISOString().split('T')[0];
+  computed: {
+    date() {
+      if (Date.now() - this.dateSent > 12 * 60 * 60 * 1000) {
+        return this.$moment(this.dateSent);
+      }
+      else {
+        return this.$moment(this.dateSent).fromNow();
+      }
+    }
   }
 });
 </script>

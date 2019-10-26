@@ -8,56 +8,32 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'nuxt-property-decorator';
+import { Component, Vue, Action } from 'nuxt-property-decorator';
 import DashboardWrapper from '~/components/partials/Dashboard/DashboardWrapper.vue';
 import AnnouncementCard from '~/components/partials/Dashboard/AnnouncementCard.vue';
 import { Announcement } from '~/api/announcement.ts';
-
-interface NuxtWindow {
-  onNuxtReady?: Function;
-}
 
 @Component({
   components: { DashboardWrapper, AnnouncementCard }
 })
 export default class DashboardIndex extends Vue {
   announcements: Announcement[] = [];
+
+  @Action('announcements/getAnnouncements') actionGetAnnouncements;
+
   head() {
     return {
-      title: 'Dashboard'
+      title: 'Announcement'
     };
   }
 
   mounted() {
-    if (window) {
-      const nuxtWindow: NuxtWindow = window as NuxtWindow;
-      if (nuxtWindow.onNuxtReady !== undefined) {
-        // console.log('hehe');
-        this.$arkavidiaApi.announcement.listAnnouncements()
-          .then((val) => {
-            this.announcements = val;
-            // console.log(val);
-          })
-          .catch(() => {
-            // console.log(e);
-          });
-      }
-    }
+    this.actionGetAnnouncements()
+      .then((val) => {
+        this.announcements = val;
+      });
   }
 }
-//             this.$arkavidiaApi.announcement.listAnnouncements()
-//             .then((val) => {
-//               this.announcements = val;
-//               console.log(val);
-//             })
-//             .catch((e) =>{
-//               console.log(e);
-//             })
-//             .finally(()=>{
-//               this.isMounted = true;
-//             });
-//           }
-// }
 </script>
 
 <style scoped>
