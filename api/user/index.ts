@@ -1,18 +1,16 @@
-import { ApiError, ArkavidiaBaseApi } from '~/api/base';
 import {
   User,
   AuthenticationResult,
   LoginStatus,
   RegistrationStatus,
-  EmailOperationStatus,
+  EmailOperationStatus
 } from './types';
-
+import { ApiError, ArkavidiaBaseApi } from '~/api/base';
 
 export class ArkavidiaUserApi extends ArkavidiaBaseApi {
   async login(email: string, password: string): Promise<AuthenticationResult> {
     try {
       const data = { email, password };
-      console.log(password);
       const response = await this.axios.post(`/auth/login/`, data);
 
       return {

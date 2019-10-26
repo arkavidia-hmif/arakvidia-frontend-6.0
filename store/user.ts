@@ -1,5 +1,11 @@
 import arkavidiaApi from '~/api/api';
-import { User, LoginStatus } from '~/api/user/types';
+import { User } from '~/api/user/types';
+
+const TOKEN_NAME = 'arkav-token';
+
+if (typeof window !== 'undefined') {
+  arkavidiaApi.bearerToken = () => window.localStorage.getItem(TOKEN_NAME);
+}
 
 export interface AuthState {
   loggedIn: boolean;
@@ -7,7 +13,7 @@ export interface AuthState {
   bearerToken?: string;
   loggedInAt?: number;
   expiresAt?: number;
-};
+}
 
 export const namespaced = true;
 
@@ -16,12 +22,12 @@ export const state = () => ({
   user: null,
   bearerToken: null,
   loggedIntAt: null,
-  expiresAt: null,
+  expiresAt: null
 });
 
 export const getters = {
   isLoggedIn(state: AuthState) {
-    if (!!state.expiresAt) {
+    if (state.expiresAt) {
       return state.loggedIn && Date.now() <= state.expiresAt;
     }
 
@@ -29,7 +35,7 @@ export const getters = {
   },
   getToken(state: AuthState) {
     return state.bearerToken;
-  },
+  }
 };
 
 export const mutations = {
@@ -46,16 +52,23 @@ export const mutations = {
     state.bearerToken = undefined;
     state.loggedInAt = undefined;
     state.expiresAt = undefined;
-  },
+  }
 };
 
 export const actions = {
   async login({ commit }, { email, password }) {
     const response = await arkavidiaApi.user.login(email, password);
     commit('setLogin', response);
-    window.localStorage.setItem('arkav-token', response.bearerToken);
+    window.localStorage.setItem(TOKEN_NAME, response.bearerToken);
   },
-  async register({ }, { email, fullName, password }) {
+  logout({ commit }) {
+    commit('setLogout');
+    window.localStorage.removeItem(TOKEN_NAME);
+  },
+  async register({ email, fullName, password }) {
     await arkavidiaApi.user.register(email, fullName, password);
   },
+  async recover({ email }) {
+    await arkavidiaApi.user.recover(email);
+  }
 };

@@ -4,7 +4,7 @@ interface NuxtWindow {
   onNuxtReady?: Function;
 }
 
-export default ({ store }, inject) => {
+export default (context, inject) => {
   inject('arkavidiaApi', arkavidiaApi);
 
   const nuxtWindow = window as NuxtWindow;
@@ -21,4 +21,4 @@ declare module 'vue/types/vue' {
   interface Vue {
     $arkavidiaApi: ArkavidiaApi,
   }
-};
+}
