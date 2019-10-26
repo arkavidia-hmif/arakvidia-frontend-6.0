@@ -46,7 +46,9 @@ export const actions = {
     const competitions = await arkavidiaApi.competition.getCompetitionList();
     commit('setCompetitions', competitions);
   },
-  async registerTeam({ competitionId, name, institution }) {
+
+  // eslint-disable-next-line no-empty-pattern
+  async registerTeam({ }, { competitionId, name, institution }) {
     await arkavidiaApi.competition.registerTeam(competitionId, name, institution);
   },
   async fetchTeamList({ commit }) {

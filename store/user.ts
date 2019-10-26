@@ -65,10 +65,24 @@ export const actions = {
     commit('setLogout');
     window.localStorage.removeItem(TOKEN_NAME);
   },
-  async register({ email, fullName, password }) {
+
+  // eslint-disable-next-line no-empty-pattern
+  async register({ }, { email, fullName, password }) {
     await arkavidiaApi.user.register(email, fullName, password);
   },
-  async recover({ email }) {
+
+  // eslint-disable-next-line no-empty-pattern
+  async recover({ }, { email }) {
     await arkavidiaApi.user.recover(email);
+  },
+
+  // eslint-disable-next-line no-empty-pattern
+  async confirmEmailAddress({ }, { token }) {
+    await arkavidiaApi.user.confirmEmailAddress(token);
+  },
+
+  // eslint-disable-next-line no-empty-pattern
+  async resetPassword({ }, { token, newPassword }) {
+    await arkavidiaApi.user.resetPassword(token, newPassword);
   }
 };

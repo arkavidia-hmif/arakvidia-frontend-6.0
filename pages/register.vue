@@ -109,7 +109,7 @@ export default class DashboardRegister extends Vue {
 
     this.isRegistering = true;
     this.error = '';
-    this.registerAction(this.email, this.fullName, this.password)
+    this.registerAction({ email: this.email, fullName: this.fullName, password: this.password })
       .then(() => {
         const redirectUrl = (this.nextRoute) ? `/thanks?continue=${this.nextRoute}` : '/thanks';
         this.$router.push(redirectUrl);
