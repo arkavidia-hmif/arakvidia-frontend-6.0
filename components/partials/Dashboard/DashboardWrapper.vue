@@ -23,7 +23,6 @@
 <script lang="ts">
 import { Component, Vue, State, Getter } from 'nuxt-property-decorator';
 import { dashboardMenus, Menu } from '~/constants/menus';
-import { User } from '~/api/user/types';
 import Forbidden from '~/components/Forbidden.vue';
 import { AuthState } from '~/store/user';
 
