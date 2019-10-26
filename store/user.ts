@@ -90,5 +90,10 @@ export const actions = {
   // eslint-disable-next-line no-empty-pattern
   async resetPassword({ }, { token, newPassword }) {
     await arkavidiaApi.user.resetPassword(token, newPassword);
+  },
+
+  async editProfile({ commit }, user) {
+    const response = await arkavidiaApi.user.editProfile(user);
+    commit('editProfile', response);
   }
 };
