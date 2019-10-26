@@ -2,12 +2,24 @@
   <DashboardWrapper>
     <v-row class="mt-4">
       <v-col :cols="12" :lg="4" :sm="6" v-for="competition in competitions" :key="competition.id">
-        <CompetitionCard
-          :title="competition.name"
-          subtitle=""
-          :to="'/dashboard/competition/' + competition.slug"
-          button-title="Anda tidak dapat mendaftar"
-          :enabled="false" />
+          <CompetitionCard v-if="teams.find(team => team.competition.id == competition.id) != null"
+            :title="competition.name"
+            subtitle=""
+            :to="'/dashboard/competition/' + competition.slug"
+            button-title="View Application"
+            :enabled="true" />
+          <CompetitionCard v-else-if="competition.isRegistrationOpen"
+            :title="competition.name"
+            subtitle=""
+            :to="'/dashboard/competition/' + competition.slug + '/register-tim'"
+            button-title="View Application"
+            :enabled="true" />
+          <CompetitionCard v-else
+            :title="competition.name"
+            subtitle=""
+            :to="'/dashboard/competition/' + competition.slug"
+            button-title="Not Open for Registration"
+            :enabled="false" />
       </v-col>
     </v-row>
   </DashboardWrapper>
@@ -27,15 +39,15 @@ export default class DashboardIndex extends Vue {
       title: 'Dashboard'
     };
   };
-  @Action('competition/fetchCompetitionList') fetchCompetitionListAction;
   @Getter('competition/getCompetitions') getCompetitions;
+  @Getter('competition/getTeams') getTeams;
 
   get competitions() {
     return this.getCompetitions;
   }
 
-  mounted() {
-    this.fetchCompetitionListAction();
+  get teams() {
+    return this.getTeams;
   }
 }
 </script>

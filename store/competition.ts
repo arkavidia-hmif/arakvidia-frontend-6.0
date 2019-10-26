@@ -35,7 +35,10 @@ export const mutations = {
     });
   },
   setTeams(state: CompetitionState, teams: Array<Team>) {
-    state.teams = teams;
+    state.teams = {};
+    teams.forEach(team => {
+      state.teams[team.id] = team;
+    });
   },
   setTeam(state: CompetitionState, team: Team) {
     state.teams[team.id] = team;

@@ -65,7 +65,8 @@ export class ArkavidiaCompetitionApi extends ArkavidiaBaseApi {
 
   async getTeamList(): Promise<Array<Team>> {
     try {
-      return await this.axios.get(`/competition/teams/`);
+      const response = await this.axios.get(`/competition/teams/`);
+      return response.data;
     }
     catch (e) {
       if (e.response) {
