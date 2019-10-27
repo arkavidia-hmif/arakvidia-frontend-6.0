@@ -14,6 +14,7 @@
             large
             class="mx-5 subtitle-2 text-none px-5 font-weight-bold"
             style="border-radius: 50px; border: 2px solid #E44D4B;  color: #E44D4B; float: left;"
+            @click="attemptDelete"
             :loading="isDeleting"
           >
             Hapus Tim
@@ -25,6 +26,7 @@
             class="mx-5 subtitle-2 text-none px-5 font-weight-bold"
             style="border-radius: 50px; color: white; float: left; background-color: #197AD2;"
             :loading="isChanging"
+            @click="attemptChange"
           >
             Simpan Tim
           </v-btn>
@@ -40,19 +42,26 @@ import DashboardWrapper from '~/components/partials/Dashboard/DashboardWrapper.v
 import TabMenu from '~/components/partials/Dashboard/TabMenu.vue';
 import { ApiError } from '~/api/base';
 import CompetitionWrapper from '~/components/partials/Dashboard/CompetitionWrapper.vue';
-import { Team } from '~/api/competition/types';
+import { Team, ChangeTeamStatus, DeleteTeamStatus } from '~/api/competition/types';
+
+interface QueryParameters {
+  continue?: string;
+}
 
 @Component({
   components: { CompetitionWrapper, DashboardWrapper, TabMenu }
 })
 export default class DashboardCompetitionIndex extends Vue {
   @Getter('competition/getTeams') teams!: Team[];
+  @Action('competition/deleteTeam') deleteTeamAction;
+  @Action('competition/changeTeam') changeTeamAction;
 
   changedTeamName: string = '';
   changedTeamInstitution: string = '';
   title: string = '';
   isChanging: boolean = false;
   isDeleting: boolean = false;
+  error: string = '';
 
   head() {
     return {
@@ -92,8 +101,7 @@ export default class DashboardCompetitionIndex extends Vue {
   }
 
   set teamName(teamName: string) {
-    this.changedTeamName = teamName;
-    
+    this.changedTeamName = teamName; 
   }
 
   get teamInstitution(): string {
@@ -102,6 +110,105 @@ export default class DashboardCompetitionIndex extends Vue {
 
   set teamInstitution(teamInstitution: string) {
     this.changedTeamInstitution = teamInstitution;
+  }
+
+  get teamId(): number {
+    return (this.team) ? this.team.id : 0;
+  }
+
+  get teamLeader(): string | undefined {
+    return (this.team) ? this.team.teamLeaderEmail : '';
+  }
+
+  get competitionId(): number {
+    return (this.team) ? this.team.competition ? this.team.competition.id != null
+      ? this.team.competition.id : 0 : 0 : 0;
+  }
+
+  attemptChange() {
+    if (!this.teamName) {
+      this.error = 'Nama tim harus diisi';
+      return;
+    }
+
+    if (!this.validateTeam(this.teamName)) {
+      this.error = 'Nama tim minimal 3 karakter';
+      return;
+    }
+
+    if (!this.teamInstitution) {
+      this.error = 'Sekolah/Institusi harus diisi';
+      return;
+    }
+
+    this.isChanging = true;
+    this.error = '';
+
+    let team_id = this.teamId;
+    let name = this.changedTeamName ? this.changedTeamName : this.teamName;
+    let institution = this.changedTeamInstitution ? this.changedTeamInstitution : this.teamInstitution;
+    let teamLeaderEmail = this.teamLeader;
+
+    console.log(name, institution, teamLeaderEmail);
+
+    this.changeTeamAction({ team_id, name, institution, teamLeaderEmail })
+    .then(() => {
+      const redirectUrl = (this.nextRoute) ? this.nextRoute : '/dashboard/competition/' + this.slug;
+      this.$router.push(redirectUrl);
+    })
+    .catch((e) => {
+      if (e instanceof ApiError) {
+        if (e.errorCode === ChangeTeamStatus.ERROR) {
+          this.error = 'Tidak dapat melakukan pengubahan data tim';
+          return;
+        }
+
+        this.error = e.message;
+        return;
+      }
+
+      this.error = e.toString();
+    })
+    .finally(() => {
+      this.isChanging = false;
+    });
+  }
+
+  attemptDelete() {
+    this.isDeleting = true;
+    this.error = '';
+
+    let team_id = this.teamId;
+    this.deleteTeamAction({ team_id })
+    .then(() => {
+      const redirectUrl = (this.nextRoute) ? this.nextRoute : '/dashboard/competition/' + this.slug;
+      this.$router.push(redirectUrl);
+    })
+    .catch((e) => {
+      if (e instanceof ApiError) {
+        if (e.errorCode === DeleteTeamStatus.ERROR) {
+          this.error = 'Tidak dapat menghapus tim';
+          return;
+        }
+
+        this.error = e.message;
+        return;
+      }
+
+      this.error = e.toString();
+    })
+    .finally(() => {
+      this.isDeleting = false;
+    });
+  }
+
+  validateTeam(team): boolean {
+    return team.length >= 3;
+  }
+
+  get nextRoute(): string|undefined {
+    const queryParams = this.$route.query as QueryParameters;
+    return queryParams.continue;
   }
 }
 </script>

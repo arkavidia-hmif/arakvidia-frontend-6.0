@@ -6,7 +6,9 @@ import {
   GetTeamListStatus,
   GetTeamDetailStatus,
   AddMemberStatus,
-  RemoveMemberStatus
+  RemoveMemberStatus,
+  DeleteTeamStatus,
+  ChangeTeamStatus
 } from './types';
 import { ApiError, ArkavidiaBaseApi } from '~/api/base';
 
@@ -91,6 +93,37 @@ export class ArkavidiaCompetitionApi extends ArkavidiaBaseApi {
       }
 
       throw new ApiError<RemoveMemberStatus>(RemoveMemberStatus.ERROR, e.toString());
+    }
+  }
+
+  async changeTeam(team_id: number, name: string, teamLeaderEmail: string, institution: string): Promise<void> {
+    try {
+      const data = { name, teamLeaderEmail, institution };
+      await this.axios.put(`/competition/teams/${team_id}/`, data);
+    }
+    catch (e) {
+      if (e.response) {
+        if (e.response.data.code === 'unknown_error') {
+          throw new ApiError<ChangeTeamStatus>(ChangeTeamStatus.ERROR, e.response.data.detail);
+        }
+      }
+
+      throw new ApiError<ChangeTeamStatus>(ChangeTeamStatus.ERROR, e.toString());
+    }
+  }
+
+  async deleteTeam(team_id: number): Promise<void> {
+    try {
+      await this.axios.delete(`/competition/teams/${team_id}/`);
+    }
+    catch (e) {
+      if (e.response) {
+        if (e.response.data.code === 'unknown_error') {
+          throw new ApiError<DeleteTeamStatus>(DeleteTeamStatus.ERROR, e.response.data.detail);
+        }
+      }
+
+      throw new ApiError<DeleteTeamStatus>(DeleteTeamStatus.ERROR, e.toString());
     }
   }
 }
