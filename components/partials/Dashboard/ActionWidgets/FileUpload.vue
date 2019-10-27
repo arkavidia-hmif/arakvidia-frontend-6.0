@@ -1,6 +1,6 @@
 <template>
   <div>
-    <template v-if="currentTaskResponse && !deleted">
+    <div v-if="currentTaskResponse && !deleted">
       <div v-if="currentTaskResponse.status === 'awaiting_validation'">
         <b class="orange--text">Menunggu verifikasi</b>
       </div>
@@ -19,25 +19,13 @@
             </v-icon>
           </v-flex>
           <v-flex>
-            <a target="_blank" :href="currentTaskResponse.response">Lihat file</a>
-          </v-flex>
-          <v-flex shrink>
-            <v-btn
-              icon
-              small
-              class="ma-0"
-              @click.prevent="deleted = true"
-            >
-              <v-icon small color="red">
-                fas fa-trash
-              </v-icon>
-            </v-btn>
+            <a target="_blank" :href="getFileLink(currentTaskResponse.response)">Lihat file</a>
           </v-flex>
         </v-layout>
       </div>
-    </template>
+    </div>
 
-    <template v-else>
+    <div class="mt-3">
       <input ref="file" type="file" style="display: none" @change="handleUpload">
 
       <v-btn
@@ -55,12 +43,12 @@
         </div>
         <v-progress-linear :value="uploadProgress" class="mt-2" />
       </div>
-    </template>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue, Prop, Action } from 'nuxt-property-decorator';
+import { Component, Getter, Vue, Prop, Action } from 'nuxt-property-decorator';
 import { TaskResponse, Task } from '~/api/competition/types';
 import { File } from '~/api/uploader/types';
 
@@ -72,6 +60,7 @@ export default class FileUploadWidget extends Vue {
     @Prop({ default: undefined }) task!: Task|undefined;
     @Prop({ default: 0 }) teamId!: number;
 
+    @Getter('uploader/getFilesMap') files!: File[];
     @Action('uploader/uploadFile') actionUploadFile;
     @Action('competition/submitTaskResponse') actionSubmitTaskResponse;
 
@@ -79,6 +68,13 @@ export default class FileUploadWidget extends Vue {
     deleted: boolean = false;
     uploadProgress: number = 0;
     currentTaskResponse: TaskResponse|null = null;
+
+    getFileLink(fileId) {
+      if (fileId in this.files) {
+        return this.files[fileId].fileLink;
+      }
+      return fileId;
+    }
 
     mounted() {
       this.currentTaskResponse = this.taskResponse || null;
@@ -100,7 +96,7 @@ export default class FileUploadWidget extends Vue {
           return this.actionSubmitTaskResponse({
             teamId: this.teamId,
             taskId: (this.task) ? this.task.id : null,
-            response: file.fileLink
+            response: file.id,
           });
         })
         .then((taskResponse: TaskResponse) => {

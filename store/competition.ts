@@ -13,8 +13,8 @@ export interface CompetitionState {
 export const namespaced = true;
 
 export const state = () => ({
-  competitions: [],
-  teams: []
+  competitions: {},
+  teams: {},
 });
 
 export const getters = {
@@ -81,8 +81,11 @@ export const actions = {
     commit('setTeams', teams);
     return teams;
   },
-  async fetchTeamDetail({ commit }, teamId) {
+  async fetchTeamDetail({ commit, dispatch }, teamId) {
     const team = await arkavidiaApi.competition.getTeamDetail(teamId);
+    team.taskResponses!.forEach(taskResponse => {
+      dispatch('uploader/fetchFile', { fileId: taskResponse.response }, { root: true });
+    });
     commit('setTeam', team);
     return team;
   },
@@ -105,7 +108,7 @@ export const actions = {
     commit('removeMember', data);
   },
   // eslint-disable-next-line no-empty-pattern
-  asyncsubmitTaskResponse({ }, { teamId, taskId, response }) {
+  async submitTaskResponse({ }, { teamId, taskId, response }) {
     return arkavidiaApi.competition.submitTaskResponse(teamId, taskId, response);
-  }
+  },
 };
