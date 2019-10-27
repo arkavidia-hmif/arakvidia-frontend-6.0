@@ -31,7 +31,8 @@ export default {
   ],
   buildModules: [
     '@nuxt/typescript-build',
-    '@nuxtjs/vuetify'
+    '@nuxtjs/vuetify',
+    '@nuxtjs/moment'
   ],
   build: {
     extractCSS: true
@@ -76,6 +77,12 @@ export default {
       '/thanks',
       '/coming-soon'
     ]
+  },
+  moment: {
+    locales: ['id']
+  },
+  router: {
+    middleware: ['auth']
   }
 };
 

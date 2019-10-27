@@ -58,7 +58,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'nuxt-property-decorator';
+import { Component, Vue, Action } from 'nuxt-property-decorator';
 import { ApiError } from '~/api/base';
 import { EmailOperationStatus } from '~/api/user/types';
 
@@ -69,6 +69,8 @@ export default class DashboardRecoverReset extends Vue {
   password: string = '';
   rePassword: string = '';
   error: string = '';
+
+  @Action('user/resetPassword') actionResetPassword;
 
   head() {
     return {
@@ -88,10 +90,11 @@ export default class DashboardRecoverReset extends Vue {
     }
 
     this.isResetting = true;
+    this.error = '';
 
     // eslint-disable-next-line dot-notation
     const token = this.$route.params['token'];
-    this.$arkavidiaApi.user.resetPassword(token, this.password)
+    this.actionResetPassword({ token, newPassword: this.password })
       .then(() => {
         this.isReset = true;
       })

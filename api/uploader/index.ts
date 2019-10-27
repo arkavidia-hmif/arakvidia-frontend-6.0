@@ -1,10 +1,9 @@
-import { ApiError, ArkavidiaBaseApi } from '~/api/base';
 import {
-  FileStatus,
+  FileStatus
 } from './types';
+import { ApiError, ArkavidiaBaseApi } from '~/api/base';
 
 export class ArkavidiaUploaderApi extends ArkavidiaBaseApi {
-
   async uploadFile(file: FormData, description: string): Promise<void> {
     try {
       const data = { file, description };

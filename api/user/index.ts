@@ -1,20 +1,17 @@
-import { ApiError, ArkavidiaBaseApi } from '~/api/base';
 import {
   User,
   AuthenticationResult,
   LoginStatus,
   RegistrationStatus,
-  EmailOperationStatus,
+  EmailOperationStatus
 } from './types';
-
+import { ApiError, ArkavidiaBaseApi } from '~/api/base';
 
 export class ArkavidiaUserApi extends ArkavidiaBaseApi {
   async login(email: string, password: string): Promise<AuthenticationResult> {
     try {
       const data = { email, password };
-      console.log(password);
       const response = await this.axios.post(`/auth/login/`, data);
-
       return {
         bearerToken: response.data.token,
         expiresAt: response.data.exp * 1000,
@@ -93,38 +90,30 @@ export class ArkavidiaUserApi extends ArkavidiaBaseApi {
       throw new ApiError<EmailOperationStatus>(EmailOperationStatus.ERROR, e.toString());
     }
   }
-  async auth(): Promise<User> {
+
+  async getUserDetails(): Promise<User> {
     try {
       const response = await this.axios.get(`/auth/`);
-      return {
-        fullName: response.data.fullName,
-        email: response.data.email,
-        dateJoined: response.data.dateJoined,
-        currentEducation: response.data.currentEducation,
-        institution: response.data.institution,
-        phoneNumber: response.data.phoneNumber,
-        birthDate: response.data.birthDate,
-        address: response.data.address
-      };
+      const [user] = response.data;
+      return user as User;
     }
     catch (e) {
       throw new ApiError<boolean>(false, e.toString());
     }
   }
-  async editUser(fullName: string, currentEducation : string, institution: string, phoneNumber: string, birthDate: string, address: string): Promise<User> {
+
+  async editUser(user: User): Promise<User> {
     try {
-      const data = { fullName, currentEducation, institution, phoneNumber, birthDate, address };
-      const response = await this.axios.patch(`/auth/edit-user/`, data);
-      return {
-        fullName: response.data.fullName,
-        email: response.data.email,
-        dateJoined: response.data.dateJoined,
-        currentEducation: response.data.currentEducation,
-        institution: response.data.institution,
-        phoneNumber: response.data.phoneNumber,
-        birthDate: response.data.birthDate,
-        address: response.data.address
-      };
+      const response = await this.axios.patch(`/auth/edit-user/`, {
+        fullName: user.fullName,
+        currentEducation: user.currentEducation || undefined,
+        institution: user.institution || undefined,
+        phoneNumber: user.phoneNumber || undefined,
+        address: user.address || undefined,
+        birthDate: user.birthDate || undefined
+      });
+      const userData = response.data;
+      return userData as User;
     }
     catch (e) {
       throw new ApiError<boolean>(false, e.toString());

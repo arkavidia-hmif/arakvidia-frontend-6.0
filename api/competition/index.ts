@@ -1,4 +1,3 @@
-import { ApiError, ArkavidiaBaseApi } from '~/api/base';
 import {
   Competition,
   Team,
@@ -7,14 +6,15 @@ import {
   GetTeamListStatus,
   GetTeamDetailStatus,
   AddMemberStatus,
-  RemoveMemberStatus,
+  RemoveMemberStatus
 } from './types';
+import { ApiError, ArkavidiaBaseApi } from '~/api/base';
 
 export class ArkavidiaCompetitionApi extends ArkavidiaBaseApi {
   async getCompetitionList() : Promise<Array<Competition>> {
     try {
       const response = await this.axios.get(`/competition/`);
-      return response.data;
+      return response.data as Competition[];
     }
     catch (e) {
       throw new ApiError<GetCompetitionListStatus>(GetCompetitionListStatus.ERROR, e.toString());
@@ -24,7 +24,7 @@ export class ArkavidiaCompetitionApi extends ArkavidiaBaseApi {
   async getTeamDetail(teamId: number): Promise<Team> {
     try {
       const response = await this.axios.get(`/competition/teams/${teamId}`);
-      return response.data;
+      return response.data as Team;
     }
     catch (e) {
       throw new ApiError<GetTeamDetailStatus>(GetTeamDetailStatus.ERROR, e.toString());
@@ -66,7 +66,7 @@ export class ArkavidiaCompetitionApi extends ArkavidiaBaseApi {
   async getTeamList(): Promise<Array<Team>> {
     try {
       const response = await this.axios.get(`/competition/teams/`);
-      return response.data;
+      return response.data as Team[];
     }
     catch (e) {
       if (e.response) {
@@ -79,9 +79,9 @@ export class ArkavidiaCompetitionApi extends ArkavidiaBaseApi {
     }
   }
 
-  async removeMember(teamId: number, team_member_id: number): Promise<void> {
+  async removeMember(teamId: number, teamMemberId: number): Promise<void> {
     try {
-      await this.axios.delete(`/competition/teams/` + teamId + `/members` + team_member_id);
+      await this.axios.delete(`/competition/teams/` + teamId + `/members` + teamMemberId);
     }
     catch (e) {
       if (e.response) {

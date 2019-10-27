@@ -8,45 +8,31 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'nuxt-property-decorator';
+import { Component, Vue, Action } from 'nuxt-property-decorator';
 import DashboardWrapper from '~/components/partials/Dashboard/DashboardWrapper.vue';
 import AnnouncementCard from '~/components/partials/Dashboard/AnnouncementCard.vue';
-// import { Announcement, ArkavidiaAnnouncementApi } from '~/api/announcement.ts';
+import { Announcement } from '~/api/announcement/types';
+
 @Component({
   components: { DashboardWrapper, AnnouncementCard }
 })
 export default class DashboardIndex extends Vue {
-  data() {
-    return {
-      // announcements: ''
-      announcements: [
-        {
-          message: 'Jangan lupa melakukan pembayaran CTF',
-          dateSent: '2019-10-10'
-        }
-      ]
-    };
-  }
+  announcements: Announcement[] = [];
+
+  @Action('announcements/getAnnouncements') actionGetAnnouncements;
+
   head() {
     return {
-      title: 'Dashboard'
+      title: 'Announcement'
     };
   }
-  // data dari server masih kosong
-  // mounted() {
-  //   if (window) {
-  //     const nuxtWindow: NuxtWindow = window as NuxtWindow;
-  //     if (nuxtWindow.onNuxtReady !== undefined) {
-  //       nuxtWindow.onNuxtReady(() => {
-  //         this.$arkavidiaApi.announcement.listAnnouncements()
-  //           .then((val) => {
-  //             this.announcements = val;
-  //             console.log(val);
-  //           });
-  //       });
-  //     }
-  //   }
-  // }
+
+  mounted() {
+    this.actionGetAnnouncements()
+      .then((val) => {
+        this.announcements = val;
+      });
+  }
 }
 </script>
 

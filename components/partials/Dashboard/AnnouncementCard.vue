@@ -1,24 +1,19 @@
+
 <template>
-  <v-card elevation="1" class="p-3">
-    <v-layout row wrap class="mt-4 ml-4">
-      <v-flex md8 xs12>
-        <div style="text-align: justify">
-          {{ message }}
-        </div>
-      </v-flex>
-      <v-flex md2 xs12 />
-      <v-flex md2 xs12>
-        <div class="black--text font-weight-bold">
-          {{ tgl }}
-        </div>
-      </v-flex>
-    </v-layout>
+  <v-card elevation="1" class="px-5 py-3 mt-4">
+    <div class="grey--text text--darken-1 font-weight-bold">
+      <v-icon small>
+        far fa-clock
+      </v-icon> {{ $moment(dateSent).format('LLLL') }}
+    </div>
+    <div class="title mt-3" style="text-align: justify">
+      {{ message }}
+    </div>
   </v-card>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-
 export default Vue.extend({
   name: 'AnnouncementCard',
   props: {
@@ -27,22 +22,12 @@ export default Vue.extend({
       required: true
     },
     dateSent: {
-      type: String,
+      type: Number,
       required: true
     }
-  },
-  data() {
-    return {
-      tgl: ''
-    };
-  },
-  created() {
-    const d = new Date(this.dateSent);
-    this.tgl = d.toISOString().split('T')[0];
   }
 });
 </script>
 
 <style scoped>
-
 </style>
