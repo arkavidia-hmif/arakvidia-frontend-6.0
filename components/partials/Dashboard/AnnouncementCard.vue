@@ -6,9 +6,8 @@
         far fa-clock
       </v-icon> {{ $moment(dateSent).format('LLLL') }}
     </div>
-    <div class="title mt-3" style="text-align: justify">
-      {{ message }}
-    </div>
+    <!-- eslint-disable-next-line vue/no-v-html-->
+    <div class="mt-3" style="text-align: justify" v-html="$md.render(message)" />
   </v-card>
 </template>
 

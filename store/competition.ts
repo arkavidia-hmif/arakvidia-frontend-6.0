@@ -18,10 +18,10 @@ export const state = () => ({
 });
 
 export const getters = {
-  getCompetitions(state: CompetitionState) {
+  getCompetitions(state: CompetitionState): Competition[] {
     return Object.values(state.competitions);
   },
-  getTeams(state: CompetitionState) {
+  getTeams(state: CompetitionState): Team[] {
     return Object.values(state.teams);
   }
 };
@@ -48,6 +48,7 @@ export const actions = {
   async fetchCompetitionList({ commit }) {
     const competitions = await arkavidiaApi.competition.getCompetitionList();
     commit('setCompetitions', competitions);
+    return competitions;
   },
 
   // eslint-disable-next-line no-empty-pattern
@@ -57,9 +58,11 @@ export const actions = {
   async fetchTeamList({ commit }) {
     const teams = await arkavidiaApi.competition.getTeamList();
     commit('setTeams', teams);
+    return teams;
   },
   async fetchTeamDetail({ commit }, teamId) {
     const team = await arkavidiaApi.competition.getTeamDetail(teamId);
     commit('setTeam', team);
+    return team;
   }
 };

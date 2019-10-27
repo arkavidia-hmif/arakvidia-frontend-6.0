@@ -1,17 +1,17 @@
 <template>
-  <div v-if="!isLoading" class="ml-3 mb-5">
+  <div class="ml-3 mb-5">
     <div>
       <p style="font-weight: 700 !important; margin-bottom: 0 !important;">
         Daftar Anggota
       </p>
       <v-col
-        v-if="members.length == 0"
+        v-if="team.teamMembers.length == 0"
         cols="12"
       >
         <p> Tidak ada anggota lain yang terdaftar dalam tim </p>
       </v-col>
       <v-col v-else cols="12">
-        <div v-for="(member, i) in members" :key="i" style="padding: 1rem;">
+        <div v-for="(member, i) in team.teamMembers" :key="i" style="padding: 1rem;">
           <v-row>
             <p style="margin-bottom: 0 !important;">
               Anggota {{ i + 1 }}
@@ -67,7 +67,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'nuxt-property-decorator';
+import { Component, Vue, Prop } from 'nuxt-property-decorator';
 import ProfileField from '~/components/partials/Dashboard/ProfileField.vue';
 import { ApiError } from '~/api/base';
 import {
@@ -83,9 +83,10 @@ interface QueryParameters {
   continue?: string;
 }
 
-@Component
+@Component({
+  components: { ProfileField }
+})
 export default class AnggotaTim extends Vue {
-  team: Team | null = null;
   error: string = '';
   name: string = '';
   email: string = '';
@@ -98,6 +99,8 @@ export default class AnggotaTim extends Vue {
   isLoading: boolean = true;
   competitionId: number = 0;
 
+  @Prop({ default: undefined }) team: Team|undefined;
+
   get id() {
     // eslint-disable-next-line dot-notation
     return this.$route.params['competition'];
@@ -108,60 +111,60 @@ export default class AnggotaTim extends Vue {
     return queryParams.continue;
   }
 
-  mounted() {
-    this.competitionId = 1; // hardcoded temporarily, previously was competitionMap[this.id];
-
-    this.$arkavidiaApi.competition.getTeamList()
-      .then((results) => {
-        if (results) {
-          if (results.length) {
-            let competition;
-            for (let i = 0; i < results.length; i++) {
-              if (results[i].competition) {
-                competition = results[i].competition;
-                if (competition.id) {
-                  if (competition.id == this.competitionId) {
-                    this.team = results[i];
-                  }
-                }
-              }
-            }
-          }
-        }
-
-        if (this.team) {
-          if (this.team.id) {
-            this.teamId = this.team.id;
-          }
-
-          if (this.team.competition) {
-            if (this.team.competition.maxTeamMembers) {
-              this.maxCapacity = this.team.competition.maxTeamMembers;
-            }
-          }
-
-          if (this.team.teamMembers) {
-            this.members = this.team.teamMembers;
-          }
-        }
-      })
-      .catch((e) => {
-        if (e instanceof ApiError) {
-          if (e.errorCode === GetTeamListStatus.ERROR) {
-            this.error = 'Gagal saat Mengambil Data Anggota';
-            return;
-          }
-
-          this.error = e.message;
-          return;
-        }
-
-        this.error = e.toString();
-      })
-      .finally(() => {
-        this.isLoading = false;
-      });
-  }
+  // mounted() {
+  //   this.competitionId = 1; // hardcoded temporarily, previously was competitionMap[this.id];
+  //
+  //   this.$arkavidiaApi.competition.getTeamList()
+  //     .then((results) => {
+  //       if (results) {
+  //         if (results.length) {
+  //           let competition;
+  //           for (let i = 0; i < results.length; i++) {
+  //             if (results[i].competition) {
+  //               competition = results[i].competition;
+  //               if (competition.id) {
+  //                 if (competition.id == this.competitionId) {
+  //                   this.team = results[i];
+  //                 }
+  //               }
+  //             }
+  //           }
+  //         }
+  //       }
+  //
+  //       if (this.team) {
+  //         if (this.team.id) {
+  //           this.teamId = this.team.id;
+  //         }
+  //
+  //         if (this.team.competition) {
+  //           if (this.team.competition.maxTeamMembers) {
+  //             this.maxCapacity = this.team.competition.maxTeamMembers;
+  //           }
+  //         }
+  //
+  //         if (this.team.teamMembers) {
+  //           this.members = this.team.teamMembers;
+  //         }
+  //       }
+  //     })
+  //     .catch((e) => {
+  //       if (e instanceof ApiError) {
+  //         if (e.errorCode === GetTeamListStatus.ERROR) {
+  //           this.error = 'Gagal saat Mengambil Data Anggota';
+  //           return;
+  //         }
+  //
+  //         this.error = e.message;
+  //         return;
+  //       }
+  //
+  //       this.error = e.toString();
+  //     })
+  //     .finally(() => {
+  //       this.isLoading = false;
+  //     });
+  // }
 
   attemptRegister() {
     if (!this.name) {

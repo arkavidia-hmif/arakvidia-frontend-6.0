@@ -8,8 +8,8 @@
       </template>
       <form v-if="fUser" @submit.prevent="attemptEdit">
         <v-card justify="center">
-          <v-card-title style="background: #FFBA07">
-            <span class="headline">Edit Profil</span>
+          <v-card-title>
+            <span class="headline font-weight-bold" style="color: #0B909A">Edit Profil</span>
           </v-card-title>
           <v-card-text class="mt-6">
             <v-alert v-if="error" type="error">
@@ -23,8 +23,8 @@
               dense
               outlined
             />
-            <v-text-field v-model="fUser.institution" dense outlined label="Sekolah/Universitas*" />
-            <v-text-field v-model="fUser.phoneNumber" dense outlined label="Nomor Ponsel*" />
+            <v-text-field v-model="fUser.institution" dense outlined label="Sekolah/Universitas" />
+            <v-text-field v-model="fUser.phoneNumber" dense outlined label="Nomor Ponsel" />
             <v-menu
               ref="menu"
               v-model="menu"
@@ -37,14 +37,14 @@
               <template v-slot:activator="{ on }">
                 <v-text-field
                   v-model="fUser.birthDate"
-                  label="Tanggal Lahir*"
+                  label="Tanggal Lahir"
                   readonly
                   dense
                   outlined
                   v-on="on"
                 />
               </template>
-              <v-date-picker v-model="fUser.birthDate" no-title scrollable>
+              <v-date-picker v-model="fUser.birthDate" no-title scrollabl @change="$refs.menu.save(fUser.birthDate)">
                 <v-spacer />
                 <v-btn text color="primary" @click="menu = false">
                   Batalkan
@@ -54,8 +54,8 @@
                 </v-btn>
               </v-date-picker>
             </v-menu>
-            <v-text-field v-model="fUser.address" dense outlined label="Alamat*" />
-            <small>* isian wajib</small>
+            <v-text-field v-model="fUser.address" dense outlined label="Alamat" />
+            <div>* isian wajib</div>
           </v-card-text>
           <v-card-actions>
             <v-spacer />

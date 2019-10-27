@@ -1,7 +1,9 @@
 <template>
   <DashboardWrapper>
-    <CompetitionWrapper :competition-id="id">
-      <AnggotaTim />
+    <CompetitionWrapper :competition-slug="slug">
+      <template slot-scope="{ team }">
+        <AnggotaTim :team="team" />
+      </template>
     </CompetitionWrapper>
   </DashboardWrapper>
 </template>
@@ -23,7 +25,7 @@ export default class DashboardAnggotaTim extends Vue {
     };
   }
 
-  get id() {
+  get slug() {
     // eslint-disable-next-line dot-notation
     return this.$route.params['competition'];
   }

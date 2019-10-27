@@ -2,7 +2,7 @@
   <div class="ml-3 mb-5">
     <v-card elevation="3">
       <v-list>
-        <v-list-item :to="`/dashboard/competition/${id}`" exact>
+        <v-list-item :to="`/dashboard/competition/${slug}`" exact>
           <v-list-item-content>
             <v-list-item-title>
               <v-icon left>
@@ -12,7 +12,7 @@
             </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-        <v-list-item :to="`/dashboard/competition/${id}/anggota-tim`" exact>
+        <v-list-item :to="`/dashboard/competition/${slug}/anggota-tim`" exact>
           <v-list-item-content>
             <v-list-item-title>
               <v-icon left>
@@ -22,30 +22,33 @@
             </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-        <v-list-item :to="`/dashboard/competition/${id}/upload-berkas`" exact>
-          <v-list-item-content>
+        <v-divider />
+        <template v-for="stage, i in stages">
+          <v-list-item :key="i" :to="`/dashboard/competition/${slug}/action`" exact :disabled="stage.id !== team.activeStageId">
             <v-list-item-title>
-              <v-icon left>
-                {{ berkas }}
-              </v-icon>
-              Upload Berkas
+              {{ stage.name }}
             </v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
+          </v-list-item>
+        </template>
       </v-list>
     </v-card>
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import Vue from 'vue';
 import { mdiInformation, mdiAccountGroup, mdiApps } from '@mdi/js';
+import { Stage } from '~/api/competition/types';
 
 export default Vue.extend({
   name: 'TabMenu',
   props: {
-    id: {
+    slug: {
       type: String,
+      required: true
+    },
+    team: {
+      type: Object,
       required: true
     }
   },
@@ -53,7 +56,15 @@ export default Vue.extend({
     info: mdiInformation,
     accountGroup: mdiAccountGroup,
     berkas: mdiApps
-  })
+  }),
+  computed: {
+    stages(): Stage[] {
+      if (this.team.stages) {
+        return this.team.stages;
+      }
+      return [];
+    }
+  }
 });
 </script>
 
