@@ -3,28 +3,24 @@
     <v-card elevation="3">
       <v-list>
         <v-list-item :to="`/dashboard/competition/${slug}`" exact>
-          <v-list-item-content>
-            <v-list-item-title>
-              <v-icon left>
-                {{ info }}
-              </v-icon>
-              Informasi Tim
-            </v-list-item-title>
-          </v-list-item-content>
+          <v-list-item-title>
+            <v-icon left>
+              {{ info }}
+            </v-icon>
+            Informasi Tim
+          </v-list-item-title>
         </v-list-item>
         <v-list-item :to="`/dashboard/competition/${slug}/anggota-tim`" exact>
-          <v-list-item-content>
-            <v-list-item-title>
-              <v-icon left>
-                {{ accountGroup }}
-              </v-icon>
-              Anggota Tim
-            </v-list-item-title>
-          </v-list-item-content>
+          <v-list-item-title>
+            <v-icon left>
+              {{ accountGroup }}
+            </v-icon>
+            Anggota Tim
+          </v-list-item-title>
         </v-list-item>
         <v-divider />
         <template v-for="stage, i in stages">
-          <v-list-item :key="i" :to="`/dashboard/competition/${slug}/action`" exact :disabled="stage.id !== team.activeStageId">
+          <v-list-item :key="i" :to="stage.id === team.activeStageId ? `/dashboard/competition/${slug}/action` : undefined" exact :disabled="stage.id !== team.activeStageId">
             <v-list-item-title>
               {{ stage.name }}
             </v-list-item-title>

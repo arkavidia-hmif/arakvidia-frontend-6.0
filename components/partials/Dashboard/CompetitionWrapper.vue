@@ -4,7 +4,7 @@
       <v-col :cols="12" :sm="4" :lg="3">
         <TabMenu :slug="competitionSlug" :team="teamDetails" />
       </v-col>
-      <v-col :cols="12" :sm="8" :lg="9" align-self="center">
+      <v-col :cols="12" :sm="8" :lg="9">
         <slot :team="teamDetails" />
       </v-col>
     </v-row>

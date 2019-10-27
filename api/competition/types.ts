@@ -49,6 +49,7 @@ export interface Task {
 export interface TaskResponse {
   taskId?: number;
   response?: string;
+  reason?: string;
   status: string;
   lastSubmittedAt: string;
 }

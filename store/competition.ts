@@ -64,5 +64,10 @@ export const actions = {
     const team = await arkavidiaApi.competition.getTeamDetail(teamId);
     commit('setTeam', team);
     return team;
+  },
+
+  // eslint-disable-next-line no-empty-pattern
+  submitTaskResponse({ }, { teamId, taskId, response }) {
+    return arkavidiaApi.competition.submitTaskResponse(teamId, taskId, response);
   }
 };

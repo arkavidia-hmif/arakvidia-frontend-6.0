@@ -6,7 +6,7 @@ import {
   GetTeamListStatus,
   GetTeamDetailStatus,
   AddMemberStatus,
-  RemoveMemberStatus
+  RemoveMemberStatus, TaskResponse
 } from './types';
 import { ApiError, ArkavidiaBaseApi } from '~/api/base';
 
@@ -91,6 +91,16 @@ export class ArkavidiaCompetitionApi extends ArkavidiaBaseApi {
       }
 
       throw new ApiError<RemoveMemberStatus>(RemoveMemberStatus.ERROR, e.toString());
+    }
+  }
+
+  async submitTaskResponse(teamId: number, taskId: number, response: string): Promise<TaskResponse> {
+    try {
+      const r = await this.axios.post(`/competition/teams/${teamId}/tasks/${taskId}/`, { response });
+      return r.data as TaskResponse;
+    }
+    catch (e) {
+      throw new ApiError<boolean>(false, e.toString());
     }
   }
 }
