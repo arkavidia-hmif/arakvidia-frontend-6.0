@@ -42,8 +42,8 @@ export const mutations = {
   setTeam(state: CompetitionState, team: Team) {
     state.teams[team.id] = team;
   },
-  deleteTeam(state: CompetitionState, team: Team) {
-    // TO DO
+  deleteTeam(state: CompetitionState, team_id: number) {
+    delete state.teams[team_id];
   }
 };
 
@@ -72,8 +72,8 @@ export const actions = {
     const teamData = await arkavidiaApi.competition.changeTeam(team_id, name, teamLeaderEmail, institution);
     commit('setTeam', { team: teamData });
   },
-  async deleteTeam({ commit }, team_id) {
-    const team = await arkavidiaApi.competition.deleteTeam(team_id);
-    commit('deleteTeam', team);
+  async deleteTeam({ commit }, { team_id }) {
+    await arkavidiaApi.competition.deleteTeam(team_id);
+    commit('deleteTeam', team_id);
   }
 };

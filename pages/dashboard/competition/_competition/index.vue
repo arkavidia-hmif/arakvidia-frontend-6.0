@@ -177,11 +177,11 @@ export default class DashboardCompetitionIndex extends Vue {
   attemptDelete() {
     this.isDeleting = true;
     this.error = '';
-
+  
     let team_id = this.teamId;
     this.deleteTeamAction({ team_id })
     .then(() => {
-      const redirectUrl = (this.nextRoute) ? this.nextRoute : '/dashboard/competition/' + this.slug;
+      const redirectUrl = (this.nextRoute) ? this.nextRoute : '/dashboard/competition/';
       this.$router.push(redirectUrl);
     })
     .catch((e) => {
