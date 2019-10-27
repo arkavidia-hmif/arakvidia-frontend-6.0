@@ -22,16 +22,14 @@
             </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-        <v-list-item :to="`/dashboard/competition/${slug}/upload-berkas`" exact>
-          <v-list-item-content>
+        <v-divider />
+        <template v-for="stage, i in stages">
+          <v-list-item :key="i" :to="`/dashboard/competition/${slug}/action`" exact :disabled="stage.id !== team.activeStageId">
             <v-list-item-title>
-              <v-icon left>
-                {{ berkas }}
-              </v-icon>
-              Upload Berkas
+              {{ stage.name }}
             </v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
+          </v-list-item>
+        </template>
       </v-list>
     </v-card>
   </div>
@@ -40,6 +38,7 @@
 <script lang="ts">
 import Vue from 'vue';
 import { mdiInformation, mdiAccountGroup, mdiApps } from '@mdi/js';
+import { Stage } from '~/api/competition/types';
 
 export default Vue.extend({
   name: 'TabMenu',
@@ -47,13 +46,25 @@ export default Vue.extend({
     slug: {
       type: String,
       required: true
+    },
+    team: {
+      type: Object,
+      required: true
     }
   },
   data: () => ({
     info: mdiInformation,
     accountGroup: mdiAccountGroup,
     berkas: mdiApps
-  })
+  }),
+  computed: {
+    stages(): Stage[] {
+      if (this.team.stages) {
+        return this.team.stages;
+      }
+      return [];
+    }
+  }
 });
 </script>
 

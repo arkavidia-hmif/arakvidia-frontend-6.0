@@ -1,7 +1,9 @@
 <template>
   <DashboardWrapper>
     <CompetitionWrapper :competition-slug="slug">
-      <AnggotaTim />
+      <template slot-scope="{ team }">
+        <AnggotaTim :team="team" />
+      </template>
     </CompetitionWrapper>
   </DashboardWrapper>
 </template>

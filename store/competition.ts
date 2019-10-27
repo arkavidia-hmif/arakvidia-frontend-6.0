@@ -48,6 +48,7 @@ export const actions = {
   async fetchCompetitionList({ commit }) {
     const competitions = await arkavidiaApi.competition.getCompetitionList();
     commit('setCompetitions', competitions);
+    return competitions;
   },
 
   // eslint-disable-next-line no-empty-pattern
@@ -57,9 +58,11 @@ export const actions = {
   async fetchTeamList({ commit }) {
     const teams = await arkavidiaApi.competition.getTeamList();
     commit('setTeams', teams);
+    return teams;
   },
   async fetchTeamDetail({ commit }, teamId) {
     const team = await arkavidiaApi.competition.getTeamDetail(teamId);
     commit('setTeam', team);
+    return team;
   }
 };

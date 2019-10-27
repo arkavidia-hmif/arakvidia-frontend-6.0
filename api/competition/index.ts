@@ -23,7 +23,7 @@ export class ArkavidiaCompetitionApi extends ArkavidiaBaseApi {
 
   async getTeamDetail(teamId: number): Promise<Team> {
     try {
-      const response = await this.axios.get(`/competition/teams/${teamId}`);
+      const response = await this.axios.get(`/competition/teams/${teamId}/`);
       return response.data as Team;
     }
     catch (e) {
@@ -81,7 +81,7 @@ export class ArkavidiaCompetitionApi extends ArkavidiaBaseApi {
 
   async removeMember(teamId: number, teamMemberId: number): Promise<void> {
     try {
-      await this.axios.delete(`/competition/teams/` + teamId + `/members` + teamMemberId);
+      await this.axios.delete(`/competition/teams/${teamId}/members/${teamMemberId}/`);
     }
     catch (e) {
       if (e.response) {

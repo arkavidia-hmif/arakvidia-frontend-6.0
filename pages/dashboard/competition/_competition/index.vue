@@ -5,8 +5,8 @@
         <h5 class="mt-4 title font-weight-black">
           {{ (team) ? team.competition.name : '' }}
         </h5>
-        <v-text-field v-model="teamName" label="Nama Tim" />
-        <v-text-field v-model="teamInstitution" label="Universitas / SMA" />
+        <v-text-field v-model="teamName" dense outlined label="Nama Tim" class="mt-6" />
+        <v-text-field v-model="teamInstitution" dense outlined label="Universitas / SMA" />
         <div class="my-2">
           <v-btn
             id="delete"
@@ -45,8 +45,8 @@ import { Team } from '~/api/competition/types';
 export default class DashboardCompetitionIndex extends Vue {
   @Getter('competition/getTeams') teams!: Team[];
 
-  changedTeamName: string;
-  changedTeamInstitution: string;
+  changedTeamName: string = '';
+  changedTeamInstitution: string = '';
 
   head() {
     return {
