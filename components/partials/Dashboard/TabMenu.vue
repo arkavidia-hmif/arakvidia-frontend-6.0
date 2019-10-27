@@ -2,7 +2,7 @@
   <div class="ml-3 mb-5">
     <v-card elevation="3">
       <v-list>
-        <v-list-item :to="`/dashboard/competition/${id}`" exact>
+        <v-list-item :to="`/dashboard/competition/${slug}`" exact>
           <v-list-item-content>
             <v-list-item-title>
               <v-icon left>
@@ -12,7 +12,7 @@
             </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-        <v-list-item :to="`/dashboard/competition/${id}/anggota-tim`" exact>
+        <v-list-item :to="`/dashboard/competition/${slug}/anggota-tim`" exact>
           <v-list-item-content>
             <v-list-item-title>
               <v-icon left>
@@ -22,7 +22,7 @@
             </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-        <v-list-item :to="`/dashboard/competition/${id}/upload-berkas`" exact>
+        <v-list-item :to="`/dashboard/competition/${slug}/upload-berkas`" exact>
           <v-list-item-content>
             <v-list-item-title>
               <v-icon left>
@@ -37,14 +37,14 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import Vue from 'vue';
 import { mdiInformation, mdiAccountGroup, mdiApps } from '@mdi/js';
 
 export default Vue.extend({
   name: 'TabMenu',
   props: {
-    id: {
+    slug: {
       type: String,
       required: true
     }

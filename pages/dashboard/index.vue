@@ -8,7 +8,7 @@
     </template>
     <template v-else>
       <div align="center" class="pa-5">
-        <v-progress-circular indeterminate></v-progress-circular>
+        <v-progress-circular indeterminate />
       </div>
     </template>
   </DashboardWrapper>

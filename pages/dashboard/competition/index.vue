@@ -6,8 +6,8 @@
           :title="competition.name"
           subtitle=""
           :to="'/dashboard/competition/' + competition.slug"
-          button-title="Anda tidak dapat mendaftar"
-          :enabled="false"
+          button-title="Daftar"
+          :enabled="true"
         />
       </v-col>
     </v-row>

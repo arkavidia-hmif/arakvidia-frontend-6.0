@@ -1,12 +1,12 @@
 <template>
   <DashboardWrapper>
-    <CompetitionWrapper :competition-id="id">
+    <CompetitionWrapper :competition-slug="slug">
       <div class="px-auto mx-auto">
         <h5 class="mt-4 title font-weight-black">
-          Competitive Programming
+          {{ (team) ? team.competition.name : '' }}
         </h5>
-        <v-text-field v-model="team" label="Nama Tim" />
-        <v-text-field v-model="school" label="Universitas / SMA" />
+        <v-text-field v-model="teamName" label="Nama Tim" />
+        <v-text-field v-model="teamInstitution" label="Universitas / SMA" />
         <div class="my-2">
           <v-btn
             id="delete"
@@ -33,31 +33,53 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'nuxt-property-decorator';
+import { Component, Vue, Getter } from 'nuxt-property-decorator';
 import DashboardWrapper from '~/components/partials/Dashboard/DashboardWrapper.vue';
 import TabMenu from '~/components/partials/Dashboard/TabMenu.vue';
 import CompetitionWrapper from '~/components/partials/Dashboard/CompetitionWrapper.vue';
-// import AnggotaTim from '~/components/partials/Dashboard/AnggotaTim.vue';
+import { Team } from '~/api/competition/types';
 
 @Component({
   components: { CompetitionWrapper, DashboardWrapper, TabMenu }
 })
 export default class DashboardCompetitionIndex extends Vue {
-  data() {
-    return {
-      team: '',
-      school: ''
-    };
-  }
+  @Getter('competition/getTeams') teams!: Team[];
+
+  changedTeamName: string;
+  changedTeamInstitution: string;
+
   head() {
     return {
       title: 'Informasi Tim'
     };
   }
 
-  get id() {
+  get slug() {
     // eslint-disable-next-line dot-notation
     return this.$route.params['competition'];
+  }
+
+  get team(): Team|undefined {
+    return this.teams.find((team: Team) => {
+      if (!team.competition) { return false; }
+      return (team.competition.slug === this.slug);
+    });
+  }
+
+  get teamName(): string {
+    return (this.team) ? this.team.name : '';
+  }
+
+  set teamName(teamName: string) {
+    this.changedTeamName = teamName;
+  }
+
+  get teamInstitution(): string {
+    return (this.team) ? this.team.institution : '';
+  }
+
+  set teamInstitution(teamInstitution: string) {
+    this.changedTeamInstitution = teamInstitution;
   }
 }
 </script>
