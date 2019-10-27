@@ -2,7 +2,7 @@
   <div>
     <template v-if="currentTaskResponse && !deleted">
       <div v-if="currentTaskResponse.status === 'awaiting_validation'">
-        <b class="orange--text">Pending verification</b>
+        <b class="orange--text">Menunggu verifikasi</b>
       </div>
       <div v-if="currentTaskResponse.status === 'completed'">
         <b class="green--text text--darken-1">Sudah terverifikasi!</b>
@@ -23,7 +23,6 @@
           </v-flex>
           <v-flex shrink>
             <v-btn
-              v-if="currentTaskResponse.status === 'rejected'"
               icon
               small
               class="ma-0"

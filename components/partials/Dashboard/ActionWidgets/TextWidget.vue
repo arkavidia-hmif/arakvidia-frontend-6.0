@@ -2,7 +2,7 @@
   <div>
     <template v-if="currentTaskResponse">
       <div v-if="currentTaskResponse.status === 'awaiting_validation'">
-        <b class="orange--text">Pending verification</b>
+        <b class="orange--text">Menunggu verifikasi</b>
       </div>
       <div v-if="currentTaskResponse.status === 'completed'">
         <b class="green--text text--darken-1">Sudah terverifikasi!</b>
