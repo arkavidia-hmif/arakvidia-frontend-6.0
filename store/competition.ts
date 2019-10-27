@@ -99,5 +99,8 @@ export const actions = {
   async removeMember({ commit }, { team_id, team_member_id }) {
     await arkavidiaApi.competition.removeMember(team_id, team_member_id);
     commit('removeMember', { team_id, team_member_id });
+  },
+  async asyncsubmitTaskResponse({ }, { teamId, taskId, response }) {
+    return arkavidiaApi.competition.submitTaskResponse(teamId, taskId, response);
   }
 };

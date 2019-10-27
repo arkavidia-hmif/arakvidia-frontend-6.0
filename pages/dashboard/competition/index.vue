@@ -29,6 +29,7 @@
 import { Component, Action, Getter, Vue } from 'nuxt-property-decorator';
 import DashboardWrapper from '~/components/partials/Dashboard/DashboardWrapper.vue';
 import CompetitionCard from '~/components/partials/Dashboard/CompetitionCard.vue';
+import { Team } from '~/api/competition/types';
 
 @Component({
   components: { DashboardWrapper, CompetitionCard }
