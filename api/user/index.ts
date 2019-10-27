@@ -106,11 +106,11 @@ export class ArkavidiaUserApi extends ArkavidiaBaseApi {
     try {
       const response = await this.axios.patch(`/auth/edit-user/`, {
         fullName: user.fullName,
-        currentEducation: user.currentEducation,
-        institution: user.institution,
-        phoneNumber: user.phoneNumber,
-        address: user.address,
-        birthDate: user.birthDate
+        currentEducation: user.currentEducation || undefined,
+        institution: user.institution || undefined,
+        phoneNumber: user.phoneNumber || undefined,
+        address: user.address || undefined,
+        birthDate: user.birthDate || undefined
       });
       const userData = response.data;
       return userData as User;

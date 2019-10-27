@@ -80,6 +80,9 @@ export default {
   },
   moment: {
     locales: ['id']
+  },
+  router: {
+    middleware: ['auth']
   }
 };
 

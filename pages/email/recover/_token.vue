@@ -90,6 +90,7 @@ export default class DashboardRecoverReset extends Vue {
     }
 
     this.isResetting = true;
+    this.error = '';
 
     // eslint-disable-next-line dot-notation
     const token = this.$route.params['token'];

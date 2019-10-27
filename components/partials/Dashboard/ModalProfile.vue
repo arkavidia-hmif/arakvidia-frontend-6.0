@@ -95,26 +95,6 @@ export default class ModalProfile extends Vue {
       this.error = 'Nama lengkap harus diisi';
       return;
     }
-    if (!this.fUser.currentEducation) {
-      this.error = 'Pendidikan saat ini harus diisi';
-      return;
-    }
-    if (!this.fUser.institution) {
-      this.error = 'Sekolah/Institusi harus diisi';
-      return;
-    }
-    if (!this.fUser.phoneNumber) {
-      this.error = 'Nomor telefon harus diisi';
-      return;
-    }
-    if (!this.fUser.birthDate) {
-      this.error = 'Tanggal lahir harus diisi';
-      return;
-    }
-    if (!this.fUser.address) {
-      this.error = 'Alamat harus diisi';
-      return;
-    }
 
     this.error = '';
     this.isEditing = true;
