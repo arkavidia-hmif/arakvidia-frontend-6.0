@@ -149,8 +149,6 @@ export default class DashboardCompetitionIndex extends Vue {
     let institution = this.changedTeamInstitution ? this.changedTeamInstitution : this.teamInstitution;
     let teamLeaderEmail = this.teamLeader;
 
-    console.log(name, institution, teamLeaderEmail);
-
     this.changeTeamAction({ team_id, name, institution, teamLeaderEmail })
     .then(() => {
       const redirectUrl = (this.nextRoute) ? this.nextRoute : '/dashboard/competition/' + this.slug;

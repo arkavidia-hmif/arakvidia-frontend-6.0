@@ -49,10 +49,10 @@ export class ArkavidiaCompetitionApi extends ArkavidiaBaseApi {
     }
   }
 
-  async addMember(teamId: number, name: string, email: string): Promise<void> {
+  async addMember(team_id: number, fullName: string, email: string): Promise<void> {
     try {
-      const data = { name, email };
-      await this.axios.post(`/competition/teams/` + teamId + `/members`, data);
+      const data = { fullName, email };
+      await this.axios.post(`/competition/teams/` + team_id + `/members/`, data);
     }
     catch (e) {
       if (e.response) {
@@ -81,9 +81,9 @@ export class ArkavidiaCompetitionApi extends ArkavidiaBaseApi {
     }
   }
 
-  async removeMember(teamId: number, teamMemberId: number): Promise<void> {
+  async removeMember(team_id: number, team_member_id: number): Promise<void> {
     try {
-      await this.axios.delete(`/competition/teams/${teamId}/members/${teamMemberId}/`);
+      await this.axios.delete(`/competition/teams/${team_id}/members/${team_member_id}/`);
     }
     catch (e) {
       if (e.response) {

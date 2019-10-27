@@ -22,17 +22,18 @@
                 class="my-5 subtitle-2 text-none px-5 font-weight-bold"
                 style="border-radius: 50px; margin: 0 !important; border: 2px solid #E44D4B;
                 color: #E44D4B; float: right; background: white;"
+                @click="attemptDelete"
               >
                 Hapus Anggota
               </v-btn>
             </v-flex>
           </v-row>
-          <ProfileField title="Name" :value="member.name" />
+          <ProfileField title="Name" :value="member.fullName" />
           <ProfileField title="Email" :value="member.email" />
         </div>
       </v-col>
     </div>
-    <div v-if="members.length < maxCapacity">
+    <div v-if="team.teamMembers.length < team.competition.maxTeamMembers">
       <p style="font-weight: 700 !important; margin-bottom: 0 !important;">
         Tambah Anggota
       </p>
@@ -45,7 +46,7 @@
         </v-alert>
         <form @submit.prevent="attemptCreateMember">
           <v-text-field
-            v-model="name"
+            v-model="fullName"
             label="Nama"
           />
           <v-text-field
@@ -67,16 +68,14 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Prop } from 'nuxt-property-decorator';
+import { Component, Vue, Getter, Action } from 'nuxt-property-decorator';
 import ProfileField from '~/components/partials/Dashboard/ProfileField.vue';
 import { ApiError } from '~/api/base';
 import {
   Team,
-  Member,
   GetTeamListStatus,
   AddMemberStatus,
-  RemoveMemberStatus,
-  Competition
+  RemoveMemberStatus
 } from '~/api/competition/types';
 
 interface QueryParameters {
@@ -88,22 +87,28 @@ interface QueryParameters {
 })
 export default class AnggotaTim extends Vue {
   error: string = '';
-  name: string = '';
+  fullName: string = '';
   email: string = '';
-  teamId: number = 0;
-  members: Array<Member> = [];
   memberId: number = -999;
-  maxCapacity: number = 3;
   isCreating: boolean = false;
   isDeleting: boolean = false;
   isLoading: boolean = true;
   competitionId: number = 0;
 
-  @Prop({ default: undefined }) team: Team|undefined;
+  @Getter('competition/getTeams') teams!: Team[];
+  @Action('competition/addMember') addMemberAction;
+  @Action('competition/removeMember') removeMemberAction;
 
-  get id() {
+  get slug() {
     // eslint-disable-next-line dot-notation
     return this.$route.params['competition'];
+  }
+
+  get team(): Team|undefined {
+    return this.teams.find((team: Team) => {
+      if (!team.competition) { return false; }
+      return (team.competition.slug === this.slug);
+    });
   }
 
   get nextRoute(): string|undefined {
@@ -111,63 +116,12 @@ export default class AnggotaTim extends Vue {
     return queryParams.continue;
   }
 
-  // mounted() {
-  //   this.competitionId = 1; // hardcoded temporarily, previously was competitionMap[this.id];
-  //
-  //   this.$arkavidiaApi.competition.getTeamList()
-  //     .then((results) => {
-  //       if (results) {
-  //         if (results.length) {
-  //           let competition;
-  //           for (let i = 0; i < results.length; i++) {
-  //             if (results[i].competition) {
-  //               competition = results[i].competition;
-  //               if (competition.id) {
-  //                 if (competition.id == this.competitionId) {
-  //                   this.team = results[i];
-  //                 }
-  //               }
-  //             }
-  //           }
-  //         }
-  //       }
-  //
-  //       if (this.team) {
-  //         if (this.team.id) {
-  //           this.teamId = this.team.id;
-  //         }
-  //
-  //         if (this.team.competition) {
-  //           if (this.team.competition.maxTeamMembers) {
-  //             this.maxCapacity = this.team.competition.maxTeamMembers;
-  //           }
-  //         }
-  //
-  //         if (this.team.teamMembers) {
-  //           this.members = this.team.teamMembers;
-  //         }
-  //       }
-  //     })
-  //     .catch((e) => {
-  //       if (e instanceof ApiError) {
-  //         if (e.errorCode === GetTeamListStatus.ERROR) {
-  //           this.error = 'Gagal saat Mengambil Data Anggota';
-  //           return;
-  //         }
-  //
-  //         this.error = e.message;
-  //         return;
-  //       }
-  //
-  //       this.error = e.toString();
-  //     })
-  //     .finally(() => {
-  //       this.isLoading = false;
-  //     });
-  // }
+  get teamId(): number {
+    return (this.team) ? this.team.id : 0;
+  }
 
-  attemptRegister() {
-    if (!this.name) {
+  attemptCreateMember() {
+    if (!this.fullName) {
       this.error = 'Nama anggota harus diisi';
       return;
     }
@@ -184,27 +138,32 @@ export default class AnggotaTim extends Vue {
 
     this.isCreating = true;
     this.error = '';
-    this.$arkavidiaApi.competition.addMember(this.teamId, this.name, this.email)
-      .then(() => {
-        const redirectUrl = (this.nextRoute) ? this.nextRoute : '/dashboard/competition/' + this.id + 'anggota-tim';
-        this.$router.push(redirectUrl);
-      })
-      .catch((e) => {
-        if (e instanceof ApiError) {
-          if (e.errorCode === AddMemberStatus.EMAIL_EXISTS) {
-            this.error = 'E-mail sudah terdaftar';
-            return;
-          }
 
-          this.error = e.message;
+    let team_id = this.teamId;
+    let fullName = this.fullName;
+    let email = this.email;
+
+    this.addMemberAction({ team_id, fullName, email })
+    .then(() => {
+      const redirectUrl = (this.nextRoute) ? this.nextRoute : '/dashboard/competition/' + this.slug + '/anggota-tim';
+      this.$router.push(redirectUrl);
+    })
+    .catch((e) => {
+      if (e instanceof ApiError) {
+        if (e.errorCode === AddMemberStatus.ERROR) {
+          this.error = 'Tidak dapat menambah anggota tim';
           return;
         }
 
-        this.error = e.toString();
-      })
-      .finally(() => {
-        this.isCreating = false;
-      });
+        this.error = e.message;
+        return;
+      }
+
+      this.error = e.toString();
+    })
+    .finally(() => {
+      this.isCreating = false;
+    });
   }
 
   validateEmail(email): boolean {
@@ -216,27 +175,30 @@ export default class AnggotaTim extends Vue {
   attemptDelete() {
     this.isDeleting = true;
     this.error = '';
-    this.$arkavidiaApi.competition.removeMember(this.teamId, this.memberId)
-      .then(() => {
-        const redirectUrl = (this.nextRoute) ? this.nextRoute : '/dashboard/competition/' + this.id + 'anggota-tim';
-        this.$router.push(redirectUrl);
-      })
-      .catch((e) => {
-        if (e instanceof ApiError) {
-          if (e.errorCode === RemoveMemberStatus.ERROR) {
-            this.error = 'Penghapusan Anggota Gagal';
-            return;
-          }
-
-          this.error = e.message;
+  
+    let team_id = this.teamId;
+    let team_member_id = this.memberId;
+    this.removeMemberAction({ team_id, team_member_id })
+    .then(() => {
+      const redirectUrl = (this.nextRoute) ? this.nextRoute : '/dashboard/competition/' + this.slug + '/anggota-tim';
+      this.$router.push(redirectUrl);
+    })
+    .catch((e) => {
+      if (e instanceof ApiError) {
+        if (e.errorCode === RemoveMemberStatus.ERROR) {
+          this.error = 'Tidak dapat menghapus anggota tim';
           return;
         }
 
-        this.error = e.toString();
-      })
-      .finally(() => {
-        this.isDeleting = false;
-      });
+        this.error = e.message;
+        return;
+      }
+
+      this.error = e.toString();
+    })
+    .finally(() => {
+      this.isDeleting = false;
+    });
   }
 }
 </script>
