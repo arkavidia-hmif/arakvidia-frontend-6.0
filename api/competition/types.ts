@@ -54,7 +54,15 @@ export interface TaskResponse {
 }
 
 export enum RegisterTeamStatus {
-  NAME_EXISTS, ERROR
+  NAME_EXISTS, NOT_OPEN, ERROR
+}
+
+export enum ChangeTeamStatus {
+  ERROR
+}
+
+export enum DeleteTeamStatus {
+  ERROR
 }
 
 export enum GetCompetitionListStatus {

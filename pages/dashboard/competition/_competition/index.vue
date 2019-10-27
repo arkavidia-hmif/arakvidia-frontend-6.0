@@ -3,7 +3,7 @@
     <CompetitionWrapper :competition-slug="slug">
       <div class="px-auto mx-auto">
         <h5 class="mt-4 title font-weight-black">
-          {{ (team) ? team.competition.name : '' }}
+          {{ title }}
         </h5>
         <v-text-field v-model="teamName" dense outlined label="Nama Tim" class="mt-6" />
         <v-text-field v-model="teamInstitution" dense outlined label="Universitas / SMA" />
@@ -14,6 +14,7 @@
             large
             class="mx-5 subtitle-2 text-none px-5 font-weight-bold"
             style="border-radius: 50px; border: 2px solid #E44D4B;  color: #E44D4B; float: left;"
+            :loading="isDeleting"
           >
             Hapus Tim
           </v-btn>
@@ -23,6 +24,7 @@
             large
             class="mx-5 subtitle-2 text-none px-5 font-weight-bold"
             style="border-radius: 50px; color: white; float: left; background-color: #197AD2;"
+            :loading="isChanging"
           >
             Simpan Tim
           </v-btn>
@@ -33,9 +35,10 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Getter } from 'nuxt-property-decorator';
+import { Component, Vue, Action, Getter } from 'nuxt-property-decorator';
 import DashboardWrapper from '~/components/partials/Dashboard/DashboardWrapper.vue';
 import TabMenu from '~/components/partials/Dashboard/TabMenu.vue';
+import { ApiError } from '~/api/base';
 import CompetitionWrapper from '~/components/partials/Dashboard/CompetitionWrapper.vue';
 import { Team } from '~/api/competition/types';
 
@@ -47,11 +50,29 @@ export default class DashboardCompetitionIndex extends Vue {
 
   changedTeamName: string = '';
   changedTeamInstitution: string = '';
+  title: string = '';
+  isChanging: boolean = false;
+  isDeleting: boolean = false;
 
   head() {
     return {
       title: 'Informasi Tim'
     };
+  }
+
+  mounted() {
+    let i;
+    const temp = this.slug.split('-');
+    for (i = 0; i < temp.length; i++) {
+      this.title += DashboardCompetitionIndex.jsUcfirst(temp[i]);
+      if (i !== temp.length - 1) {
+        this.title += ' ';
+      }
+    }
+  }
+
+  static jsUcfirst(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
   get slug() {
@@ -72,6 +93,7 @@ export default class DashboardCompetitionIndex extends Vue {
 
   set teamName(teamName: string) {
     this.changedTeamName = teamName;
+    
   }
 
   get teamInstitution(): string {

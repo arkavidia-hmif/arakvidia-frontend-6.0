@@ -119,7 +119,7 @@ export default class RegisterTeam extends Vue {
 
     this.registerTeamAction({ competitionId, name, institution })
     .then(() => {
-      const redirectUrl = (this.nextRoute) ? this.nextRoute : '/dashboard/competition/' + this.competitionId;
+      const redirectUrl = (this.nextRoute) ? this.nextRoute : '/dashboard/competition/' + this.slug;
       this.$router.push(redirectUrl);
     })
     .catch((e) => {
