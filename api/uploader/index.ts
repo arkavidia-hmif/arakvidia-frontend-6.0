@@ -25,9 +25,9 @@ export class ArkavidiaUploaderApi extends ArkavidiaBaseApi {
     }
   }
 
-  async retrieveFile(fileId: string): Promise<File> {
+  async getFile(fileId: string): Promise<File> {
     try {
-      const response = await this.axios.get(`/uploader/uploaded-file` + fileId);
+      const response = await this.axios.get(`/uploader/uploaded-file/` + fileId);
       return response.data as File;
     }
     catch (e) {
