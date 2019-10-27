@@ -18,11 +18,10 @@
             </p>
             <v-flex>
               <v-btn
-                :member-id="member.id"
                 class="my-5 subtitle-2 text-none px-5 font-weight-bold"
                 style="border-radius: 50px; margin: 0 !important; border: 2px solid #E44D4B;
                 color: #E44D4B; float: right; background: white;"
-                @click="attemptDelete"
+                @click="attemptDelete(member.id)"
               >
                 Hapus Anggota
               </v-btn>
@@ -171,12 +170,11 @@ export default class AnggotaTim extends Vue {
     return re.test(String(email).toLowerCase());
   }
 
-  attemptDelete() {
+  attemptDelete(memberId) {
     this.isDeleting = true;
     this.error = '';
-
     const teamId = this.teamId;
-    const teamMemberId = this.memberId;
+    const teamMemberId = memberId;
     this.removeMemberAction({ teamId, teamMemberId })
       .then(() => {
         const redirectUrl = (this.nextRoute) ? this.nextRoute : '/dashboard/competition/' + this.slug + '/anggota-tim';

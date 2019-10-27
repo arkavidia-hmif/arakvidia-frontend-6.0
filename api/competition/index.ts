@@ -1,6 +1,7 @@
 import {
   Competition,
   Team,
+  Member,
   GetCompetitionListStatus,
   RegisterTeamStatus,
   GetTeamListStatus,
@@ -50,10 +51,12 @@ export class ArkavidiaCompetitionApi extends ArkavidiaBaseApi {
     }
   }
 
-  async addMember(teamId: number, fullName: string, email: string): Promise<void> {
+  async addMember(teamId: number, fullName: string, email: string): Promise<Team> {
     try {
       const data = { fullName, email };
-      await this.axios.post(`/competition/teams/` + teamId + `/members/`, data);
+      const response = await this.axios.post(`/competition/teams/` + teamId + `/members/`, data);
+      const memberData = response.data;
+      return memberData;
     }
     catch (e) {
       if (e.response) {
