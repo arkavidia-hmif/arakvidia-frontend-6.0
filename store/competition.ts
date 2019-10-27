@@ -1,5 +1,5 @@
 import arkavidiaApi from '~/api/api';
-import { Competition, Team, Member } from '~/api/competition/types';
+import { Competition, Team } from '~/api/competition/types';
 
 export interface CompetitionState {
   competitions: {
@@ -35,26 +35,26 @@ export const mutations = {
   },
   setTeams(state: CompetitionState, teams: Array<Team>) {
     state.teams = {};
-    teams.forEach(team => {
+    teams.forEach((team) => {
       state.teams[team.id] = team;
     });
   },
   setTeam(state: CompetitionState, team: Team) {
     state.teams[team.id] = team;
   },
-  deleteTeam(state: CompetitionState, team_id: number) {
-    delete state.teams[team_id];
+  deleteTeam(state: CompetitionState, teamId: number) {
+    delete state.teams[teamId];
   },
-  addMember(state: CompetitionState, { number: team_id, Member: member}) {
-    const members = state.teams[team_id].teamMembers;
+  addMember(state: CompetitionState, { number: teamId, Member: member }) {
+    const members = state.teams[teamId].teamMembers;
     if (members != null) {
       members.push(member);
     }
   },
-  removeMember(state: CompetitionState, { number: team_id, number: team_member_id}) {
-    const members = state.teams[team_id].teamMembers;
+  removeMember(state: CompetitionState, { number: teamId, number: teamMemberId }) {
+    const members = state.teams[teamId].teamMembers;
     if (members != null) {
-      const index = members.findIndex(member => member.id == team_member_id);
+      const index = members.findIndex(member => member.id === teamMemberId);
       if (index > -1) {
         members.splice(index, 1);
       }
@@ -83,24 +83,25 @@ export const actions = {
     commit('setTeam', team);
     return team;
   },
-  async changeTeam({ commit }, { team_id, name, teamLeaderEmail, institution }) {
-    const teamData = await arkavidiaApi.competition.changeTeam(team_id, name, teamLeaderEmail, institution);
+  async changeTeam({ commit }, { teamId, name, teamLeaderEmail, institution }) {
+    const teamData = await arkavidiaApi.competition.changeTeam(teamId, name, teamLeaderEmail, institution);
     commit('setTeam', { team: teamData });
   },
-  async deleteTeam({ commit }, { team_id }) {
-    await arkavidiaApi.competition.deleteTeam(team_id);
-    commit('deleteTeam', team_id);
+  async deleteTeam({ commit }, { teamId }) {
+    await arkavidiaApi.competition.deleteTeam(teamId);
+    commit('deleteTeam', teamId);
   },
-  async addMember({ commit }, { team_id, fullName, email }) {
-    const member = await arkavidiaApi.competition.addMember(team_id, fullName, email);
-    commit('addMember', { team_id, member });
+  async addMember({ commit }, { teamId, fullName, email }) {
+    const member = await arkavidiaApi.competition.addMember(teamId, fullName, email);
+    commit('addMember', { teamId, member });
     return member;
   },
-  async removeMember({ commit }, { team_id, team_member_id }) {
-    await arkavidiaApi.competition.removeMember(team_id, team_member_id);
-    commit('removeMember', { team_id, team_member_id });
+  async removeMember({ commit }, { teamId, teamMemberId }) {
+    await arkavidiaApi.competition.removeMember(teamId, teamMemberId);
+    commit('removeMember', { teamId, teamMemberId });
   },
-  async asyncsubmitTaskResponse({ }, { teamId, taskId, response }) {
+  // eslint-disable-next-line no-empty-pattern
+  asyncsubmitTaskResponse({ }, { teamId, taskId, response }) {
     return arkavidiaApi.competition.submitTaskResponse(teamId, taskId, response);
   }
 };

@@ -73,7 +73,6 @@ import ProfileField from '~/components/partials/Dashboard/ProfileField.vue';
 import { ApiError } from '~/api/base';
 import {
   Team,
-  GetTeamListStatus,
   AddMemberStatus,
   RemoveMemberStatus
 } from '~/api/competition/types';
@@ -139,31 +138,31 @@ export default class AnggotaTim extends Vue {
     this.isCreating = true;
     this.error = '';
 
-    let team_id = this.teamId;
-    let fullName = this.fullName;
-    let email = this.email;
+    const teamId = this.teamId;
+    const fullName = this.fullName;
+    const email = this.email;
 
-    this.addMemberAction({ team_id, fullName, email })
-    .then(() => {
-      const redirectUrl = (this.nextRoute) ? this.nextRoute : '/dashboard/competition/' + this.slug + '/anggota-tim';
-      this.$router.push(redirectUrl);
-    })
-    .catch((e) => {
-      if (e instanceof ApiError) {
-        if (e.errorCode === AddMemberStatus.ERROR) {
-          this.error = 'Tidak dapat menambah anggota tim';
+    this.addMemberAction({ teamId, fullName, email })
+      .then(() => {
+        const redirectUrl = (this.nextRoute) ? this.nextRoute : '/dashboard/competition/' + this.slug + '/anggota-tim';
+        this.$router.push(redirectUrl);
+      })
+      .catch((e) => {
+        if (e instanceof ApiError) {
+          if (e.errorCode === AddMemberStatus.ERROR) {
+            this.error = 'Tidak dapat menambah anggota tim';
+            return;
+          }
+
+          this.error = e.message;
           return;
         }
 
-        this.error = e.message;
-        return;
-      }
-
-      this.error = e.toString();
-    })
-    .finally(() => {
-      this.isCreating = false;
-    });
+        this.error = e.toString();
+      })
+      .finally(() => {
+        this.isCreating = false;
+      });
   }
 
   validateEmail(email): boolean {
@@ -175,30 +174,30 @@ export default class AnggotaTim extends Vue {
   attemptDelete() {
     this.isDeleting = true;
     this.error = '';
-  
-    let team_id = this.teamId;
-    let team_member_id = this.memberId;
-    this.removeMemberAction({ team_id, team_member_id })
-    .then(() => {
-      const redirectUrl = (this.nextRoute) ? this.nextRoute : '/dashboard/competition/' + this.slug + '/anggota-tim';
-      this.$router.push(redirectUrl);
-    })
-    .catch((e) => {
-      if (e instanceof ApiError) {
-        if (e.errorCode === RemoveMemberStatus.ERROR) {
-          this.error = 'Tidak dapat menghapus anggota tim';
+
+    const teamId = this.teamId;
+    const teamMemberId = this.memberId;
+    this.removeMemberAction({ teamId, teamMemberId })
+      .then(() => {
+        const redirectUrl = (this.nextRoute) ? this.nextRoute : '/dashboard/competition/' + this.slug + '/anggota-tim';
+        this.$router.push(redirectUrl);
+      })
+      .catch((e) => {
+        if (e instanceof ApiError) {
+          if (e.errorCode === RemoveMemberStatus.ERROR) {
+            this.error = 'Tidak dapat menghapus anggota tim';
+            return;
+          }
+
+          this.error = e.message;
           return;
         }
 
-        this.error = e.message;
-        return;
-      }
-
-      this.error = e.toString();
-    })
-    .finally(() => {
-      this.isDeleting = false;
-    });
+        this.error = e.toString();
+      })
+      .finally(() => {
+        this.isDeleting = false;
+      });
   }
 }
 </script>

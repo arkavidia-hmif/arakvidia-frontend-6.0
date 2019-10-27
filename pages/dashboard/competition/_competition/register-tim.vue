@@ -61,7 +61,7 @@ export default class RegisterTeam extends Vue {
   }
 
   get competitionId() {
-    let currentCompetition = this.competitions.find(competition => competition.slug == this.slug);
+    const currentCompetition = this.competitions.find(competition => competition.slug === this.slug);
     if (currentCompetition != null) {
       return currentCompetition.id;
     }
@@ -113,31 +113,31 @@ export default class RegisterTeam extends Vue {
     this.isRegistering = true;
     this.error = '';
 
-    let competitionId = this.competitionId;
-    let name = this.name;
-    let institution = this.institution;
+    const competitionId = this.competitionId;
+    const name = this.name;
+    const institution = this.institution;
 
     this.registerTeamAction({ competitionId, name, institution })
-    .then(() => {
-      const redirectUrl = (this.nextRoute) ? this.nextRoute : '/dashboard/competition/' + this.slug;
-      this.$router.push(redirectUrl);
-    })
-    .catch((e) => {
-      if (e instanceof ApiError) {
-        if (e.errorCode === RegisterTeamStatus.ERROR) {
-          this.error = 'Tidak dapat melakukan pendaftaran tim';
+      .then(() => {
+        const redirectUrl = (this.nextRoute) ? this.nextRoute : '/dashboard/competition/' + this.slug;
+        this.$router.push(redirectUrl);
+      })
+      .catch((e) => {
+        if (e instanceof ApiError) {
+          if (e.errorCode === RegisterTeamStatus.ERROR) {
+            this.error = 'Tidak dapat melakukan pendaftaran tim';
+            return;
+          }
+
+          this.error = e.message;
           return;
         }
 
-        this.error = e.message;
-        return;
-      }
-
-      this.error = e.toString();
-    })
-    .finally(() => {
-      this.isRegistering = false;
-    });
+        this.error = e.toString();
+      })
+      .finally(() => {
+        this.isRegistering = false;
+      });
   }
 
   validateTeam(team): boolean {

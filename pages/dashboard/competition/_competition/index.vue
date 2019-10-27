@@ -14,8 +14,8 @@
             large
             class="mx-5 subtitle-2 text-none px-5 font-weight-bold"
             style="border-radius: 50px; border: 2px solid #E44D4B;  color: #E44D4B; float: left;"
-            @click="attemptDelete"
             :loading="isDeleting"
+            @click="attemptDelete"
           >
             Hapus Tim
           </v-btn>
@@ -101,7 +101,7 @@ export default class DashboardCompetitionIndex extends Vue {
   }
 
   set teamName(teamName: string) {
-    this.changedTeamName = teamName; 
+    this.changedTeamName = teamName;
   }
 
   get teamInstitution(): string {
@@ -144,60 +144,60 @@ export default class DashboardCompetitionIndex extends Vue {
     this.isChanging = true;
     this.error = '';
 
-    let team_id = this.teamId;
-    let name = this.changedTeamName ? this.changedTeamName : this.teamName;
-    let institution = this.changedTeamInstitution ? this.changedTeamInstitution : this.teamInstitution;
-    let teamLeaderEmail = this.teamLeader;
+    const teamId = this.teamId;
+    const name = this.changedTeamName ? this.changedTeamName : this.teamName;
+    const institution = this.changedTeamInstitution ? this.changedTeamInstitution : this.teamInstitution;
+    const teamLeaderEmail = this.teamLeader;
 
-    this.changeTeamAction({ team_id, name, institution, teamLeaderEmail })
-    .then(() => {
-      const redirectUrl = (this.nextRoute) ? this.nextRoute : '/dashboard/competition/' + this.slug;
-      this.$router.push(redirectUrl);
-    })
-    .catch((e) => {
-      if (e instanceof ApiError) {
-        if (e.errorCode === ChangeTeamStatus.ERROR) {
-          this.error = 'Tidak dapat melakukan pengubahan data tim';
+    this.changeTeamAction({ teamId, name, institution, teamLeaderEmail })
+      .then(() => {
+        const redirectUrl = (this.nextRoute) ? this.nextRoute : '/dashboard/competition/' + this.slug;
+        this.$router.push(redirectUrl);
+      })
+      .catch((e) => {
+        if (e instanceof ApiError) {
+          if (e.errorCode === ChangeTeamStatus.ERROR) {
+            this.error = 'Tidak dapat melakukan pengubahan data tim';
+            return;
+          }
+
+          this.error = e.message;
           return;
         }
 
-        this.error = e.message;
-        return;
-      }
-
-      this.error = e.toString();
-    })
-    .finally(() => {
-      this.isChanging = false;
-    });
+        this.error = e.toString();
+      })
+      .finally(() => {
+        this.isChanging = false;
+      });
   }
 
   attemptDelete() {
     this.isDeleting = true;
     this.error = '';
-  
-    let team_id = this.teamId;
-    this.deleteTeamAction({ team_id })
-    .then(() => {
-      const redirectUrl = (this.nextRoute) ? this.nextRoute : '/dashboard/competition/';
-      this.$router.push(redirectUrl);
-    })
-    .catch((e) => {
-      if (e instanceof ApiError) {
-        if (e.errorCode === DeleteTeamStatus.ERROR) {
-          this.error = 'Tidak dapat menghapus tim';
+
+    const teamId = this.teamId;
+    this.deleteTeamAction({ teamId })
+      .then(() => {
+        const redirectUrl = (this.nextRoute) ? this.nextRoute : '/dashboard/competition/';
+        this.$router.push(redirectUrl);
+      })
+      .catch((e) => {
+        if (e instanceof ApiError) {
+          if (e.errorCode === DeleteTeamStatus.ERROR) {
+            this.error = 'Tidak dapat menghapus tim';
+            return;
+          }
+
+          this.error = e.message;
           return;
         }
 
-        this.error = e.message;
-        return;
-      }
-
-      this.error = e.toString();
-    })
-    .finally(() => {
-      this.isDeleting = false;
-    });
+        this.error = e.toString();
+      })
+      .finally(() => {
+        this.isDeleting = false;
+      });
   }
 
   validateTeam(team): boolean {
