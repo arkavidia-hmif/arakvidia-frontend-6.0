@@ -1,13 +1,13 @@
 export interface Menu {
-  title: String;
-  route: String;
+  title: string;
+  route: string;
   disabled?: boolean;
 }
 
 export interface TopLevelMenu {
-  title: String;
+  title: string;
   children?: Menu[];
-  route?: String;
+  route?: string;
 }
 
 export const competitionMenus: Menu[] = [
@@ -102,3 +102,5 @@ export const dashboardMenus: Menu[] = [
     disabled: true
   }
 ];
+
+export const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];

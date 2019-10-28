@@ -26,9 +26,23 @@
           </form>
         </template>
         <template v-else>
-          <v-alert type="success" class="mt-4">
-            Kami akan mengirimkan e-mail ke {{ email }}. Silakan buka tautan yang ada pada e-mail tersebut dan ikuti instruksi selanjutnya.
-          </v-alert>
+          <v-chip
+            color="green"
+            text-color="white"
+            class="mt-4"
+          >
+            <v-avatar left>
+              <v-icon>mdi-checkbox-marked-circle</v-icon>
+            </v-avatar>
+            E-mail Terkirim
+          </v-chip>
+          <p class="mt-4">
+            Kami akan mengirimkan e-mail ke {{ email }}, apabila terdaftar.
+            Silakan buka tautan yang ada pada e-mail tersebut dan ikuti instruksi selanjutnya.
+          </p>
+          <v-btn outlined block class="text-none mt-2" to="/login">
+            Halaman Login
+          </v-btn>
         </template>
       </v-col>
     </v-row>
@@ -36,15 +50,16 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'nuxt-property-decorator';
-import { recover } from '~/api/user';
+import { Component, Vue, Action } from 'nuxt-property-decorator';
 
 @Component
 export default class DashboardLogin extends Vue {
   isRecovering: boolean = false;
   emailSent: boolean = false;
-  email: String = '';
-  error: String = '';
+  email: string = '';
+  error: string = '';
+
+  @Action('user/recover') recoverAction;
 
   head() {
     return {
@@ -60,7 +75,8 @@ export default class DashboardLogin extends Vue {
 
     this.isRecovering = true;
     this.error = '';
-    recover(this.email)
+
+    this.recoverAction({ email: this.email })
       .then(() => {
         this.emailSent = true;
       })

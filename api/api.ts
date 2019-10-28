@@ -1,28 +1,42 @@
 import axios from 'axios';
-axios.defaults.xsrfCookieName = 'csrftoken';
-axios.defaults.xsrfHeaderName = 'X-CSRFTOKEN';
-axios.defaults.withCredentials = true;
-axios.defaults.baseURL = process.env.API_BASE_URL;
+import { ArkavidiaAnnouncementApi } from './announcement';
+import { ArkavidiaCompetitionApi } from './competition';
+import { ArkavidiaUserApi } from './user';
+import { ArkavidiaUploaderApi } from './uploader';
 
-export default axios;
+const apiClient = axios.create({
+  // Prevent sending cookies with cross-domain requests
+  withCredentials: false,
 
-export class ApiError<E> extends Error {
-  errCode: E;
-  msg: string;
+  // Django sends the XSRF token in a cookie named csrftoken
+  // https://docs.djangoproject.com/en/2.1/ref/csrf/#ajax
+  xsrfCookieName: 'csrftoken',
+  xsrfHeaderName: 'X-CSRFToken'
+});
 
-  constructor(errorCode: E, message?: string) {
-    super(message);
-    this.errCode = errorCode;
-    this.msg = message || '';
-
-    Object.setPrototypeOf(this, ApiError.prototype);
+export class ArkavidiaApi {
+  constructor(baseUrl: string) {
+    apiClient.defaults.baseURL = baseUrl;
   }
 
-  get errorCode(): E {
-    return this.errCode;
+  set bearerToken(bearerToken: string|Function) {
+    apiClient.interceptors.request.use((config) => {
+      const bearerTokenString = (bearerToken instanceof Function) ? bearerToken() : bearerToken;
+
+      // const bearerToken = window.localStorage.getItem('arkav-token');
+      if (bearerTokenString) {
+        config.headers.common.Authorization = `Bearer ${bearerTokenString}`;
+      }
+      return config;
+    });
   }
 
-  get message(): string {
-    return this.msg;
-  }
+  user: ArkavidiaUserApi = new ArkavidiaUserApi(apiClient);
+  announcement: ArkavidiaAnnouncementApi = new ArkavidiaAnnouncementApi(apiClient);
+  competition: ArkavidiaCompetitionApi = new ArkavidiaCompetitionApi(apiClient);
+  uploader: ArkavidiaUploaderApi = new ArkavidiaUploaderApi(apiClient);
 }
+
+const arkavidiaApi = new ArkavidiaApi(process.env.API_BASE_URL || '');
+
+export default arkavidiaApi;

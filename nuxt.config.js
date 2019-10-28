@@ -26,11 +26,13 @@ export default {
   plugins: [
     '~/plugins/typedjs',
     '~/plugins/definitions',
-    { src: '~/plugins/vuex-persist', ssr: false }
+    { src: '~/plugins/vuex-persist', ssr: false },
+    { src: '~/plugins/arkavidia-api', ssr: false }
   ],
   buildModules: [
     '@nuxt/typescript-build',
-    '@nuxtjs/vuetify'
+    '@nuxtjs/vuetify',
+    '@nuxtjs/moment'
   ],
   build: {
     extractCSS: true
@@ -46,7 +48,8 @@ export default {
     '@nuxtjs/google-analytics',
     ['@nuxtjs/dotenv', { filename: getDotEnvFilename() }],
     '@nuxtjs/sentry',
-    '@nuxtjs/sitemap'
+    '@nuxtjs/sitemap',
+    '@nuxtjs/markdownit'
   ],
   axios: {},
   vuetify: {
@@ -70,7 +73,23 @@ export default {
     config: {} // Additional config
   },
   sitemap: {
-    hostname: process.env.HOSTNAME
+    hostname: process.env.HOSTNAME,
+    exclude: [
+      '/thanks',
+      '/coming-soon'
+    ]
+  },
+  moment: {
+    locales: ['id']
+  },
+  router: {
+    middleware: ['auth']
+  },
+  markdownit: {
+    preset: 'default',
+    linkify: true,
+    breaks: true,
+    injected: true
   }
 };
 

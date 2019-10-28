@@ -1,5 +1,5 @@
 <template>
-  <v-container fill-height py-0 px-4 class="d-flex flex-column" style="min-height: 100vh">
+  <v-container py-0 px-4 class="d-flex flex-column" style="min-height: 100vh">
     <div class="d-flex flex-column" style="flex: 1">
       <div class="d-flex mt-12" style="flex: 1">
         <v-row wrap>
@@ -26,23 +26,20 @@
               </v-chip>
             </div>
             <div class="mt-8">
-              <!--<a href="https://arkav.me/guidebook-cp" style="text-decoration: none;">-->
-              <!--<v-btn large rounded outlined color="#0B909A" class="text-none mr-2 mt-2">-->
-              <!--Download guidebook-->
-              <!--</v-btn>-->
-              <!--</a>-->
-              <!--<v-btn large rounded color="primary" class="text-none mt-2" elevation="0">-->
-              <!--Daftar sekarang-->
-              <!--</v-btn>-->
+              <a href="https://arkav.me/guidebook-cp" style="text-decoration: none;">
+                <v-btn large rounded outlined color="#0B909A" class="text-none mr-2 mt-2">
+                  Download guidebook
+                </v-btn>
+              </a>
               <v-btn
                 large
                 rounded
                 color="primary"
                 class="text-none mt-2"
                 elevation="0"
-                disabled
+                to="/dashboard/competition/competitive-programming"
               >
-                Segera hadir
+                Daftar sekarang
               </v-btn>
             </div>
           </v-col>

@@ -5,9 +5,9 @@
         Dashboard
       </div>
       <div class="display-1 font-weight-bold mt-2 mb-5" style="color: #0B909A">
-        Halo, {{ user.fullName }}!
+        Halo, {{ authState.user.fullName }}!
       </div>
-      <v-tabs slider-color="#E44D4B" slider-size="5">
+      <v-tabs slider-color="#E44D4B" slider-size="5" class="noprevpadding">
         <v-tab v-for="(item, i) in dashboardMenus" :key="i" :to="item.route" :disabled="item.disabled || false" class="font-weight-bold black--text sub-title-1 text-none">
           {{ item.title }}
         </v-tab>
@@ -21,10 +21,10 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, State } from 'nuxt-property-decorator';
+import { Component, Vue, State, Getter, Action } from 'nuxt-property-decorator';
 import { dashboardMenus, Menu } from '~/constants/menus';
-import { User } from '~/api/user';
 import Forbidden from '~/components/Forbidden.vue';
+import { AuthState } from '~/store/user';
 
 interface NuxtWindow {
   onNuxtReady?: Function;
@@ -35,9 +35,11 @@ interface NuxtWindow {
   components: { Forbidden }
 })
 export default class DashboardWrapper extends Vue {
-  @State loggedIn!: boolean;
-  @State user!: User;
+  @Getter('user/isLoggedIn') loggedIn!: boolean;
+  @State('user') authState!: AuthState;
   dashboardMenus: Menu[] = dashboardMenus;
+  @Action('competition/fetchCompetitionList') fetchCompetitionListAction;
+  @Action('competition/fetchTeamList') fetchTeamListAction;
 
   mounted() {
     if (window) {
@@ -50,9 +52,14 @@ export default class DashboardWrapper extends Vue {
         });
       }
     }
+    this.fetchCompetitionListAction();
+    this.fetchTeamListAction();
   }
 }
 </script>
 
 <style scoped>
+  .noprevpadding /deep/.v-slide-group__prev {
+    display: none !important;
+  }
 </style>

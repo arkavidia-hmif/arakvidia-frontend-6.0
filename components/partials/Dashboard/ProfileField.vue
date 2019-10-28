@@ -4,7 +4,7 @@
       {{ title }}
     </div>
     <div class="subtitle-2 black--text">
-      {{ value }}
+      {{ value || "Not set" }}
     </div>
   </div>
 </template>
@@ -21,7 +21,8 @@ export default Vue.extend({
     },
     value: {
       type: String,
-      required: true
+      required: false,
+      default: ''
     }
   }
 });

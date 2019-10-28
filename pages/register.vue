@@ -51,9 +51,9 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'nuxt-property-decorator';
-import { ApiError } from '~/api/api';
-import { register, RegistrationStatus } from '~/api/user';
+import { Component, Action, Vue } from 'nuxt-property-decorator';
+import { ApiError } from '~/api/base';
+import { RegistrationStatus } from '~/api/user/types';
 
 interface QueryParameters {
   continue?: string;
@@ -62,17 +62,19 @@ interface QueryParameters {
 @Component
 export default class DashboardRegister extends Vue {
   isRegistering: boolean = false;
-  fullName: String = '';
-  email: String = '';
-  password: String = '';
-  rePassword: String = '';
-  error: String = '';
+  fullName: string = '';
+  email: string = '';
+  password: string = '';
+  rePassword: string = '';
+  error: string = '';
 
   head() {
     return {
       title: 'Daftar'
     };
   }
+
+  @Action('user/register') registerAction;
 
   get nextRoute(): string|undefined {
     const queryParams = this.$route.query as QueryParameters;
@@ -107,7 +109,7 @@ export default class DashboardRegister extends Vue {
 
     this.isRegistering = true;
     this.error = '';
-    register(this.email, this.fullName, this.password)
+    this.registerAction({ email: this.email, fullName: this.fullName, password: this.password })
       .then(() => {
         const redirectUrl = (this.nextRoute) ? `/thanks?continue=${this.nextRoute}` : '/thanks';
         this.$router.push(redirectUrl);
