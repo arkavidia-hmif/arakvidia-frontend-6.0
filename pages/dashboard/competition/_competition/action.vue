@@ -3,10 +3,10 @@
     <CompetitionWrapper :competition-slug="slug">
       <template slot-scope="{ team }">
         <h5 class="title font-weight-black">
-          {{ getActiveStage(team).name }}
+          {{ getActiveStageName(team) }}
         </h5>
         <div class="mt-6">
-          <div v-for="task, i in getActiveStage(team).tasks" :key="i">
+          <div v-for="(task, i) in getActiveStageTasks(team)" :key="i">
             <div class="py-4">
               <div class="subtitle font-weight-bold">
                 {{ task.name }}
@@ -46,7 +46,7 @@ import DashboardWrapper from '~/components/partials/Dashboard/DashboardWrapper.v
 import TabMenu from '~/components/partials/Dashboard/TabMenu.vue';
 import AnggotaTim from '~/components/partials/Dashboard/AnggotaTim.vue';
 import CompetitionWrapper from '~/components/partials/Dashboard/CompetitionWrapper.vue';
-import { Stage, Team, TaskResponse } from '~/api/competition/types';
+import { Stage, Team, Task, TaskResponse } from '~/api/competition/types';
 
   @Component({
     components: { TextWidget, FileUploadWidget, CompetitionWrapper, DashboardWrapper, TabMenu, AnggotaTim }
@@ -64,11 +64,31 @@ export default class DashboardAction extends Vue {
   }
 
   getActiveStage(team: Team): Stage|undefined {
+    if (team == null) {
+      return undefined;
+    }
     if (!team.stages) { return undefined; }
 
     return team.stages.find((stage: Stage) => {
       return stage.id === team.activeStageId;
     });
+  }
+
+  getActiveStageName(team: Team): string {
+    const stage = this.getActiveStage(team);
+    if ((stage == null) || (stage.name == null)) {
+      return "Belum ada stages";
+    }
+    return stage.name;
+  }
+
+
+  getActiveStageTasks(team: Team): Task[] {
+    const stage = this.getActiveStage(team);
+    if ((stage == null) || (stage.name == null)) {
+      return [];
+    }
+    return stage.tasks;
   }
 
   getTaskResponse(team: Team, taskId: number): TaskResponse|undefined {

@@ -19,7 +19,7 @@
           </v-list-item-title>
         </v-list-item>
         <v-divider />
-        <template v-for="stage, i in stages">
+        <template v-for="(stage, i) in stages">
           <v-list-item :key="i" :to="stage.id === team.activeStageId ? `/dashboard/competition/${slug}/action` : undefined" exact :disabled="stage.id !== team.activeStageId">
             <v-list-item-title>
               {{ stage.name }}
@@ -45,7 +45,7 @@ export default Vue.extend({
     },
     team: {
       type: Object,
-      required: true
+      required: false
     }
   },
   data: () => ({
@@ -55,7 +55,7 @@ export default Vue.extend({
   }),
   computed: {
     stages(): Stage[] {
-      if (this.team.stages) {
+      if ((this.team != null) && (this.team.stages)) {
         return this.team.stages;
       }
       return [];

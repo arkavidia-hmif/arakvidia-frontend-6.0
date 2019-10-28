@@ -5,7 +5,7 @@
         Daftar Anggota
       </p>
       <v-col
-        v-if="team.teamMembers.length == 0"
+        v-if="teamMembers.length == 0"
         cols="12"
       >
         <p> Tidak ada anggota lain yang terdaftar dalam tim </p>
@@ -17,7 +17,7 @@
           multiple
         >
           <v-expansion-panel
-            v-for="(member, i) in team.teamMembers"
+            v-for="(member, i) in teamMembers"
             :key="i"
           >
             <v-expansion-panel-header>
@@ -99,7 +99,8 @@ import { ApiError } from '~/api/base';
 import {
   Team,
   AddMemberStatus,
-  RemoveMemberStatus
+  RemoveMemberStatus,
+  Member
 } from '~/api/competition/types';
 
 interface QueryParameters {
@@ -131,6 +132,17 @@ export default class AnggotaTim extends Vue {
       if (!team.competition) { return false; }
       return (team.competition.slug === this.slug);
     });
+  }
+
+  get teamMembers(): Member[] {
+    const team = this.team;
+    if (team == null) {
+      return [];
+    }
+    if (team.teamMembers == null) {
+      return [];
+    }
+    return team.teamMembers;
   }
 
   get nextRoute(): string|undefined {

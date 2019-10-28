@@ -37,7 +37,7 @@
 import { Component, Vue, Action, Getter } from 'nuxt-property-decorator';
 import DashboardWrapper from '~/components/partials/Dashboard/DashboardWrapper.vue';
 import { ApiError } from '~/api/base';
-import { RegisterTeamStatus } from '~/api/competition/types';
+import { RegisterTeamStatus, Team } from '~/api/competition/types';
 
 interface QueryParameters {
   continue?: string;
@@ -56,6 +56,7 @@ export default class RegisterTeam extends Vue {
 
   @Action('competition/registerTeam') registerTeamAction;
   @Getter('competition/getCompetitions') getCompetitions;
+  @Action('competition/fetchTeamList') actionFetchTeamList;
 
   get competitions() {
     return this.getCompetitions;
@@ -74,7 +75,30 @@ export default class RegisterTeam extends Vue {
     return null;
   }
 
+  isRegistered(teams) {
+    return teams.find((team) => {
+      if (team.competition != null) {
+        return team.competition.slug == this.slug;
+      }
+      return false;
+    }) != null;
+  }
+
+  get currentRoute() {
+    let path = this.$route.path.split('/');
+    return path[path.length - 1 ];
+  }
+
   mounted() {
+    this.actionFetchTeamList()
+      .then((teams: Team[]) => {
+        const isRegistered = this.isRegistered(teams);
+        if (isRegistered) {
+          const redirectUrl = (this.nextRoute) ? this.nextRoute : '/dashboard/competition/' + this.slug;
+          this.$router.push(redirectUrl);
+        }
+    });
+
     let i;
     const temp = this.slug.split('-');
     for (i = 0; i < temp.length; i++) {
