@@ -21,6 +21,7 @@
                 class="my-5 subtitle-2 text-none px-5 font-weight-bold"
                 style="border-radius: 50px; margin: 0 !important; border: 2px solid #E44D4B;
                 color: #E44D4B; float: right; background: white;"
+                :loading="isDeleting"
                 @click="attemptDelete(member.id)"
               >
                 Hapus Anggota
