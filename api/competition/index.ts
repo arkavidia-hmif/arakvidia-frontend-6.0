@@ -6,7 +6,11 @@ import {
   GetTeamListStatus,
   GetTeamDetailStatus,
   AddMemberStatus,
-  RemoveMemberStatus, TaskResponse
+  RemoveMemberStatus,
+  DeleteTeamStatus,
+  ChangeTeamStatus,
+  TaskResponse,
+  SubmitTaskResponseStatus
 } from './types';
 import { ApiError, ArkavidiaBaseApi } from '~/api/base';
 
@@ -38,8 +42,17 @@ export class ArkavidiaCompetitionApi extends ArkavidiaBaseApi {
     }
     catch (e) {
       if (e.response) {
-        if (e.response.data.code === 'unknown_error') {
-          throw new ApiError<RegisterTeamStatus>(RegisterTeamStatus.NAME_EXISTS, e.response.data.detail);
+        if (e.response.data.code === 'competition_registration_closed') {
+          throw new ApiError<RegisterTeamStatus>(RegisterTeamStatus.REGISTRATION_CLOSED, e.response.data.detail);
+        }
+        else if (e.response.data.code === 'competition_already_registered') {
+          throw new ApiError<RegisterTeamStatus>(RegisterTeamStatus.ALREADY_REGISTERED, e.response.data.detail);
+        }
+        else if (e.response.data.code === 'create_team_fail') {
+          throw new ApiError<RegisterTeamStatus>(RegisterTeamStatus.CREATE_TEAM_FAIL, e.response.data.detail);
+        }
+        else if (e.response.data.code === 'unknown_error') {
+          throw new ApiError<RegisterTeamStatus>(RegisterTeamStatus.ERROR, e.response.data.detail);
         }
       }
 
@@ -47,14 +60,25 @@ export class ArkavidiaCompetitionApi extends ArkavidiaBaseApi {
     }
   }
 
-  async addMember(teamId: number, name: string, email: string): Promise<void> {
+  async addMember(teamId: number, fullName: string, email: string): Promise<Team> {
     try {
-      const data = { name, email };
-      await this.axios.post(`/competition/teams/` + teamId + `/members`, data);
+      const data = { fullName, email };
+      const response = await this.axios.post(`/competition/teams/` + teamId + `/members/`, data);
+      const memberData = response.data;
+      return memberData;
     }
     catch (e) {
       if (e.response) {
-        if (e.response.data.code === 'unknown_error') {
+        if (e.response.data.code === 'competition_registration_closed') {
+          throw new ApiError<AddMemberStatus>(AddMemberStatus.REGISTRATION_CLOSED, e.response.data.detail);
+        }
+        else if (e.response.data.code === 'team_not_participating') {
+          throw new ApiError<AddMemberStatus>(AddMemberStatus.NOT_PARTICIPATING, e.response.data.detail);
+        }
+        else if (e.response.data.code === 'team_full') {
+          throw new ApiError<AddMemberStatus>(AddMemberStatus.FULL, e.response.data.detail);
+        }
+        else if (e.response.data.code === 'unknown_error') {
           throw new ApiError<AddMemberStatus>(AddMemberStatus.EMAIL_EXISTS, e.response.data.detail);
         }
       }
@@ -94,13 +118,52 @@ export class ArkavidiaCompetitionApi extends ArkavidiaBaseApi {
     }
   }
 
+  async changeTeam(teamId: number, name: string, teamLeaderEmail: string, institution: string): Promise<void> {
+    try {
+      const data = { name, teamLeaderEmail, institution };
+      await this.axios.put(`/competition/teams/${teamId}/`, data);
+    }
+    catch (e) {
+      if (e.response) {
+        if (e.response.data.code === 'unknown_error') {
+          throw new ApiError<ChangeTeamStatus>(ChangeTeamStatus.ERROR, e.response.data.detail);
+        }
+      }
+
+      throw new ApiError<ChangeTeamStatus>(ChangeTeamStatus.ERROR, e.toString());
+    }
+  }
+
+  async deleteTeam(teamId: number): Promise<void> {
+    try {
+      await this.axios.delete(`/competition/teams/${teamId}/`);
+    }
+    catch (e) {
+      if (e.response) {
+        if (e.response.data.code === 'unknown_error') {
+          throw new ApiError<DeleteTeamStatus>(DeleteTeamStatus.ERROR, e.response.data.detail);
+        }
+      }
+
+      throw new ApiError<DeleteTeamStatus>(DeleteTeamStatus.ERROR, e.toString());
+    }
+  }
   async submitTaskResponse(teamId: number, taskId: number, response: string): Promise<TaskResponse> {
     try {
       const r = await this.axios.post(`/competition/teams/${teamId}/tasks/${taskId}/`, { response });
       return r.data as TaskResponse;
     }
     catch (e) {
-      throw new ApiError<boolean>(false, e.toString());
+      if (e.response) {
+        if (e.response.data.code === 'team_not_participating') {
+          throw new ApiError<SubmitTaskResponseStatus>(SubmitTaskResponseStatus.NOT_PARTICIPATING, e.response.data.detail);
+        }
+        else if (e.response.data.code === 'unknown_error') {
+          throw new ApiError<SubmitTaskResponseStatus>(SubmitTaskResponseStatus.ERROR, e.response.data.detail);
+        }
+      }
+
+      throw new ApiError<SubmitTaskResponseStatus>(SubmitTaskResponseStatus.ERROR, e.toString());
     }
   }
 }

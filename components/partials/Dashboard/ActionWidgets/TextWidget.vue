@@ -12,6 +12,9 @@
       </div>
     </template>
     <div class="mt-1">
+      <v-alert v-if="error" type="error" class="mb-2">
+        {{ error }}
+      </v-alert>
       <v-text-field v-model="response" outlined dense class="mt-2" />
       <v-btn
         :loading="loading"
@@ -28,7 +31,8 @@
 
 <script lang="ts">
 import { Component, Vue, Prop, Action } from 'nuxt-property-decorator';
-import { TaskResponse, Task } from '~/api/competition/types';
+import { TaskResponse, Task, SubmitTaskResponseStatus } from '~/api/competition/types';
+import { ApiError } from '~/api/base';
 
   @Component({
     name: 'TextWidget'
@@ -40,6 +44,7 @@ export default class TextWidget extends Vue {
 
     @Action('competition/submitTaskResponse') actionSubmitTaskResponse;
 
+    error: string = '';
     loading: boolean = false;
     response: string|undefined = '';
     currentTaskResponse: TaskResponse|null = null;
@@ -60,8 +65,18 @@ export default class TextWidget extends Vue {
         .then((taskResponse: TaskResponse) => {
           this.currentTaskResponse = taskResponse;
         })
-        .catch(() => {
-          // TODO catch error
+        .catch((e) => {
+          if (e instanceof ApiError) {
+            if (e.errorCode === SubmitTaskResponseStatus.ERROR) {
+              this.error = 'Gagal submit';
+              return;
+            }
+
+            this.error = e.message;
+            return;
+          }
+
+          this.error = e.toString();
         })
         .finally(() => {
           this.loading = false;

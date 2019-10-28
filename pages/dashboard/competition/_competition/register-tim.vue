@@ -1,16 +1,22 @@
 <template>
   <DashboardWrapper>
-    <v-container>
-      <div class="px-12 mx-12">
+    <v-row>
+      <v-col :cols="12" :md="6">
         <h5 class="mt-4 title font-weight-black">
-          {{ title }}
+          Pendaftaran {{ title }}
         </h5>
         <v-alert v-if="error" type="error" class="mt-4">
           {{ error }}
         </v-alert>
-        <form @submit.prevent="attemptRegister">
-          <v-text-field v-model="team" label="Team Name" />
-          <v-text-field v-model="institution" label="Institute / School" />
+        <form class="mt-4" @submit.prevent="attemptRegister">
+          <v-text-field v-model="name" outlined dense label="Nama Tim" />
+          <v-text-field
+            v-model="institution"
+            outlined
+            dense
+            label="Nama Universitas/Sekolah"
+            hint="Isi dengan nama resmi institusi tanpa singkatan"
+          />
           <div class="my-2">
             <v-btn
               class="my-5 primary subtitle-2 text-none px-5 font-weight-bold"
@@ -18,20 +24,20 @@
               type="submit"
               :loading="isRegistering"
             >
-              Register Team
+              Daftarkan Tim
             </v-btn>
           </div>
         </form>
-      </div>
-    </v-container>
+      </v-col>
+    </v-row>
   </DashboardWrapper>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'nuxt-property-decorator';
+import { Component, Vue, Action, Getter } from 'nuxt-property-decorator';
 import DashboardWrapper from '~/components/partials/Dashboard/DashboardWrapper.vue';
 import { ApiError } from '~/api/base';
-import { RegisterTeamStatus } from '~/api/competition/types';
+import { RegisterTeamStatus, Team } from '~/api/competition/types';
 
 interface QueryParameters {
   continue?: string;
@@ -42,36 +48,65 @@ interface QueryParameters {
 })
 
 export default class RegisterTeam extends Vue {
-  team: string = '';
+  name: string = '';
   institution: string = '';
   title: string = '';
   error: string = '';
   isRegistering: boolean = false;
-  competitionId: number = 0;
 
-  get id() {
+  @Action('competition/registerTeam') registerTeamAction;
+  @Getter('competition/getCompetitions') competitions;
+  @Action('competition/fetchTeamList') actionFetchTeamList;
+
+  get slug() {
     // eslint-disable-next-line dot-notation
     return this.$route.params['competition'];
   }
 
+  get competitionId() {
+    const currentCompetition = this.competitions.find(competition => competition.slug === this.slug);
+    if (currentCompetition != null) {
+      return currentCompetition.id;
+    }
+    return null;
+  }
+
+  isRegistered(teams) {
+    const team = teams.find((team) => {
+      if (team.competition != null) {
+        return team.competition.slug === this.slug;
+      }
+      return false;
+    });
+
+    return !!team;
+  }
+
   mounted() {
+    this.actionFetchTeamList()
+      .then((teams: Team[]) => {
+        const isRegistered = this.isRegistered(teams);
+        if (isRegistered) {
+          this.$router.push(`/dashboard/competition/${this.slug}`);
+        }
+      });
+
     let i;
-    const temp = this.id.split('-');
+    const temp = this.slug.split('-');
     for (i = 0; i < temp.length; i++) {
       this.title += RegisterTeam.jsUcfirst(temp[i]);
       if (i !== temp.length - 1) {
         this.title += ' ';
       }
     }
-
-    this.competitionId = 1; // hardcoded, previously competitionMap[this.id];
   }
 
   head() {
     return {
-      title: 'Pendaftaran' + this.title
+      title: 'Pendaftaran ' + this.title
     };
   }
+
   static jsUcfirst(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
@@ -82,12 +117,12 @@ export default class RegisterTeam extends Vue {
   }
 
   attemptRegister() {
-    if (!this.team) {
+    if (!this.name) {
       this.error = 'Nama tim harus diisi';
       return;
     }
 
-    if (!this.validateTeam(this.team)) {
+    if (!this.validateTeam(this.name)) {
       this.error = 'Nama tim minimal 3 karakter';
       return;
     }
@@ -99,15 +134,32 @@ export default class RegisterTeam extends Vue {
 
     this.isRegistering = true;
     this.error = '';
-    this.$arkavidiaApi.competition.registerTeam(this.competitionId, this.team, this.institution)
+
+    const competitionId = this.competitionId;
+    const name = this.name;
+    const institution = this.institution;
+
+    this.registerTeamAction({ competitionId, name, institution })
       .then(() => {
-        const redirectUrl = (this.nextRoute) ? this.nextRoute : '/dashboard/competition/' + this.id;
+        const redirectUrl = (this.nextRoute) ? this.nextRoute : '/dashboard/competition/' + this.slug;
         this.$router.push(redirectUrl);
       })
       .catch((e) => {
         if (e instanceof ApiError) {
-          if (e.errorCode === RegisterTeamStatus.NAME_EXISTS) {
-            this.error = 'Nama tim sudah terdaftar';
+          if (e.errorCode === RegisterTeamStatus.REGISTRATION_CLOSED) {
+            this.error = 'Pendaftaran sudah ditutup';
+            return;
+          }
+          else if (e.errorCode === RegisterTeamStatus.ALREADY_REGISTERED) {
+            this.error = 'Tim sudah terdaftar';
+            return;
+          }
+          else if (e.errorCode === RegisterTeamStatus.CREATE_TEAM_FAIL) {
+            this.error = 'Tidak dapat melakukan pendaftaran tim';
+            return;
+          }
+          else if (e.errorCode === RegisterTeamStatus.ERROR) {
+            this.error = 'Tidak dapat melakukan pendaftaran tim';
             return;
           }
 

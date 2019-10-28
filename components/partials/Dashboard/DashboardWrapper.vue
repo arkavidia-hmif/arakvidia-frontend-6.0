@@ -21,7 +21,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Getter, State } from 'nuxt-property-decorator';
+import { Component, Vue, State, Getter, Action } from 'nuxt-property-decorator';
 import { dashboardMenus, Menu } from '~/constants/menus';
 import Forbidden from '~/components/Forbidden.vue';
 import { AuthState } from '~/store/user';
@@ -38,6 +38,8 @@ export default class DashboardWrapper extends Vue {
   @Getter('user/isLoggedIn') loggedIn!: boolean;
   @State('user') authState!: AuthState;
   dashboardMenus: Menu[] = dashboardMenus;
+  @Action('competition/fetchCompetitionList') fetchCompetitionListAction;
+  @Action('competition/fetchTeamList') fetchTeamListAction;
 
   mounted() {
     if (window) {
@@ -50,6 +52,8 @@ export default class DashboardWrapper extends Vue {
         });
       }
     }
+    this.fetchCompetitionListAction();
+    this.fetchTeamListAction();
   }
 }
 </script>

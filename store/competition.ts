@@ -13,8 +13,8 @@ export interface CompetitionState {
 export const namespaced = true;
 
 export const state = () => ({
-  competitions: [],
-  teams: []
+  competitions: {},
+  teams: {}
 });
 
 export const getters = {
@@ -41,6 +41,29 @@ export const mutations = {
   },
   setTeam(state: CompetitionState, team: Team) {
     state.teams[team.id] = team;
+  },
+  deleteTeam(state: CompetitionState, teamId: number) {
+    delete state.teams[teamId];
+  },
+  addMember(state: CompetitionState, data) {
+    const member = { id: data.member.id,
+      fullName: data.member.fullName,
+      email: data.member.email,
+      hasAccount: data.member.hasAccount,
+      isTeamLeader: data.member.isTeamLeader };
+    const members = state.teams[data.teamId].teamMembers;
+    if (members != null) {
+      members.push(member);
+    }
+  },
+  removeMember(state: CompetitionState, data) {
+    const members = state.teams[data.teamId].teamMembers;
+    if (members != null) {
+      const index = members.findIndex(member => member.id === data.teamMemberId);
+      if (index > -1) {
+        members.splice(index, 1);
+      }
+    }
   }
 };
 
@@ -65,7 +88,24 @@ export const actions = {
     commit('setTeam', team);
     return team;
   },
-
+  async changeTeam({ commit }, { teamId, name, teamLeaderEmail, institution }) {
+    const teamData = await arkavidiaApi.competition.changeTeam(teamId, name, teamLeaderEmail, institution);
+    commit('setTeam', { team: teamData });
+  },
+  async deleteTeam({ commit }, { teamId }) {
+    await arkavidiaApi.competition.deleteTeam(teamId);
+    commit('deleteTeam', teamId);
+  },
+  async addMember({ commit }, { teamId, fullName, email }) {
+    const member = await arkavidiaApi.competition.addMember(teamId, fullName, email);
+    const data = { teamId, member };
+    commit('addMember', data);
+  },
+  async removeMember({ commit }, { teamId, teamMemberId }) {
+    await arkavidiaApi.competition.removeMember(teamId, teamMemberId);
+    const data = { teamId, teamMemberId };
+    commit('removeMember', data);
+  },
   // eslint-disable-next-line no-empty-pattern
   submitTaskResponse({ }, { teamId, taskId, response }) {
     return arkavidiaApi.competition.submitTaskResponse(teamId, taskId, response);

@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-row v-if="!isLoading">
+    <v-row v-if="!isLoading && teamDetails">
       <v-col :cols="12" :sm="4" :lg="3">
         <TabMenu :slug="competitionSlug" :team="teamDetails" />
       </v-col>
@@ -19,37 +19,38 @@ import { Component, Vue, Prop, Action } from 'nuxt-property-decorator';
 import TabMenu from '~/components/partials/Dashboard/TabMenu.vue';
 import { Team } from '~/api/competition/types';
 
-@Component({
-  name: 'CompetitionWrapper',
-  components: { TabMenu }
-})
+  @Component({
+    name: 'CompetitionWrapper',
+    components: { TabMenu }
+  })
 export default class CompetitionWrapper extends Vue {
-  @Prop({ default: '' }) competitionSlug?: string;
-  @Action('competition/fetchTeamList') actionFetchTeamList;
-  @Action('competition/fetchTeamDetail') actionFetchTeamDetail;
+    @Prop({ default: '' }) competitionSlug?: string;
+    @Action('competition/fetchTeamList') actionFetchTeamList;
+    @Action('competition/fetchTeamDetail') actionFetchTeamDetail;
 
-  teamDetails: Team|undefined;
-  isLoading: boolean = true;
+    teamDetails: Team|null = null;
+    isLoading: boolean = true;
 
-  mounted() {
-    this.isLoading = true;
-    this.actionFetchTeamList()
-      .then((teams: Team[]) => {
-        const team: Team|undefined = teams.find((team: Team) => {
-          if (!team.competition) { return false; }
-          return (team.competition.slug === this.competitionSlug);
+    mounted() {
+      this.isLoading = true;
+      this.actionFetchTeamList()
+        .then((teams: Team[]) => {
+          const team: Team|undefined = teams.find((team: Team) => {
+            if (!team.competition) { return false; }
+            return (team.competition.slug === this.competitionSlug);
+          });
+
+          if (team) { return this.actionFetchTeamDetail(team.id); }
+          else { return undefined; }
+        })
+        .then((team) => {
+          if (team) { this.teamDetails = team; }
+          else { this.$router.push(`/dashboard/competition/${this.competitionSlug}/register-tim`); }
+        })
+        .finally(() => {
+          this.isLoading = false;
         });
-
-        if (team) { return this.actionFetchTeamDetail(team.id); }
-        else { return undefined; }
-      })
-      .then((team) => {
-        this.teamDetails = team;
-      })
-      .finally(() => {
-        this.isLoading = false;
-      });
-  }
+    }
 }
 </script>
 

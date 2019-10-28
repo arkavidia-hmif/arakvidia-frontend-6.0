@@ -1,6 +1,9 @@
 <template>
   <div>
-    <template v-if="currentTaskResponse && !deleted">
+    <v-alert v-if="error" type="error" class="mb-2">
+      {{ error }}
+    </v-alert>
+    <div v-if="currentTaskResponse && !deleted">
       <div v-if="currentTaskResponse.status === 'awaiting_validation'">
         <b class="orange--text">Menunggu verifikasi</b>
       </div>
@@ -19,25 +22,16 @@
             </v-icon>
           </v-flex>
           <v-flex>
-            <a target="_blank" :href="currentTaskResponse.response">Lihat file</a>
-          </v-flex>
-          <v-flex shrink>
-            <v-btn
-              icon
-              small
-              class="ma-0"
-              @click.prevent="deleted = true"
-            >
-              <v-icon small color="red">
-                fas fa-trash
-              </v-icon>
-            </v-btn>
+            <a v-if="!!fileLink" target="_blank" :href="fileLink">Lihat file</a>
+            <div v-else>
+              <v-progress-circular size="20" indeterminate />
+            </div>
           </v-flex>
         </v-layout>
       </div>
-    </template>
+    </div>
 
-    <template v-else>
+    <div class="mt-3">
       <input ref="file" type="file" style="display: none" @change="handleUpload">
 
       <v-btn
@@ -55,14 +49,15 @@
         </div>
         <v-progress-linear :value="uploadProgress" class="mt-2" />
       </div>
-    </template>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue, Prop, Action } from 'nuxt-property-decorator';
-import { TaskResponse, Task } from '~/api/competition/types';
+import { TaskResponse, Task, SubmitTaskResponseStatus } from '~/api/competition/types';
 import { File } from '~/api/uploader/types';
+import { ApiError } from '~/api/base';
 
   @Component({
     name: 'FileUploadWidget'
@@ -72,16 +67,26 @@ export default class FileUploadWidget extends Vue {
     @Prop({ default: undefined }) task!: Task|undefined;
     @Prop({ default: 0 }) teamId!: number;
 
+    @Action('uploader/fetchFile') actionFetchFile;
     @Action('uploader/uploadFile') actionUploadFile;
     @Action('competition/submitTaskResponse') actionSubmitTaskResponse;
 
+    error: string = '';
     uploading: boolean = false;
     deleted: boolean = false;
     uploadProgress: number = 0;
     currentTaskResponse: TaskResponse|null = null;
+    fileLink: string = '';
 
     mounted() {
       this.currentTaskResponse = this.taskResponse || null;
+
+      if (this.currentTaskResponse) {
+        this.actionFetchFile({ fileId: this.currentTaskResponse.response })
+          .then((file: File) => {
+            this.fileLink = file.fileLink;
+          });
+      }
     }
 
     onUploadProgress(progressEvent: ProgressEvent) {
@@ -97,17 +102,28 @@ export default class FileUploadWidget extends Vue {
 
       this.actionUploadFile({ file, description, onUploadProgress: this.onUploadProgress })
         .then((file: File) => {
+          this.fileLink = file.fileLink;
           return this.actionSubmitTaskResponse({
             teamId: this.teamId,
             taskId: (this.task) ? this.task.id : null,
-            response: file.fileLink
+            response: file.id
           });
         })
         .then((taskResponse: TaskResponse) => {
           this.currentTaskResponse = taskResponse;
         })
-        .catch(() => {
-          // TODO catch error
+        .catch((e) => {
+          if (e instanceof ApiError) {
+            if (e.errorCode === SubmitTaskResponseStatus.ERROR) {
+              this.error = 'Gagal submit';
+              return;
+            }
+
+            this.error = e.message;
+            return;
+          }
+
+          this.error = e.toString();
         })
         .finally(() => {
           this.uploading = false;

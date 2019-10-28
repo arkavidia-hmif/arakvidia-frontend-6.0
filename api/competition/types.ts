@@ -55,7 +55,15 @@ export interface TaskResponse {
 }
 
 export enum RegisterTeamStatus {
-  NAME_EXISTS, ERROR
+  NAME_EXISTS, NOT_OPEN, REGISTRATION_CLOSED, ALREADY_REGISTERED, CREATE_TEAM_FAIL, ERROR
+}
+
+export enum ChangeTeamStatus {
+  ERROR
+}
+
+export enum DeleteTeamStatus {
+  ERROR
 }
 
 export enum GetCompetitionListStatus {
@@ -71,9 +79,13 @@ export enum GetTeamDetailStatus {
 }
 
 export enum AddMemberStatus {
-  EMAIL_EXISTS, ERROR
+  REGISTRATION_CLOSED, NOT_PARTICIPATING, FULL, EMAIL_EXISTS, ERROR
 }
 
 export enum RemoveMemberStatus {
   ERROR
+}
+
+export enum SubmitTaskResponseStatus {
+  NOT_PARTICIPATING, ERROR
 }
