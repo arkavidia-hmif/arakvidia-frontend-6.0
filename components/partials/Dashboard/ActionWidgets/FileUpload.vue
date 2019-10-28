@@ -49,9 +49,9 @@
 
 <script lang="ts">
 import { Component, Getter, Vue, Prop, Action } from 'nuxt-property-decorator';
-import { TaskResponse, Task, SubmitTaskResponseStatus } from '~/api/competition/types';
+import { TaskResponse, Task } from '~/api/competition/types';
 import { File } from '~/api/uploader/types';
-import { ApiError } from '~/api/base';
+// import { ApiError } from '~/api/base';
 
   @Component({
     name: 'FileUploadWidget'

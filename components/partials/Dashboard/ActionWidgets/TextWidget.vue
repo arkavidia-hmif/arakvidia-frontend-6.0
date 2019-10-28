@@ -28,8 +28,8 @@
 
 <script lang="ts">
 import { Component, Vue, Prop, Action } from 'nuxt-property-decorator';
-import { TaskResponse, Task, SubmitTaskResponseStatus } from '~/api/competition/types';
-import { ApiError } from '~/api/base';
+import { TaskResponse, Task } from '~/api/competition/types';
+// import { ApiError } from '~/api/base';
 
   @Component({
     name: 'TextWidget'
@@ -62,7 +62,7 @@ export default class TextWidget extends Vue {
         .then((taskResponse: TaskResponse) => {
           this.currentTaskResponse = taskResponse;
         })
-        .catch((e) => {
+        .catch(() => {
           /* if (e instanceof ApiError) {
             if (e.errorCode === SubmitTaskResponseStatus.NOT_PARTICIPATING) {
               this.error = 'Tim tidak berpartisipasi';
