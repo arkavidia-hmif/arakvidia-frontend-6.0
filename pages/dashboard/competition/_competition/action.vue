@@ -77,11 +77,10 @@ export default class DashboardAction extends Vue {
   getActiveStageName(team: Team): string {
     const stage = this.getActiveStage(team);
     if ((stage == null) || (stage.name == null)) {
-      return "Belum ada stages";
+      return 'Belum ada stages';
     }
     return stage.name;
   }
-
 
   getActiveStageTasks(team: Team): Task[] {
     const stage = this.getActiveStage(team);

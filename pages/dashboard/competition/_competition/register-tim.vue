@@ -78,15 +78,15 @@ export default class RegisterTeam extends Vue {
   isRegistered(teams) {
     return teams.find((team) => {
       if (team.competition != null) {
-        return team.competition.slug == this.slug;
+        return team.competition.slug === this.slug;
       }
       return false;
     }) != null;
   }
 
   get currentRoute() {
-    let path = this.$route.path.split('/');
-    return path[path.length - 1 ];
+    const path = this.$route.path.split('/');
+    return path[ path.length - 1 ];
   }
 
   mounted() {
@@ -97,7 +97,7 @@ export default class RegisterTeam extends Vue {
           const redirectUrl = (this.nextRoute) ? this.nextRoute : '/dashboard/competition/' + this.slug;
           this.$router.push(redirectUrl);
         }
-    });
+      });
 
     let i;
     const temp = this.slug.split('-');

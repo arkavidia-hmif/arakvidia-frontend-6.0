@@ -45,7 +45,8 @@ export default Vue.extend({
     },
     team: {
       type: Object,
-      required: false
+      required: false,
+      default: null
     }
   },
   data: () => ({

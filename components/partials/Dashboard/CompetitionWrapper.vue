@@ -41,8 +41,8 @@ export default class CompetitionWrapper extends Vue {
   }
 
   get currentRoute() {
-    let path = this.$route.path.split('/');
-    return path[path.length - 1 ];
+    const path = this.$route.path.split('/');
+    return path[ path.length - 1 ];
   }
 
   get slug() {
@@ -53,14 +53,14 @@ export default class CompetitionWrapper extends Vue {
   isRegistered(teams) {
     return teams.find((team) => {
       if (team.competition != null) {
-        return team.competition.slug == this.slug;
+        return team.competition.slug === this.slug;
       }
       return false;
     }) != null;
   }
 
   get currentCompetition() {
-    return this.competitions.find((competition) => competition.slug == this.slug);
+    return this.competitions.find(competition => competition.slug === this.slug);
   }
 
   mounted() {
@@ -68,7 +68,7 @@ export default class CompetitionWrapper extends Vue {
     this.actionFetchTeamList()
       .then((teams: Team[]) => {
         const isRegistered = this.isRegistered(teams);
-        
+
         if (!isRegistered) {
           const currentCompetition = this.currentCompetition;
           if (currentCompetition.isRegistrationOpen) {
@@ -78,7 +78,7 @@ export default class CompetitionWrapper extends Vue {
           }
           else {
             const redirectUrl = (this.nextRoute) ? this.nextRoute : '/dashboard/competition/' + this.slug;
-            this.$router.push(redirectUrl);              
+            this.$router.push(redirectUrl);
           }
         }
         const team: Team|undefined = teams.find((team: Team) => {
