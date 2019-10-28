@@ -30,7 +30,8 @@ export default {
   ],
   buildModules: [
     '@nuxt/typescript-build',
-    '@nuxtjs/vuetify'
+    '@nuxtjs/vuetify',
+    '@nuxtjs/moment'
   ],
   build: {
     extractCSS: true
@@ -46,7 +47,8 @@ export default {
     '@nuxtjs/google-analytics',
     ['@nuxtjs/dotenv', { filename: getDotEnvFilename() }],
     '@nuxtjs/sentry',
-    '@nuxtjs/sitemap'
+    '@nuxtjs/sitemap',
+    '@nuxtjs/markdownit'
   ],
   axios: {},
   vuetify: {
@@ -75,6 +77,18 @@ export default {
       '/thanks',
       '/coming-soon'
     ]
+  },
+  moment: {
+    locales: ['id']
+  },
+  router: {
+    middleware: ['auth']
+  },
+  markdownit: {
+    preset: 'default',
+    linkify: true,
+    breaks: true,
+    injected: true
   }
 };
 
