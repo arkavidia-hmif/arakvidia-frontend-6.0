@@ -9,7 +9,8 @@ import {
   RemoveMemberStatus,
   DeleteTeamStatus,
   ChangeTeamStatus,
-  TaskResponse
+  TaskResponse,
+  SubmitTaskResponseStatus
 } from './types';
 import { ApiError, ArkavidiaBaseApi } from '~/api/base';
 
@@ -41,7 +42,16 @@ export class ArkavidiaCompetitionApi extends ArkavidiaBaseApi {
     }
     catch (e) {
       if (e.response) {
-        if (e.response.data.code === 'unknown_error') {
+        if (e.response.data.code === 'competition_registration_closed') {
+          throw new ApiError<RegisterTeamStatus>(RegisterTeamStatus.REGISTRATION_CLOSED, e.response.data.detail);
+        }
+        else if (e.response.data.code === 'competition_already_registered') {
+          throw new ApiError<RegisterTeamStatus>(RegisterTeamStatus.ALREADY_REGISTERED, e.response.data.detail);
+        }
+        else if (e.response.data.code === 'create_team_fail') {
+          throw new ApiError<RegisterTeamStatus>(RegisterTeamStatus.CREATE_TEAM_FAIL, e.response.data.detail);
+        }
+        else if (e.response.data.code === 'unknown_error') {
           throw new ApiError<RegisterTeamStatus>(RegisterTeamStatus.ERROR, e.response.data.detail);
         }
       }
@@ -59,7 +69,16 @@ export class ArkavidiaCompetitionApi extends ArkavidiaBaseApi {
     }
     catch (e) {
       if (e.response) {
-        if (e.response.data.code === 'unknown_error') {
+        if (e.response.data.code === 'competition_registration_closed') {
+          throw new ApiError<AddMemberStatus>(AddMemberStatus.REGISTRATION_CLOSED, e.response.data.detail);
+        }
+        else if (e.response.data.code === 'team_not_participating') {
+          throw new ApiError<AddMemberStatus>(AddMemberStatus.NOT_PARTICIPATING, e.response.data.detail);
+        }
+        else if (e.response.data.code === 'team_full') {
+          throw new ApiError<AddMemberStatus>(AddMemberStatus.FULL, e.response.data.detail);
+        }
+        else if (e.response.data.code === 'unknown_error') {
           throw new ApiError<AddMemberStatus>(AddMemberStatus.EMAIL_EXISTS, e.response.data.detail);
         }
       }
@@ -135,6 +154,15 @@ export class ArkavidiaCompetitionApi extends ArkavidiaBaseApi {
       return r.data as TaskResponse;
     }
     catch (e) {
+      if (e.response) {
+        if (e.response.data.code === 'team_not_participating') {
+          throw new ApiError<SubmitTaskResponseStatus>(SubmitTaskResponseStatus.NOT_PARTICIPATING, e.response.data.detail);
+        }
+        else if (e.response.data.code === 'unknown_error') {
+          throw new ApiError<SubmitTaskResponseStatus>(SubmitTaskResponseStatus.ERROR, e.response.data.detail);
+        }
+      }
+
       throw new ApiError<boolean>(false, e.toString());
     }
   }
