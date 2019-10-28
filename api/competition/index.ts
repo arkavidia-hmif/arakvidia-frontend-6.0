@@ -1,7 +1,6 @@
 import {
   Competition,
   Team,
-  Member,
   GetCompetitionListStatus,
   RegisterTeamStatus,
   GetTeamListStatus,

@@ -96,7 +96,7 @@ export default class FileUploadWidget extends Vue {
           return this.actionSubmitTaskResponse({
             teamId: this.teamId,
             taskId: (this.task) ? this.task.id : null,
-            response: file.id,
+            response: file.id
           });
         })
         .then((taskResponse: TaskResponse) => {

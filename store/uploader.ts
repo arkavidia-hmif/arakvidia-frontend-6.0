@@ -10,19 +10,19 @@ export interface UploaderState {
 export const namespaced = true;
 
 export const state = () => ({
-  files: {},
+  files: {}
 });
 
 export const getters = {
   getFilesMap(state: UploaderState): { [id: string]: File } {
     return state.files;
-  },
+  }
 };
 
 export const mutations = {
   setFile(state: UploaderState, file) {
     state.files[file.id] = file;
-  },
+  }
 };
 
 export const actions = {
