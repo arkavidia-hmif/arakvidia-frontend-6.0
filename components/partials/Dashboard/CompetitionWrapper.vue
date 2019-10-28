@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-row v-if="!isLoading">
+    <v-row v-if="!isLoading && teamDetails">
       <v-col :cols="12" :sm="4" :lg="3">
         <TabMenu :slug="competitionSlug" :team="teamDetails" />
       </v-col>
@@ -33,7 +33,7 @@ export default class CompetitionWrapper extends Vue {
   @Action('competition/fetchTeamDetail') actionFetchTeamDetail;
   @Getter('competition/getCompetitions') getCompetitions;
 
-  teamDetails: Team|undefined;
+  teamDetails: Team|null = null;
   isLoading: boolean = true;
 
   get competitions() {
@@ -90,7 +90,8 @@ export default class CompetitionWrapper extends Vue {
         else { return undefined; }
       })
       .then((team) => {
-        this.teamDetails = team;
+        if (team) { this.teamDetails = team; }
+        else { this.$router.push(`/dashboard/competition/${this.competitionSlug}/register-tim`); }
       })
       .finally(() => {
         this.isLoading = false;
