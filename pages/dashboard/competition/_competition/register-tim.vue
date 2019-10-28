@@ -124,7 +124,19 @@ export default class RegisterTeam extends Vue {
       })
       .catch((e) => {
         if (e instanceof ApiError) {
-          if (e.errorCode === RegisterTeamStatus.ERROR) {
+          if (e.errorCode === RegisterTeamStatus.REGISTRATION_CLOSED) {
+            this.error = 'Pendaftaran sudah ditutup';
+            return;
+          }
+          else if (e.errorCode === RegisterTeamStatus.ALREADY_REGISTERED) {
+            this.error = 'Tim sudah terdaftar';
+            return;
+          }
+          else if (e.errorCode === RegisterTeamStatus.CREATE_TEAM_FAIL) {
+            this.error = 'Tidak dapat melakukan pendaftaran tim';
+            return;
+          }
+          else if (e.errorCode === RegisterTeamStatus.ERROR) {
             this.error = 'Tidak dapat melakukan pendaftaran tim';
             return;
           }

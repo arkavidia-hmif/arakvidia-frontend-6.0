@@ -163,7 +163,7 @@ export class ArkavidiaCompetitionApi extends ArkavidiaBaseApi {
         }
       }
 
-      throw new ApiError<boolean>(false, e.toString());
+      throw new ApiError<SubmitTaskResponseStatus>(SubmitTaskResponseStatus.ERROR, e.toString());
     }
   }
 }

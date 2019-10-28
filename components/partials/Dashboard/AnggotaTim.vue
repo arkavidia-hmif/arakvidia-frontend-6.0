@@ -149,7 +149,19 @@ export default class AnggotaTim extends Vue {
       })
       .catch((e) => {
         if (e instanceof ApiError) {
-          if (e.errorCode === AddMemberStatus.ERROR) {
+          if (e.errorCode === AddMemberStatus.REGISTRATION_CLOSED) {
+            this.error = 'Pendaftaran kompetisi sudah ditutup';
+            return;
+          }
+          else if (e.errorCode === AddMemberStatus.NOT_PARTICIPATING) {
+            this.error = 'Tim tidak berpartisipasi';
+            return;
+          }
+          else if (e.errorCode === AddMemberStatus.FULL) {
+            this.error = 'Tim sudah penuh';
+            return;
+          }
+          else if (e.errorCode === AddMemberStatus.ERROR) {
             this.error = 'Tidak dapat menambah anggota tim';
             return;
           }

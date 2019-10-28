@@ -49,8 +49,9 @@
 
 <script lang="ts">
 import { Component, Getter, Vue, Prop, Action } from 'nuxt-property-decorator';
-import { TaskResponse, Task } from '~/api/competition/types';
+import { TaskResponse, Task, SubmitTaskResponseStatus } from '~/api/competition/types';
 import { File } from '~/api/uploader/types';
+import { ApiError } from '~/api/base';
 
   @Component({
     name: 'FileUploadWidget'
@@ -64,6 +65,7 @@ export default class FileUploadWidget extends Vue {
     @Action('uploader/uploadFile') actionUploadFile;
     @Action('competition/submitTaskResponse') actionSubmitTaskResponse;
 
+    error: string = '';
     uploading: boolean = false;
     deleted: boolean = false;
     uploadProgress: number = 0;
@@ -98,6 +100,22 @@ export default class FileUploadWidget extends Vue {
             taskId: (this.task) ? this.task.id : null,
             response: file.id
           });
+          /* .catch((e) => {
+            if (e instanceof ApiError) {
+              if (e.errorCode === SubmitTaskResponseStatus.NOT_PARTICIPATING) {
+                this.error = 'Tim tidak berpartisipasi';
+                return;
+              else if (e.errorCode === SubmitTaskResponseStatus.ERROR) {
+                this.error = 'Gagal submit';
+                return;
+              }
+
+              this.error = e.message;
+              return;
+            }
+
+            this.error = e.toString();
+          }); */
         })
         .then((taskResponse: TaskResponse) => {
           this.currentTaskResponse = taskResponse;
