@@ -55,12 +55,8 @@ export default class RegisterTeam extends Vue {
   isRegistering: boolean = false;
 
   @Action('competition/registerTeam') registerTeamAction;
-  @Getter('competition/getCompetitions') getCompetitions;
+  @Getter('competition/getCompetitions') competitions;
   @Action('competition/fetchTeamList') actionFetchTeamList;
-
-  get competitions() {
-    return this.getCompetitions;
-  }
 
   get slug() {
     // eslint-disable-next-line dot-notation
@@ -76,17 +72,14 @@ export default class RegisterTeam extends Vue {
   }
 
   isRegistered(teams) {
-    return teams.find((team) => {
+    const team = teams.find((team) => {
       if (team.competition != null) {
         return team.competition.slug === this.slug;
       }
       return false;
-    }) != null;
-  }
+    });
 
-  get currentRoute() {
-    const path = this.$route.path.split('/');
-    return path[ path.length - 1 ];
+    return !!team;
   }
 
   mounted() {
@@ -94,8 +87,7 @@ export default class RegisterTeam extends Vue {
       .then((teams: Team[]) => {
         const isRegistered = this.isRegistered(teams);
         if (isRegistered) {
-          const redirectUrl = (this.nextRoute) ? this.nextRoute : '/dashboard/competition/' + this.slug;
-          this.$router.push(redirectUrl);
+          this.$router.push(`/dashboard/competition/${this.slug}`);
         }
       });
 
