@@ -81,7 +81,7 @@ export default class RegisterTeam extends Vue {
 
   head() {
     return {
-      title: 'Pendaftaran' + this.title
+      title: 'Pendaftaran ' + this.title
     };
   }
 
