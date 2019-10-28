@@ -37,7 +37,7 @@
 import { Component, Vue, Action, Getter } from 'nuxt-property-decorator';
 import DashboardWrapper from '~/components/partials/Dashboard/DashboardWrapper.vue';
 import { ApiError } from '~/api/base';
-import { RegisterTeamStatus } from '~/api/competition/types';
+import { RegisterTeamStatus, Team } from '~/api/competition/types';
 
 interface QueryParameters {
   continue?: string;
@@ -55,11 +55,8 @@ export default class RegisterTeam extends Vue {
   isRegistering: boolean = false;
 
   @Action('competition/registerTeam') registerTeamAction;
-  @Getter('competition/getCompetitions') getCompetitions;
-
-  get competitions() {
-    return this.getCompetitions;
-  }
+  @Getter('competition/getCompetitions') competitions;
+  @Action('competition/fetchTeamList') actionFetchTeamList;
 
   get slug() {
     // eslint-disable-next-line dot-notation
@@ -74,7 +71,26 @@ export default class RegisterTeam extends Vue {
     return null;
   }
 
+  isRegistered(teams) {
+    const team = teams.find((team) => {
+      if (team.competition != null) {
+        return team.competition.slug === this.slug;
+      }
+      return false;
+    });
+
+    return !!team;
+  }
+
   mounted() {
+    this.actionFetchTeamList()
+      .then((teams: Team[]) => {
+        const isRegistered = this.isRegistered(teams);
+        if (isRegistered) {
+          this.$router.push(`/dashboard/competition/${this.slug}`);
+        }
+      });
+
     let i;
     const temp = this.slug.split('-');
     for (i = 0; i < temp.length; i++) {
