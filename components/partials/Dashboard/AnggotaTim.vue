@@ -4,6 +4,10 @@
       <p style="font-weight: 700 !important; margin-bottom: 0 !important;">
         Daftar Anggota
       </p>
+      <v-alert v-if="teamMembers.length < team.competition.minTeamMembers" type="warning" class="my-5">
+        Anggota tim minimal {{ team.competition.minTeamMembers }} orang
+      </v-alert>
+
       <v-col
         v-if="teamMembers.length == 0"
         cols="12"
