@@ -83,11 +83,8 @@ export const actions = {
     commit('setTeams', teams);
     return teams;
   },
-  async fetchTeamDetail({ commit, dispatch }, teamId) {
+  async fetchTeamDetail({ commit }, teamId) {
     const team = await arkavidiaApi.competition.getTeamDetail(teamId);
-    team.taskResponses!.forEach((taskResponse) => {
-      dispatch('uploader/fetchFile', { fileId: taskResponse.response }, { root: true });
-    });
     commit('setTeam', team);
     return team;
   },
