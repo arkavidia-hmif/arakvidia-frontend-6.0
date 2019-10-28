@@ -1,5 +1,8 @@
 <template>
   <div>
+    <v-alert v-if="error" type="error" class="mb-2">
+      {{ error }}
+    </v-alert>
     <div v-if="currentTaskResponse && !deleted">
       <div v-if="currentTaskResponse.status === 'awaiting_validation'">
         <b class="orange--text">Menunggu verifikasi</b>
@@ -99,23 +102,20 @@ export default class FileUploadWidget extends Vue {
             teamId: this.teamId,
             taskId: (this.task) ? this.task.id : null,
             response: file.id
-          });
-          /* .catch((e) => {
-            if (e instanceof ApiError) {
-              if (e.errorCode === SubmitTaskResponseStatus.NOT_PARTICIPATING) {
-                this.error = 'Tim tidak berpartisipasi';
-                return;
-              else if (e.errorCode === SubmitTaskResponseStatus.ERROR) {
-                this.error = 'Gagal submit';
+          })
+            .catch((e) => {
+              if (e instanceof ApiError) {
+                if (e.errorCode === SubmitTaskResponseStatus.ERROR) {
+                  this.error = 'Gagal submit';
+                  return;
+                }
+
+                this.error = e.message;
                 return;
               }
 
-              this.error = e.message;
-              return;
-            }
-
-            this.error = e.toString();
-          }); */
+              this.error = e.toString();
+            });
         })
         .then((taskResponse: TaskResponse) => {
           this.currentTaskResponse = taskResponse;

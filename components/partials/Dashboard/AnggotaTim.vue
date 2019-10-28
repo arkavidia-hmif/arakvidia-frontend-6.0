@@ -10,58 +10,84 @@
       >
         <p> Tidak ada anggota lain yang terdaftar dalam tim </p>
       </v-col>
-      <v-col v-else cols="12">
-        <div v-for="(member, i) in team.teamMembers" :key="i" style="padding: 1rem;">
-          <v-row>
-            <p style="margin-bottom: 0 !important;">
-              Anggota {{ i + 1 }}
-            </p>
-            <v-flex>
+      <v-col v-else cols="12" class="pa-0 mt-3">
+        <v-expansion-panels
+          v-model="panel"
+          class="ma-0"
+          multiple
+        >
+          <v-expansion-panel
+            v-for="(member, i) in team.teamMembers"
+            :key="i"
+          >
+            <v-expansion-panel-header>
+              <b>
+                {{ member.fullName }}
+                <v-icon v-if="member.email === team.teamLeaderEmail" small class="ml-2" color="#FFBA07">fas fa-crown</v-icon>
+              </b>
+            </v-expansion-panel-header>
+            <v-expansion-panel-content>
+              <div class="subtitle-2 font-weight-black " style="color: #666666">
+                Nama Lengkap
+              </div>
+              <div class="subtitle-2 black--text">
+                {{ member.fullName || "Not set" }}
+              </div>
+              <div class="subtitle-2 font-weight-black mt-3" style="color: #666666">
+                Alamat E-mail
+              </div>
+              <div class="subtitle-2 black--text">
+                {{ member.email || "Not set" }}
+              </div>
+
               <v-btn
-                class="my-5 subtitle-2 text-none px-5 font-weight-bold"
-                style="border-radius: 50px; margin: 0 !important; border: 2px solid #E44D4B;
-                color: #E44D4B; float: right; background: white;"
+                v-if="member.email !== team.teamLeaderEmail"
+                class="mt-5 subtitle-2 text-none px-5 font-weight-bold"
+                color="#E44D4B"
+                outlined
                 :loading="isDeleting"
-                @click="attemptDelete(member.id)"
+                @click="() => attemptDelete(member.id)"
               >
                 Hapus Anggota
               </v-btn>
-            </v-flex>
-          </v-row>
-          <ProfileField title="Name" :value="member.fullName" />
-          <ProfileField title="Email" :value="member.email" />
-        </div>
-      </v-col>
-    </div>
-    <div v-if="team.teamMembers.length < team.competition.maxTeamMembers">
-      <p style="font-weight: 700 !important; margin-bottom: 0 !important;">
-        Tambah Anggota
-      </p>
-      <v-col
-        cols="12"
-        sm="6"
-      >
-        <v-alert v-if="error" type="error" class="mt-4">
-          {{ error }}
-        </v-alert>
-        <form @submit.prevent="attemptCreateMember">
-          <v-text-field
-            v-model="fullName"
-            label="Nama"
-          />
-          <v-text-field
-            v-model="email"
-            label="Email"
-          />
-          <v-btn
-            class="my-5 primary subtitle-2 text-none px-5 font-weight-bold"
-            style="border-radius: 50px"
-            type="submit"
-            :loading="isCreating"
-          >
-            Tambah Anggota
-          </v-btn>
-        </form>
+            </v-expansion-panel-content>
+          </v-expansion-panel>
+          <v-expansion-panel>
+            <v-expansion-panel-header class="primary white--text" dark>
+              <b>
+                <v-icon small color="white" class="mr-4">fa fa-plus</v-icon>
+                Tambahkan Anggota
+              </b>
+            </v-expansion-panel-header>
+            <v-expansion-panel-content>
+              <v-alert v-if="error" type="error" class="mt-4">
+                {{ error }}
+              </v-alert>
+              <form class="mt-6" @submit.prevent="attemptCreateMember">
+                <v-text-field
+                  v-model="fullName"
+                  outlined
+                  dense
+                  label="Nama"
+                />
+                <v-text-field
+                  v-model="email"
+                  outlined
+                  dense
+                  label="Email"
+                />
+                <v-btn
+                  class="primary subtitle-2 text-none px-5 font-weight-bold"
+                  style="border-radius: 50px"
+                  type="submit"
+                  :loading="isCreating"
+                >
+                  Tambah Anggota
+                </v-btn>
+              </form>
+            </v-expansion-panel-content>
+          </v-expansion-panel>
+        </v-expansion-panels>
       </v-col>
     </div>
   </div>
@@ -69,7 +95,6 @@
 
 <script lang="ts">
 import { Component, Vue, Getter, Action } from 'nuxt-property-decorator';
-import ProfileField from '~/components/partials/Dashboard/ProfileField.vue';
 import { ApiError } from '~/api/base';
 import {
   Team,
@@ -81,18 +106,16 @@ interface QueryParameters {
   continue?: string;
 }
 
-@Component({
-  components: { ProfileField }
-})
+@Component({})
 export default class AnggotaTim extends Vue {
   error: string = '';
   fullName: string = '';
   email: string = '';
-  memberId: number = -999;
   isCreating: boolean = false;
   isDeleting: boolean = false;
   isLoading: boolean = true;
-  competitionId: number = 0;
+
+  panel = [];
 
   @Getter('competition/getTeams') teams!: Team[];
   @Action('competition/addMember') addMemberAction;

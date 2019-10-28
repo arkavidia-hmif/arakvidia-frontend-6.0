@@ -12,6 +12,9 @@
       </div>
     </template>
     <div class="mt-1">
+      <v-alert v-if="error" type="error" class="mb-2">
+        {{ error }}
+      </v-alert>
       <v-text-field v-model="response" outlined dense class="mt-2" />
       <v-btn
         :loading="loading"
@@ -63,11 +66,8 @@ export default class TextWidget extends Vue {
           this.currentTaskResponse = taskResponse;
         })
         .catch((e) => {
-          /* if (e instanceof ApiError) {
-            if (e.errorCode === SubmitTaskResponseStatus.NOT_PARTICIPATING) {
-              this.error = 'Tim tidak berpartisipasi';
-              return;
-            else if (e.errorCode === SubmitTaskResponseStatus.ERROR) {
+          if (e instanceof ApiError) {
+            if (e.errorCode === SubmitTaskResponseStatus.ERROR) {
               this.error = 'Gagal submit';
               return;
             }
@@ -76,7 +76,7 @@ export default class TextWidget extends Vue {
             return;
           }
 
-          this.error = e.toString(); */
+          this.error = e.toString();
         })
         .finally(() => {
           this.loading = false;

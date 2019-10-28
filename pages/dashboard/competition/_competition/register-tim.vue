@@ -1,16 +1,22 @@
 <template>
   <DashboardWrapper>
-    <v-container>
-      <div class="px-12 mx-12">
+    <v-row>
+      <v-col :cols="12" :md="6">
         <h5 class="mt-4 title font-weight-black">
-          {{ title }}
+          Pendaftaran {{ title }}
         </h5>
         <v-alert v-if="error" type="error" class="mt-4">
           {{ error }}
         </v-alert>
-        <form @submit.prevent="attemptRegister">
-          <v-text-field v-model="name" label="Team Name" />
-          <v-text-field v-model="institution" label="Institute / School" />
+        <form class="mt-4" @submit.prevent="attemptRegister">
+          <v-text-field v-model="name" outlined dense label="Nama Tim" />
+          <v-text-field
+            v-model="institution"
+            outlined
+            dense
+            label="Nama Universitas/Sekolah"
+            hint="Isi dengan nama resmi institusi tanpa singkatan"
+          />
           <div class="my-2">
             <v-btn
               class="my-5 primary subtitle-2 text-none px-5 font-weight-bold"
@@ -18,12 +24,12 @@
               type="submit"
               :loading="isRegistering"
             >
-              Register Team
+              Daftarkan Tim
             </v-btn>
           </div>
         </form>
-      </div>
-    </v-container>
+      </v-col>
+    </v-row>
   </DashboardWrapper>
 </template>
 
