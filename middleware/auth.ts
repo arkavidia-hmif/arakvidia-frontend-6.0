@@ -3,13 +3,11 @@ interface NuxtProcess {
 }
 
 export default function({ store, redirect, route }) {
-  if (process) {
-    const nuxtProcess: NuxtProcess = process as NuxtProcess;
-    if (!nuxtProcess.server) {
-      if (route.path.startsWith('/dashboard')) {
-        if (!store.state.user.loggedIn) {
-          redirect(`/login?continue=${encodeURIComponent(route.path)}`);
-        }
+  // eslint-disable-next-line dot-notation
+  if (!process['server']) {
+    if (route.path.startsWith('/dashboard')) {
+      if (!store.getters['user/isLoggedIn']) {
+        redirect(`/login?continue=${encodeURIComponent(route.path)}`);
       }
     }
   }
