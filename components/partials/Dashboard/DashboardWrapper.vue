@@ -30,8 +30,7 @@ interface NuxtWindow {
 }
 
 @Component({
-  name: 'DashboardWrapper',
-  components: { }
+  name: 'DashboardWrapper'
 })
 export default class DashboardWrapper extends Vue {
   @Getter('user/isLoggedIn') loggedIn!: boolean;
@@ -42,12 +41,17 @@ export default class DashboardWrapper extends Vue {
 
   mounted() {
     if (window) {
-      if (!this.loggedIn) {
-        this.$router.replace(`/login?continue=${encodeURIComponent(this.$route.fullPath)}`);
-      }
-      else {
-        this.fetchCompetitionListAction();
-        this.fetchTeamListAction();
+      const nuxtWindow: NuxtWindow = window as NuxtWindow;
+      if (nuxtWindow.onNuxtReady !== undefined) {
+        nuxtWindow.onNuxtReady(() => {
+          if (!this.loggedIn) {
+            this.$router.replace(`/login?continue=${encodeURIComponent(this.$route.fullPath)}`);
+          }
+          else {
+            this.fetchCompetitionListAction();
+            this.fetchTeamListAction();
+          }
+        });
       }
     }
   }

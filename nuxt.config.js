@@ -88,6 +88,9 @@ export default {
     linkify: true,
     breaks: true,
     injected: true
+  },
+  router: {
+    middleware: 'auth'
   }
 };
 
