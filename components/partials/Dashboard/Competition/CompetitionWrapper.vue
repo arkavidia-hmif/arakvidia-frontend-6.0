@@ -16,7 +16,7 @@
 
 <script lang="ts">
 import { Component, Vue, Prop, Action } from 'nuxt-property-decorator';
-import TabMenu from '~/components/partials/Dashboard/TabMenu.vue';
+import TabMenu from '~/components/partials/Dashboard/Competition/TabMenu.vue';
 import { Team } from '~/api/competition/types';
 
   @Component({
