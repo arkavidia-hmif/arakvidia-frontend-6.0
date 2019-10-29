@@ -23,7 +23,7 @@
 <script lang="ts">
 import { Component, Vue, State, Getter, Action } from 'nuxt-property-decorator';
 import { dashboardMenus, Menu } from '~/constants/menus';
-import Forbidden from '~/components/subpages/Forbidden.vue';
+import Forbidden from '~/components/Forbidden.vue';
 import { AuthState } from '~/store/user';
 
 interface NuxtWindow {
@@ -45,8 +45,7 @@ export default class DashboardWrapper extends Vue {
     if (window) {
       if (!this.loggedIn) {
         this.$router.replace(`/login?continue=${encodeURIComponent(this.$route.fullPath)}`);
-      }
-      else {
+      } else {
         this.fetchCompetitionListAction();
         this.fetchTeamListAction();
       }
