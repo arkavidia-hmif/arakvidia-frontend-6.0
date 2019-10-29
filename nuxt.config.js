@@ -35,8 +35,7 @@ export default {
     '@nuxtjs/moment'
   ],
   build: {
-    extractCSS: true,
-    optimizeCSS: true
+    extractCSS: true
   },
   generate: {
     exclude: [
