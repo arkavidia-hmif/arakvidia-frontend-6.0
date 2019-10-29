@@ -11,9 +11,9 @@
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator';
 import DashboardWrapper from '~/components/partials/Dashboard/DashboardWrapper.vue';
-import TabMenu from '~/components/partials/Dashboard/TabMenu.vue';
-import AnggotaTim from '~/components/partials/Dashboard/AnggotaTim.vue';
-import CompetitionWrapper from '~/components/partials/Dashboard/CompetitionWrapper.vue';
+import TabMenu from '~/components/partials/Dashboard/Competition/TabMenu.vue';
+import AnggotaTim from '~/components/partials/Dashboard/Competition/AnggotaTim.vue';
+import CompetitionWrapper from '~/components/partials/Dashboard/Competition/CompetitionWrapper.vue';
 
 @Component({
   components: { CompetitionWrapper, DashboardWrapper, TabMenu, AnggotaTim }

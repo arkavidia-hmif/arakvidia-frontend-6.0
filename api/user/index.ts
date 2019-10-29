@@ -40,7 +40,7 @@ export class ArkavidiaUserApi extends ArkavidiaBaseApi {
     }
     catch (e) {
       if (e.response) {
-        if (e.response.data.code === 'unknown_error') {
+        if (e.response.data.code === 'registration_failed_email_used') {
           throw new ApiError<RegistrationStatus>(RegistrationStatus.EMAIL_EXISTS, e.response.data.detail);
         }
       }

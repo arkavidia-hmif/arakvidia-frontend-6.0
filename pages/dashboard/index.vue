@@ -17,7 +17,7 @@
 <script lang="ts">
 import { Component, Vue, Action } from 'nuxt-property-decorator';
 import DashboardWrapper from '~/components/partials/Dashboard/DashboardWrapper.vue';
-import AnnouncementCard from '~/components/partials/Dashboard/AnnouncementCard.vue';
+import AnnouncementCard from '~/components/partials/Dashboard/Announcement/AnnouncementCard.vue';
 import { Announcement } from '~/api/announcement/types';
 
 @Component({

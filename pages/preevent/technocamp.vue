@@ -9,8 +9,8 @@
 
 <script lang="ts">
 import Vue, { ComponentOptions } from 'vue';
-import TechnocampIntro from '~/components/preevent/technocamp/Intro.vue';
-import TechnocampAbout from '~/components/preevent/technocamp/About.vue';
+import TechnocampIntro from '~/components/subpages/preevent/technocamp/Intro.vue';
+import TechnocampAbout from '~/components/subpages/preevent/technocamp/About.vue';
 
 export default Vue.extend({
   components: {

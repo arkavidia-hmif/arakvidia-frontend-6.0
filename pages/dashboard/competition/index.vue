@@ -34,7 +34,7 @@
 <script lang="ts">
 import { Component, Getter, Vue } from 'nuxt-property-decorator';
 import DashboardWrapper from '~/components/partials/Dashboard/DashboardWrapper.vue';
-import CompetitionCard from '~/components/partials/Dashboard/CompetitionCard.vue';
+import CompetitionCard from '~/components/partials/Dashboard/Competition/CompetitionCard.vue';
 
 @Component({
   components: { DashboardWrapper, CompetitionCard }

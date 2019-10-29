@@ -2,6 +2,7 @@ import arkavidiaApi from '~/api/api';
 import { User } from '~/api/user/types';
 
 const TOKEN_NAME = 'arkav-token';
+const TOKEN_EXPIRY_NAME = 'arkav-token-exp';
 
 if (typeof window !== 'undefined') {
   arkavidiaApi.bearerToken = () => window.localStorage.getItem(TOKEN_NAME);
@@ -10,9 +11,7 @@ if (typeof window !== 'undefined') {
 export interface AuthState {
   loggedIn: boolean;
   user?: User;
-  bearerToken?: string;
   loggedInAt?: number;
-  expiresAt?: number;
 }
 
 export const namespaced = true;
@@ -20,38 +19,40 @@ export const namespaced = true;
 export const state = () => ({
   loggedIn: false,
   user: null,
-  bearerToken: null,
-  loggedIntAt: null,
-  expiresAt: null
+  loggedIntAt: null
 });
 
 export const getters = {
-  isLoggedIn(state: AuthState) {
-    if (state.expiresAt) {
-      return state.loggedIn && Date.now() <= state.expiresAt;
+  isLoggedIn() {
+    // eslint-disable-next-line dot-notation
+    if (!process['server']) {
+      const expiresAt: number = parseInt(window.localStorage.getItem(TOKEN_EXPIRY_NAME) || '0');
+      if (expiresAt) {
+        return Date.now() <= expiresAt;
+      }
     }
-
     return false;
   },
-  getToken(state: AuthState) {
-    return state.bearerToken;
+  getToken() {
+    // eslint-disable-next-line dot-notation
+    if (!process['server']) {
+      return window.localStorage.getItem(TOKEN_NAME);
+    }
+
+    return undefined;
   }
 };
 
 export const mutations = {
-  setLogin(state: AuthState, { user, bearerToken, expiresAt }) {
+  setLogin(state: AuthState, { user }) {
     state.loggedIn = true;
     state.user = user;
-    state.bearerToken = bearerToken;
     state.loggedInAt = Date.now();
-    state.expiresAt = expiresAt;
   },
   setLogout(state: AuthState) {
     state.loggedIn = false;
     state.user = undefined;
-    state.bearerToken = undefined;
     state.loggedInAt = undefined;
-    state.expiresAt = undefined;
   },
   setUser(state: AuthState, { user }) {
     state.user = user;
@@ -63,10 +64,12 @@ export const actions = {
     const response = await arkavidiaApi.user.login(email, password);
     commit('setLogin', response);
     window.localStorage.setItem(TOKEN_NAME, response.bearerToken);
+    window.localStorage.setItem(TOKEN_EXPIRY_NAME, response.expiresAt.toString());
   },
   logout({ commit }) {
     commit('setLogout');
     window.localStorage.removeItem(TOKEN_NAME);
+    window.localStorage.removeItem(TOKEN_EXPIRY_NAME);
   },
 
   // eslint-disable-next-line no-empty-pattern

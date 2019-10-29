@@ -35,7 +35,8 @@ export default {
     '@nuxtjs/moment'
   ],
   build: {
-    extractCSS: true
+    extractCSS: true,
+    optimizeCSS: true
   },
   generate: {
     exclude: [
@@ -66,7 +67,8 @@ export default {
     }
   },
   googleAnalytics: {
-    id: process.env.VUE_APP_GA_ID
+    id: process.env.VUE_APP_GA_ID,
+    ignoreRoutes: ['/email']
   },
   sentry: {
     dsn: process.env.SENTRY_DSN, // Enter your project's DSN here

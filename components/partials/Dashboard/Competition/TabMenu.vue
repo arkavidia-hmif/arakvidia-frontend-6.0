@@ -5,7 +5,7 @@
         <v-list-item :to="`/dashboard/competition/${slug}`" exact>
           <v-list-item-title>
             <v-icon left>
-              {{ info }}
+              fas fa-info-circle
             </v-icon>
             Informasi Tim
           </v-list-item-title>
@@ -13,7 +13,7 @@
         <v-list-item :to="`/dashboard/competition/${slug}/anggota-tim`" exact>
           <v-list-item-title>
             <v-icon left>
-              {{ accountGroup }}
+              fas fa-user-circle
             </v-icon>
             Anggota Tim
           </v-list-item-title>
@@ -33,7 +33,6 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import { mdiInformation, mdiAccountGroup, mdiApps } from '@mdi/js';
 import { Stage } from '~/api/competition/types';
 
 export default Vue.extend({
@@ -49,11 +48,6 @@ export default Vue.extend({
       default: null
     }
   },
-  data: () => ({
-    info: mdiInformation,
-    accountGroup: mdiAccountGroup,
-    berkas: mdiApps
-  }),
   computed: {
     stages(): Stage[] {
       if ((this.team != null) && (this.team.stages)) {
