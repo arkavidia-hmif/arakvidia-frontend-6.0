@@ -9,8 +9,8 @@
 
 <script lang="ts">
 import Vue, { ComponentOptions } from 'vue';
-import AcademyIntro from '~/components/preevent/academy/Intro.vue';
-import AcademyAbout from '~/components/preevent/academy/About.vue';
+import AcademyIntro from '~/components/subpages/preevent/academy/Intro.vue';
+import AcademyAbout from '~/components/subpages/preevent/academy/About.vue';
 
 export default Vue.extend({
   components: {

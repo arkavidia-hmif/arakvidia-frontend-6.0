@@ -9,8 +9,8 @@
 
 <script lang="ts">
 import Vue, { ComponentOptions } from 'vue';
-import ITFestIntro from '~/components/event/it-festival/Intro.vue';
-import ITFestAbout from '~/components/event/it-festival/About.vue';
+import ITFestIntro from '~/components/subpages/event/it-festival/Intro.vue';
+import ITFestAbout from '~/components/subpages/event/it-festival/About.vue';
 
 export default Vue.extend({
   components: {

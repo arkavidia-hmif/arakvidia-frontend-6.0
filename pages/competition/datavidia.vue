@@ -11,9 +11,9 @@
 
 <script lang="ts">
 import Vue, { ComponentOptions } from 'vue';
-import DatavidiaIntro from '~/components/competition/datavidia/Intro.vue';
-import DatavidiaPrize from '~/components/competition/datavidia/Prize.vue';
-import DatavidiaTimeline from '~/components/competition/datavidia/Timeline.vue';
+import DatavidiaIntro from '~/components/subpages/competition/datavidia/Intro.vue';
+import DatavidiaPrize from '~/components/subpages/competition/datavidia/Prize.vue';
+import DatavidiaTimeline from '~/components/subpages/competition/datavidia/Timeline.vue';
 // import FAQ from '~/components/partials/FAQ.vue'
 
 export default Vue.extend({

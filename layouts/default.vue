@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import Toolbar from '~/components/partials/Toolbar.vue';
+import Toolbar from '~/components/partials/Menu/Toolbar.vue';
 import Footer from '~/components/partials/Footer.vue';
 
 export default {

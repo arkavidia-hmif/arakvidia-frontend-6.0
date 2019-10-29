@@ -9,8 +9,8 @@
 
 <script lang="ts">
 import Vue, { ComponentOptions } from 'vue';
-import ArkavTalkIntro from '~/components/event/arkavidia-talk/Intro.vue';
-import ArkavTalkAbout from '~/components/event/arkavidia-talk/About.vue';
+import ArkavTalkIntro from '~/components/subpages/event/arkavidia-talk/Intro.vue';
+import ArkavTalkAbout from '~/components/subpages/event/arkavidia-talk/About.vue';
 
 export default Vue.extend({
   components: {

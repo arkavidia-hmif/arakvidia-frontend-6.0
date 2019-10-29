@@ -79,11 +79,11 @@
 
 <script lang="ts">
 import { Component, Vue, Getter, Action } from 'nuxt-property-decorator';
-import { mainMenus, TopLevelMenu } from '../../constants/menus';
-import ToolbarDropdown from '~/components/partials/ToolbarDropdown.vue';
-import DrawerListItem from '~/components/partials/Drawer/DrawerListItem.vue';
-import DrawerListGroup from '~/components/partials/Drawer/DrawerListGroup.vue';
-import MenuIcon from '~/components/partials/Drawer/MenuIcon.vue';
+import ToolbarDropdown from '~/components/partials/Menu/ToolbarDropdown.vue';
+import { mainMenus, TopLevelMenu } from '~/constants/menus';
+import DrawerListItem from '~/components/partials/Menu/Drawer/DrawerListItem.vue';
+import DrawerListGroup from '~/components/partials/Menu/Drawer/DrawerListGroup.vue';
+import MenuIcon from '~/components/partials/Menu/Drawer/MenuIcon.vue';
 
 @Component({
   name: 'Toolbar',

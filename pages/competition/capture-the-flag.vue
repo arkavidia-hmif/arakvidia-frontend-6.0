@@ -11,9 +11,9 @@
 
 <script lang="ts">
 import Vue, { ComponentOptions } from 'vue';
-import CaptureTheFlagIntro from '~/components/competition/ctf/Intro.vue';
-import CaptureTheFlagPrize from '~/components/competition/ctf/Prize.vue';
-import CaptureTheFlagTimeline from '~/components/competition/ctf/Timeline.vue';
+import CaptureTheFlagIntro from '~/components/subpages/competition/ctf/Intro.vue';
+import CaptureTheFlagPrize from '~/components/subpages/competition/ctf/Prize.vue';
+import CaptureTheFlagTimeline from '~/components/subpages/competition/ctf/Timeline.vue';
 // import FAQ from '~/components/partials/FAQ.vue'
 
 export default Vue.extend({

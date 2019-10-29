@@ -11,9 +11,9 @@
 
 <script lang="ts">
 import Vue, { ComponentOptions } from 'vue';
-import ArkalogicaIntro from '~/components/competition/arkalogica/Intro.vue';
-import ArkalogicaPrize from '~/components/competition/arkalogica/Prize.vue';
-import ArkalogicaTimeline from '~/components/competition/arkalogica/Timeline.vue';
+import ArkalogicaIntro from '~/components/subpages/competition/arkalogica/Intro.vue';
+import ArkalogicaPrize from '~/components/subpages/competition/arkalogica/Prize.vue';
+import ArkalogicaTimeline from '~/components/subpages/competition/arkalogica/Timeline.vue';
 // import FAQ from '~/components/partials/FAQ.vue'
 
 export default Vue.extend({

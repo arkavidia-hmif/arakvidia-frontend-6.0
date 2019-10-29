@@ -7,8 +7,8 @@
 
 <script lang="ts">
 import Vue, { ComponentOptions } from 'vue';
-import HomeIntro from '~/components/home/HomeIntro.vue';
-import HomeOverview from '~/components/home/HomeOverview.vue';
+import HomeIntro from '~/components/subpages/home/HomeIntro.vue';
+import HomeOverview from '~/components/subpages/home/HomeOverview.vue';
 
 export default Vue.extend({
   components: {

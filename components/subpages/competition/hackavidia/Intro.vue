@@ -8,7 +8,7 @@
               Hackavidia
             </div>
             <p class="mt-4 grey--text text--darken-1">
-              Hackavidia adalah sebuah kompetisi yang memberikan wadah bagi para pengembang perangkat lunak untuk berkumpul dan berkolaborasi dalam memberikan solusi pada suatu permasalahan.
+              Hackavidia adalah sebuah kompetisi Hackathon yang memberikan wadah bagi para pengembang perangkat lunak untuk berkumpul dan berkolaborasi dalam memberikan solusi pada suatu permasalahan.
               Kompetisi ini meliputi babak penyisihan dan babak final.
               Babak penyisihan dilakukan secara online sedangkan babak final dilakukan di Institut Teknologi Bandung.
             </p>
