@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import NotFound from '~/components/NotFound';
+import NotFound from '~/components/subpages/NotFound.vue';
 
 export default {
   layout: 'empty',

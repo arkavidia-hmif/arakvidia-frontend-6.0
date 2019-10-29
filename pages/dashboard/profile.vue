@@ -22,8 +22,8 @@
 <script lang="ts">
 import { Component, Vue, State } from 'nuxt-property-decorator';
 import DashboardWrapper from '~/components/partials/Dashboard/DashboardWrapper.vue';
-import ProfileField from '~/components/partials/Dashboard/ProfileField.vue';
-import ModalProfile from '~/components/partials/Dashboard/ModalProfile.vue';
+import ProfileField from '~/components/partials/Dashboard/Profile/ProfileField.vue';
+import ModalProfile from '~/components/partials/Dashboard/Profile/ModalProfile.vue';
 import { User } from '~/api/user/types';
 import { AuthState } from '~/store/user';
 

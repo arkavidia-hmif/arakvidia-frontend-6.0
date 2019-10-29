@@ -39,9 +39,9 @@
 <script lang="ts">
 import { Component, Vue, Action, Getter } from 'nuxt-property-decorator';
 import DashboardWrapper from '~/components/partials/Dashboard/DashboardWrapper.vue';
-import TabMenu from '~/components/partials/Dashboard/TabMenu.vue';
+import TabMenu from '~/components/partials/Dashboard/Competition/TabMenu.vue';
 import { ApiError } from '~/api/base';
-import CompetitionWrapper from '~/components/partials/Dashboard/CompetitionWrapper.vue';
+import CompetitionWrapper from '~/components/partials/Dashboard/Competition/CompetitionWrapper.vue';
 import { Team, ChangeTeamStatus, DeleteTeamStatus } from '~/api/competition/types';
 
 interface QueryParameters {
