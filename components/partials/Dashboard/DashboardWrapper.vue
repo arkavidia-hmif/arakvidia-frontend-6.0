@@ -23,7 +23,6 @@
 <script lang="ts">
 import { Component, Vue, State, Getter, Action } from 'nuxt-property-decorator';
 import { dashboardMenus, Menu } from '~/constants/menus';
-import Forbidden from '~/components/subpages/Forbidden.vue';
 import { AuthState } from '~/store/user';
 
 interface NuxtWindow {
@@ -31,8 +30,7 @@ interface NuxtWindow {
 }
 
 @Component({
-  name: 'DashboardWrapper',
-  components: { Forbidden }
+  name: 'DashboardWrapper'
 })
 export default class DashboardWrapper extends Vue {
   @Getter('user/isLoggedIn') loggedIn!: boolean;
