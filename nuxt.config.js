@@ -83,9 +83,6 @@ export default {
   moment: {
     locales: ['id']
   },
-  router: {
-    middleware: ['auth']
-  },
   markdownit: {
     preset: 'default',
     linkify: true,
