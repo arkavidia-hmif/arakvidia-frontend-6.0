@@ -43,17 +43,12 @@ export default class DashboardWrapper extends Vue {
 
   mounted() {
     if (window) {
-      const nuxtWindow: NuxtWindow = window as NuxtWindow;
-      if (nuxtWindow.onNuxtReady !== undefined) {
-        nuxtWindow.onNuxtReady(() => {
-          if (!this.loggedIn) {
-            this.$router.replace(`/login?continue=${encodeURIComponent(this.$route.fullPath)}`);
-          }
-          else {
-            this.fetchCompetitionListAction();
-            this.fetchTeamListAction();
-          }
-        });
+      if (!this.loggedIn) {
+        this.$router.replace(`/login?continue=${encodeURIComponent(this.$route.fullPath)}`);
+      }
+      else {
+        this.fetchCompetitionListAction();
+        this.fetchTeamListAction();
       }
     }
   }
