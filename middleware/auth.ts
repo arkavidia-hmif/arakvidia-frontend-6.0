@@ -1,7 +1,3 @@
-interface NuxtProcess {
-  server?: boolean;
-}
-
 export default function({ store, redirect, route }) {
   // eslint-disable-next-line dot-notation
   if (!process['server']) {
