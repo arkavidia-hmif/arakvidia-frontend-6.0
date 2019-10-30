@@ -33,9 +33,9 @@
       </v-col>
       <v-col :cols="6" :sm="3">
         <TimelineItem
-          :active-after="Date.parse('2019-12-23T00:00:00+07:00')"
-          :active-before="Date.parse('2019-12-23T23:59:59+07:00')"
-          date="23"
+          :active-after="Date.parse('2019-12-27T00:00:00+07:00')"
+          :active-before="Date.parse('2019-12-27T23:59:59+07:00')"
+          date="27"
           month-year="Desember 2019"
           title="Batas Akhir Penyisihan"
         />
