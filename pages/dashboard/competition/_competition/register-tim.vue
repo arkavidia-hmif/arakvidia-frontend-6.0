@@ -155,11 +155,11 @@ export default class RegisterTeam extends Vue {
             return;
           }
           else if (e.errorCode === RegisterTeamStatus.CREATE_TEAM_FAIL) {
-            this.error = `Error: ${e.message}`;
+            this.error = `Error: ${JSON.stringify(e.message)}`;
             return;
           }
           else if (e.errorCode === RegisterTeamStatus.ERROR) {
-            this.error = `Error: ${e.message}`;
+            this.error = `Error: ${JSON.stringify(e.message)}`;
             return;
           }
 
