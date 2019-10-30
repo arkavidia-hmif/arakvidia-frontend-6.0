@@ -51,6 +51,9 @@ export class ArkavidiaCompetitionApi extends ArkavidiaBaseApi {
         else if (e.response.data.code === 'create_team_fail') {
           throw new ApiError<RegisterTeamStatus>(RegisterTeamStatus.CREATE_TEAM_FAIL, JSON.stringify(e.response.data.detail));
         }
+        else if (e.response.data.code === 'team_name_is_used') {
+          throw new ApiError<RegisterTeamStatus>(RegisterTeamStatus.TEAM_NAME_USED, JSON.stringify(e.response.data.detail));
+        }
         else if (e.response.data.code === 'unknown_error') {
           throw new ApiError<RegisterTeamStatus>(RegisterTeamStatus.ERROR, JSON.stringify(e.response.data.detail));
         }

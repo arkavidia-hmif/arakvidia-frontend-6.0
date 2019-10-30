@@ -12,9 +12,7 @@
       </div>
     </template>
     <div class="mt-1">
-      <v-alert v-if="error" type="error" class="mb-2">
-        {{ error }}
-      </v-alert>
+      <Alert v-if="error" :message="error" type="error" class="mb-2" />
       <v-text-field v-model="response" outlined dense class="mt-2" />
       <v-btn
         :loading="loading"

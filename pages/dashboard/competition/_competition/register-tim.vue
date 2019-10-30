@@ -5,20 +5,16 @@
         <h5 class="mt-4 title font-weight-black">
           Pendaftaran {{ title }}
         </h5>
-        <a @click.prevent="errorDetailsOpened = !errorDetailsOpened">
-          <v-alert v-if="error" type="error" class="mt-4" style="text-decoration: none">
-            {{ error }}
-          </v-alert>
-        </a>
-        <pre v-if="errorDetailsOpened" style="border: 1px solid #ccc" class="pa-2 grey lighten-3">{{ errorDetails }}</pre>
+        <Alert v-if="error" type="error" class="mt-4" :message="error" :details="errorDetails" />
         <form class="mt-4" @submit.prevent="attemptRegister">
-          <v-text-field v-model="name" outlined dense label="Nama Tim" />
+          <v-text-field v-model="name" outlined dense label="Nama Tim" maxlength="40" />
           <v-text-field
             v-model="institution"
             outlined
             dense
             label="Nama Universitas/Sekolah"
             hint="Isi dengan nama resmi institusi tanpa singkatan"
+            maxlength="100"
           />
           <div class="my-2">
             <v-btn
@@ -41,13 +37,14 @@ import { Component, Vue, Action, Getter } from 'nuxt-property-decorator';
 import DashboardWrapper from '~/components/partials/Dashboard/DashboardWrapper.vue';
 import { ApiError } from '~/api/base';
 import { RegisterTeamStatus, Team } from '~/api/competition/types';
+import Alert from '~/components/partials/Alert.vue';
 
 interface QueryParameters {
   continue?: string;
 }
 
 @Component({
-  components: { DashboardWrapper }
+  components: { Alert, DashboardWrapper }
 })
 
 export default class RegisterTeam extends Vue {
@@ -158,6 +155,10 @@ export default class RegisterTeam extends Vue {
           }
           else if (e.errorCode === RegisterTeamStatus.ALREADY_REGISTERED) {
             this.error = 'Tim sudah terdaftar';
+            return;
+          }
+          else if (e.errorCode === RegisterTeamStatus.TEAM_NAME_USED) {
+            this.error = `Silakan gunakan nama tim yang lain`;
             return;
           }
           else if (e.errorCode === RegisterTeamStatus.CREATE_TEAM_FAIL) {

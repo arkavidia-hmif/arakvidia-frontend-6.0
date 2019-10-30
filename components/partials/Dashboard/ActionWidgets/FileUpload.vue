@@ -1,8 +1,6 @@
 <template>
   <div>
-    <v-alert v-if="error" type="error" class="mb-2">
-      {{ error }}
-    </v-alert>
+    <Alert v-if="error" :message="error" type="error" class="mb-2" />
     <div v-if="currentTaskResponse && !deleted">
       <div v-if="currentTaskResponse.status === 'awaiting_validation'">
         <b class="orange--text">Menunggu verifikasi</b>
@@ -58,9 +56,11 @@ import { Component, Vue, Prop, Action } from 'nuxt-property-decorator';
 import { TaskResponse, Task, SubmitTaskResponseStatus } from '~/api/competition/types';
 import { File } from '~/api/uploader/types';
 import { ApiError } from '~/api/base';
+import Alert from '~/components/partials/Alert.vue';
 
   @Component({
-    name: 'FileUploadWidget'
+    name: 'FileUploadWidget',
+    components: { Alert }
   })
 export default class FileUploadWidget extends Vue {
     @Prop({ default: undefined }) taskResponse!: TaskResponse|undefined;

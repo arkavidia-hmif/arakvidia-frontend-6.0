@@ -5,9 +5,7 @@
         <div class="headline font-weight-bold section-title">
           Registrasi Akun
         </div>
-        <v-alert v-if="error" type="error" class="mt-4">
-          {{ error }}
-        </v-alert>
+        <Alert v-if="error" type="error" class="mt-4" :message="error" />
         <form @submit.prevent="attemptRegister">
           <v-text-field
             v-model="fullName"
@@ -54,12 +52,15 @@
 import { Component, Action, Vue } from 'nuxt-property-decorator';
 import { ApiError } from '~/api/base';
 import { RegistrationStatus } from '~/api/user/types';
+import Alert from '~/components/partials/Alert.vue';
 
 interface QueryParameters {
   continue?: string;
 }
 
-@Component
+@Component({
+  components: { Alert }
+})
 export default class DashboardRegister extends Vue {
   isRegistering: boolean = false;
   fullName: string = '';

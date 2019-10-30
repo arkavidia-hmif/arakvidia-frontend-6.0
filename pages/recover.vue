@@ -5,9 +5,7 @@
         <div class="headline font-weight-bold section-title">
           Lupa kata sandi
         </div>
-        <v-alert v-if="error" type="error" class="mt-4">
-          {{ error }}
-        </v-alert>
+        <Alert v-if="error" type="error" class="mt-4" :message="error" />
         <template v-if="!emailSent">
           <div class="mt-4 grey--text text--darken-1">
             Jangan khawatir! Masukkan alamat e-mail kamu, nanti kami akan mengirimkan e-mail untuk membuat kata sandi baru.
@@ -51,8 +49,10 @@
 
 <script lang="ts">
 import { Component, Vue, Action } from 'nuxt-property-decorator';
-
-@Component
+import Alert from '~/components/partials/Alert.vue';
+@Component({
+  components: { Alert }
+})
 export default class DashboardLogin extends Vue {
   isRecovering: boolean = false;
   emailSent: boolean = false;
