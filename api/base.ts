@@ -10,9 +10,9 @@ export class ArkavidiaBaseApi {
 
 export class ApiError<E> extends Error {
   errCode: E;
-  msg: string;
+  msg: any;
 
-  constructor(errorCode: E, message?: string) {
+  constructor(errorCode: E, message?: any) {
     super(message);
     this.errCode = errorCode;
     this.msg = message || '';
@@ -24,7 +24,7 @@ export class ApiError<E> extends Error {
     return this.errCode;
   }
 
-  get message(): string {
+  get message(): any {
     return this.msg;
   }
 }
