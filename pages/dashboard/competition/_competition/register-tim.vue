@@ -159,7 +159,7 @@ export default class RegisterTeam extends Vue {
             return;
           }
           else if (e.errorCode === RegisterTeamStatus.ERROR) {
-            this.error = 'Tidak dapat melakukan pendaftaran tim';
+            this.error = 'Silakan gunakan nama tim yang lain';
             return;
           }
 
