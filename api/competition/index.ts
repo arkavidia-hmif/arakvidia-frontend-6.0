@@ -43,16 +43,16 @@ export class ArkavidiaCompetitionApi extends ArkavidiaBaseApi {
     catch (e) {
       if (e.response) {
         if (e.response.data.code === 'competition_registration_closed') {
-          throw new ApiError<RegisterTeamStatus>(RegisterTeamStatus.REGISTRATION_CLOSED, e.response.data.detail);
+          throw new ApiError<RegisterTeamStatus>(RegisterTeamStatus.REGISTRATION_CLOSED, JSON.stringify(e.response.data.detail));
         }
         else if (e.response.data.code === 'competition_already_registered') {
-          throw new ApiError<RegisterTeamStatus>(RegisterTeamStatus.ALREADY_REGISTERED, e.response.data.detail);
+          throw new ApiError<RegisterTeamStatus>(RegisterTeamStatus.ALREADY_REGISTERED, JSON.stringify(e.response.data.detail));
         }
         else if (e.response.data.code === 'create_team_fail') {
-          throw new ApiError<RegisterTeamStatus>(RegisterTeamStatus.CREATE_TEAM_FAIL, e.response.data.detail);
+          throw new ApiError<RegisterTeamStatus>(RegisterTeamStatus.CREATE_TEAM_FAIL, JSON.stringify(e.response.data.detail));
         }
         else if (e.response.data.code === 'unknown_error') {
-          throw new ApiError<RegisterTeamStatus>(RegisterTeamStatus.ERROR, e.response.data.detail);
+          throw new ApiError<RegisterTeamStatus>(RegisterTeamStatus.ERROR, JSON.stringify(e.response.data.detail));
         }
       }
 
