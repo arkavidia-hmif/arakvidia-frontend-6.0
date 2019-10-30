@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-container v-if="loggedIn" class="mt-12">
+    <v-container v-if="loggedIn && !!authState.user" class="mt-12">
       <div class="headline font-weight-bold mt-12" style="color: black">
         Dashboard
       </div>

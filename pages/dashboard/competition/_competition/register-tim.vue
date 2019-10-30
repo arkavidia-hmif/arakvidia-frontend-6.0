@@ -5,9 +5,12 @@
         <h5 class="mt-4 title font-weight-black">
           Pendaftaran {{ title }}
         </h5>
-        <v-alert v-if="error" type="error" class="mt-4">
-          {{ error }}
-        </v-alert>
+        <a @click.prevent="errorDetailsOpened = !errorDetailsOpened">
+          <v-alert v-if="error" type="error" class="mt-4" style="text-decoration: none">
+            {{ error }}
+          </v-alert>
+        </a>
+        <pre v-if="errorDetailsOpened" style="border: 1px solid #ccc" class="pa-2 grey lighten-3">{{ errorDetails }}</pre>
         <form class="mt-4" @submit.prevent="attemptRegister">
           <v-text-field v-model="name" outlined dense label="Nama Tim" />
           <v-text-field
@@ -52,6 +55,8 @@ export default class RegisterTeam extends Vue {
   institution: string = '';
   title: string = '';
   error: string = '';
+  errorDetails: string = '';
+  errorDetailsOpened: boolean = false;
   isRegistering: boolean = false;
 
   @Action('competition/registerTeam') registerTeamAction;
@@ -146,6 +151,7 @@ export default class RegisterTeam extends Vue {
       })
       .catch((e) => {
         if (e instanceof ApiError) {
+          this.errorDetails = e.message;
           if (e.errorCode === RegisterTeamStatus.REGISTRATION_CLOSED) {
             this.error = 'Pendaftaran sudah ditutup';
             return;
@@ -155,11 +161,11 @@ export default class RegisterTeam extends Vue {
             return;
           }
           else if (e.errorCode === RegisterTeamStatus.CREATE_TEAM_FAIL) {
-            this.error = `Error: ${e.message}`;
+            this.error = `Tidak dapat membuat tim :(`;
             return;
           }
           else if (e.errorCode === RegisterTeamStatus.ERROR) {
-            this.error = `Error: ${e.message}`;
+            this.error = `Tidak dapat membuat tim :(`;
             return;
           }
 
