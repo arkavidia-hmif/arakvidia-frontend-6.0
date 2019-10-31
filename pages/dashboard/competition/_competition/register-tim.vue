@@ -14,7 +14,7 @@
             dense
             label="Nama Universitas/Sekolah"
             hint="Isi dengan nama resmi institusi tanpa singkatan"
-            maxlength="100"
+            maxlength="50"
           />
           <div class="my-2">
             <v-btn
