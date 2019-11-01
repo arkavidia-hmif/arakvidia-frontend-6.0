@@ -47,12 +47,11 @@ export default class DashboardWrapper extends Vue {
           if (!this.loggedIn) {
             this.$router.replace(`/login?continue=${encodeURIComponent(this.$route.fullPath)}`);
           }
-          else {
-            this.fetchCompetitionListAction();
-            this.fetchTeamListAction();
-          }
         });
       }
+
+      this.fetchCompetitionListAction();
+      this.fetchTeamListAction();
     }
   }
 }
