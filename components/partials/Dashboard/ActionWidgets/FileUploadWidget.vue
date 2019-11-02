@@ -66,6 +66,7 @@ export default class FileUploadWidget extends Vue {
     @Prop({ default: undefined }) taskResponse!: TaskResponse|undefined;
     @Prop({ default: undefined }) task!: Task|undefined;
     @Prop({ default: 0 }) teamId!: number;
+    @Prop() userId: number|undefined;
 
     @Action('uploader/fetchFile') actionFetchFile;
     @Action('uploader/uploadFile') actionUploadFile;
@@ -105,6 +106,7 @@ export default class FileUploadWidget extends Vue {
           this.fileLink = file.fileLink;
           return this.actionSubmitTaskResponse({
             teamId: this.teamId,
+            userId: this.userId,
             taskId: (this.task) ? this.task.id : null,
             response: file.id
           });

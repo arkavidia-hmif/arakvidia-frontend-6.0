@@ -13,7 +13,12 @@
     </template>
     <div class="mt-1">
       <Alert v-if="error" :message="error" type="error" class="mb-2" />
-      <v-text-field v-model="response" outlined dense class="mt-2" />
+      <v-select
+        v-model="response"
+        :items="task.widgetParameters.options"
+        outlined
+        dense
+      />
       <v-btn
         :loading="loading"
         outlined
@@ -35,7 +40,7 @@ import { ApiError } from '~/api/base';
   @Component({
     name: 'TextWidget'
   })
-export default class TextWidget extends Vue {
+export default class OptionWidget extends Vue {
     @Prop({ default: undefined }) taskResponse!: TaskResponse|undefined;
     @Prop({ default: undefined }) task!: Task|undefined;
     @Prop({ default: 0 }) teamId!: number;
