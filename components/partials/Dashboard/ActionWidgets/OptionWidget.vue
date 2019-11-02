@@ -4,9 +4,6 @@
       <div v-if="currentTaskResponse.status === 'awaiting_validation'">
         <b class="orange--text">Menunggu verifikasi</b>
       </div>
-      <div v-if="currentTaskResponse.status === 'completed'">
-        <b class="green--text text--darken-1">Sudah terverifikasi!</b>
-      </div>
       <div v-if="currentTaskResponse.status === 'rejected'">
         <b class="red--text text--darken-1">{{ currentTaskResponse.reason || 'Waduh ditolak :(' }}</b>
       </div>
@@ -18,16 +15,13 @@
         :items="task.widgetParameters.options"
         outlined
         dense
-      />
-      <v-btn
-        :loading="loading"
-        outlined
-        color="grey darken-1"
-        class="text-none"
-        @click.prevent="submitResponse"
+        @change="submitResponse"
       >
-        Simpan
-      </v-btn>
+        <v-progress-circular v-if="loading" slot="append-outer" size="24" indeterminate />
+        <v-icon v-if="!loading && currentTaskResponse && currentTaskResponse.status === 'completed'" slot="append-outer" color="green">
+          far fa-check-circle
+        </v-icon>
+      </v-select>
     </div>
   </div>
 </template>

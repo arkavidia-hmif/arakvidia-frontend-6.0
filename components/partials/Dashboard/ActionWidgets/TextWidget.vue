@@ -4,16 +4,17 @@
       <div v-if="currentTaskResponse.status === 'awaiting_validation'">
         <b class="orange--text">Menunggu verifikasi</b>
       </div>
-      <div v-if="currentTaskResponse.status === 'completed'">
-        <b class="green--text text--darken-1">Sudah terverifikasi!</b>
-      </div>
       <div v-if="currentTaskResponse.status === 'rejected'">
         <b class="red--text text--darken-1">{{ currentTaskResponse.reason || 'Waduh ditolak :(' }}</b>
       </div>
     </template>
-    <div class="mt-1">
+    <div>
       <Alert v-if="error" :message="error" type="error" class="mb-2" />
-      <v-text-field v-model="response" outlined dense class="mt-2" />
+      <v-text-field v-model="response" outlined dense class="mt-2">
+        <v-icon v-if="currentTaskResponse && currentTaskResponse.status === 'completed'" slot="append-outer" color="green">
+          far fa-check-circle
+        </v-icon>
+      </v-text-field>
       <v-btn
         :loading="loading"
         outlined

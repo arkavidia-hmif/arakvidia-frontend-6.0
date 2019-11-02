@@ -5,31 +5,35 @@
       <div v-if="currentTaskResponse.status === 'awaiting_validation'">
         <b class="orange--text">Menunggu verifikasi</b>
       </div>
-      <div v-if="currentTaskResponse.status === 'completed'">
-        <b class="green--text text--darken-1">Sudah terverifikasi!</b>
-      </div>
       <div v-if="currentTaskResponse.status === 'rejected'">
         <b class="red--text text--darken-1">{{ currentTaskResponse.reason || 'Waduh ditolak :(' }}</b>
       </div>
 
-      <div v-if="currentTaskResponse.response" class="mt-1">
-        <v-layout align-center>
-          <v-flex shrink>
-            <v-icon small class="mr-1">
-              fas fa-paperclip
-            </v-icon>
-          </v-flex>
-          <v-flex>
-            <a v-if="!!fileLink" target="_blank" :href="fileLink">Lihat file</a>
-            <div v-else>
-              <v-progress-circular size="20" indeterminate />
-            </div>
-          </v-flex>
-        </v-layout>
-      </div>
+      <v-input class="mt-1">
+        <div v-if="currentTaskResponse.response" slot="default" class="pa-2" style="border: 1px solid #ccc; border-radius: 4px; width: 100%;">
+          <v-sheet>
+            <v-layout align-center>
+              <v-flex shrink>
+                <v-icon small class="mr-1">
+                  fas fa-paperclip
+                </v-icon>
+              </v-flex>
+              <v-flex>
+                <a v-if="!!fileLink" target="_blank" :href="fileLink">Lihat file</a>
+                <div v-else>
+                  <v-progress-circular size="20" indeterminate />
+                </div>
+              </v-flex>
+            </v-layout>
+          </v-sheet>
+        </div>
+        <v-icon v-if="currentTaskResponse.status === 'completed'" slot="append" color="green" class="mt-1">
+          far fa-check-circle
+        </v-icon>
+      </v-input>
     </div>
 
-    <div class="mt-3">
+    <div>
       <input ref="file" type="file" style="display: none" @change="handleUpload">
 
       <v-btn
