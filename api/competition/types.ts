@@ -20,6 +20,7 @@ export interface Team {
   activeStageId?: number;
   stages?: Array<Stage>;
   taskResponses?: Array<TaskResponse>;
+  userTaskResponses?: Array<TaskResponse>;
   createdAt?: string;
 }
 
@@ -44,6 +45,7 @@ export interface Task {
   category?: string;
   widget?: string;
   widgetParameters?: string;
+  isUserTask: boolean;
 }
 
 export interface TaskResponse {
@@ -52,6 +54,7 @@ export interface TaskResponse {
   reason?: string;
   status: string;
   lastSubmittedAt: string;
+  userId?: number;
 }
 
 export enum RegisterTeamStatus {

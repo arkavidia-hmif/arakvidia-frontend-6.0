@@ -5,7 +5,14 @@
         <h5 class="mt-4 title font-weight-black">
           {{ title }}
         </h5>
-        <v-text-field v-model="teamName" dense outlined label="Nama Tim" class="mt-6" maxlength="40" />
+        <v-text-field
+          v-model="teamName"
+          dense
+          outlined
+          label="Nama Tim"
+          class="mt-6"
+          maxlength="40"
+        />
         <v-text-field v-model="teamInstitution" dense outlined label="Universitas / SMA" maxlength="50" />
         <div class="my-2">
           <v-btn

@@ -30,6 +30,7 @@ export class ArkavidiaCompetitionApi extends ArkavidiaBaseApi {
       const response = await this.axios.get(`/competition/teams/${teamId}/`);
       return response.data as Team;
     }
+
     catch (e) {
       throw new ApiError<GetTeamDetailStatus>(GetTeamDetailStatus.ERROR, e.toString());
     }
@@ -151,9 +152,9 @@ export class ArkavidiaCompetitionApi extends ArkavidiaBaseApi {
       throw new ApiError<DeleteTeamStatus>(DeleteTeamStatus.ERROR, e.toString());
     }
   }
-  async submitTaskResponse(teamId: number, taskId: number, response: string): Promise<TaskResponse> {
+  async submitTaskResponse(teamId: number, taskId: number, response: string, userId: number): Promise<TaskResponse> {
     try {
-      const r = await this.axios.post(`/competition/teams/${teamId}/tasks/${taskId}/`, { response });
+      const r = await this.axios.post(`/competition/teams/${teamId}/tasks/${taskId}/`, { response, userId });
       return r.data as TaskResponse;
     }
     catch (e) {
