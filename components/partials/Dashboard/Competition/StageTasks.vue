@@ -74,7 +74,7 @@
                   <TextWidget
                     v-if="task.widget === 'text'"
                     :team-id="team.id"
-                    :user-id="member.id"
+                    :team-member-id="member.id"
                     :task="task"
                     :task-response="getUserTaskResponse(task.id, member.id)"
                     class="mt-2"
@@ -82,7 +82,7 @@
                   <FileUploadWidget
                     v-else-if="task.widget === 'file_upload'"
                     :team-id="team.id"
-                    :user-id="member.id"
+                    :team-member-id="member.id"
                     :task="task"
                     :task-response="getUserTaskResponse(task.id, member.id)"
                     class="mt-2"
@@ -90,7 +90,7 @@
                   <OptionWidget
                     v-else-if="task.widget === 'option'"
                     :team-id="team.id"
-                    :user-id="member.id"
+                    :team-member-id="member.id"
                     :task="task"
                     :task-response="getUserTaskResponse(task.id, member.id)"
                     class="mt-2"
@@ -179,11 +179,11 @@ export default class StageTasks extends Vue {
       });
     }
 
-    getUserTaskResponse(taskId: number, userId: number): TaskResponse|undefined {
+    getUserTaskResponse(taskId: number, teamMemberId: number): TaskResponse|undefined {
       if (!this.team.userTaskResponses) { return undefined; }
 
       return this.team.userTaskResponses.find((taskResponse: TaskResponse) => {
-        return taskResponse.taskId === taskId && taskResponse.userId === userId;
+        return taskResponse.taskId === taskId && taskResponse.teamMemberId === teamMemberId;
       });
     }
 }

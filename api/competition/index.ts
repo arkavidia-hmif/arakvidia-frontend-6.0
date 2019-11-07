@@ -152,9 +152,9 @@ export class ArkavidiaCompetitionApi extends ArkavidiaBaseApi {
       throw new ApiError<DeleteTeamStatus>(DeleteTeamStatus.ERROR, e.toString());
     }
   }
-  async submitTaskResponse(teamId: number, taskId: number, response: string, userId: number): Promise<TaskResponse> {
+  async submitTaskResponse(teamId: number, taskId: number, response: string, teamMemberId: number): Promise<TaskResponse> {
     try {
-      const r = await this.axios.post(`/competition/teams/${teamId}/tasks/${taskId}/`, { response, userId });
+      const r = await this.axios.post(`/competition/teams/${teamId}/tasks/${taskId}/`, { response, teamMemberId });
       return r.data as TaskResponse;
     }
     catch (e) {
