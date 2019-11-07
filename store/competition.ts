@@ -107,7 +107,7 @@ export const actions = {
     commit('removeMember', data);
   },
   // eslint-disable-next-line no-empty-pattern
-  submitTaskResponse({ }, { teamId, taskId, response, userId }) {
-    return arkavidiaApi.competition.submitTaskResponse(teamId, taskId, response, userId);
+  submitTaskResponse({ }, { teamId, taskId, response, teamMemberId }) {
+    return arkavidiaApi.competition.submitTaskResponse(teamId, taskId, response, teamMemberId);
   }
 };

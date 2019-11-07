@@ -38,7 +38,7 @@ export default class OptionWidget extends Vue {
     @Prop({ default: undefined }) taskResponse!: TaskResponse|undefined;
     @Prop({ default: undefined }) task!: Task|undefined;
     @Prop({ default: 0 }) teamId!: number;
-    @Prop() userId: number|undefined;
+    @Prop() teamMemberId: number|undefined;
 
     @Action('competition/submitTaskResponse') actionSubmitTaskResponse;
 
@@ -57,7 +57,7 @@ export default class OptionWidget extends Vue {
 
       return this.actionSubmitTaskResponse({
         teamId: this.teamId,
-        userId: this.userId,
+        teamMemberId: this.teamMemberId,
         taskId: (this.task) ? this.task.id : 0,
         response: this.response
       })
