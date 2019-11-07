@@ -26,6 +26,7 @@ export default {
   plugins: [
     '~/plugins/typedjs',
     '~/plugins/definitions',
+    '~/plugins/cookie-store',
     { src: '~/plugins/vuex-persist', ssr: false },
     { src: '~/plugins/arkavidia-api', ssr: false }
   ],
