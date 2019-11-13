@@ -1,30 +1,16 @@
 <template>
   <DashboardWrapper>
-    <v-row class="mt-4">
+    <v-row class="mt-4" align="stretch">
       <v-col v-for="competition in competitions" :key="competition.id" :cols="12" :lg="4" :sm="6">
         <CompetitionCard
-          v-if="teams.find(team => team.competition.id == competition.id) != null"
           :title="competition.name"
-          subtitle=""
           :to="'/dashboard/competition/' + competition.slug"
-          button-title="View Application"
-          :enabled="true"
-        />
-        <CompetitionCard
-          v-else-if="competition.isRegistrationOpen"
-          :title="competition.name"
-          subtitle=""
-          :to="'/dashboard/competition/' + competition.slug + '/register-tim'"
-          button-title="Register"
-          :enabled="true"
-        />
-        <CompetitionCard
-          v-else
-          :title="competition.name"
-          subtitle=""
-          :to="'/dashboard/competition/' + competition.slug"
-          button-title="Not Open for Registration"
-          :enabled="false"
+          :enabled="competition.isRegistrationOpen"
+          :registered="!!teams.find(team => team.competition.id === competition.id)"
+          :slug="competition.slug"
+          :subtitle="competition.minTeamMembers === competition.maxTeamMembers
+            ? `Tim terdiri dari tepat ${competition.minTeamMembers} orang`
+            : `Tim terdiri dari ${competition.minTeamMembers} sampai ${competition.maxTeamMembers} orang`"
         />
       </v-col>
     </v-row>
