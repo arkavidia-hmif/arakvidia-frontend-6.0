@@ -12,9 +12,7 @@
             <span class="headline font-weight-bold" style="color: #0B909A">Edit Profil</span>
           </v-card-title>
           <v-card-text class="mt-6">
-            <v-alert v-if="error" type="error">
-              {{ error }}
-            </v-alert>
+            <Alert v-if="error" type="error" :message="error" />
             <v-text-field v-model="fUser.fullName" dense outlined label="Nama Lengkap*" />
             <v-select
               v-model="fUser.currentEducation"
@@ -76,8 +74,10 @@
 import { Action, Component, Prop } from 'nuxt-property-decorator';
 import Vue from 'vue';
 import { User } from '~/api/user/types';
-
-@Component
+import Alert from '~/components/partials/Alert.vue';
+@Component({
+  components: { Alert }
+})
 export default class ModalProfile extends Vue {
   @Action('user/editUser') actionEditUser;
   @Prop() user!: User;

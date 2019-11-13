@@ -35,8 +35,7 @@ export default {
     '@nuxtjs/moment'
   ],
   build: {
-    extractCSS: true,
-    optimizeCSS: true
+    extractCSS: true
   },
   generate: {
     exclude: [
@@ -84,14 +83,14 @@ export default {
   moment: {
     locales: ['id']
   },
-  router: {
-    middleware: ['auth']
-  },
   markdownit: {
     preset: 'default',
     linkify: true,
     breaks: true,
     injected: true
+  },
+  router: {
+    middleware: 'auth'
   }
 };
 

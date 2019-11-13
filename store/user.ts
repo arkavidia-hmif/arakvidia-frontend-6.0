@@ -12,6 +12,8 @@ export interface AuthState {
   loggedIn: boolean;
   user?: User;
   loggedInAt?: number;
+  expiresAt?: number;
+  bearerToken?: string;
 }
 
 export const namespaced = true;
@@ -19,7 +21,9 @@ export const namespaced = true;
 export const state = () => ({
   loggedIn: false,
   user: null,
-  loggedIntAt: null
+  loggedInAt: null,
+  expiresAt: 0,
+  bearerToken: null
 });
 
 export const getters = {
@@ -33,6 +37,9 @@ export const getters = {
     }
     return false;
   },
+  isStateLoggedIn(state: AuthState) {
+    return state.loggedIn && Date.now() <= (state.expiresAt || 0);
+  },
   getToken() {
     // eslint-disable-next-line dot-notation
     if (!process['server']) {
@@ -44,15 +51,19 @@ export const getters = {
 };
 
 export const mutations = {
-  setLogin(state: AuthState, { user }) {
+  setLogin(state: AuthState, { user, expiresAt, bearerToken }) {
     state.loggedIn = true;
     state.user = user;
     state.loggedInAt = Date.now();
+    state.expiresAt = expiresAt;
+    state.bearerToken = bearerToken;
   },
   setLogout(state: AuthState) {
     state.loggedIn = false;
     state.user = undefined;
     state.loggedInAt = undefined;
+    state.expiresAt = undefined;
+    state.bearerToken = undefined;
   },
   setUser(state: AuthState, { user }) {
     state.user = user;

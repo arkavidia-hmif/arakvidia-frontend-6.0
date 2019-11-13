@@ -52,7 +52,7 @@ export default Vue.extend({
   }
 
   .v-expansion-panel-header {
-    background: #3f66d5;
+    background: #0578D3;
     color: white;
     font-weight: 700;
   }

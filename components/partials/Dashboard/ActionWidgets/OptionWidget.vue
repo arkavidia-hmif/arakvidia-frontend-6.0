@@ -8,22 +8,20 @@
         <b class="red--text text--darken-1">{{ currentTaskResponse.reason || 'Waduh ditolak :(' }}</b>
       </div>
     </template>
-    <div>
+    <div class="mt-1">
       <Alert v-if="error" :message="error" type="error" class="mb-2" />
-      <v-text-field v-model="response" outlined dense class="mt-2">
-        <v-icon v-if="currentTaskResponse && currentTaskResponse.status === 'completed'" slot="append-outer" color="green">
+      <v-select
+        v-model="response"
+        :items="task.widgetParameters.options"
+        outlined
+        dense
+        @change="submitResponse"
+      >
+        <v-progress-circular v-if="loading" slot="append-outer" size="24" indeterminate />
+        <v-icon v-if="!loading && currentTaskResponse && currentTaskResponse.status === 'completed'" slot="append-outer" color="green">
           far fa-check-circle
         </v-icon>
-      </v-text-field>
-      <v-btn
-        :loading="loading"
-        outlined
-        color="grey darken-1"
-        class="text-none"
-        @click.prevent="submitResponse"
-      >
-        Simpan
-      </v-btn>
+      </v-select>
     </div>
   </div>
 </template>
@@ -36,7 +34,7 @@ import { ApiError } from '~/api/base';
   @Component({
     name: 'TextWidget'
   })
-export default class TextWidget extends Vue {
+export default class OptionWidget extends Vue {
     @Prop({ default: undefined }) taskResponse!: TaskResponse|undefined;
     @Prop({ default: undefined }) task!: Task|undefined;
     @Prop({ default: 0 }) teamId!: number;

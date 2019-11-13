@@ -6,9 +6,7 @@
           <div class="headline font-weight-bold section-title">
             Login ke Dashboard
           </div>
-          <v-alert v-if="error" type="error" class="mt-4">
-            {{ error }}
-          </v-alert>
+          <Alert v-if="error" type="error" class="mt-4" :message="error" />
           <form @submit.prevent="attemptLogin">
             <v-text-field
               v-model="email"
@@ -74,12 +72,15 @@
 import { Component, Action, Vue } from 'nuxt-property-decorator';
 import { ApiError } from '~/api/base';
 import { LoginStatus } from '~/api/user/types';
+import Alert from '~/components/partials/Alert.vue';
 
 interface QueryParameters {
   continue?: string;
 }
 
-@Component
+@Component({
+  components: { Alert }
+})
 export default class DashboardLogin extends Vue {
   emailNotConfirmedPrompt: boolean = false;
   isLoggingIn: boolean = false;

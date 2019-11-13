@@ -5,9 +5,7 @@
         <div class="headline font-weight-bold section-title">
           Konfirmasi alamat e-mail
         </div>
-        <v-alert v-if="error" type="error" class="mt-4">
-          {{ error }}
-        </v-alert>
+        <Alert v-if="error" type="error" class="mt-4" :message="error" />
         <template v-if="isConfirming">
           <div class="mt-4 grey--text text--darken-1">
             Harap bersabar, kami sedang mengonfirmasi alamat email Anda...
@@ -47,8 +45,10 @@
 import { Component, Vue, Action } from 'nuxt-property-decorator';
 import { ApiError } from '~/api/base';
 import { EmailOperationStatus } from '~/api/user/types';
-
-@Component
+import Alert from '~/components/partials/Alert.vue';
+@Component({
+  components: { Alert }
+})
 export default class DashboardRecoverReset extends Vue {
   isConfirming: boolean = true;
   isConfirmed: boolean = false;

@@ -5,17 +5,16 @@
         <h5 class="mt-4 title font-weight-black">
           Pendaftaran {{ title }}
         </h5>
-        <v-alert v-if="error" type="error" class="mt-4">
-          {{ error }}
-        </v-alert>
+        <Alert v-if="error" type="error" class="mt-4" :message="error" :details="errorDetails" />
         <form class="mt-4" @submit.prevent="attemptRegister">
-          <v-text-field v-model="name" outlined dense label="Nama Tim" />
+          <v-text-field v-model="name" outlined dense label="Nama Tim" maxlength="40" />
           <v-text-field
             v-model="institution"
             outlined
             dense
             label="Nama Universitas/Sekolah"
             hint="Isi dengan nama resmi institusi tanpa singkatan"
+            maxlength="50"
           />
           <div class="my-2">
             <v-btn
@@ -38,13 +37,14 @@ import { Component, Vue, Action, Getter } from 'nuxt-property-decorator';
 import DashboardWrapper from '~/components/partials/Dashboard/DashboardWrapper.vue';
 import { ApiError } from '~/api/base';
 import { RegisterTeamStatus, Team } from '~/api/competition/types';
+import Alert from '~/components/partials/Alert.vue';
 
 interface QueryParameters {
   continue?: string;
 }
 
 @Component({
-  components: { DashboardWrapper }
+  components: { Alert, DashboardWrapper }
 })
 
 export default class RegisterTeam extends Vue {
@@ -52,6 +52,8 @@ export default class RegisterTeam extends Vue {
   institution: string = '';
   title: string = '';
   error: string = '';
+  errorDetails: string = '';
+  errorDetailsOpened: boolean = false;
   isRegistering: boolean = false;
 
   @Action('competition/registerTeam') registerTeamAction;
@@ -146,6 +148,7 @@ export default class RegisterTeam extends Vue {
       })
       .catch((e) => {
         if (e instanceof ApiError) {
+          this.errorDetails = e.message;
           if (e.errorCode === RegisterTeamStatus.REGISTRATION_CLOSED) {
             this.error = 'Pendaftaran sudah ditutup';
             return;
@@ -154,12 +157,16 @@ export default class RegisterTeam extends Vue {
             this.error = 'Tim sudah terdaftar';
             return;
           }
+          else if (e.errorCode === RegisterTeamStatus.TEAM_NAME_USED) {
+            this.error = `Silakan gunakan nama tim yang lain`;
+            return;
+          }
           else if (e.errorCode === RegisterTeamStatus.CREATE_TEAM_FAIL) {
-            this.error = 'Tidak dapat melakukan pendaftaran tim';
+            this.error = `Tidak dapat membuat tim :(`;
             return;
           }
           else if (e.errorCode === RegisterTeamStatus.ERROR) {
-            this.error = 'Tidak dapat melakukan pendaftaran tim';
+            this.error = `Tidak dapat membuat tim :(`;
             return;
           }
 

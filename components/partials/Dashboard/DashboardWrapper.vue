@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-container v-if="loggedIn" class="mt-12">
+    <v-container v-if="loggedIn && !!authState.user" class="mt-12">
       <div class="headline font-weight-bold mt-12" style="color: black">
         Dashboard
       </div>
@@ -23,7 +23,6 @@
 <script lang="ts">
 import { Component, Vue, State, Getter, Action } from 'nuxt-property-decorator';
 import { dashboardMenus, Menu } from '~/constants/menus';
-import Forbidden from '~/components/subpages/Forbidden.vue';
 import { AuthState } from '~/store/user';
 
 interface NuxtWindow {
@@ -31,8 +30,7 @@ interface NuxtWindow {
 }
 
 @Component({
-  name: 'DashboardWrapper',
-  components: { Forbidden }
+  name: 'DashboardWrapper'
 })
 export default class DashboardWrapper extends Vue {
   @Getter('user/isLoggedIn') loggedIn!: boolean;
@@ -49,12 +47,11 @@ export default class DashboardWrapper extends Vue {
           if (!this.loggedIn) {
             this.$router.replace(`/login?continue=${encodeURIComponent(this.$route.fullPath)}`);
           }
-          else {
-            this.fetchCompetitionListAction();
-            this.fetchTeamListAction();
-          }
         });
       }
+
+      this.fetchCompetitionListAction();
+      this.fetchTeamListAction();
     }
   }
 }

@@ -30,6 +30,7 @@ export class ArkavidiaCompetitionApi extends ArkavidiaBaseApi {
       const response = await this.axios.get(`/competition/teams/${teamId}/`);
       return response.data as Team;
     }
+
     catch (e) {
       throw new ApiError<GetTeamDetailStatus>(GetTeamDetailStatus.ERROR, e.toString());
     }
@@ -43,16 +44,19 @@ export class ArkavidiaCompetitionApi extends ArkavidiaBaseApi {
     catch (e) {
       if (e.response) {
         if (e.response.data.code === 'competition_registration_closed') {
-          throw new ApiError<RegisterTeamStatus>(RegisterTeamStatus.REGISTRATION_CLOSED, e.response.data.detail);
+          throw new ApiError<RegisterTeamStatus>(RegisterTeamStatus.REGISTRATION_CLOSED, JSON.stringify(e.response.data.detail));
         }
         else if (e.response.data.code === 'competition_already_registered') {
-          throw new ApiError<RegisterTeamStatus>(RegisterTeamStatus.ALREADY_REGISTERED, e.response.data.detail);
+          throw new ApiError<RegisterTeamStatus>(RegisterTeamStatus.ALREADY_REGISTERED, JSON.stringify(e.response.data.detail));
         }
         else if (e.response.data.code === 'create_team_fail') {
-          throw new ApiError<RegisterTeamStatus>(RegisterTeamStatus.CREATE_TEAM_FAIL, e.response.data.detail);
+          throw new ApiError<RegisterTeamStatus>(RegisterTeamStatus.CREATE_TEAM_FAIL, JSON.stringify(e.response.data.detail));
+        }
+        else if (e.response.data.code === 'team_name_is_used') {
+          throw new ApiError<RegisterTeamStatus>(RegisterTeamStatus.TEAM_NAME_USED, JSON.stringify(e.response.data.detail));
         }
         else if (e.response.data.code === 'unknown_error') {
-          throw new ApiError<RegisterTeamStatus>(RegisterTeamStatus.ERROR, e.response.data.detail);
+          throw new ApiError<RegisterTeamStatus>(RegisterTeamStatus.ERROR, JSON.stringify(e.response.data.detail));
         }
       }
 
@@ -148,9 +152,9 @@ export class ArkavidiaCompetitionApi extends ArkavidiaBaseApi {
       throw new ApiError<DeleteTeamStatus>(DeleteTeamStatus.ERROR, e.toString());
     }
   }
-  async submitTaskResponse(teamId: number, taskId: number, response: string): Promise<TaskResponse> {
+  async submitTaskResponse(teamId: number, taskId: number, response: string, teamMemberId: number): Promise<TaskResponse> {
     try {
-      const r = await this.axios.post(`/competition/teams/${teamId}/tasks/${taskId}/`, { response });
+      const r = await this.axios.post(`/competition/teams/${teamId}/tasks/${taskId}/`, { response, teamMemberId });
       return r.data as TaskResponse;
     }
     catch (e) {

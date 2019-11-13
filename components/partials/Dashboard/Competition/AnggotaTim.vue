@@ -64,9 +64,7 @@
               </b>
             </v-expansion-panel-header>
             <v-expansion-panel-content>
-              <v-alert v-if="error" type="error" class="mt-4">
-                {{ error }}
-              </v-alert>
+              <Alert v-if="error" type="error" class="mt-4" :message="error" />
               <form class="mt-6" @submit.prevent="attemptCreateMember">
                 <v-text-field
                   v-model="fullName"
@@ -106,12 +104,15 @@ import {
   RemoveMemberStatus,
   Member
 } from '~/api/competition/types';
+import Alert from '~/components/partials/Alert.vue';
 
 interface QueryParameters {
   continue?: string;
 }
 
-@Component({})
+@Component({
+  components: { Alert }
+})
 export default class AnggotaTim extends Vue {
   error: string = '';
   fullName: string = '';
