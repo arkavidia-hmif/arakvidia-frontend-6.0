@@ -92,9 +92,8 @@ export const dashboardMenus: Menu[] = [
     route: '/dashboard/competition'
   },
   {
-    title: 'Pre-event',
-    route: '/dashboard/pre-event',
-    disabled: true
+    title: 'Arkavidia Talk',
+    route: '/dashboard/arkavidia-talk'
   },
   {
     title: 'Main Event',
