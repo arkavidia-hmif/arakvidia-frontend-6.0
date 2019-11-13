@@ -4,7 +4,7 @@
       <div class="font-weight-bold">
         {{ category }}
       </div>
-      <div class="title cyan--text text--darken-2 mt-2 font-weight-bold">
+      <div class="subtitle grey--text text--darken-3 mt-2">
         {{ title }}
       </div>
       <div class="mt-2 black--text">
