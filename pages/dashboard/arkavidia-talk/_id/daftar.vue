@@ -3,7 +3,6 @@
     <v-row class="mt-2">
       <v-col :cols="12" :md="4" :order-md="2">
         <v-card elevation="0" style="border: 1px solid #E0E0E0" :style="{borderTop: `6px solid #FFBA07`}">
-          <v-divider class="hidden-md-and-up" />
           <v-card-text class="flex">
             <div class="font-weight-bold">
               Advanced Talk
