@@ -24,23 +24,7 @@
                 <div class="subtitle mt-1">
                   {{ task.widgetParameters.description || '' }}
                 </div>
-
-                <TextWidget
-                  v-if="task.widget === 'text'"
-                  :team-id="team.id"
-                  :task="task"
-                  :task-response="getTeamTaskResponse(task.id)"
-                  class="mt-2"
-                />
-                <FileUploadWidget
-                  v-else-if="task.widget === 'file_upload'"
-                  :team-id="team.id"
-                  :task="task"
-                  :task-response="getTeamTaskResponse(task.id)"
-                  class="mt-2"
-                />
-                <OptionWidget
-                  v-else-if="task.widget === 'option'"
+                <CompetitionActionWidget
                   :team-id="team.id"
                   :task="task"
                   :task-response="getTeamTaskResponse(task.id)"
@@ -71,24 +55,7 @@
                     {{ task.widgetParameters.description || '' }}
                   </div>
 
-                  <TextWidget
-                    v-if="task.widget === 'text'"
-                    :team-id="team.id"
-                    :team-member-id="member.id"
-                    :task="task"
-                    :task-response="getUserTaskResponse(task.id, member.id)"
-                    class="mt-2"
-                  />
-                  <FileUploadWidget
-                    v-else-if="task.widget === 'file_upload'"
-                    :team-id="team.id"
-                    :team-member-id="member.id"
-                    :task="task"
-                    :task-response="getUserTaskResponse(task.id, member.id)"
-                    class="mt-2"
-                  />
-                  <OptionWidget
-                    v-else-if="task.widget === 'option'"
+                  <CompetitionActionWidget
                     :team-id="team.id"
                     :team-member-id="member.id"
                     :task="task"
@@ -107,9 +74,8 @@
 
 <script lang="ts">
 import { Component, Vue, Prop } from 'nuxt-property-decorator';
-import TextWidget from '~/components/partials/Dashboard/ActionWidgets/TextWidget.vue';
-import FileUploadWidget from '~/components/partials/Dashboard/ActionWidgets/FileUploadWidget.vue';
-import OptionWidget from '~/components/partials/Dashboard/ActionWidgets/OptionWidget.vue';
+import CompetitionActionWidget from '~/components/partials/Dashboard/Competition/CompetitionActionWidget.vue';
+
 import {
   Team,
   Stage,
@@ -123,14 +89,11 @@ import Alert from '~/components/partials/Alert.vue';
   }
 
   @Component({
-    components: { Alert, TextWidget, FileUploadWidget, OptionWidget }
+    components: { Alert, CompetitionActionWidget }
   })
 export default class StageTasks extends Vue {
     @Prop() team!: Team;
     panels: number[] = [0, 1, 2, 3, 4, 5];
-
-    mounted() {
-    }
 
     get activeStage(): Stage|undefined {
       if (this.team == null) {
@@ -167,7 +130,7 @@ export default class StageTasks extends Vue {
         return [];
       }
       return stage.tasks.filter((task: Task) => {
-        return !!task.isUserTask;
+        return task.isUserTask;
       });
     }
 
