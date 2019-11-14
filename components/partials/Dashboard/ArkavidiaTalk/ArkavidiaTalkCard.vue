@@ -1,5 +1,5 @@
 <template>
-  <v-card elevation="2" height="100%" class="d-flex flex-column">
+  <v-card elevation="2" class="d-flex flex-column">
     <v-card-text :style="{borderTop: `6px solid ${color}`}" class="flex">
       <div class="font-weight-bold">
         {{ category }}
@@ -17,20 +17,24 @@
     </v-card-text>
     <v-divider />
     <v-card-actions>
-      <v-chip
-        v-if="registered"
-        color="green"
-        text-color="white"
-      >
-        <v-avatar left>
-          <v-icon>mdi-checkbox-marked-circle</v-icon>
-        </v-avatar>
-        Sudah terdaftar
-      </v-chip>
-      <v-spacer />
-      <v-btn text class="teal--text text-none" :to="to" :disabled="!enabled">
-        {{ registered ? 'Lihat' : 'Daftar' }}
-      </v-btn>
+      <template v-if="!registered">
+        <v-spacer />
+        <v-btn text class="teal--text text-none" :to="`/dashboard/arkavidia-talk/${slug}/daftar`" :disabled="!enabled">
+          {{ enabled ? 'Daftar' : 'Pendaftaran Ditutup' }}
+        </v-btn>
+      </template>
+      <template v-else>
+        <v-chip color="green" text-color="white">
+          <v-avatar left>
+            <v-icon>mdi-checkbox-marked-circle</v-icon>
+          </v-avatar>
+          Sudah terdaftar
+        </v-chip>
+        <v-spacer />
+        <v-btn text class="teal--text text-none" :to="`/dashboard/arkavidia-talk/${slug}`">
+          Lihat
+        </v-btn>
+      </template>
     </v-card-actions>
   </v-card>
 </template>
@@ -42,6 +46,10 @@ export default Vue.extend({
   name: 'ArkavidiaTalkCard',
   props: {
     title: {
+      type: String,
+      required: true
+    },
+    slug: {
       type: String,
       required: true
     },
@@ -57,10 +65,6 @@ export default Vue.extend({
       type: String,
       required: false,
       default: '#00000000'
-    },
-    to: {
-      type: String,
-      required: true
     },
     enabled: {
       type: Boolean,
