@@ -8,6 +8,21 @@ import {
 import { ApiError, ArkavidiaBaseApi } from '~/api/base';
 
 export class ArkavidiaUserApi extends ArkavidiaBaseApi {
+  async getSession(token: string): Promise<User> {
+    try {
+      const response = await this.axios.get(`/auth/`, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+
+      return response.data as User;
+    }
+    catch (e) {
+      throw new ApiError<LoginStatus>(LoginStatus.ERROR, e.toString());
+    }
+  }
+
   async login(email: string, password: string): Promise<AuthenticationResult> {
     try {
       const data = { email, password };

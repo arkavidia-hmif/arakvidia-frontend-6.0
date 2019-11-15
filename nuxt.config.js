@@ -77,7 +77,8 @@ export default {
     hostname: process.env.HOSTNAME,
     exclude: [
       '/thanks',
-      '/coming-soon'
+      '/coming-soon',
+      '/mediated-login'
     ]
   },
   moment: {
