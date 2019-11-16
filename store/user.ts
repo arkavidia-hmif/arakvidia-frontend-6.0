@@ -14,6 +14,7 @@ export interface AuthState {
   loggedInAt?: number;
   expiresAt?: number;
   bearerToken?: string;
+  mediatedLogin?: boolean;
 }
 
 export const namespaced = true;
@@ -23,7 +24,8 @@ export const state = () => ({
   user: null,
   loggedInAt: null,
   expiresAt: 0,
-  bearerToken: null
+  bearerToken: null,
+  mediatedLogin: false
 });
 
 export const getters = {
@@ -51,12 +53,13 @@ export const getters = {
 };
 
 export const mutations = {
-  setLogin(state: AuthState, { user, expiresAt, bearerToken }) {
+  setLogin(state: AuthState, { user, expiresAt, bearerToken, mediatedLogin }) {
     state.loggedIn = true;
     state.user = user;
     state.loggedInAt = Date.now();
     state.expiresAt = expiresAt;
     state.bearerToken = bearerToken;
+    state.mediatedLogin = mediatedLogin;
   },
   setLogout(state: AuthState) {
     state.loggedIn = false;
@@ -64,6 +67,7 @@ export const mutations = {
     state.loggedInAt = undefined;
     state.expiresAt = undefined;
     state.bearerToken = undefined;
+    state.mediatedLogin = false;
   },
   setUser(state: AuthState, { user }) {
     state.user = user;
@@ -74,6 +78,20 @@ export const actions = {
   async login({ commit }, { email, password }) {
     const response = await arkavidiaApi.user.login(email, password);
     commit('setLogin', response);
+    window.localStorage.setItem(TOKEN_NAME, response.bearerToken);
+    window.localStorage.setItem(TOKEN_EXPIRY_NAME, response.expiresAt.toString());
+  },
+  async mediatedLogin({ commit }, { token }) {
+    const user = await arkavidiaApi.user.getSession(token);
+    const response = {
+      user,
+      bearerToken: token,
+      expiresAt: Date.now() + (3600 * 1000),
+      mediatedLogin: true
+    };
+
+    commit('setLogin', response);
+
     window.localStorage.setItem(TOKEN_NAME, response.bearerToken);
     window.localStorage.setItem(TOKEN_EXPIRY_NAME, response.expiresAt.toString());
   },
