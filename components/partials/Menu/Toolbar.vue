@@ -1,6 +1,13 @@
 <template>
   <div>
-    <v-system-bar v-if="auth.mediatedLogin && !!auth.user" dark fixed color="warning" height="40">
+    <v-system-bar
+      v-if="loggedIn && auth.mediatedLogin && !!auth.user"
+      dark
+      fixed
+      color="warning"
+      height="40"
+      style="z-index: 8"
+    >
       <v-container>
         <v-icon small>
           fas fa-lock
@@ -12,7 +19,7 @@
       fixed
       color="white"
       elevate-on-scroll
-      :style="{marginTop: auth.mediatedLogin ? '40px' : undefined}"
+      :style="{marginTop: loggedIn && auth.mediatedLogin ? '40px' : undefined}"
     >
       <v-container class="py-0 px-0" align="center" fill-height>
         <v-layout>

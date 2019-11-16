@@ -27,7 +27,6 @@ export default {
     '~/plugins/typedjs',
     '~/plugins/definitions',
     { src: '~/plugins/vuex-persist', ssr: false },
-    { src: '~/plugins/arkavidia-api', ssr: false }
   ],
   buildModules: [
     '@nuxt/typescript-build',
