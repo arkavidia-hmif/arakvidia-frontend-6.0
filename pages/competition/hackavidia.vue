@@ -2,6 +2,7 @@
   <v-layout column style="background: white;">
     <v-flex>
       <HackathonIntro />
+      <HackathonTheme />
       <HackathonPrize />
       <HackathonTimeline />
       <FAQ :items="faqItems" />
@@ -12,6 +13,7 @@
 <script lang="ts">
 import Vue, { ComponentOptions } from 'vue';
 import HackathonIntro from '~/components/subpages/competition/hackavidia/Intro.vue';
+import HackathonTheme from '~/components/subpages/competition/hackavidia/Theme.vue';
 import HackathonPrize from '~/components/subpages/competition/hackavidia/Prize.vue';
 import HackathonTimeline from '~/components/subpages/competition/hackavidia/Timeline.vue';
 import FAQ from '~/components/partials/FAQ.vue';
@@ -19,6 +21,7 @@ import FAQ from '~/components/partials/FAQ.vue';
 export default Vue.extend({
   components: {
     HackathonIntro,
+    HackathonTheme,
     HackathonPrize,
     HackathonTimeline,
     FAQ
