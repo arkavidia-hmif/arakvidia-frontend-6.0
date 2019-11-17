@@ -67,12 +67,9 @@ export const actions = {
     };
 
     commit('setLogin', response);
-
-    window.localStorage.setItem(TOKEN_NAME, response.bearerToken);
-    window.localStorage.setItem(TOKEN_EXPIRY_NAME, response.expiresAt.toString());
   },
-  logout({ commit }) {
-    commit('setLogout');
+  async logout({ commit }) {
+    await commit('setLogout');
   },
 
   // eslint-disable-next-line no-empty-pattern
