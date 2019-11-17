@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Alert v-if="error" :message="error" type="error" class="mb-2" />
+    <Alert v-if="error || uploadError" :message="!!uploadError ? uploadError : error" type="error" class="mb-2" />
     <div v-if="submitted && !loading && !uploading">
       <div v-if="status === 'awaiting_validation'">
         <b class="orange--text">Menunggu verifikasi</b>
