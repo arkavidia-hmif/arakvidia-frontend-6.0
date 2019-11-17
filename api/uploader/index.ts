@@ -11,7 +11,7 @@ export class ArkavidiaUploaderApi extends ArkavidiaBaseApi {
       formData.append('file', file);
       formData.append('description', description);
 
-      const response = await this.axios.post(`/uploader/uploaded-file/`, formData, {
+      const response = await this.axios.post(`/uploader/uploaded-file`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         },
