@@ -6,7 +6,7 @@
     <v-row class="mt-4" align="stretch">
       <v-col :cols="6" :sm="3">
         <TimelineItem
-          :active-before="Date.parse('2019-11-23T23:59:59+07:00')"
+          :active-before="Date.parse('2019-12-01T00:00:00+07:00')"
           date="28"
           month-year="Oktober 2019"
           title="Pembukaan Pendaftaran"
@@ -15,7 +15,7 @@
       </v-col>
       <v-col :cols="6" :sm="3">
         <TimelineItem
-          :active-after="Date.parse('2019-11-17T00:00:00+07:00')"
+          :active-after="Date.parse('2019-12-01T00:00:00+07:00')"
           :active-before="Date.parse('2019-12-01T23:59:59+07:00')"
           date="1"
           month-year="Desember 2019"
