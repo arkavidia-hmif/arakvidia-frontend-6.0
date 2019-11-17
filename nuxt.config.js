@@ -26,6 +26,7 @@ export default {
   plugins: [
     '~/plugins/typedjs',
     '~/plugins/definitions',
+    '~/plugins/json-ld',
     { src: '~/plugins/vuex-persist', ssr: false }
   ],
   buildModules: [

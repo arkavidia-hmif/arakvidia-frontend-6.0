@@ -19,6 +19,28 @@ export default Vue.extend({
     return {
       title: 'Beranda'
     };
+  },
+  jsonld() {
+    return {
+      '@context': 'http://schema.org',
+      '@type': 'Event',
+      'name': 'Main Event Arkavidia 6.0',
+      'startDate': '2020-02-08',
+      'endDate': '2020-02-09',
+      'location': {
+        '@type': 'Place',
+        'name': 'Institut Teknologi Bandung',
+        'address': {
+          '@type': 'PostalAddress',
+          'streetAddress': 'Jl. Ganesha No. 10',
+          'addressLocality': 'Bandung',
+          'postalCode': '40132',
+          'addressRegion': 'Jawa Barat',
+          'addressCountry': 'ID'
+        }
+      },
+      'description': 'Arkavidia 6.0 Main Event consists of an exhibition of start-ups, talks, and competition finals.'
+    };
   }
 } as ComponentOptions<Vue>);
 </script>
