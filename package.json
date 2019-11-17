@@ -28,6 +28,7 @@
     "eslint": "^6.3.0",
     "fibers": "^4.0.1",
     "nuxt": "^2.9.0",
+    "nuxt-jsonld": "^1.4.4",
     "nuxt-property-decorator": "^2.4.0",
     "vue-class-component": "^7.1.0",
     "vue-property-decorator": "^8.2.2",
