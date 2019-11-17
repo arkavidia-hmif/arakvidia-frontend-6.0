@@ -17,7 +17,7 @@
         <TimelineItem
           :active-after="Date.parse('2019-12-01T00:00:00+07:00')"
           :active-before="Date.parse('2019-12-01T23:59:59+07:00')"
-          date="1"
+          date="01"
           month-year="Desember 2019"
           title="Penutupan Pendaftaran & Batas Pembayaran"
         />
