@@ -36,7 +36,6 @@
     "vue-property-decorator": "^8.2.2",
     "vue-typed-js": "^0.1.2",
     "vuex-class": "^0.3.2",
-    "vuex-persist": "^2.1.0",
     "vuex-persistedstate": "^2.7.0"
   },
   "devDependencies": {
