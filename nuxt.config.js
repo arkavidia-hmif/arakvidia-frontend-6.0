@@ -28,6 +28,8 @@ export default {
     '~/plugins/definitions',
     '~/plugins/api-auth',
     '~/plugins/persisted-state'
+    '~/plugins/json-ld',
+    { src: '~/plugins/vuex-persist', ssr: false }
   ],
   buildModules: [
     '@nuxt/typescript-build',
@@ -77,7 +79,8 @@ export default {
     hostname: process.env.HOSTNAME,
     exclude: [
       '/thanks',
-      '/coming-soon'
+      '/coming-soon',
+      '/mediated-login'
     ]
   },
   moment: {

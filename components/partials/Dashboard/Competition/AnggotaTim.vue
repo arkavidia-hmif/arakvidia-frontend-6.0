@@ -96,7 +96,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Getter, Action } from 'nuxt-property-decorator';
+import { Component, Vue, Action, Prop } from 'nuxt-property-decorator';
 import { ApiError } from '~/api/base';
 import {
   Team,
@@ -114,6 +114,8 @@ interface QueryParameters {
   components: { Alert }
 })
 export default class AnggotaTim extends Vue {
+  @Prop() team!: Team;
+
   error: string = '';
   fullName: string = '';
   email: string = '';
@@ -123,20 +125,12 @@ export default class AnggotaTim extends Vue {
 
   panel = [];
 
-  @Getter('competition/getTeams') teams!: Team[];
   @Action('competition/addMember') addMemberAction;
   @Action('competition/removeMember') removeMemberAction;
 
   get slug() {
     // eslint-disable-next-line dot-notation
     return this.$route.params['competition'];
-  }
-
-  get team(): Team|undefined {
-    return this.teams.find((team: Team) => {
-      if (!team.competition) { return false; }
-      return (team.competition.slug === this.slug);
-    });
   }
 
   get teamMembers(): Member[] {

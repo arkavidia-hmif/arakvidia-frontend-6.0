@@ -1,9 +1,25 @@
 <template>
   <div>
+    <v-system-bar
+      v-if="loggedIn && auth.mediatedLogin && !!auth.user"
+      dark
+      fixed
+      color="warning"
+      height="40"
+      style="z-index: 8"
+    >
+      <v-container>
+        <v-icon small>
+          fas fa-lock
+        </v-icon>
+        Login atas nama <strong>{{ auth.user.fullName }}</strong>
+      </v-container>
+    </v-system-bar>
     <v-app-bar
       fixed
       color="white"
       elevate-on-scroll
+      :style="{marginTop: loggedIn && auth.mediatedLogin ? '40px' : undefined}"
     >
       <v-container class="py-0 px-0" align="center" fill-height>
         <v-layout>
@@ -78,7 +94,8 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Getter, Action } from 'nuxt-property-decorator';
+import { Component, Vue, Getter, Action, State } from 'nuxt-property-decorator';
+import { AuthState } from '../../../store/user';
 import ToolbarDropdown from '~/components/partials/Menu/ToolbarDropdown.vue';
 import { mainMenus, TopLevelMenu } from '~/constants/menus';
 import DrawerListItem from '~/components/partials/Menu/Drawer/DrawerListItem.vue';
@@ -90,6 +107,8 @@ import MenuIcon from '~/components/partials/Menu/Drawer/MenuIcon.vue';
   components: { ToolbarDropdown, DrawerListItem, DrawerListGroup, MenuIcon }
 })
 export default class DashboardIndex extends Vue {
+  @State('user') auth!: AuthState;
+  @Getter('user/isStateLoggedIn') loggedIn!: boolean;
   @Getter('user/isLoggedIn') loggedIn!: boolean;
   @Action('user/logout') actionLogout;
 

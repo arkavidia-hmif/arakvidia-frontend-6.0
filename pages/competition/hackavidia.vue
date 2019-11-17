@@ -2,9 +2,10 @@
   <v-layout column style="background: white;">
     <v-flex>
       <HackathonIntro />
+      <HackathonTheme />
       <HackathonPrize />
       <HackathonTimeline />
-      <!-- <FAQ :items="faqItems" /> -->
+      <FAQ :items="faqItems" />
     </v-flex>
   </v-layout>
 </template>
@@ -12,31 +13,33 @@
 <script lang="ts">
 import Vue, { ComponentOptions } from 'vue';
 import HackathonIntro from '~/components/subpages/competition/hackavidia/Intro.vue';
+import HackathonTheme from '~/components/subpages/competition/hackavidia/Theme.vue';
 import HackathonPrize from '~/components/subpages/competition/hackavidia/Prize.vue';
 import HackathonTimeline from '~/components/subpages/competition/hackavidia/Timeline.vue';
-// import FAQ from '~/components/partials/FAQ.vue'
+import FAQ from '~/components/partials/FAQ.vue';
 
 export default Vue.extend({
   components: {
     HackathonIntro,
+    HackathonTheme,
     HackathonPrize,
-    HackathonTimeline
-    // FAQ
+    HackathonTimeline,
+    FAQ
   },
   data() {
     return {
       faqItems: [
         {
-          question: 'Lorem ipsum dolor sit amet, consectetur adipiscing elita?',
-          answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+          question: 'Apakah final Hackavidia dan Datavidia diadakan pada waktu yang sama?',
+          answer: 'Iya. Kedua lomba tersebut diadakan pada tanggal 8-9 Februari 2020. Jadi tidak bisa mengikuti kedua-duanya ketika final.'
         },
         {
-          question: 'Lorem ipsum dolor sit amet, consectetur adipiscing elite?',
-          answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+          question: 'Apakah aplikasinya boleh dibuat sebelum final?',
+          answer: 'Tidak boleh. Aplikasi harus diimplementasi dari 0 ketika final. Segala kecurangan akan ditindak tegas.'
         },
         {
-          question: 'Lorem ipsum dolor sit amet, consectetur adipiscing eliti?',
-          answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+          question: 'Apakah ada template khusus untuk proposal?',
+          answer: 'Tidak ada. Template dibebaskan pada peserta sesuai kreatifitas.'
         }
       ]
     };

@@ -55,6 +55,7 @@ export interface TaskResponse {
   status: string;
   lastSubmittedAt: string;
   userId?: number;
+  teamMemberId?: number;
 }
 
 export enum RegisterTeamStatus {
