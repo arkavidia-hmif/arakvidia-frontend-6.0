@@ -47,22 +47,24 @@
                 {{ menuItem.title }}
               </v-btn>
             </template>
-            <template v-if="!loggedIn">
-              <v-btn to="/login" class="text-capitalize" text>
-                Login
-              </v-btn>
-              <v-btn to="/register" class="text-capitalize" text>
-                Register
-              </v-btn>
-            </template>
-            <template v-else>
-              <v-btn to="/dashboard" class="text-capitalize" text>
-                Dashboard
-              </v-btn>
-              <v-btn class="text-capitalize" text @click="attemptLogout">
-                Logout
-              </v-btn>
-            </template>
+            <no-ssr>
+              <template v-if="!loggedIn">
+                <v-btn to="/login" class="text-capitalize" text>
+                  Login
+                </v-btn>
+                <v-btn to="/register" class="text-capitalize" text>
+                  Register
+                </v-btn>
+              </template>
+              <template v-else>
+                <v-btn to="/dashboard" class="text-capitalize" text>
+                  Dashboard
+                </v-btn>
+                <v-btn class="text-capitalize" text @click="attemptLogout">
+                  Logout
+                </v-btn>
+              </template>
+            </no-ssr>
           </v-toolbar-items>
           <v-toolbar-items class="hidden-md-and-up">
             <v-btn icon @click="drawer = !drawer">
@@ -78,16 +80,18 @@
           <DrawerListGroup v-if="menuItem.children" :key="i" :title="menuItem.title" :items="menuItem.children" />
           <DrawerListItem v-else :key="i" :to="menuItem.route" :title="menuItem.title" />
         </template>
-        <template v-if="!loggedIn">
-          <DrawerListItem to="/login" title="Login" />
-          <DrawerListItem to="/register" title="Register" />
-        </template>
-        <template v-else>
-          <DrawerListItem to="/dashboard" title="Dashboard" />
-          <v-list-item @click="attemptLogout">
-            <v-list-item-title>Logout</v-list-item-title>
-          </v-list-item>
-        </template>
+        <no-ssr>
+          <template v-if="!loggedIn">
+            <DrawerListItem to="/login" title="Login" />
+            <DrawerListItem to="/register" title="Register" />
+          </template>
+          <template v-else>
+            <DrawerListItem to="/dashboard" title="Dashboard" />
+            <v-list-item @click="attemptLogout">
+              <v-list-item-title>Logout</v-list-item-title>
+            </v-list-item>
+          </template>
+        </no-ssr>
       </v-list>
     </v-navigation-drawer>
   </div>
