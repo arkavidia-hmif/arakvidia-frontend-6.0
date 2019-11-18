@@ -25,10 +25,6 @@ import { Component, Vue, State, Getter, Action } from 'nuxt-property-decorator';
 import { dashboardMenus, Menu } from '~/constants/menus';
 import { AuthState } from '~/store/user';
 
-interface NuxtWindow {
-  onNuxtReady?: Function;
-}
-
 @Component({
   name: 'DashboardWrapper'
 })
@@ -40,19 +36,8 @@ export default class DashboardWrapper extends Vue {
   @Action('competition/fetchTeamList') fetchTeamListAction;
 
   mounted() {
-    if (window) {
-      const nuxtWindow: NuxtWindow = window as NuxtWindow;
-      if (nuxtWindow.onNuxtReady !== undefined) {
-        nuxtWindow.onNuxtReady(() => {
-          if (!this.loggedIn) {
-            this.$router.replace(`/login?continue=${encodeURIComponent(this.$route.fullPath)}`);
-          }
-        });
-      }
-
-      this.fetchCompetitionListAction();
-      this.fetchTeamListAction();
-    }
+    this.fetchCompetitionListAction();
+    this.fetchTeamListAction();
   }
 }
 </script>
