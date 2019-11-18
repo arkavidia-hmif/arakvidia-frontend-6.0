@@ -55,7 +55,7 @@
                 Register
               </v-btn>
             </template>
-            <template v-else>
+            <template v-if="loggedIn">
               <v-btn to="/dashboard" class="text-capitalize" text>
                 Dashboard
               </v-btn>
@@ -82,7 +82,7 @@
           <DrawerListItem to="/login" title="Login" />
           <DrawerListItem to="/register" title="Register" />
         </template>
-        <template v-else>
+        <template v-if="loggedIn">
           <DrawerListItem to="/dashboard" title="Dashboard" />
           <v-list-item @click="attemptLogout">
             <v-list-item-title>Logout</v-list-item-title>
