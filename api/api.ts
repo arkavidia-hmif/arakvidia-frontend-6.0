@@ -23,7 +23,6 @@ export class ArkavidiaApi {
     apiClient.interceptors.request.use((config) => {
       const bearerTokenString = (bearerToken instanceof Function) ? bearerToken() : bearerToken;
 
-      // const bearerToken = window.localStorage.getItem('arkav-token');
       if (bearerTokenString) {
         config.headers.common.Authorization = `Bearer ${bearerTokenString}`;
       }

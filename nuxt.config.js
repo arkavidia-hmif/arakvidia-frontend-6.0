@@ -26,7 +26,9 @@ export default {
   plugins: [
     '~/plugins/typedjs',
     '~/plugins/definitions',
-    { src: '~/plugins/vuex-persist', ssr: false }
+    '~/plugins/api-auth',
+    '~/plugins/json-ld',
+    '~/plugins/persisted-state'
   ],
   buildModules: [
     '@nuxt/typescript-build',

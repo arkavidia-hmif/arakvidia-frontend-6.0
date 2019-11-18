@@ -108,14 +108,14 @@ import MenuIcon from '~/components/partials/Menu/Drawer/MenuIcon.vue';
 })
 export default class DashboardIndex extends Vue {
   @State('user') auth!: AuthState;
-  @Getter('user/isStateLoggedIn') loggedIn!: boolean;
+  @Getter('user/isLoggedIn') loggedIn!: boolean;
   @Action('user/logout') actionLogout;
 
   mainMenus: TopLevelMenu[] = mainMenus;
   drawer: boolean = false;
 
-  attemptLogout() {
-    this.actionLogout();
+  async attemptLogout() {
+    await this.actionLogout();
     this.$router.push('/');
   }
 }
