@@ -93,8 +93,7 @@ export const dashboardMenus: Menu[] = [
   },
   {
     title: 'Pre-event',
-    route: '/dashboard/pre-event',
-    disabled: true
+    route: '/dashboard/pre-event'
   },
   {
     title: 'Main Event',
