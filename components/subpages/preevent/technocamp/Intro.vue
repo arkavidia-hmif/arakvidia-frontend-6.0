@@ -18,6 +18,37 @@
             <p class="mt-4 mr-5 grey--text text--darken-1">
               Kegiatan selama dua hari yang mencakup dasar teori, hands on, dan seminar IT untuk kamu yang haus akan pengetahuan IT!
             </p>
+            <div class="mt-8 caption">
+              Kategori
+              &nbsp;
+              <v-chip small color="black" class="black white--text caption">
+                SMA/Sederajat
+              </v-chip>
+            </div>
+            <div class="mt-2 caption">
+              Biaya Pendaftaran
+
+              <v-chip small color="#21C7C5" class="white--text caption">
+                Rp50.000,-
+              </v-chip>
+            </div>
+            <!-- <div class="mt-8">
+              <a href="https://arkav.me/guidebook-cp" style="text-decoration: none;">
+                <v-btn large rounded outlined color="#0B909A" class="text-none mr-2 mt-2">
+                  Download guidebook
+                </v-btn>
+              </a>
+              <v-btn
+                large
+                rounded
+                color="primary"
+                class="text-none mt-2"
+                elevation="0"
+                to="/dashboard/competition/competitive-programming"
+              >
+                Daftar sekarang
+              </v-btn>
+            </div> -->
             <div class="mt-8">
               <v-btn
                 large
