@@ -16,7 +16,7 @@
               Technocamp
             </div>
             <p class="mt-4 mr-5 grey--text text--darken-1">
-              Kegiatan selama dua hari yang mencakup dasar teori, hands on, dan seminar IT untuk kamu yang haus akan pengetahuan IT!
+              Kegiatan selama dua hari yang mencakup dasar teori, hands on, dan seminar IT untuk kamu yang haus akan pengalaman membuat game!
             </p>
             <div class="mt-8 caption">
               Kategori
@@ -27,6 +27,13 @@
             </div>
             <div class="mt-2 caption">
               Biaya Pendaftaran
+
+              <v-chip small color="#21C7C5" class="white--text caption">
+                  -    
+              </v-chip>
+            </div>
+            <div class="mt-2 caption">
+              Biaya Komitmen
 
               <v-chip small color="#21C7C5" class="white--text caption">
                 Rp50.000,-
