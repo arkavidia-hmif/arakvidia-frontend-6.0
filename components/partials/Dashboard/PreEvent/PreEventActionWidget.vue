@@ -33,22 +33,23 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Prop } from 'nuxt-property-decorator';
-import { TaskResponse, Task } from '~/api/competition/types';
-// import { ApiError } from '~/api/base';
+import { Component, Vue, Prop, Action } from 'nuxt-property-decorator';
+import { TaskResponse, Task, SubmitTaskResponseStatus } from '~/api/preevent/types';
+import { ApiError } from '~/api/base';
 import TextWidget from '~/components/partials/Dashboard/ActionWidgets/TextWidget.vue';
 import OptionWidget from '~/components/partials/Dashboard/ActionWidgets/OptionWidget.vue';
 import FileUploadWidget from '~/components/partials/Dashboard/ActionWidgets/FileUploadWidget.vue';
 
-  @Component({
-    name: 'CompetitionActionWidget',
-    components: { TextWidget, OptionWidget, FileUploadWidget }
-  })
+@Component({
+  name: 'PreEventActionWidget',
+  components: { TextWidget, OptionWidget, FileUploadWidget }
+})
 export default class CompetitionActionWidget extends Vue {
     @Prop({ default: undefined }) taskResponse!: TaskResponse|undefined;
+    @Prop() registrantId!: number;
     @Prop() task!: Task;
 
-    // @Action('competition/submitTaskResponse') actionSubmitTaskResponse;
+    @Action('preevent/submitTaskResponse') actionSubmitTaskResponse;
 
     error: string = '';
     loading: boolean = false;
@@ -59,33 +60,32 @@ export default class CompetitionActionWidget extends Vue {
       return this.modifiedTaskResponse ? this.modifiedTaskResponse : this.taskResponse;
     }
 
-    onInput() {
+    onInput(response: string) {
       this.loading = true;
-      // this.actionSubmitTaskResponse({
-      //   teamId: this.teamId,
-      //   teamMemberId: this.teamMemberId,
-      //   taskId: this.task.id,
-      //   response
-      // })
-      //   .then((taskResponse: TaskResponse) => {
-      //     this.modifiedTaskResponse = taskResponse;
-      //   })
-      //   .catch((e) => {
-      //     if (e instanceof ApiError) {
-      //       if (e.errorCode === SubmitTaskResponseStatus.ERROR) {
-      //         this.error = 'Gagal submit';
-      //         return;
-      //       }
-      //
-      //       this.error = e.message;
-      //       return;
-      //     }
-      //
-      //     this.error = e.toString();
-      //   })
-      //   .finally(() => {
-      //     this.loading = false;
-      //   });
+      this.actionSubmitTaskResponse({
+        registrantId: this.registrantId,
+        taskId: this.task.id,
+        response
+      })
+        .then((taskResponse: TaskResponse) => {
+          this.modifiedTaskResponse = taskResponse;
+        })
+        .catch((e) => {
+          if (e instanceof ApiError) {
+            if (e.errorCode === SubmitTaskResponseStatus.ERROR) {
+              this.error = 'Gagal submit';
+              return;
+            }
+
+            this.error = e.message;
+            return;
+          }
+
+          this.error = e.toString();
+        })
+        .finally(() => {
+          this.loading = false;
+        });
     }
 }
 </script>

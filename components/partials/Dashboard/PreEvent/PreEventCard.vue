@@ -23,7 +23,7 @@
     <v-card-actions>
       <template v-if="!registered">
         <v-spacer />
-        <v-btn v-if="enabled" text class="white--text text-none primary " @click.stop="dialog = true">
+        <v-btn v-if="enabled" text class="white--text text-none primary " @click.stop="$emit('register')">
           Daftar
         </v-btn>
         <v-btn v-else text class="text-none grey--text">
@@ -40,69 +40,53 @@
         </v-btn>
       </template>
     </v-card-actions>
-    <v-dialog
-      v-model="dialog"
-      max-width="520"
-    >
-      <v-card>
-        <v-card-title class="headline">
-          Terima Kasih telah mendaftar Arkavdemy
-        </v-card-title>
+    <!--<v-dialog-->
+    <!--v-model="dialog"-->
+    <!--max-width="520"-->
+    <!--&gt;-->
+    <!--<v-card>-->
+    <!--<div class="pa-5">-->
+    <!--Apakah kamu yakin ingin mendaftar <b>{{ title }}</b>?-->
+    <!--</div>-->
+    <!--<Alert v-if="!!error" type="error" :message="error" :details="errorDetails" class="ma-5"></Alert>-->
+    <!--<v-card-actions>-->
+    <!--<v-spacer />-->
 
-        <!-- <v-card-text>
-          Let Google help apps determine location. This means sending anonymous location data to Google, even when no apps are running.
-        </v-card-text> -->
-
-        <v-card-actions>
-          <v-spacer />
-
-          <v-btn
-            color="primary"
-            text
-            @click="dialog = false"
-          >
-            Lihat Pendaftaran
-          </v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-dialog>
+    <!--<v-btn-->
+    <!--color=""-->
+    <!--text-->
+    <!--:disabled="isRegistering"-->
+    <!--@click="dialog = false"-->
+    <!--&gt;-->
+    <!--Tidak-->
+    <!--</v-btn>-->
+    <!--<v-btn-->
+    <!--color="primary"-->
+    <!--text-->
+    <!--:loading="isRegistering"-->
+    <!--@click="register"-->
+    <!--&gt;-->
+    <!--Ya-->
+    <!--</v-btn>-->
+    <!--</v-card-actions>-->
+    <!--</v-card>-->
+    <!--</v-dialog>-->
   </v-card>
 </template>
 
-<script>
-import Vue from 'vue';
+<script lang="ts">
+import { Component, Vue, Prop } from 'nuxt-property-decorator';
 
-export default Vue.extend({
-  name: 'PreEventCard',
-  props: {
-    title: {
-      type: String,
-      required: true
-    },
-    subtitle: {
-      type: String,
-      required: false,
-      default: ''
-    },
-    slug: {
-      type: String,
-      required: true
-    },
-    enabled: {
-      type: Boolean,
-      required: false,
-      default: true
-    },
-    registered: {
-      type: Boolean,
-      required: false,
-      default: false
-    }
-  },
-  data() {
-    return { dialog: false };
-  }
-});
+@Component({
+  name: 'PreEventCard'
+})
+export default class PreEventCard extends Vue {
+  @Prop() slug!: string;
+  @Prop() title!: string;
+  @Prop({ default: '' }) subtitle!:string;
+  @Prop({ default: true }) enabled!:boolean;
+  @Prop({ default: false }) registered!:boolean;
+}
 </script>
 
 <style scoped>
