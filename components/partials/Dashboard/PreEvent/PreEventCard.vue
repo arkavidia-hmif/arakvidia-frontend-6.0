@@ -23,8 +23,11 @@
     <v-card-actions>
       <template v-if="!registered">
         <v-spacer />
-        <v-btn v-if="enabled" text class="white--text text-none primary " @click.stop="$emit('register')">
+        <v-btn v-if="enabled" text class="cyan--text text--darken-2 text-none" @click.stop="$emit('register')">
           Daftar
+          <v-icon small class="ml-2">
+            fas fa-arrow-right
+          </v-icon>
         </v-btn>
         <v-btn v-else text class="text-none grey--text">
           Pendaftaran Ditutup
@@ -40,37 +43,6 @@
         </v-btn>
       </template>
     </v-card-actions>
-    <!--<v-dialog-->
-    <!--v-model="dialog"-->
-    <!--max-width="520"-->
-    <!--&gt;-->
-    <!--<v-card>-->
-    <!--<div class="pa-5">-->
-    <!--Apakah kamu yakin ingin mendaftar <b>{{ title }}</b>?-->
-    <!--</div>-->
-    <!--<Alert v-if="!!error" type="error" :message="error" :details="errorDetails" class="ma-5"></Alert>-->
-    <!--<v-card-actions>-->
-    <!--<v-spacer />-->
-
-    <!--<v-btn-->
-    <!--color=""-->
-    <!--text-->
-    <!--:disabled="isRegistering"-->
-    <!--@click="dialog = false"-->
-    <!--&gt;-->
-    <!--Tidak-->
-    <!--</v-btn>-->
-    <!--<v-btn-->
-    <!--color="primary"-->
-    <!--text-->
-    <!--:loading="isRegistering"-->
-    <!--@click="register"-->
-    <!--&gt;-->
-    <!--Ya-->
-    <!--</v-btn>-->
-    <!--</v-card-actions>-->
-    <!--</v-card>-->
-    <!--</v-dialog>-->
   </v-card>
 </template>
 
