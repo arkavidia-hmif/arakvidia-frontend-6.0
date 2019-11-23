@@ -39,8 +39,8 @@
                 Rp50.000,-
               </v-chip>
             </div>
-            <!-- <div class="mt-8">
-              <a href="https://arkav.me/guidebook-cp" style="text-decoration: none;">
+            <div class="mt-8">
+              <a href="https://arkav.me/guidebook-technocamp" style="text-decoration: none;">
                 <v-btn large rounded outlined color="#0B909A" class="text-none mr-2 mt-2">
                   Download guidebook
                 </v-btn>
@@ -54,18 +54,6 @@
                 to="/dashboard/competition/competitive-programming"
               >
                 Daftar sekarang
-              </v-btn>
-            </div> -->
-            <div class="mt-8">
-              <v-btn
-                large
-                rounded
-                color="primary"
-                class="text-none mt-2"
-                elevation="0"
-                disabled
-              >
-                Segera hadir
               </v-btn>
             </div>
           </v-col>
