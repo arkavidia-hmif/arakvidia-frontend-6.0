@@ -93,11 +93,12 @@ export const dashboardMenus: Menu[] = [
   },
   {
     title: 'Pre-event',
-    route: '/dashboard/pre-event'
+    route: '/dashboard/preevent'
   },
   {
     title: 'Arkavidia Talk',
-    route: '/dashboard/arkavidia-talk'
+    route: '/dashboard/arkavidia-talk',
+    disabled: true
   }
 ];
 

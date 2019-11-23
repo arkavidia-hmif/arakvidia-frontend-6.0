@@ -49,7 +49,7 @@ export default class ArkavidiaTalkWrapper extends Vue {
         })
         .then((registrant) => {
           if (registrant) { this.registrantDetails = registrant; }
-          else { this.$router.push(`/dashboard/pre-event/`); }
+          else { this.$router.push(`/dashboard/preevent/`); }
         })
         .finally(() => {
           this.isLoading = false;

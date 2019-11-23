@@ -3,7 +3,7 @@
     <v-card elevation="3">
       <v-list>
         <template v-for="(stage, i) in stages">
-          <v-list-item :key="i" :to="stage.id === registrant.activeStageId ? `/dashboard/pre-event/${slug}` : undefined" exact :disabled="stage.id !== registrant.activeStageId">
+          <v-list-item :key="i" :to="stage.id === registrant.activeStageId ? `/dashboard/preevent/${slug}` : undefined" exact :disabled="stage.id !== registrant.activeStageId">
             <v-list-item-title>
               {{ stage.name }}
             </v-list-item-title>
@@ -88,7 +88,7 @@ export default class TabMenu extends Vue {
       this.isDeleting = true;
       this.deleteRegistrantAction({ registrantId: this.registrant.id })
         .then(() => {
-          const redirectUrl = '/dashboard/pre-event';
+          const redirectUrl = '/dashboard/preevent';
           this.$router.push(redirectUrl);
         })
         .catch((e) => {

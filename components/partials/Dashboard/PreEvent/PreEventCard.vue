@@ -35,7 +35,7 @@
       </template>
       <template v-else>
         <v-spacer />
-        <v-btn text class="cyan--text text--darken-2 text-none" :to="`/dashboard/pre-event/${slug}`">
+        <v-btn text class="cyan--text text--darken-2 text-none" :to="`/dashboard/preevent/${slug}`">
           Lihat Pendaftaran
           <v-icon small class="ml-2">
             fas fa-arrow-right
