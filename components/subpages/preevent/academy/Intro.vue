@@ -21,6 +21,21 @@
               Kamu akan belajar dari nol tentang <i>skill</i> teknis yang dibutuhkan di dunia kerja.
             </p>
             <div class="mt-8">
+              <a href="https://arkav.me/guidebook-arkavdemy-product-management" style="text-decoration: none;">
+                <v-btn large rounded outlined color="#0B909A" class="text-none mr-2 mt-2">
+                  Download guidebook
+                </v-btn>
+              </a>
+              <!--<v-btn-->
+              <!--large-->
+              <!--rounded-->
+              <!--color="primary"-->
+              <!--class="text-none mt-2"-->
+              <!--elevation="0"-->
+              <!--to="/dashboard/preevent"-->
+              <!--&gt;-->
+              <!--Daftar sekarang-->
+              <!--</v-btn>-->
               <v-btn
                 large
                 rounded

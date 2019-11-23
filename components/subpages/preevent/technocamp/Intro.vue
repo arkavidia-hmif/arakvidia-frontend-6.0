@@ -16,9 +16,53 @@
               Technocamp
             </div>
             <p class="mt-4 mr-5 grey--text text--darken-1">
-              Kegiatan selama dua hari yang mencakup dasar teori, hands on, dan seminar IT untuk kamu yang haus akan pengetahuan IT!
+              Kegiatan selama dua hari yang mencakup dasar teori, hands on, dan seminar IT untuk kamu yang haus akan pengalaman membuat game!
             </p>
+            <div class="mt-8 caption">
+              Kategori
+              &nbsp;
+              <v-chip small color="black" class="black white--text caption">
+                SMA/Sederajat
+              </v-chip>
+            </div>
+            <div class="mt-2 caption">
+              Biaya Komitmen
+              &nbsp;
+              <v-menu
+                transition="slide-y-transition"
+                bottom
+                offset-y
+                open-on-hover
+              >
+                <template v-slot:activator="{ on }">
+                  <v-chip small color="#21C7C5" class="white--text caption" v-on="on">
+                    Rp50.000,-
+                    <v-icon right small>
+                      fas fa-question-circle
+                    </v-icon>
+                  </v-chip>
+                </template>
+                <div class="pa-4 white" style="max-width: 300px">
+                  Biaya Komitmen akan dikembalikan di akhir kegiatan apabila peserta mengikuti kegiatan dengan baik.
+                </div>
+              </v-menu>
+            </div>
             <div class="mt-8">
+              <a href="https://arkav.me/guidebook-technocamp" style="text-decoration: none;">
+                <v-btn large rounded outlined color="#0B909A" class="text-none mr-2 mt-2">
+                  Download guidebook
+                </v-btn>
+              </a>
+              <!--<v-btn-->
+              <!--large-->
+              <!--rounded-->
+              <!--color="primary"-->
+              <!--class="text-none mt-2"-->
+              <!--elevation="0"-->
+              <!--to="/dashboard/preevent"-->
+              <!--&gt;-->
+              <!--Daftar sekarang-->
+              <!--</v-btn>-->
               <v-btn
                 large
                 rounded
