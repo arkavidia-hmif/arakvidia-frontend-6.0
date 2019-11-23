@@ -26,18 +26,26 @@
               </v-chip>
             </div>
             <div class="mt-2 caption">
-              Biaya Pendaftaran
-
-              <v-chip small color="#21C7C5" class="white--text caption">
-                  -    
-              </v-chip>
-            </div>
-            <div class="mt-2 caption">
               Biaya Komitmen
-
-              <v-chip small color="#21C7C5" class="white--text caption">
-                Rp50.000,-
-              </v-chip>
+              &nbsp;
+              <v-menu
+                transition="slide-y-transition"
+                bottom
+                offset-y
+                open-on-hover
+              >
+                <template v-slot:activator="{ on }">
+                  <v-chip small color="#21C7C5" class="white--text caption" v-on="on">
+                    Rp50.000,-
+                    <v-icon right small>
+                      fas fa-question-circle
+                    </v-icon>
+                  </v-chip>
+                </template>
+                <div class="pa-4 white" style="max-width: 300px">
+                  Biaya Komitmen akan dikembalikan di akhir kegiatan apabila peserta mengikuti kegiatan dengan baik.
+                </div>
+              </v-menu>
             </div>
             <!-- <div class="mt-8">
               <a href="https://arkav.me/guidebook-cp" style="text-decoration: none;">

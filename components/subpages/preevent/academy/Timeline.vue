@@ -26,16 +26,16 @@
         <TimelineItem
           :active-after="Date.parse('2019-12-23T00:00:00+07:00')"
           :active-before="Date.parse('2020-01-04T23:59:59+07:00')"
-          date="23 - 4"
-          month-year="Desember - Januari 2020"
-          title="Proses Seleksi"
+          date="23"
+          month-year="Desember 2019"
+          title="Mulai Proses Seleksi"
         />
       </v-col>
       <v-col :cols="6" :sm="3">
         <TimelineItem
           :active-after="Date.parse('2020-01-05T00:00:00+07:00')"
           :active-before="Date.parse('2020-01-05T23:59:59+07:00')"
-          date="5"
+          date="05"
           month-year="Januari 2020"
           title="Pengumuman Seleksi"
         />

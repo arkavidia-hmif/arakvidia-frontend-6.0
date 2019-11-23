@@ -9,8 +9,8 @@
           <v-responsive :aspect-ratio="3" class="white--text pa-0 ma-0" style="background: #FF084F">
             <v-container fill-height class="pa-0" justify-content-center>
               <div style="width: 100%" align="center">
-                <div class="title mt-2">
-                  Pengetahuan Dasar <br> dalam Pembuatan Game
+                <div class="title mt-2 font-weight-bold">
+                  Pengetahuan Dasar dalam Pembuatan Game
                 </div>
               </div>
             </v-container>
@@ -28,7 +28,7 @@
           <v-responsive :aspect-ratio="3" class="white--text pa-0 ma-0" style="background: #0578D3">
             <v-container fill-height class="pa-0" justify-content-center>
               <div style="width: 100%" align="center">
-                <div class="title mt-2">
+                <div class="title mt-2 font-weight-bold">
                   Seminar dan Sharing bidang IT
                 </div>
               </div>
@@ -47,7 +47,7 @@
           <v-responsive :aspect-ratio="3" class="white--text pa-0 ma-0" style="background: #7608FF">
             <v-container fill-height class="pa-0" justify-content-center>
               <div style="width: 100%" align="center">
-                <div class="title mt-2">
+                <div class="title mt-2 font-weight-bold">
                   Sertifikat
                 </div>
               </div>

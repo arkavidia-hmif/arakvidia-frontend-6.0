@@ -17,7 +17,7 @@
         <TimelineItem
           :active-after="Date.parse('2020-01-05T00:00:00+07:00')"
           :active-before="Date.parse('2020-01-05T23:59:59+07:00')"
-          date="5"
+          date="05"
           month-year="Januari 2020"
           title="Penutupan Pendaftaran"
         />
@@ -44,7 +44,7 @@
         <TimelineItem
           :active-after="Date.parse('2019-02-01T00:00:00+07:00')"
           :active-before="Date.parse('2019-02-02T23:59:59+07:00')"
-          date="1-2"
+          date="01-02"
           month-year="Februari 2020"
           title="Technocamp"
         />
