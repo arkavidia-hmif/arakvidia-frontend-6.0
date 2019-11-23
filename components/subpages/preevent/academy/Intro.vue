@@ -32,7 +32,7 @@
                 color="primary"
                 class="text-none mt-2"
                 elevation="0"
-                to="/dashboard/competition/competitive-programming"
+                to="/dashboard/preevent"
               >
                 Daftar sekarang
               </v-btn>
