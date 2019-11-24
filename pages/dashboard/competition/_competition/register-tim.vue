@@ -42,10 +42,6 @@ import { ApiError } from '~/api/base';
 import { RegisterTeamStatus, Team } from '~/api/competition/types';
 import Alert from '~/components/partials/Alert.vue';
 
-interface QueryParameters {
-  continue?: string;
-}
-
 @Component({
   components: { Alert, DashboardWrapper }
 })
@@ -99,17 +95,8 @@ export default class RegisterTeam extends Vue {
 
   head() {
     return {
-      title: 'Pendaftaran ' + this.title
+      title: 'Pendaftaran ' + ((this.competition) ? this.competition.name : 'Lomba')
     };
-  }
-
-  static jsUcfirst(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-  }
-
-  get nextRoute(): string|undefined {
-    const queryParams = this.$route.query as QueryParameters;
-    return queryParams.continue;
   }
 
   attemptRegister() {
@@ -137,7 +124,7 @@ export default class RegisterTeam extends Vue {
 
     this.registerTeamAction({ competitionId, name, institution })
       .then(() => {
-        const redirectUrl = (this.nextRoute) ? this.nextRoute : '/dashboard/competition/' + this.slug;
+        const redirectUrl = `/dashboard/competition/${this.slug}`;
         this.$router.push(redirectUrl);
       })
       .catch((e) => {
