@@ -4,6 +4,7 @@ import cookie from 'cookie';
 
 export default ({ store, req }) => {
   createPersistedState({
+    paths: ['user'],
     key: process.env.ARKAVIDIA_STATE_COOKIE_NAME || 'arkavidia-state',
     storage: {
       // eslint-disable-next-line dot-notation
