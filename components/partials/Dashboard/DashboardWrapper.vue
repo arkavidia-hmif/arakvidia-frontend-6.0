@@ -34,14 +34,10 @@ export default class DashboardWrapper extends Vue {
   dashboardMenus: Menu[] = dashboardMenus;
   @Action('competition/fetchCompetitionList') fetchCompetitionListAction;
   @Action('competition/fetchTeamList') fetchTeamListAction;
-  @Action('preevent/fetchPreEventList') fetchPreEventListAction;
-  @Action('preevent/fetchRegistrantList') fetchRegistrantListAction;
 
   mounted() {
     this.fetchCompetitionListAction();
     this.fetchTeamListAction();
-    this.fetchPreEventListAction();
-    this.fetchRegistrantListAction();
   }
 }
 </script>

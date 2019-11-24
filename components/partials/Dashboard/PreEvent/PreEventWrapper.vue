@@ -26,7 +26,7 @@ import { Registrant } from '~/api/preevent/types';
     name: 'PreEventWrapper',
     components: { TabMenu }
   })
-export default class ArkavidiaTalkWrapper extends Vue {
+export default class PreEventWrapper extends Vue {
     @Prop({ default: '' }) slug?: string;
 
     @Action('preevent/fetchRegistrantList') fetchRegistrantListAction;
