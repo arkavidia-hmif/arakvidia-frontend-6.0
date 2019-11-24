@@ -1,15 +1,16 @@
 <template>
   <div class="ml-3 mb-5">
     <v-card elevation="3">
-      <v-list>
-        <template v-for="(stage, i) in stages">
-          <v-list-item :key="i" :to="stage.id === registrant.activeStageId ? `/dashboard/preevent/${slug}` : undefined" exact :disabled="stage.id !== registrant.activeStageId">
-            <v-list-item-title>
-              {{ stage.name }}
-            </v-list-item-title>
-          </v-list-item>
-        </template>
-        <v-divider />
+      <div class="pa-4">
+        <div class="font-weight-bold">
+          {{ registrant.preevent.name }}
+        </div>
+        <div class="grey--text text--darken-2">
+          {{ registrant.preevent.subtitle }}
+        </div>
+      </div>
+      <v-divider />
+      <v-list class="pt-0">
         <v-list-item @click="dialog = true">
           <v-list-item-title class="red--text">
             <v-icon left small color="red">
@@ -18,6 +19,14 @@
             Batalkan Pendaftaran
           </v-list-item-title>
         </v-list-item>
+        <v-divider />
+        <template v-for="(stage, i) in stages">
+          <v-list-item :key="i" :to="stage.id === registrant.activeStageId ? `/dashboard/preevent/${slug}` : undefined" exact :disabled="stage.id !== registrant.activeStageId">
+            <v-list-item-title>
+              {{ stage.name }}
+            </v-list-item-title>
+          </v-list-item>
+        </template>
       </v-list>
     </v-card>
     <v-dialog

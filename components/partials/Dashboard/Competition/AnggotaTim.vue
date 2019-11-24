@@ -4,6 +4,11 @@
       <p style="font-weight: 700 !important; margin-bottom: 0 !important;">
         Daftar Anggota
       </p>
+      <div class="subtitle grey--text text--darken-2">
+        {{ team.competition.minTeamMembers === team.competition.maxTeamMembers
+          ? `Tim terdiri dari tepat ${team.competition.minTeamMembers} orang`
+          : `Tim terdiri dari ${team.competition.minTeamMembers} sampai ${team.competition.maxTeamMembers} orang` }}
+      </div>
       <v-alert v-if="teamMembers.length < team.competition.minTeamMembers" type="warning" class="my-5">
         Anggota tim minimal {{ team.competition.minTeamMembers }} orang
       </v-alert>
