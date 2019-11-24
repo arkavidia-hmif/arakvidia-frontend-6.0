@@ -1,8 +1,8 @@
 <template>
   <DashboardWrapper>
     <ArkavidiaTalkWrapper :arkavidiatalk-slug="slug">
-      <template slot-scope="{ team }">
-        <StageTasks :team="team" />
+      <template slot-scope="{ registrant }">
+        <StageTasks :registrant="registrant" />
       </template>
     </ArkavidiaTalkWrapper>
   </DashboardWrapper>

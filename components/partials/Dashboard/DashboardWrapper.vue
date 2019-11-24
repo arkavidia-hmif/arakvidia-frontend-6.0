@@ -35,13 +35,17 @@ export default class DashboardWrapper extends Vue {
   @Action('competition/fetchCompetitionList') fetchCompetitionListAction;
   @Action('competition/fetchTeamList') fetchTeamListAction;
   @Action('preevent/fetchPreEventList') fetchPreEventListAction;
-  @Action('preevent/fetchRegistrantList') fetchRegistrantListAction;
+  @Action('preevent/fetchRegistrantList') fetchPreEventRegistrantListAction;
+  @Action('event/fetchEventList') fetchEventListAction;
+  @Action('event/fetchRegistrantList') fetchEventRegistrantListAction;
 
   mounted() {
     this.fetchCompetitionListAction();
     this.fetchTeamListAction();
     this.fetchPreEventListAction();
-    this.fetchRegistrantListAction();
+    this.fetchPreEventRegistrantListAction();
+    this.fetchEventListAction();
+    this.fetchEventRegistrantListAction();
   }
 }
 </script>

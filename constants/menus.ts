@@ -97,9 +97,6 @@ export const dashboardMenus: Menu[] = [
   },
   {
     title: 'Arkavidia Talk',
-    route: '/dashboard/arkavidia-talk',
-    disabled: true
+    route: '/dashboard/arkavidia-talk'
   }
 ];
-
-export const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
