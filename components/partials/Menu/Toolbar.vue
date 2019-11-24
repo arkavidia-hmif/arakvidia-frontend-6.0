@@ -47,7 +47,7 @@
                 {{ menuItem.title }}
               </v-btn>
             </template>
-            <no-ssr>
+            <client-only>
               <template v-if="!loggedIn">
                 <v-btn to="/login" class="text-capitalize" text>
                   Login
@@ -64,7 +64,7 @@
                   Logout
                 </v-btn>
               </template>
-            </no-ssr>
+            </client-only>
           </v-toolbar-items>
           <v-toolbar-items class="hidden-md-and-up">
             <v-btn icon @click="drawer = !drawer">
@@ -80,7 +80,7 @@
           <DrawerListGroup v-if="menuItem.children" :key="i" :title="menuItem.title" :items="menuItem.children" />
           <DrawerListItem v-else :key="i" :to="menuItem.route" :title="menuItem.title" />
         </template>
-        <no-ssr>
+        <client-only>
           <template v-if="!loggedIn">
             <DrawerListItem to="/login" title="Login" />
             <DrawerListItem to="/register" title="Register" />
@@ -91,7 +91,7 @@
               <v-list-item-title>Logout</v-list-item-title>
             </v-list-item>
           </template>
-        </no-ssr>
+        </client-only>
       </v-list>
     </v-navigation-drawer>
   </div>

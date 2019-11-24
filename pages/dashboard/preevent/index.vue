@@ -5,6 +5,7 @@
         <PreEventCard
           :id="preEvent.id"
           :title="preEvent.name"
+          :subtitle="preEvent.subtitle"
           :enabled="preEvent.isRegistrationOpen"
           :registered="!!registrants.find(registrant => registrant.preevent.id === preEvent.id)"
           :slug="preEvent.slug"
@@ -60,6 +61,8 @@ import Alert from '~/components/partials/Alert.vue';
   components: { DashboardWrapper, PreEventCard, Alert }
 })
 export default class DashboardPreEvent extends Vue {
+  @Action('preevent/fetchPreEventList') fetchPreEventListAction;
+  @Action('preevent/fetchRegistrantList') fetchRegistrantListAction;
   @Getter('preevent/getPreEvents') preEvents;
   @Getter('preevent/getRegistrants') registrants;
 
@@ -75,6 +78,11 @@ export default class DashboardPreEvent extends Vue {
     return {
       title: 'Dashboard'
     };
+  }
+
+  mounted() {
+    this.fetchPreEventListAction();
+    this.fetchRegistrantListAction();
   }
 
   confirmRegistration(preEvent: PreEvent) {

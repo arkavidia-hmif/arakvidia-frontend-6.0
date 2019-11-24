@@ -3,6 +3,7 @@ import { User } from '~/api/user/types';
 export interface PreEvent {
   id?: number;
   name: string;
+  subtitle: string;
   isRegistrationOpen?: boolean;
   slug: string;
 }
