@@ -33,10 +33,10 @@ import { Component, Vue, Prop } from 'nuxt-property-decorator';
 import Alert from '~/components/partials/Alert.vue';
 
   @Component({
-    name: 'EssayWidget',
+    name: 'TextAreaWidget',
     components: { Alert }
   })
-export default class EssayWidget extends Vue {
+export default class TextAreaWidget extends Vue {
     currentResponse: string|undefined;
 
     @Prop({ default: false }) loading!: boolean;
