@@ -3,16 +3,16 @@
     <v-flex>
       <AcademyIntro />
       <AcademyAbout />
-      <AcademyTimeline />
+      <AcademyTimeline class="mt-4" />
     </v-flex>
   </v-layout>
 </template>
 
 <script lang="ts">
 import Vue, { ComponentOptions } from 'vue';
-import AcademyIntro from '~/components/subpages/preevent/academy/Intro.vue';
-import AcademyAbout from '~/components/subpages/preevent/academy/About.vue';
-import AcademyTimeline from '~/components/subpages/preevent/academy/Timeline.vue';
+import AcademyIntro from '~/components/subpages/preevent/academy/product-management/Intro.vue';
+import AcademyAbout from '~/components/subpages/preevent/academy/product-management/About.vue';
+import AcademyTimeline from '~/components/subpages/preevent/academy/product-management/Timeline.vue';
 
 export default Vue.extend({
   components: {
@@ -22,7 +22,7 @@ export default Vue.extend({
   },
   head() {
     return {
-      title: 'Arkavidia Academy'
+      title: 'Product Management Academy'
     };
   }
 } as ComponentOptions<Vue>);

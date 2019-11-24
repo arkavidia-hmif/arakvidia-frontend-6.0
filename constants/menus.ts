@@ -35,8 +35,8 @@ export const competitionMenus: Menu[] = [
 
 export const preEventMenus: Menu[] = [
   {
-    title: 'Arkavidia Academy',
-    route: '/preevent/arkavidia-academy'
+    title: 'Product Management Academy',
+    route: '/preevent/arkavidia-academy/product-management'
   },
   {
     title: 'Technocamp',
