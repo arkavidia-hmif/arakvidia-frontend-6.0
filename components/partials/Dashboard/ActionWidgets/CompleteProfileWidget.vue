@@ -1,5 +1,6 @@
 <template>
-  <div v-if="!!fUser" class="mt-5">
+  <div v-if="!!fUser">
+    <Alert v-if="error" :message="error" type="error" class="mb-2" />
     <template v-if="infoShouldVisible(UserAttributes.FULL_NAME)">
       <v-row>
         <v-col :cols="12" :md="3" class="font-weight-bold">
@@ -245,14 +246,9 @@ export default class CompleteProfileWidget extends Vue {
   }
 
   attemptEdit() {
-    // TODO check
-
     this.error = '';
     this.loading = true;
     this.actionEditUser({ user: this.fUser as User })
-      .then(() => {
-        // TODO what?
-      })
       .catch((e) => {
         this.error = e.toString();
       })
