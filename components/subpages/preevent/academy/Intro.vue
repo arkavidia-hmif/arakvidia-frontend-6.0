@@ -26,25 +26,15 @@
                   Download guidebook
                 </v-btn>
               </a>
-              <!--<v-btn-->
-              <!--large-->
-              <!--rounded-->
-              <!--color="primary"-->
-              <!--class="text-none mt-2"-->
-              <!--elevation="0"-->
-              <!--to="/dashboard/preevent"-->
-              <!--&gt;-->
-              <!--Daftar sekarang-->
-              <!--</v-btn>-->
               <v-btn
                 large
                 rounded
                 color="primary"
                 class="text-none mt-2"
                 elevation="0"
-                disabled
+                to="/dashboard/preevent"
               >
-                Segera hadir
+                Daftar sekarang
               </v-btn>
             </div>
           </v-col>
