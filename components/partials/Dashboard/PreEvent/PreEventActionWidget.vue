@@ -9,6 +9,16 @@
     :reason="!currentTaskResponse ? undefined : currentTaskResponse.reason"
     @input="onInput"
   />
+  <EssayWidget
+    v-else-if="task.widget === 'essay'"
+    :loading="loading"
+    :error="error"
+    :submitted="!!currentTaskResponse"
+    :response="!currentTaskResponse ? undefined : currentTaskResponse.response"
+    :status="!currentTaskResponse ? undefined : currentTaskResponse.status"
+    :reason="!currentTaskResponse ? undefined : currentTaskResponse.reason"
+    @input="onInput"
+  />
   <OptionWidget
     v-else-if="task.widget === 'option'"
     :loading="loading"
@@ -44,10 +54,11 @@ import TextWidget from '~/components/partials/Dashboard/ActionWidgets/TextWidget
 import OptionWidget from '~/components/partials/Dashboard/ActionWidgets/OptionWidget.vue';
 import FileUploadWidget from '~/components/partials/Dashboard/ActionWidgets/FileUploadWidget.vue';
 import CompleteProfileWidget from '~/components/partials/Dashboard/ActionWidgets/CompleteProfileWidget.vue';
+import EssayWidget from '~/components/partials/Dashboard/ActionWidgets/EssayWidget.vue';
 
 @Component({
   name: 'PreEventActionWidget',
-  components: { CompleteProfileWidget, TextWidget, OptionWidget, FileUploadWidget }
+  components: { EssayWidget, CompleteProfileWidget, TextWidget, OptionWidget, FileUploadWidget }
 })
 export default class CompetitionActionWidget extends Vue {
     @Prop({ default: undefined }) taskResponse!: TaskResponse|undefined;
