@@ -1,50 +1,50 @@
 <template>
   <TextWidget
-      v-if="task.widget === 'text'"
-      :loading="loading"
-      :error="error"
-      :submitted="!!currentTaskResponse"
-      :response="!currentTaskResponse ? undefined : currentTaskResponse.response"
-      :status="!currentTaskResponse ? undefined : currentTaskResponse.status"
-      :reason="!currentTaskResponse ? undefined : currentTaskResponse.reason"
-      @input="onInput"
+    v-if="task.widget === 'text'"
+    :loading="loading"
+    :error="error"
+    :submitted="!!currentTaskResponse"
+    :response="!currentTaskResponse ? undefined : currentTaskResponse.response"
+    :status="!currentTaskResponse ? undefined : currentTaskResponse.status"
+    :reason="!currentTaskResponse ? undefined : currentTaskResponse.reason"
+    @input="onInput"
   />
   <OptionWidget
-      v-else-if="task.widget === 'option'"
-      :loading="loading"
-      :error="error"
-      :submitted="!!currentTaskResponse"
-      :response="!currentTaskResponse ? undefined : currentTaskResponse.response"
-      :status="!currentTaskResponse ? undefined : currentTaskResponse.status"
-      :reason="!currentTaskResponse ? undefined : currentTaskResponse.reason"
-      :options="task.widgetParameters.options"
-      @input="onInput"
+    v-else-if="task.widget === 'option'"
+    :loading="loading"
+    :error="error"
+    :submitted="!!currentTaskResponse"
+    :response="!currentTaskResponse ? undefined : currentTaskResponse.response"
+    :status="!currentTaskResponse ? undefined : currentTaskResponse.status"
+    :reason="!currentTaskResponse ? undefined : currentTaskResponse.reason"
+    :options="task.widgetParameters.options"
+    @input="onInput"
   />
   <FileUploadWidget
-      v-else-if="task.widget === 'file_upload'"
-      :loading="loading"
-      :error="error"
-      :submitted="!!currentTaskResponse"
-      :response="!currentTaskResponse ? undefined : currentTaskResponse.response"
-      :status="!currentTaskResponse ? undefined : currentTaskResponse.status"
-      :reason="!currentTaskResponse ? undefined : currentTaskResponse.reason"
-      @input="onInput"
+    v-else-if="task.widget === 'file_upload'"
+    :loading="loading"
+    :error="error"
+    :submitted="!!currentTaskResponse"
+    :response="!currentTaskResponse ? undefined : currentTaskResponse.response"
+    :status="!currentTaskResponse ? undefined : currentTaskResponse.status"
+    :reason="!currentTaskResponse ? undefined : currentTaskResponse.reason"
+    @input="onInput"
   />
 </template>
 
 <script lang="ts">
-  import { Component, Vue, Prop, Action } from 'nuxt-property-decorator';
-  import { TaskResponse, Task, SubmitTaskResponseStatus } from '~/api/event/types';
-  import { ApiError } from '~/api/base';
-  import TextWidget from '~/components/partials/Dashboard/ActionWidgets/TextWidget.vue';
-  import OptionWidget from '~/components/partials/Dashboard/ActionWidgets/OptionWidget.vue';
-  import FileUploadWidget from '~/components/partials/Dashboard/ActionWidgets/FileUploadWidget.vue';
+import { Component, Vue, Prop, Action } from 'nuxt-property-decorator';
+import { TaskResponse, Task, SubmitTaskResponseStatus } from '~/api/event/types';
+import { ApiError } from '~/api/base';
+import TextWidget from '~/components/partials/Dashboard/ActionWidgets/TextWidget.vue';
+import OptionWidget from '~/components/partials/Dashboard/ActionWidgets/OptionWidget.vue';
+import FileUploadWidget from '~/components/partials/Dashboard/ActionWidgets/FileUploadWidget.vue';
 
   @Component({
     name: 'ArkavidiaTalkActionWidget',
     components: { TextWidget, OptionWidget, FileUploadWidget }
   })
-  export default class ArkavidiaTalkActionWidget extends Vue {
+export default class ArkavidiaTalkActionWidget extends Vue {
     @Prop({ default: undefined }) taskResponse!: TaskResponse|undefined;
     @Prop() registrantId!: number;
     @Prop() task!: Task;
@@ -87,7 +87,7 @@
           this.loading = false;
         });
     }
-  }
+}
 </script>
 
 <style scoped>

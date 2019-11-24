@@ -21,7 +21,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, State, Getter, Action } from 'nuxt-property-decorator';
+import { Component, Vue, State, Getter } from 'nuxt-property-decorator';
 import { dashboardMenus, Menu } from '~/constants/menus';
 import { AuthState } from '~/store/user';
 

@@ -3,8 +3,8 @@
     <v-row v-if="!isLoading ">
       <v-col :cols="12" :sm="4" :lg="3">
         <TabMenu
-            :slug="slug"
-            :registrant="registrantDetails"
+          :slug="slug"
+          :registrant="registrantDetails"
         />
       </v-col>
       <v-col :cols="12" :sm="8" :lg="9">
@@ -18,15 +18,15 @@
 </template>
 
 <script lang="ts">
-  import { Component, Vue, Prop, Action } from 'nuxt-property-decorator';
-  import TabMenu from '~/components/partials/Dashboard/ArkavidiaTalk/TabMenu.vue';
-  import { Registrant } from '~/api/event/types';
+import { Component, Vue, Prop, Action } from 'nuxt-property-decorator';
+import TabMenu from '~/components/partials/Dashboard/ArkavidiaTalk/TabMenu.vue';
+import { Registrant } from '~/api/event/types';
 
   @Component({
     name: 'ArkavidiaTalkWrapper',
     components: { TabMenu }
   })
-  export default class ArkavidiaTalkWrapper extends Vue {
+export default class ArkavidiaTalkWrapper extends Vue {
     @Prop({ default: '' }) slug?: string;
 
     @Action('event/fetchRegistrantList') fetchRegistrantListAction;
@@ -55,7 +55,7 @@
           this.isLoading = false;
         });
     }
-  }
+}
 </script>
 
 <style scoped>

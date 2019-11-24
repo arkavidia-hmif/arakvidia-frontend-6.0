@@ -4,7 +4,7 @@ import { ArkavidiaCompetitionApi } from './competition';
 import { ArkavidiaUserApi } from './user';
 import { ArkavidiaUploaderApi } from './uploader';
 import { ArkavidiaPreEventApi } from '~/api/preevent';
-import {ArkavidiaEventApi} from "~/api/event";
+import { ArkavidiaEventApi } from '~/api/event';
 
 const apiClient = axios.create({
   // Prevent sending cookies with cross-domain requests
