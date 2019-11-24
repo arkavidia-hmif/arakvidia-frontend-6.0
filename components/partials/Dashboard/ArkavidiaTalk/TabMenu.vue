@@ -1,7 +1,16 @@
 <template>
   <div class="ml-3 mb-5">
     <v-card elevation="3">
-      <v-list>
+      <div class="pa-4">
+        <div class="font-weight-bold">
+          {{ registrant.mainevent.name }}
+        </div>
+        <div class="grey--text text--darken-2">
+          {{ registrant.mainevent.short_desc }}
+        </div>
+      </div>
+      <v-divider />
+      <v-list class="pt-0">
         <v-list-item :to="`/dashboard/arkavidia-talk/${slug}`" exact>
           <v-list-item-title>
             <v-icon left>
