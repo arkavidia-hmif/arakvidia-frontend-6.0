@@ -9,6 +9,16 @@ export interface User {
   address?: string;
 }
 
+export enum UserAttributes {
+  EMAIL = 'email',
+  FULL_NAME = 'fullName',
+  CURRENT_EDUCATION = 'currentEducation',
+  INSTITUTION = 'institution',
+  PHONE_NUMBER = 'phoneNumber',
+  BIRTH_DATE = 'birthDate',
+  ADDRESS = 'address'
+}
+
 export enum LoginStatus {
   INVALID_CREDS, ERROR, EMAIL_NOT_CONFIRMED
 }

@@ -75,6 +75,8 @@ import { Action, Component, Prop } from 'nuxt-property-decorator';
 import Vue from 'vue';
 import { User } from '~/api/user/types';
 import Alert from '~/components/partials/Alert.vue';
+import { educationLevels } from '~/constants/profile';
+
 @Component({
   components: { Alert }
 })
@@ -82,7 +84,7 @@ export default class ModalProfile extends Vue {
   @Action('user/editUser') actionEditUser;
   @Prop() user!: User;
 
-  educationLevels = ['SMA/Sederajat', 'D2/D3/D4', 'S1', 'S2/S3', 'Lainnya'];
+  educationLevels = educationLevels;
 
   dialog: boolean = false;
   menu: boolean = false;
