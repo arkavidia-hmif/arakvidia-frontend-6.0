@@ -3,6 +3,7 @@ import { ArkavidiaAnnouncementApi } from './announcement';
 import { ArkavidiaCompetitionApi } from './competition';
 import { ArkavidiaUserApi } from './user';
 import { ArkavidiaUploaderApi } from './uploader';
+import { ArkavidiaPreEventApi } from '~/api/preevent';
 
 const apiClient = axios.create({
   // Prevent sending cookies with cross-domain requests
@@ -33,6 +34,7 @@ export class ArkavidiaApi {
   user: ArkavidiaUserApi = new ArkavidiaUserApi(apiClient);
   announcement: ArkavidiaAnnouncementApi = new ArkavidiaAnnouncementApi(apiClient);
   competition: ArkavidiaCompetitionApi = new ArkavidiaCompetitionApi(apiClient);
+  preEvent: ArkavidiaPreEventApi = new ArkavidiaPreEventApi(apiClient);
   uploader: ArkavidiaUploaderApi = new ArkavidiaUploaderApi(apiClient);
 }
 

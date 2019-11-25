@@ -35,8 +35,8 @@ export const competitionMenus: Menu[] = [
 
 export const preEventMenus: Menu[] = [
   {
-    title: 'Arkavidia Academy',
-    route: '/preevent/arkavidia-academy'
+    title: 'Product Management Academy',
+    route: '/preevent/arkavidia-academy/product-management'
   },
   {
     title: 'Technocamp',
@@ -93,14 +93,11 @@ export const dashboardMenus: Menu[] = [
   },
   {
     title: 'Pre-event',
-    route: '/dashboard/pre-event',
-    disabled: true
+    route: '/dashboard/preevent'
   },
   {
-    title: 'Main Event',
-    route: '/dashboard/main-event',
+    title: 'Arkavidia Talk',
+    route: '/dashboard/arkavidia-talk',
     disabled: true
   }
 ];
-
-export const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];

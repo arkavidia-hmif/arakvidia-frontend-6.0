@@ -109,7 +109,7 @@ export default class StageTasks extends Vue {
     get activeStageName(): string {
       const stage = this.activeStage;
       if ((stage == null) || (stage.name == null)) {
-        return 'Belum ada stages';
+        return '';
       }
       return stage.name;
     }

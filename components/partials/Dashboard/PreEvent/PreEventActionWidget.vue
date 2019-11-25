@@ -48,7 +48,7 @@
 
 <script lang="ts">
 import { Component, Vue, Prop, Action } from 'nuxt-property-decorator';
-import { TaskResponse, Task, SubmitTaskResponseStatus } from '~/api/competition/types';
+import { TaskResponse, Task, SubmitTaskResponseStatus } from '~/api/preevent/types';
 import { ApiError } from '~/api/base';
 import TextWidget from '~/components/partials/Dashboard/ActionWidgets/TextWidget.vue';
 import OptionWidget from '~/components/partials/Dashboard/ActionWidgets/OptionWidget.vue';
@@ -57,16 +57,15 @@ import CompleteProfileWidget from '~/components/partials/Dashboard/ActionWidgets
 import TextAreaWidget from '~/components/partials/Dashboard/ActionWidgets/TextAreaWidget.vue';
 
 @Component({
-  name: 'CompetitionActionWidget',
-  components: { TextWidget, OptionWidget, FileUploadWidget, CompleteProfileWidget, TextAreaWidget }
+  name: 'PreEventActionWidget',
+  components: { TextAreaWidget, CompleteProfileWidget, TextWidget, OptionWidget, FileUploadWidget }
 })
 export default class CompetitionActionWidget extends Vue {
     @Prop({ default: undefined }) taskResponse!: TaskResponse|undefined;
-    @Prop({ default: 0 }) teamId!: number;
-    @Prop() teamMemberId: number|undefined;
+    @Prop() registrantId!: number;
     @Prop() task!: Task;
 
-    @Action('competition/submitTaskResponse') actionSubmitTaskResponse;
+    @Action('preevent/submitTaskResponse') actionSubmitTaskResponse;
 
     error: string = '';
     loading: boolean = false;
@@ -80,8 +79,7 @@ export default class CompetitionActionWidget extends Vue {
     onInput(response: string) {
       this.loading = true;
       this.actionSubmitTaskResponse({
-        teamId: this.teamId,
-        teamMemberId: this.teamMemberId,
+        registrantId: this.registrantId,
         taskId: this.task.id,
         response
       })

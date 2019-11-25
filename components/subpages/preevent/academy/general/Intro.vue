@@ -9,46 +9,19 @@
             align="center"
             align-self="center"
           >
-            <v-img width="100%" cover :src="require('~/assets/images/preevent/technocamp/hero.jpg')" />
+            <v-img width="100%" cover :src="require('~/assets/images/preevent/academy/hero.jpg')" />
           </v-col>
           <v-col :cols="12" :md="6" align-self="center">
             <div class="display-1 font-weight-bold" style="color: #0B909A">
-              Technocamp
+              Arkavidia Academy
             </div>
             <p class="mt-4 mr-5 grey--text text--darken-1">
-              Kegiatan selama dua hari yang mencakup dasar teori, hands on, dan seminar IT untuk kamu yang haus akan pengalaman membuat game!
+              Ingin punya kemampuan teknis yang jago tapi bingung harus mulai dari mana?
+              Temukan jawabannya di Arkavidia Academy!
+              Kamu akan belajar dari nol tentang <i>skill</i> teknis yang dibutuhkan di dunia kerja.
             </p>
-            <div class="mt-8 caption">
-              Kategori
-              &nbsp;
-              <v-chip small color="black" class="black white--text caption">
-                SMA/Sederajat
-              </v-chip>
-            </div>
-            <div class="mt-2 caption">
-              Biaya Komitmen
-              &nbsp;
-              <v-menu
-                transition="slide-y-transition"
-                bottom
-                offset-y
-                open-on-hover
-              >
-                <template v-slot:activator="{ on }">
-                  <v-chip small color="#21C7C5" class="white--text caption" v-on="on">
-                    Rp50.000,-
-                    <v-icon right small>
-                      fas fa-question-circle
-                    </v-icon>
-                  </v-chip>
-                </template>
-                <div class="pa-4 white" style="max-width: 300px">
-                  Biaya Komitmen akan dikembalikan di akhir kegiatan apabila peserta mengikuti kegiatan dengan baik.
-                </div>
-              </v-menu>
-            </div>
             <div class="mt-8">
-              <a href="https://arkav.me/guidebook-technocamp" style="text-decoration: none;">
+              <a href="https://arkav.me/guidebook-arkavdemy-product-management" style="text-decoration: none;">
                 <v-btn large rounded outlined color="#0B909A" class="text-none mr-2 mt-2">
                   Download guidebook
                 </v-btn>
@@ -59,7 +32,7 @@
                 color="primary"
                 class="text-none mt-2"
                 elevation="0"
-                to="/dashboard/preevent/technocamp"
+                to="/dashboard/preevent"
               >
                 Daftar sekarang
               </v-btn>
@@ -81,7 +54,7 @@
 import Vue from 'vue';
 
 export default Vue.extend({
-  name: 'TechnocampIntro'
+  name: 'AcademyIntro'
 });
 </script>
 

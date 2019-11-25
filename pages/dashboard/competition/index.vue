@@ -18,7 +18,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Getter, Vue } from 'nuxt-property-decorator';
+import { Component, Getter, Vue, Action } from 'nuxt-property-decorator';
 import DashboardWrapper from '~/components/partials/Dashboard/DashboardWrapper.vue';
 import CompetitionCard from '~/components/partials/Dashboard/Competition/CompetitionCard.vue';
 
@@ -32,8 +32,15 @@ export default class DashboardIndex extends Vue {
     };
   }
 
+  @Action('competition/fetchCompetitionList') fetchCompetitionListAction;
+  @Action('competition/fetchTeamList') fetchTeamListAction;
   @Getter('competition/getCompetitions') getCompetitions;
   @Getter('competition/getTeams') getTeams;
+
+  mounted() {
+    this.fetchCompetitionListAction();
+    this.fetchTeamListAction();
+  }
 
   get competitions() {
     return this.getCompetitions;

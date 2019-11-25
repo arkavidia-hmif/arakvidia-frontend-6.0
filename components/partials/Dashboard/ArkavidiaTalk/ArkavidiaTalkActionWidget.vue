@@ -9,16 +9,6 @@
     :reason="!currentTaskResponse ? undefined : currentTaskResponse.reason"
     @input="onInput"
   />
-  <TextAreaWidget
-    v-else-if="task.widget === 'textarea'"
-    :loading="loading"
-    :error="error"
-    :submitted="!!currentTaskResponse"
-    :response="!currentTaskResponse ? undefined : currentTaskResponse.response"
-    :status="!currentTaskResponse ? undefined : currentTaskResponse.status"
-    :reason="!currentTaskResponse ? undefined : currentTaskResponse.reason"
-    @input="onInput"
-  />
   <OptionWidget
     v-else-if="task.widget === 'option'"
     :loading="loading"
@@ -40,33 +30,25 @@
     :reason="!currentTaskResponse ? undefined : currentTaskResponse.reason"
     @input="onInput"
   />
-  <CompleteProfileWidget
-    v-else-if="task.widget === 'complete_profile'"
-    :required-fields="task.widgetParameters.requiredFields"
-  />
 </template>
 
 <script lang="ts">
-import { Component, Vue, Prop, Action } from 'nuxt-property-decorator';
-import { TaskResponse, Task, SubmitTaskResponseStatus } from '~/api/competition/types';
-import { ApiError } from '~/api/base';
+import { Component, Vue, Prop } from 'nuxt-property-decorator';
+import { TaskResponse, Task } from '~/api/competition/types';
+// import { ApiError } from '~/api/base';
 import TextWidget from '~/components/partials/Dashboard/ActionWidgets/TextWidget.vue';
 import OptionWidget from '~/components/partials/Dashboard/ActionWidgets/OptionWidget.vue';
 import FileUploadWidget from '~/components/partials/Dashboard/ActionWidgets/FileUploadWidget.vue';
-import CompleteProfileWidget from '~/components/partials/Dashboard/ActionWidgets/CompleteProfileWidget.vue';
-import TextAreaWidget from '~/components/partials/Dashboard/ActionWidgets/TextAreaWidget.vue';
 
-@Component({
-  name: 'CompetitionActionWidget',
-  components: { TextWidget, OptionWidget, FileUploadWidget, CompleteProfileWidget, TextAreaWidget }
-})
+  @Component({
+    name: 'CompetitionActionWidget',
+    components: { TextWidget, OptionWidget, FileUploadWidget }
+  })
 export default class CompetitionActionWidget extends Vue {
     @Prop({ default: undefined }) taskResponse!: TaskResponse|undefined;
-    @Prop({ default: 0 }) teamId!: number;
-    @Prop() teamMemberId: number|undefined;
     @Prop() task!: Task;
 
-    @Action('competition/submitTaskResponse') actionSubmitTaskResponse;
+    // @Action('competition/submitTaskResponse') actionSubmitTaskResponse;
 
     error: string = '';
     loading: boolean = false;
@@ -77,33 +59,33 @@ export default class CompetitionActionWidget extends Vue {
       return this.modifiedTaskResponse ? this.modifiedTaskResponse : this.taskResponse;
     }
 
-    onInput(response: string) {
+    onInput() {
       this.loading = true;
-      this.actionSubmitTaskResponse({
-        teamId: this.teamId,
-        teamMemberId: this.teamMemberId,
-        taskId: this.task.id,
-        response
-      })
-        .then((taskResponse: TaskResponse) => {
-          this.modifiedTaskResponse = taskResponse;
-        })
-        .catch((e) => {
-          if (e instanceof ApiError) {
-            if (e.errorCode === SubmitTaskResponseStatus.ERROR) {
-              this.error = 'Gagal submit';
-              return;
-            }
-
-            this.error = e.message;
-            return;
-          }
-
-          this.error = e.toString();
-        })
-        .finally(() => {
-          this.loading = false;
-        });
+      // this.actionSubmitTaskResponse({
+      //   teamId: this.teamId,
+      //   teamMemberId: this.teamMemberId,
+      //   taskId: this.task.id,
+      //   response
+      // })
+      //   .then((taskResponse: TaskResponse) => {
+      //     this.modifiedTaskResponse = taskResponse;
+      //   })
+      //   .catch((e) => {
+      //     if (e instanceof ApiError) {
+      //       if (e.errorCode === SubmitTaskResponseStatus.ERROR) {
+      //         this.error = 'Gagal submit';
+      //         return;
+      //       }
+      //
+      //       this.error = e.message;
+      //       return;
+      //     }
+      //
+      //     this.error = e.toString();
+      //   })
+      //   .finally(() => {
+      //     this.loading = false;
+      //   });
     }
 }
 </script>

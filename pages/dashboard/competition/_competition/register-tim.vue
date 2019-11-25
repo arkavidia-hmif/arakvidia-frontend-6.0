@@ -1,9 +1,9 @@
 <template>
   <DashboardWrapper>
-    <v-row>
+    <v-row v-if="!!competition">
       <v-col :cols="12" :md="6">
         <h5 class="mt-4 title font-weight-black">
-          Pendaftaran {{ title }}
+          Pendaftaran {{ competition.name }}
         </h5>
         <Alert v-if="error" type="error" class="mt-4" :message="error" :details="errorDetails" />
         <form class="mt-4" @submit.prevent="attemptRegister">
@@ -29,6 +29,9 @@
         </form>
       </v-col>
     </v-row>
+    <div v-else class="pa-4" align="center">
+      <v-progress-circular indeterminate />
+    </div>
   </DashboardWrapper>
 </template>
 
@@ -39,10 +42,6 @@ import { ApiError } from '~/api/base';
 import { RegisterTeamStatus, Team } from '~/api/competition/types';
 import Alert from '~/components/partials/Alert.vue';
 
-interface QueryParameters {
-  continue?: string;
-}
-
 @Component({
   components: { Alert, DashboardWrapper }
 })
@@ -50,25 +49,24 @@ interface QueryParameters {
 export default class RegisterTeam extends Vue {
   name: string = '';
   institution: string = '';
-  title: string = '';
   error: string = '';
   errorDetails: string = '';
-  errorDetailsOpened: boolean = false;
   isRegistering: boolean = false;
 
+  @Action('competition/fetchCompetitionList') fetchCompetitionListAction;
   @Action('competition/registerTeam') registerTeamAction;
+  @Action('competition/fetchTeamList') fetchTeamListAction;
   @Getter('competition/getCompetitions') competitions;
-  @Action('competition/fetchTeamList') actionFetchTeamList;
 
   get slug() {
     // eslint-disable-next-line dot-notation
     return this.$route.params['competition'];
   }
 
-  get competitionId() {
+  get competition() {
     const currentCompetition = this.competitions.find(competition => competition.slug === this.slug);
     if (currentCompetition != null) {
-      return currentCompetition.id;
+      return currentCompetition;
     }
     return null;
   }
@@ -85,37 +83,20 @@ export default class RegisterTeam extends Vue {
   }
 
   mounted() {
-    this.actionFetchTeamList()
+    this.fetchCompetitionListAction();
+    this.fetchTeamListAction()
       .then((teams: Team[]) => {
         const isRegistered = this.isRegistered(teams);
         if (isRegistered) {
           this.$router.push(`/dashboard/competition/${this.slug}`);
         }
       });
-
-    let i;
-    const temp = this.slug.split('-');
-    for (i = 0; i < temp.length; i++) {
-      this.title += RegisterTeam.jsUcfirst(temp[i]);
-      if (i !== temp.length - 1) {
-        this.title += ' ';
-      }
-    }
   }
 
   head() {
     return {
-      title: 'Pendaftaran ' + this.title
+      title: 'Pendaftaran ' + ((this.competition) ? this.competition.name : 'Lomba')
     };
-  }
-
-  static jsUcfirst(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-  }
-
-  get nextRoute(): string|undefined {
-    const queryParams = this.$route.query as QueryParameters;
-    return queryParams.continue;
   }
 
   attemptRegister() {
@@ -137,13 +118,13 @@ export default class RegisterTeam extends Vue {
     this.isRegistering = true;
     this.error = '';
 
-    const competitionId = this.competitionId;
+    const competitionId = this.competition.id;
     const name = this.name;
     const institution = this.institution;
 
     this.registerTeamAction({ competitionId, name, institution })
       .then(() => {
-        const redirectUrl = (this.nextRoute) ? this.nextRoute : '/dashboard/competition/' + this.slug;
+        const redirectUrl = `/dashboard/competition/${this.slug}`;
         this.$router.push(redirectUrl);
       })
       .catch((e) => {
