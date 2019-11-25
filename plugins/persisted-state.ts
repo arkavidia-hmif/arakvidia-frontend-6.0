@@ -5,7 +5,7 @@ import cookie from 'cookie';
 export default ({ store, req }) => {
   createPersistedState({
     paths: ['user'],
-    key: process.env.ARKAVIDIA_STATE_COOKIE_NAME || 'arkavidia-state',
+    key: process.env.ARKAVIDIA_STATE_COOKIE_NAME || 'arkavidia-auth',
     storage: {
       // eslint-disable-next-line dot-notation
       getItem: key => process['client'] ? Cookies.get(key) : cookie.parse(req.headers.cookie || '')[key],
