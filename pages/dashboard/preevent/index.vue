@@ -92,6 +92,7 @@ export default class DashboardPreEvent extends Vue {
   }
 
   register(preEvent: PreEvent) {
+    this.isRegistering = true;
     this.registerAction({ preeventId: preEvent.id })
       .then(() => {
         const redirectUrl = '/dashboard/preevent/' + preEvent.slug;

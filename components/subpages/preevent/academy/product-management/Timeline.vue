@@ -58,7 +58,7 @@ import Vue from 'vue';
 import TimelineItem from '~/components/partials/TimelineItem.vue';
 
 export default Vue.extend({
-  name: 'AcademyTimeline',
+  name: 'PMAcademyTimeline',
   components: { TimelineItem }
 });
 </script>
