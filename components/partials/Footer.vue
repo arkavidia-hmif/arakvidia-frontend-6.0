@@ -3,6 +3,27 @@
     <v-divider />
     <v-container class="py-10">
       <v-row>
+        <v-col :cols="6" :sm="4" :md="2">
+          <div class="subtitle font-weight-bold">
+            Supported by:
+          </div>
+          <div class="mt-3">
+            <v-img :src="require('~/assets/images/logo/supported_footer.png')" width="100%" />
+          </div>
+        </v-col>
+        <v-col :cols="12" :md="9" :offset-md="1">
+          <div class="subtitle font-weight-bold">
+            Media Partners:
+          </div>
+          <div class="mt-3">
+            <v-img :src="require('~/assets/images/logo/medpart_footer.png')" width="100%" />
+          </div>
+        </v-col>
+      </v-row>
+    </v-container>
+    <v-divider />
+    <v-container class="py-10">
+      <v-row>
         <v-col :cols="12" :md="5">
           <div>
             <v-img :src="require('~/assets/logo-horz.svg')" contain height="50" position="left" />
