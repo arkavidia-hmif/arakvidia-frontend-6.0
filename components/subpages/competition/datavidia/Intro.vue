@@ -38,8 +38,9 @@
                 class="text-none mt-2"
                 elevation="0"
                 to="/dashboard/competition/datavidia"
+                disabled
               >
-                Daftar sekarang
+                Pendaftaran ditutup
               </v-btn>
             </div>
           </v-col>
