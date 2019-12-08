@@ -39,8 +39,9 @@
                 class="text-none mt-2"
                 elevation="0"
                 to="/dashboard/competition/hackavidia"
+                disabled
               >
-                Daftar sekarang
+                Pendaftaran ditutup
               </v-btn>
             </div>
           </v-col>

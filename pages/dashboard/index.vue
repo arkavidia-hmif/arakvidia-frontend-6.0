@@ -35,6 +35,10 @@ export default class DashboardIndex extends Vue {
     };
   }
 
+  layout() {
+    return 'dashboard';
+  }
+
   mounted() {
     this.isLoading = true;
     this.actionGetAnnouncements()
