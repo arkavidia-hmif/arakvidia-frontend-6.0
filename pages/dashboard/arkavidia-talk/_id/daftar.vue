@@ -18,7 +18,14 @@
               9 Feb 2019 12:00-13:00
             </div>
             <Alert v-if="error" type="error" class="mt-4" :message="error" :details="errorDetails" />
-            <v-btn depressed block color="primary" class="text-none mt-4" :disabled="isRegistered" @click.prevent="register">
+            <v-btn
+              depressed
+              block
+              color="primary"
+              class="text-none mt-4"
+              :disabled="isRegistered"
+              @click.prevent="register"
+            >
               Daftar
             </v-btn>
           </v-card-text>
@@ -36,8 +43,8 @@
 import { Component, Getter, Vue, Action } from 'nuxt-property-decorator';
 import DashboardWrapper from '~/components/partials/Dashboard/DashboardWrapper.vue';
 import Alert from '~/components/partials/Alert.vue';
-import { ApiError } from "~/api/base"
-import { RegisterStatus } from "~/api/event/types"
+import { ApiError } from '~/api/base';
+import { RegisterStatus } from '~/api/event/types';
 
 @Component({
   components: { Alert, DashboardWrapper }
@@ -51,8 +58,8 @@ export default class RegisterTeam extends Vue {
   @Getter('event/getRegistrants') registrants;
 
   message: string = '### Leveraging Blockchain, Big Data, IoT, and Artificial Intelligence to Win Hackathons\n\n#### A talk by Ahmad Fahmi Pratama\n\n\n\nLorem ipsum dolor sit amet.';
-  error: string = "";
-  errorDetails: string = "";
+  error: string = '';
+  errorDetails: string = '';
   isRegistering: boolean = false;
 
   mounted() {
@@ -64,6 +71,10 @@ export default class RegisterTeam extends Vue {
     return {
       title: 'Pendaftaran Arkavidia Talk'
     };
+  }
+
+  layout() {
+    return 'dashboard';
   }
 
   get slug() {

@@ -35,6 +35,10 @@ export default class DashboardArkavidiaTalkIndex extends Vue {
     };
   }
 
+  layout() {
+    return 'dashboard';
+  }
+
   mounted() {
   }
 

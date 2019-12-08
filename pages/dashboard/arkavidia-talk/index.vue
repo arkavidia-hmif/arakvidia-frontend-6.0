@@ -48,6 +48,10 @@ export default class DashboardIndex extends Vue {
       title: 'Dashboard'
     };
   }
+
+  layout() {
+    return 'dashboard';
+  }
 }
 </script>
 

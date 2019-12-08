@@ -24,6 +24,10 @@ export default class DashboardAction extends Vue {
     };
   }
 
+  layout() {
+    return 'dashboard';
+  }
+
   get slug() {
     // eslint-disable-next-line dot-notation
     return this.$route.params['id'];
