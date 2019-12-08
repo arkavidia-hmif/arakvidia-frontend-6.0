@@ -39,6 +39,10 @@ export default class Profile extends Vue {
     };
   }
 
+  layout() {
+    return 'dashboard';
+  }
+
   get user(): User|undefined {
     return this.authState.user;
   }
