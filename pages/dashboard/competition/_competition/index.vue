@@ -76,6 +76,10 @@ export default class DashboardCompetitionIndex extends Vue {
     };
   }
 
+  layout() {
+    return 'dashboard';
+  }
+
   mounted() {
     let i;
     const temp = this.slug.split('-');
