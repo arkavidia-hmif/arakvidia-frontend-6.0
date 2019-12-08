@@ -55,6 +55,10 @@ export default class RegisterTeam extends Vue {
       title: 'Pendaftaran Arkavidia Talk'
     };
   }
+
+  layout() {
+    return 'dashboard';
+  }
 }
 </script>
 

@@ -80,6 +80,10 @@ export default class DashboardPreEvent extends Vue {
     };
   }
 
+  layout() {
+    return 'dashboard';
+  }
+
   mounted() {
     this.fetchPreEventListAction();
     this.fetchRegistrantListAction();

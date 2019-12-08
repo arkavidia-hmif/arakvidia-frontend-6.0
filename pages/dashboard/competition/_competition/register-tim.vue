@@ -58,6 +58,16 @@ export default class RegisterTeam extends Vue {
   @Action('competition/fetchTeamList') fetchTeamListAction;
   @Getter('competition/getCompetitions') competitions;
 
+  head() {
+    return {
+      title: 'Pendaftaran ' + ((this.competition) ? this.competition.name : 'Lomba')
+    };
+  }
+
+  layout() {
+    return 'dashboard';
+  }
+
   get slug() {
     // eslint-disable-next-line dot-notation
     return this.$route.params['competition'];
@@ -91,12 +101,6 @@ export default class RegisterTeam extends Vue {
           this.$router.push(`/dashboard/competition/${this.slug}`);
         }
       });
-  }
-
-  head() {
-    return {
-      title: 'Pendaftaran ' + ((this.competition) ? this.competition.name : 'Lomba')
-    };
   }
 
   attemptRegister() {

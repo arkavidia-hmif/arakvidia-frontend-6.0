@@ -32,6 +32,10 @@ export default class DashboardIndex extends Vue {
     };
   }
 
+  layout() {
+    return 'dashboard';
+  }
+
   @Action('competition/fetchCompetitionList') fetchCompetitionListAction;
   @Action('competition/fetchTeamList') fetchTeamListAction;
   @Getter('competition/getCompetitions') getCompetitions;
