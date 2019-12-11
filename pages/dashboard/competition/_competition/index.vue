@@ -1,7 +1,7 @@
 <template>
   <DashboardWrapper>
     <CompetitionWrapper :competition-slug="slug">
-      <div class="px-auto mx-auto">
+      <div v-if="!!team" class="px-auto mx-auto">
         <h5 class="mt-4 title font-weight-black">
           {{ title }}
         </h5>
@@ -12,10 +12,19 @@
           label="Nama Tim"
           class="mt-6"
           maxlength="40"
+          :disabled="!team.competition.isRegistrationOpen"
         />
-        <v-text-field v-model="teamInstitution" dense outlined label="Universitas / SMA" maxlength="50" />
+        <v-text-field
+          v-model="teamInstitution"
+          dense
+          outlined
+          label="Universitas / SMA"
+          maxlength="50"
+          :disabled="!team.competition.isRegistrationOpen"
+        />
         <div class="my-2">
           <v-btn
+            v-if="team.competition.isRegistrationOpen"
             id="delete"
             text
             large
@@ -27,6 +36,7 @@
             Hapus Tim
           </v-btn>
           <v-btn
+            v-if="team.competition.isRegistrationOpen"
             id="add"
             text
             large

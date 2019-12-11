@@ -1,5 +1,5 @@
 <template>
-  <div class="ml-3 mb-5">
+  <div v-if="!!team" class="ml-3 mb-5">
     <div>
       <p style="font-weight: 700 !important; margin-bottom: 0 !important;">
         Daftar Anggota
@@ -55,13 +55,14 @@
                 color="#E44D4B"
                 outlined
                 :loading="isDeleting"
+                :disabled="!team.competition.isRegistrationOpen"
                 @click="() => attemptDelete(member.id)"
               >
                 Hapus Anggota
               </v-btn>
             </v-expansion-panel-content>
           </v-expansion-panel>
-          <v-expansion-panel>
+          <v-expansion-panel v-if="team.competition.isRegistrationOpen">
             <v-expansion-panel-header class="primary white--text" dark>
               <b>
                 <v-icon small color="white" class="mr-4">fa fa-plus</v-icon>
@@ -84,8 +85,9 @@
                   label="Email"
                 />
                 <v-btn
-                  class="primary subtitle-2 text-none px-5 font-weight-bold"
-                  style="border-radius: 50px"
+                  class="text-none font-weight-bold"
+                  color="primary"
+                  outlined
                   type="submit"
                   :loading="isCreating"
                 >
