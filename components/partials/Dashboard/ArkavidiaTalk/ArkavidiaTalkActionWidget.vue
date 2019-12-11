@@ -9,6 +9,16 @@
     :reason="!currentTaskResponse ? undefined : currentTaskResponse.reason"
     @input="onInput"
   />
+  <TextAreaWidget
+    v-else-if="task.widget === 'textarea'"
+    :loading="loading"
+    :error="error"
+    :submitted="!!currentTaskResponse"
+    :response="!currentTaskResponse ? undefined : currentTaskResponse.response"
+    :status="!currentTaskResponse ? undefined : currentTaskResponse.status"
+    :reason="!currentTaskResponse ? undefined : currentTaskResponse.reason"
+    @input="onInput"
+  />
   <OptionWidget
     v-else-if="task.widget === 'option'"
     :loading="loading"
@@ -30,6 +40,10 @@
     :reason="!currentTaskResponse ? undefined : currentTaskResponse.reason"
     @input="onInput"
   />
+  <CompleteProfileWidget
+    v-else-if="task.widget === 'complete_profile'"
+    :required-fields="task.widgetParameters.requiredFields"
+  />
 </template>
 
 <script lang="ts">
@@ -39,10 +53,12 @@ import { ApiError } from '~/api/base';
 import TextWidget from '~/components/partials/Dashboard/ActionWidgets/TextWidget.vue';
 import OptionWidget from '~/components/partials/Dashboard/ActionWidgets/OptionWidget.vue';
 import FileUploadWidget from '~/components/partials/Dashboard/ActionWidgets/FileUploadWidget.vue';
+import CompleteProfileWidget from '~/components/partials/Dashboard/ActionWidgets/CompleteProfileWidget.vue';
+import TextAreaWidget from '~/components/partials/Dashboard/ActionWidgets/TextAreaWidget.vue';
 
   @Component({
     name: 'ArkavidiaTalkActionWidget',
-    components: { TextWidget, OptionWidget, FileUploadWidget }
+    components: { TextAreaWidget, CompleteProfileWidget, TextWidget, OptionWidget, FileUploadWidget }
   })
 export default class ArkavidiaTalkActionWidget extends Vue {
     @Prop({ default: undefined }) taskResponse!: TaskResponse|undefined;

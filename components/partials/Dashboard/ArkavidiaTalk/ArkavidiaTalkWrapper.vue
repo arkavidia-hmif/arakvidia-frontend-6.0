@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-row v-if="!isLoading ">
+    <v-row v-if="!isLoading && registrantDetails">
       <v-col :cols="12" :sm="4" :lg="3">
         <TabMenu
           :slug="slug"
@@ -49,7 +49,7 @@ export default class ArkavidiaTalkWrapper extends Vue {
         })
         .then((registrant) => {
           if (registrant) { this.registrantDetails = registrant; }
-          else { this.$router.push(`/dashboard/arkavidia-talk/`); }
+          else { this.$router.push(`/dashboard/arkavidia-talk/${this.slug}/daftar`); }
         })
         .finally(() => {
           this.isLoading = false;

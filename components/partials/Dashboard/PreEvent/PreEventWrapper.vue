@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-row v-if="!isLoading ">
+    <v-row v-if="!isLoading && registrantDetails">
       <v-col :cols="12" :sm="4" :lg="3">
         <TabMenu
           :slug="slug"
