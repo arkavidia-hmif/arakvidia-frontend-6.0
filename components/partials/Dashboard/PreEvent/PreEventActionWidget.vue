@@ -44,6 +44,10 @@
     v-else-if="task.widget === 'complete_profile'"
     :required-fields="task.widgetParameters.requiredFields"
   />
+  <MarkdownWidget
+    v-else-if="task.widget === 'markdown'"
+    :message="task.widgetParameters.markdown"
+  />
 </template>
 
 <script lang="ts">
@@ -55,10 +59,11 @@ import OptionWidget from '~/components/partials/Dashboard/ActionWidgets/OptionWi
 import FileUploadWidget from '~/components/partials/Dashboard/ActionWidgets/FileUploadWidget.vue';
 import CompleteProfileWidget from '~/components/partials/Dashboard/ActionWidgets/CompleteProfileWidget.vue';
 import TextAreaWidget from '~/components/partials/Dashboard/ActionWidgets/TextAreaWidget.vue';
+import MarkdownWidget from '~/components/partials/Dashboard/ActionWidgets/MarkdownWidget.vue';
 
 @Component({
   name: 'PreEventActionWidget',
-  components: { TextAreaWidget, CompleteProfileWidget, TextWidget, OptionWidget, FileUploadWidget }
+  components: { MarkdownWidget, TextAreaWidget, CompleteProfileWidget, TextWidget, OptionWidget, FileUploadWidget }
 })
 export default class CompetitionActionWidget extends Vue {
     @Prop({ default: undefined }) taskResponse!: TaskResponse|undefined;
