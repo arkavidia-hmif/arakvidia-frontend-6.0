@@ -1,9 +1,9 @@
 import arkavidiaApi from '~/api/api';
-import { Event, Registrant } from '~/api/event/types';
+import { MainEvent, Registrant } from '~/api/mainevent/types';
 
 export interface EventState {
   events: {
-    [slug: string]: Event
+    [slug: string]: MainEvent
   };
   registrants: {
     [registrantId: number]: Registrant
@@ -18,8 +18,11 @@ export const state = () => ({
 });
 
 export const getters = {
-  getEvents(state: EventState): Event[] {
+  getMainEvents(state: EventState): MainEvent[] {
     return Object.values(state.events);
+  },
+  getMainEventsBySlug(state: EventState): { [slug: string]: MainEvent } {
+    return state.events;
   },
   getRegistrants(state: EventState): Registrant[] {
     return Object.values(state.registrants);
@@ -27,7 +30,7 @@ export const getters = {
 };
 
 export const mutations = {
-  setEvents(state: EventState, events: Array<Event>) {
+  setMainEvents(state: EventState, events: Array<MainEvent>) {
     state.events = {};
     events.forEach((event) => {
       state.events[event.slug] = event;
@@ -48,32 +51,36 @@ export const mutations = {
 };
 
 export const actions = {
-  async fetchEventList({ commit }) {
-    const events = await arkavidiaApi.event.getEventList();
-    commit('setEvents', events);
+  async fetchMainEventList({ commit }) {
+    const events = await arkavidiaApi.mainEvent.getMainEventList();
+    commit('setMainEvents', events);
     return events;
   },
-
+  // eslint-disable-next-line no-empty-pattern
+  async fetchMainEventDetails({ }, { maineventId }) {
+    const mainevent = await arkavidiaApi.mainEvent.getMainEventDetails(maineventId);
+    return mainevent;
+  },
   // eslint-disable-next-line no-empty-pattern
   async register({ }, { maineventId }) {
-    await arkavidiaApi.event.register(maineventId);
+    await arkavidiaApi.mainEvent.register(maineventId);
   },
   async fetchRegistrantList({ commit }) {
-    const registrants = await arkavidiaApi.event.getRegistrantList();
+    const registrants = await arkavidiaApi.mainEvent.getRegistrantList();
     commit('setRegistrants', registrants);
     return registrants;
   },
   async fetchRegistrantDetail({ commit }, registrantId) {
-    const registrant = await arkavidiaApi.event.getRegistrantDetail(registrantId);
+    const registrant = await arkavidiaApi.mainEvent.getRegistrantDetail(registrantId);
     commit('setRegistrant', registrant);
     return registrant;
   },
   async deleteRegistrant({ commit }, { registrantId }) {
-    await arkavidiaApi.event.deleteRegistration(registrantId);
+    await arkavidiaApi.mainEvent.deleteRegistration(registrantId);
     commit('deleteRegistrant', registrantId);
   },
   // eslint-disable-next-line no-empty-pattern
   submitTaskResponse({ }, { registrantId, taskId, response }) {
-    return arkavidiaApi.event.submitTaskResponse(registrantId, taskId, response);
+    return arkavidiaApi.mainEvent.submitTaskResponse(registrantId, taskId, response);
   }
 };

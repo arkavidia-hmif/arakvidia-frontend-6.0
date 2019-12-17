@@ -68,7 +68,7 @@
 <script lang="ts">
 import { Component, Vue, Prop, Action } from 'nuxt-property-decorator';
 import Alert from '~/components/partials/Alert.vue';
-import { Stage, Registrant, DeleteStatus } from '~/api/event/types';
+import { Stage, Registrant, DeleteStatus } from '~/api/mainevent/types';
 import { ApiError } from '~/api/base';
 
   @Component({
@@ -79,7 +79,7 @@ export default class TabMenu extends Vue {
     @Prop() slug!: string;
     @Prop() registrant!: Registrant;
 
-    @Action('event/deleteRegistrant') deleteRegistrantAction;
+    @Action('mainevent/deleteRegistrant') deleteRegistrantAction;
 
     isDeleting: boolean = false;
     dialog: boolean = false;

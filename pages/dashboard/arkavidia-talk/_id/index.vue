@@ -1,21 +1,21 @@
 <template>
   <DashboardWrapper>
-    <ArkavidiaTalkWrapper :slug="slug">
+    <MainEventWrapper :slug="slug">
       <template slot-scope="{ registrant }">
         <StageTasks :registrant="registrant" />
       </template>
-    </ArkavidiaTalkWrapper>
+    </MainEventWrapper>
   </DashboardWrapper>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator';
 import DashboardWrapper from '~/components/partials/Dashboard/DashboardWrapper.vue';
-import ArkavidiaTalkWrapper from '~/components/partials/Dashboard/ArkavidiaTalk/ArkavidiaTalkWrapper.vue';
-import StageTasks from '~/components/partials/Dashboard/ArkavidiaTalk/StageTasks.vue';
+import MainEventWrapper from '~/components/partials/Dashboard/MainEvent/MainEventWrapper.vue';
+import StageTasks from '~/components/partials/Dashboard/MainEvent/StageTasks.vue';
 
 @Component({
-  components: { StageTasks, ArkavidiaTalkWrapper, DashboardWrapper }
+  components: { StageTasks, MainEventWrapper, DashboardWrapper }
 })
 export default class DashboardAction extends Vue {
   head() {

@@ -19,18 +19,18 @@
 
 <script lang="ts">
 import { Component, Vue, Prop, Action } from 'nuxt-property-decorator';
-import TabMenu from '~/components/partials/Dashboard/ArkavidiaTalk/TabMenu.vue';
-import { Registrant } from '~/api/event/types';
+import TabMenu from '~/components/partials/Dashboard/MainEvent/TabMenu.vue';
+import { Registrant } from '~/api/mainevent/types';
 
   @Component({
-    name: 'ArkavidiaTalkWrapper',
+    name: 'MainEventWrapper',
     components: { TabMenu }
   })
-export default class ArkavidiaTalkWrapper extends Vue {
+export default class MainEventWrapper extends Vue {
     @Prop({ default: '' }) slug?: string;
 
-    @Action('event/fetchRegistrantList') fetchRegistrantListAction;
-    @Action('event/fetchRegistrantDetail') fetchRegistrantDetailAction;
+    @Action('mainevent/fetchRegistrantList') fetchRegistrantListAction;
+    @Action('mainevent/fetchRegistrantDetail') fetchRegistrantDetailAction;
 
     registrantDetails: Registrant|null = null;
     isLoading: boolean = true;

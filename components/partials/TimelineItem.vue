@@ -11,7 +11,7 @@
         <div class="title mt-2 font-weight-black date">
           {{ monthYear }}
         </div>
-        <div class="subtitle-1 mt-2 font-weight-black event-title">
+        <div class="subtitle-1 mt-2 font-weight-black mainevent-title">
           {{ title }}
         </div>
         <div class="caption font-weight-light description">
@@ -85,10 +85,10 @@ export default Vue.extend({
   .date, .description {
     color: black;
   }
-  .event-title {
+  .mainevent-title {
     color: #c14163;
   }
-  .active .date, .active .event-title, .active .description {
+  .active .date, .active .mainevent-title, .active .description {
     color: white;
   }
 </style>

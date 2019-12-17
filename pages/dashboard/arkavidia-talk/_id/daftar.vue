@@ -1,6 +1,7 @@
 <template>
   <DashboardWrapper>
-    <v-row class="mt-2">
+    <Alert v-if="error" type="error" class="mt-4" :message="error" :details="errorDetails" />
+    <v-row v-if="!loading" class="mt-2">
       <v-col :cols="12" :md="4" :order-md="2">
         <v-card elevation="0" style="border: 1px solid #E0E0E0" :style="{borderTop: `6px solid #FFBA07`}">
           <v-card-text class="flex">
@@ -17,13 +18,12 @@
               &nbsp;
               9 Feb 2019 12:00-13:00
             </div>
-            <Alert v-if="error" type="error" class="mt-4" :message="error" :details="errorDetails" />
             <v-btn
               depressed
               block
               color="primary"
               class="text-none mt-4"
-              :disabled="isRegistered"
+              :loading="isRegistering"
               @click.prevent="register"
             >
               Daftar
@@ -36,6 +36,9 @@
         <div style="text-align: justify" v-html="$md.render(message)" />
       </v-col>
     </v-row>
+    <div v-else align="center" class="pa-5">
+      <v-progress-circular indeterminate />
+    </div>
   </DashboardWrapper>
 </template>
 
@@ -44,27 +47,35 @@ import { Component, Getter, Vue, Action } from 'nuxt-property-decorator';
 import DashboardWrapper from '~/components/partials/Dashboard/DashboardWrapper.vue';
 import Alert from '~/components/partials/Alert.vue';
 import { ApiError } from '~/api/base';
-import { RegisterStatus } from '~/api/event/types';
+import { RegisterStatus, MainEvent } from '~/api/mainevent/types';
 
 @Component({
   components: { Alert, DashboardWrapper }
 })
-
 export default class RegisterTeam extends Vue {
-  @Action('event/fetchEventList') fetchEventListAction;
-  @Action('event/fetchRegistrantList') fetchRegistrantListAction;
-  @Action('event/register') registerAction;
-  @Getter('event/getEvents') events;
-  @Getter('event/getRegistrants') registrants;
+  @Action('mainevent/fetchMainEventList') fetchEventListAction;
+  @Action('mainevent/fetchMainEventDetails') fetchEventDetailsAction;
+  @Action('mainevent/register') registerAction;
+  @Getter('mainevent/getMainEventsBySlug') events;
 
-  message: string = '### Leveraging Blockchain, Big Data, IoT, and Artificial Intelligence to Win Hackathons\n\n#### A talk by Ahmad Fahmi Pratama\n\n\n\nLorem ipsum dolor sit amet.';
+  message: string = '';
   error: string = '';
   errorDetails: string = '';
   isRegistering: boolean = false;
+  loading: boolean = true;
 
   mounted() {
-    this.fetchEventListAction();
-    this.fetchRegistrantListAction();
+    this.loading = true;
+    this.fetchEventListAction()
+      .then(() => {
+        return this.fetchEventDetailsAction({ maineventId: this.maineventId });
+      })
+      .then((mainEvent: MainEvent) => {
+        this.message = mainEvent.longDesc || '';
+      })
+      .finally(() => {
+        this.loading = false;
+      });
   }
 
   head() {
@@ -83,25 +94,15 @@ export default class RegisterTeam extends Vue {
   }
 
   get maineventId() {
-    const currentEvent = this.events.find(event => event.slug === this.slug);
+    const currentEvent = this.events[this.slug];
     if (currentEvent != null) {
       return currentEvent.id;
     }
     return null;
   }
 
-  get isRegistered() {
-    const registrant = this.registrants.find((registrant) => {
-      if (registrant.mainevent != null) {
-        return registrant.mainevent.slug === this.slug;
-      }
-      return false;
-    });
-
-    return !!registrant;
-  }
-
   register() {
+    this.isRegistering = true;
     this.registerAction({ maineventId: this.maineventId })
       .then(() => {
         const redirectUrl = '/dashboard/arkavidia-talk/' + this.slug;

@@ -1,16 +1,16 @@
 <template>
   <DashboardWrapper>
     <v-row class="mt-4" align="stretch">
-      <v-col v-for="event in events" :key="event.id" :cols="12" :lg="4" :sm="6">
-        <ArkavidiaTalkCard
-          :id="event.id"
+      <v-col v-for="mainevent in events" :key="mainevent.id" :cols="12" :lg="4" :sm="6">
+        <MainEventCard
+          :id="mainevent.id"
           style="height: 100%"
-          :title="event.shortDesc"
-          :enabled="event.isRegistrationOpen"
-          :registered="!!registrants.find(registrant => registrant.mainevent.id === event.id)"
-          :slug="event.slug"
-          :category="categoryMap[event.category].title"
-          :color="categoryMap[event.category].color"
+          :title="mainevent.shortDesc"
+          :enabled="mainevent.isRegistrationOpen"
+          :registered="!!registrants.find(registrant => registrant.mainevent.id === mainevent.id)"
+          :slug="mainevent.slug"
+          :category="categoryMap[mainevent.category].title"
+          :color="categoryMap[mainevent.category].color"
           time="9 Feb 2019 12:00-13:30"
         />
       </v-col>
@@ -21,17 +21,17 @@
 <script lang="ts">
 import { Component, Vue, Getter, Action } from 'nuxt-property-decorator';
 import DashboardWrapper from '~/components/partials/Dashboard/DashboardWrapper.vue';
-import ArkavidiaTalkCard from '~/components/partials/Dashboard/ArkavidiaTalk/ArkavidiaTalkCard.vue';
-import { eventCategories } from '~/constants/event';
+import MainEventCard from '~/components/partials/Dashboard/MainEvent/MainEventCard.vue';
+import { eventCategories } from '~/constants/mainevent';
 
 @Component({
-  components: { DashboardWrapper, ArkavidiaTalkCard }
+  components: { DashboardWrapper, MainEventCard }
 })
 export default class DashboardIndex extends Vue {
-  @Action('event/fetchEventList') fetchEventListAction;
-  @Action('event/fetchRegistrantList') fetchEventRegistrantListAction;
-  @Getter('event/getEvents') events;
-  @Getter('event/getRegistrants') registrants;
+  @Action('mainevent/fetchMainEventList') fetchEventListAction;
+  @Action('mainevent/fetchRegistrantList') fetchEventRegistrantListAction;
+  @Getter('mainevent/getMainEvents') events;
+  @Getter('mainevent/getRegistrants') registrants;
 
   categoryMap = eventCategories.reduce((map, obj) => {
     map[obj.key] = obj;

@@ -1,13 +1,13 @@
 import { User } from '~/api/user/types';
 
-export interface Event {
+export interface MainEvent {
   id: number;
   name: string;
   isRegistrationOpen?: boolean;
   slug: string;
   category: string;
   shortDesc: string;
-  longDesc: string;
+  longDesc?: string;
   beginTime: Date;
   endTime: Date;
   order: number;
@@ -15,7 +15,7 @@ export interface Event {
 
 export interface Registrant {
   id: number;
-  mainevent: Event;
+  mainevent: MainEvent;
   user: User;
   isParticipating: boolean;
   activeStageId?: number;
@@ -52,10 +52,6 @@ export enum RegisterStatus {
   NAME_EXISTS, NOT_OPEN, REGISTRATION_CLOSED, ALREADY_REGISTERED, ERROR
 }
 
-export enum ChangeTeamStatus {
-  ERROR
-}
-
 export enum DeleteStatus {
   ERROR
 }
@@ -69,14 +65,6 @@ export enum GetRegistrantListStatus {
 }
 
 export enum GetRegistrantDetailStatus {
-  ERROR
-}
-
-export enum AddMemberStatus {
-  REGISTRATION_CLOSED, NOT_PARTICIPATING, FULL, ERROR
-}
-
-export enum RemoveMemberStatus {
   ERROR
 }
 

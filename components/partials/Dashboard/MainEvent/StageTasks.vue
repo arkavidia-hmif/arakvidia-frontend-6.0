@@ -12,7 +12,7 @@
           <div class="subtitle mt-1">
             {{ task.widgetParameters.description || '' }}
           </div>
-          <ArkavidiaTalkActionWidget
+          <MainEventActionWidget
             :registrant-id="registrant.id"
             :task="task"
             :task-response="getTaskResponse(task.id)"
@@ -31,12 +31,12 @@ import {
   Stage,
   Task,
   TaskResponse
-} from '~/api/event/types';
+} from '~/api/mainevent/types';
 import Alert from '~/components/partials/Alert.vue';
-import ArkavidiaTalkActionWidget from '~/components/partials/Dashboard/ArkavidiaTalk/ArkavidiaTalkActionWidget.vue';
+import MainEventActionWidget from '~/components/partials/Dashboard/MainEvent/MainEventActionWidget.vue';
 
 @Component({
-  components: { ArkavidiaTalkActionWidget, Alert }
+  components: { MainEventActionWidget, Alert }
 })
 export default class StageTasks extends Vue {
   @Prop() registrant!: Registrant;

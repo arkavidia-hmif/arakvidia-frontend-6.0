@@ -1,5 +1,5 @@
 import {
-  Event, Registrant, SubmitTaskResponseStatus,
+  MainEvent, Registrant, SubmitTaskResponseStatus,
   TaskResponse
 } from './types';
 import { ApiError, ArkavidiaBaseApi } from '~/api/base';
@@ -9,13 +9,28 @@ import {
   GetRegistrantDetailStatus,
   GetRegistrantListStatus,
   RegisterStatus
-} from '~/api/event/types';
+} from '~/api/mainevent/types';
 
-export class ArkavidiaEventApi extends ArkavidiaBaseApi {
-  async getEventList() : Promise<Array<Event>> {
+export class ArkavidiaMainEventApi extends ArkavidiaBaseApi {
+  async getMainEventList() : Promise<Array<MainEvent>> {
     try {
       const response = await this.axios.get(`/mainevent/`);
-      return response.data as Event[];
+      return response.data as MainEvent[];
+    }
+    catch (e) {
+      throw new ApiError<GetEventListStatus>(GetEventListStatus.ERROR, e.toString());
+    }
+  }
+
+  async getMainEventDetails(maineventId) : Promise<MainEvent> {
+    try {
+      const response = await this.axios.get(`/mainevent/${maineventId}`);
+      if (Array.isArray(response.data)) {
+        return response.data[0] as MainEvent;
+      }
+      else {
+        return response.data as MainEvent;
+      }
     }
     catch (e) {
       throw new ApiError<GetEventListStatus>(GetEventListStatus.ERROR, e.toString());

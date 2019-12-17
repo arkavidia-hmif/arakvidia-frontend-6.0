@@ -43,7 +43,7 @@
 import Vue from 'vue';
 
 export default Vue.extend({
-  name: 'ArkavidiaTalkCard',
+  name: 'MainEventCard',
   props: {
     title: {
       type: String,

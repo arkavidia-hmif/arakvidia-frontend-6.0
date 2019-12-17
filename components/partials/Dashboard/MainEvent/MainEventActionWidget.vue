@@ -48,7 +48,7 @@
 
 <script lang="ts">
 import { Component, Vue, Prop, Action } from 'nuxt-property-decorator';
-import { TaskResponse, Task, SubmitTaskResponseStatus } from '~/api/event/types';
+import { TaskResponse, Task, SubmitTaskResponseStatus } from '~/api/mainevent/types';
 import { ApiError } from '~/api/base';
 import TextWidget from '~/components/partials/Dashboard/ActionWidgets/TextWidget.vue';
 import OptionWidget from '~/components/partials/Dashboard/ActionWidgets/OptionWidget.vue';
@@ -57,15 +57,15 @@ import CompleteProfileWidget from '~/components/partials/Dashboard/ActionWidgets
 import TextAreaWidget from '~/components/partials/Dashboard/ActionWidgets/TextAreaWidget.vue';
 
   @Component({
-    name: 'ArkavidiaTalkActionWidget',
+    name: 'MainEventActionWidget',
     components: { TextAreaWidget, CompleteProfileWidget, TextWidget, OptionWidget, FileUploadWidget }
   })
-export default class ArkavidiaTalkActionWidget extends Vue {
+export default class MainEventActionWidget extends Vue {
     @Prop({ default: undefined }) taskResponse!: TaskResponse|undefined;
     @Prop() registrantId!: number;
     @Prop() task!: Task;
 
-    @Action('event/submitTaskResponse') actionSubmitTaskResponse;
+    @Action('mainevent/submitTaskResponse') actionSubmitTaskResponse;
 
     error: string = '';
     loading: boolean = false;
