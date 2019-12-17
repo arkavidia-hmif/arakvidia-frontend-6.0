@@ -40,7 +40,8 @@ export const mutations = {
     });
   },
   setRegistrant(state: PreEventState, registrant: Registrant) {
-    state.registrants[registrant.id] = registrant;
+    const currentRegistrant = state.registrants[registrant.id];
+    state.registrants[registrant.id] = { ...registrant, ...currentRegistrant };
   },
   deleteRegistrant(state: PreEventState, registrantId: number) {
     delete state.registrants[registrantId];
@@ -53,7 +54,6 @@ export const actions = {
     commit('setPreEvents', preEvents);
     return preEvents;
   },
-
   // eslint-disable-next-line no-empty-pattern
   async register({ }, { preeventId }) {
     await arkavidiaApi.preEvent.register(preeventId);

@@ -36,10 +36,11 @@ export class ArkavidiaCompetitionApi extends ArkavidiaBaseApi {
     }
   }
 
-  async registerTeam(competitionId: number, name: string, institution: string): Promise<void> {
+  async registerTeam(competitionId: number, name: string, institution: string): Promise<Team> {
     try {
       const data = { competitionId, name, institution };
-      await this.axios.post(`/competition/register-team/`, data);
+      const response = await this.axios.post(`/competition/register-team/`, data);
+      return response.data as Team;
     }
     catch (e) {
       if (e.response) {
@@ -122,10 +123,11 @@ export class ArkavidiaCompetitionApi extends ArkavidiaBaseApi {
     }
   }
 
-  async changeTeam(teamId: number, name: string, teamLeaderEmail: string, institution: string): Promise<void> {
+  async changeTeam(teamId: number, name: string, teamLeaderEmail: string, institution: string): Promise<Team> {
     try {
       const data = { name, teamLeaderEmail, institution };
-      await this.axios.put(`/competition/teams/${teamId}/`, data);
+      const response = await this.axios.put(`/competition/teams/${teamId}/`, data);
+      return response.data as Team;
     }
     catch (e) {
       if (e.response) {
