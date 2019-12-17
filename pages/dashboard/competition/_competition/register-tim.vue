@@ -54,9 +54,9 @@ export default class RegisterTeam extends Vue {
   isRegistering: boolean = false;
 
   @Action('competition/fetchCompetitionList') fetchCompetitionListAction;
-  @Action('competition/registerTeam') registerTeamAction;
   @Action('competition/fetchTeamList') fetchTeamListAction;
-  @Getter('competition/getCompetitions') competitions;
+  @Action('competition/registerTeam') registerTeamAction;
+  @Getter('competition/getCompetitionsBySlug') competitions;
 
   head() {
     return {
@@ -74,11 +74,7 @@ export default class RegisterTeam extends Vue {
   }
 
   get competition() {
-    const currentCompetition = this.competitions.find(competition => competition.slug === this.slug);
-    if (currentCompetition != null) {
-      return currentCompetition;
-    }
-    return null;
+    return this.competitions[this.slug];
   }
 
   isRegistered(teams) {
@@ -109,7 +105,7 @@ export default class RegisterTeam extends Vue {
       return;
     }
 
-    if (!this.validateTeam(this.name)) {
+    if (this.name.length < 3) {
       this.error = 'Nama tim minimal 3 karakter';
       return;
     }
@@ -164,10 +160,6 @@ export default class RegisterTeam extends Vue {
       .finally(() => {
         this.isRegistering = false;
       });
-  }
-
-  validateTeam(team): boolean {
-    return team.length >= 3;
   }
 }
 </script>

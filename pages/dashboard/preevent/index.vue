@@ -1,6 +1,6 @@
 <template>
   <DashboardWrapper>
-    <v-row class="mt-4" align="stretch">
+    <v-row v-if="preEvents.length > 0" class="mt-4" align="stretch">
       <v-col v-for="preEvent in preEvents" :key="preEvent.id" :cols="12" :lg="4" :sm="6">
         <PreEventCard
           :id="preEvent.id"
@@ -13,6 +13,9 @@
         />
       </v-col>
     </v-row>
+    <div v-else class="pa-4" align="center">
+      <v-progress-circular indeterminate />
+    </div>
     <v-dialog
       v-if="!!preEventToRegister"
       v-model="dialog"
@@ -99,7 +102,7 @@ export default class DashboardPreEvent extends Vue {
     this.isRegistering = true;
     this.registerAction({ preeventId: preEvent.id })
       .then(() => {
-        const redirectUrl = '/dashboard/preevent/' + preEvent.slug;
+        const redirectUrl = `/dashboard/preevent/${preEvent.slug}`;
         this.$router.push(redirectUrl);
       })
       .catch((e) => {

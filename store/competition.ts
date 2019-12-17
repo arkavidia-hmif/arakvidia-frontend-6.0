@@ -21,8 +21,25 @@ export const getters = {
   getCompetitions(state: CompetitionState): Competition[] {
     return Object.values(state.competitions);
   },
+  getCompetitionsBySlug(state: CompetitionState): { [slug: string]: Competition } {
+    return state.competitions;
+  },
   getTeams(state: CompetitionState): Team[] {
     return Object.values(state.teams);
+  },
+  getTeamsById(state: CompetitionState): { [teamId: number]: Team } {
+    return state.teams;
+  },
+  getTeamsBySlug(state: CompetitionState): { [slug: string]: Team } {
+    const teams: Team[] = Object.values(state.teams);
+    const map = {};
+    teams.forEach((team) => {
+      if (team.competition) {
+        map[team.competition.slug] = team;
+      }
+    });
+
+    return map;
   }
 };
 
@@ -40,7 +57,8 @@ export const mutations = {
     });
   },
   setTeam(state: CompetitionState, team: Team) {
-    state.teams[team.id] = team;
+    const currentTeam = state.teams[team.id];
+    state.teams[team.id] = { ...team, ...currentTeam };
   },
   deleteTeam(state: CompetitionState, teamId: number) {
     delete state.teams[teamId];
@@ -73,11 +91,6 @@ export const actions = {
     commit('setCompetitions', competitions);
     return competitions;
   },
-
-  // eslint-disable-next-line no-empty-pattern
-  async registerTeam({ }, { competitionId, name, institution }) {
-    await arkavidiaApi.competition.registerTeam(competitionId, name, institution);
-  },
   async fetchTeamList({ commit }) {
     const teams = await arkavidiaApi.competition.getTeamList();
     commit('setTeams', teams);
@@ -88,9 +101,13 @@ export const actions = {
     commit('setTeam', team);
     return team;
   },
+  async registerTeam({ commit }, { competitionId, name, institution }) {
+    const team = await arkavidiaApi.competition.registerTeam(competitionId, name, institution);
+    commit('setTeam', team);
+  },
   async changeTeam({ commit }, { teamId, name, teamLeaderEmail, institution }) {
-    const teamData = await arkavidiaApi.competition.changeTeam(teamId, name, teamLeaderEmail, institution);
-    commit('setTeam', { team: teamData });
+    const team = await arkavidiaApi.competition.changeTeam(teamId, name, teamLeaderEmail, institution);
+    commit('setTeam', team);
   },
   async deleteTeam({ commit }, { teamId }) {
     await arkavidiaApi.competition.deleteTeam(teamId);
