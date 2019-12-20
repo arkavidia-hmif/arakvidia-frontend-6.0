@@ -36,6 +36,10 @@ export const mutations = {
       state.events[event.slug] = event;
     });
   },
+  setMainEvent(state: EventState, event: MainEvent) {
+    const currentEvent = state.events[event.slug];
+    state.events[event.slug] = { ...currentEvent, ...event };
+  },
   setRegistrants(state: EventState, registrants: Array<Registrant>) {
     state.registrants = {};
     registrants.forEach((registrant) => {

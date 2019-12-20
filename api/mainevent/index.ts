@@ -25,12 +25,7 @@ export class ArkavidiaMainEventApi extends ArkavidiaBaseApi {
   async getMainEventDetails(maineventId) : Promise<MainEvent> {
     try {
       const response = await this.axios.get(`/mainevent/${maineventId}`);
-      if (Array.isArray(response.data)) {
-        return response.data[0] as MainEvent;
-      }
-      else {
-        return response.data as MainEvent;
-      }
+      return response.data as MainEvent;
     }
     catch (e) {
       throw new ApiError<GetEventListStatus>(GetEventListStatus.ERROR, e.toString());

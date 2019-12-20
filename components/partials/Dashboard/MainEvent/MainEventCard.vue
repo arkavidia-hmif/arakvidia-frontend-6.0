@@ -19,8 +19,14 @@
     <v-card-actions>
       <template v-if="!registered">
         <v-spacer />
-        <v-btn text class="teal--text text-none" :to="`/dashboard/arkavidia-talk/${slug}/daftar`" :disabled="!enabled">
-          {{ enabled ? 'Daftar' : 'Pendaftaran Ditutup' }}
+        <v-btn v-if="enabled" text class="teal--text text-none" :to="`/dashboard/arkavidia-talk/${slug}/daftar`">
+          Daftar
+          <v-icon small class="ml-2">
+            fas fa-arrow-right
+          </v-icon>
+        </v-btn>
+        <v-btn v-else text class="teal--text text-none" disabled>
+          Pendaftaran Ditutup
         </v-btn>
       </template>
       <template v-else>
@@ -33,6 +39,9 @@
         <v-spacer />
         <v-btn text class="teal--text text-none" :to="`/dashboard/arkavidia-talk/${slug}`">
           Lihat
+          <v-icon small class="ml-2">
+            fas fa-arrow-right
+          </v-icon>
         </v-btn>
       </template>
     </v-card-actions>

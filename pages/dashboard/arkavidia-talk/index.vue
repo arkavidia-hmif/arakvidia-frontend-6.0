@@ -1,6 +1,6 @@
 <template>
   <DashboardWrapper>
-    <v-row class="mt-4" align="stretch">
+    <v-row v-if="events.length > 0" class="mt-4" align="stretch">
       <v-col v-for="mainevent in events" :key="mainevent.id" :cols="12" :lg="4" :sm="6">
         <MainEventCard
           :id="mainevent.id"
@@ -11,10 +11,13 @@
           :slug="mainevent.slug"
           :category="categoryMap[mainevent.category].title"
           :color="categoryMap[mainevent.category].color"
-          time="9 Feb 2019 12:00-13:30"
+          :time="eventDateRange(mainevent.beginTime, mainevent.endTime)"
         />
       </v-col>
     </v-row>
+    <div v-else class="pa-5" align="center">
+      <v-progress-circular indeterminate />
+    </div>
   </DashboardWrapper>
 </template>
 
@@ -51,6 +54,16 @@ export default class DashboardIndex extends Vue {
 
   layout() {
     return 'dashboard';
+  }
+
+  eventDateRange(beginTime, endTime) {
+    const from = this.$moment(beginTime);
+    const to = this.$moment(endTime);
+    const sameDay = from.isSame(to, 'day');
+
+    return (sameDay)
+      ? `${from.format('D MMM YYYY HH:mm')} - ${to.format('HH:mm')}`
+      : `${from.format('D MMM YYYY HH:mm')} - ${to.format('D MMM YYYY HH:mm')}`;
   }
 }
 </script>
