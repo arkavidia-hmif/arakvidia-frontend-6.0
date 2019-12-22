@@ -11,7 +11,7 @@
       </div>
       <v-divider />
       <v-list class="pt-0">
-        <v-list-item @click="dialog = true">
+        <v-list-item v-if="registrant.preevent.isRegistrationOpen" @click="dialog = true">
           <v-list-item-title class="red--text">
             <v-icon left small color="red">
               fas fa-times
