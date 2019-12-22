@@ -44,7 +44,7 @@
       <v-col :cols="6" :sm="3">
         <TimelineItem
           :active-after="Date.parse('2019-12-16T00:00:00+07:00')"
-          :active-before="Date.parse('2019-12-21T23:59:59+07:00')"
+          :active-before="Date.parse('2019-12-28T23:59:59+07:00')"
           date="16"
           month-year="Desember 2019"
           title="Babak Penyisihan 2"
@@ -53,9 +53,9 @@
       </v-col>
       <v-col :cols="6" :sm="3">
         <TimelineItem
-          :active-after="Date.parse('2019-12-22T00:00:00+07:00')"
-          :active-before="Date.parse('2019-12-22T23:59:59+07:00')"
-          date="22"
+          :active-after="Date.parse('2019-12-29T00:00:00+07:00')"
+          :active-before="Date.parse('2019-12-29T23:59:59+07:00')"
+          date="29"
           month-year="Desember 2019"
           title="Batas Pengumpulan Video"
         />
