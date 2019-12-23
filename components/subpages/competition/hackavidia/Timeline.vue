@@ -62,7 +62,7 @@
       </v-col>
       <v-col :cols="6" :sm="3">
         <TimelineItem
-          :active-after="Date.parse('2019-12-23T00:00:00+07:00')"
+          :active-after="Date.parse('2020-01-10T00:00:00+07:00')"
           :active-before="Date.parse('2020-01-17T23:59:59+07:00')"
           date="10-17"
           month-year="Januari 2020"
