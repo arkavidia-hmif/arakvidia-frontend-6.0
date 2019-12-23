@@ -35,8 +35,9 @@
                 class="text-none mt-2"
                 elevation="0"
                 to="/dashboard/preevent/product-management-academy"
+                disabled
               >
-                Daftar sekarang
+                Pendaftaran ditutup
               </v-btn>
             </div>
           </v-col>
