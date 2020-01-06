@@ -22,14 +22,14 @@
             <a href="https://tiket.com">
               <v-img class="d-inline-block ma-2" style="vertical-align: middle;" :src="require('~/assets/images/logo/sponsors/tiket.com.png')" width="220" />
             </a>
-            <a href="https://matagi.id" target="_blank">
-              <v-img class="d-inline-block ma-2" style="vertical-align: middle;" :src="require('~/assets/images/logo/sponsors/matagi.png')" width="100" />
-            </a>
             <a href="https://www.paragon-innovation.com" target="_blank">
               <v-img class="d-inline-block ma-2" style="vertical-align: middle;" :src="require('~/assets/images/logo/sponsors/paragon.png')" width="170" />
             </a>
             <a href="https://mekari.com" target="_blank">
               <v-img class="d-inline-block ma-2" style="vertical-align: middle;" :src="require('~/assets/images/logo/sponsors/mekari.png')" width="170" />
+            </a>
+            <a href="https://matagi.id" target="_blank">
+              <v-img class="d-inline-block ma-2" style="vertical-align: middle;" :src="require('~/assets/images/logo/sponsors/matagi.png')" width="100" />
             </a>
             <a href="https://indodax.com" target="_blank">
               <v-img class="d-inline-block ma-2" style="vertical-align: middle;" :src="require('~/assets/images/logo/sponsors/indodax.png')" width="100" />
