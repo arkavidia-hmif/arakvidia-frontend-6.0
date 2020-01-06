@@ -60,8 +60,9 @@
                 class="text-none mt-2"
                 elevation="0"
                 to="/dashboard/preevent/technocamp"
+                disabled
               >
-                Daftar sekarang
+                Pendaftaran ditutup
               </v-btn>
             </div>
           </v-col>
