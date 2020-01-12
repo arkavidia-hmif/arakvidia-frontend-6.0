@@ -7,16 +7,14 @@
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
     </div>
     <div class="d-flex flex-column">
+      <SessionBrief
+        class="mt-4"
+        theme-color="#00B798"
+        name="Sesi Pagi"
+        time="09.00 - 11.20"
+        place="Aula Timur"
+      />
       <v-row justify="stretch">
-        <v-col :cols="12">
-          <SessionBrief
-            class="mt-4"
-            theme-color="#00B798"
-            name="Sesi Pagi"
-            time="09.00 - 11.20"
-            place="Aula Timur"
-          />
-        </v-col>
         <v-col :cols="12" :md="6">
           <SessionPanel
             talk-title="Leading Technology in FMCG"
@@ -43,16 +41,14 @@
     </div>
 
     <div class="d-flex flex-column">
+      <SessionBrief
+        class="mt-4"
+        theme-color="#307DE2"
+        name="Sesi Siang"
+        time="13.30 - 16.20"
+        place="Aula Timur"
+      />
       <v-row justify="stretch">
-        <v-col :cols="12">
-          <SessionBrief
-            class="mt-4"
-            theme-color="#307DE2"
-            name="Sesi Siang"
-            time="13.30 - 16.20"
-            place="Aula Timur"
-          />
-        </v-col>
         <v-col :cols="12" :md="6">
           <SessionPanel
             talk-title="How to Start Then Scale Your Business With Technology"
