@@ -1,6 +1,6 @@
 <template>
   <div class="mx-0 mt-0 d-flex flex-column" :class="{ 'fill-height': $vuetify.breakpoint.mdAndUp }">
-    <div class="pa-0">
+    <div v-if="sessionTitle" class="pa-0">
       <SessionBrief
         :theme-color="themeColor"
         :name="sessionTitle"
@@ -36,12 +36,13 @@
         </p>
         <div class="mt-2 mb-2" style="color: white;">
           <v-btn
+            v-if="!!to"
             large
             rounded
             :style="`background-color: ${themeColor}; color: white;`"
             class="text-none mt-2"
             elevation="0"
-            to="/dashboard/arkavidia-talk"
+            :to="to"
           >
             Daftar Sekarang
           </v-btn>
@@ -61,15 +62,18 @@ export default Vue.extend({
   props: {
     sessionTitle: {
       type: String,
-      required: true
+      required: false,
+      default: ''
     },
     time: {
       type: String,
-      required: true
+      required: false,
+      default: ''
     },
     place: {
       type: String,
-      required: true
+      required: false,
+      default: ''
     },
     speakerName: {
       type: String,
@@ -95,6 +99,11 @@ export default Vue.extend({
       type: String,
       required: false,
       default: '#777'
+    },
+    to: {
+      type: String,
+      required: false,
+      default: ''
     }
   }
 });

@@ -94,7 +94,7 @@
               style="background-color: #FF8003; color: white;"
               class="text-none mt-2"
               elevation="0"
-              to="/dashboard/arkavidia-talk"
+              to="/dashboard/arkavidia-talk/talkshow"
             >
               Daftar Sekarang
             </v-btn>

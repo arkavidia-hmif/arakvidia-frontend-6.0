@@ -23,6 +23,7 @@
             place="Basement CC Timur"
             :image-url="require('~/assets/images/event/arkavtalk/speakers/mekari_ceciliaam.jpg')"
             theme-color="#9106FF"
+            to="/dashboard/arkavidia-talk/advanced-talk-1"
           />
         </v-col>
         <v-col :cols="12" :md="6">
@@ -37,6 +38,7 @@
             place="Basement CC Timur"
             :image-url="require('~/assets/images/event/arkavtalk/dummy.jpeg')"
             theme-color="#9106FF"
+            to="/dashboard/arkavidia-talk/advanced-talk-2"
           />
         </v-col>
       </v-row>
