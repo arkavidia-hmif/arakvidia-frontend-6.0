@@ -24,7 +24,7 @@ export default Vue.extend({
     return {
       '@context': 'http://schema.org',
       '@type': 'Event',
-      'name': 'Main Event Arkavidia 6.0',
+      'name': 'Main MainEvent Arkavidia 6.0',
       'startDate': '2020-02-08',
       'endDate': '2020-02-09',
       'location': {
@@ -39,7 +39,7 @@ export default Vue.extend({
           'addressCountry': 'ID'
         }
       },
-      'description': 'Arkavidia 6.0 Main Event consists of an exhibition of start-ups, talks, and competition finals.'
+      'description': 'Arkavidia 6.0 Main MainEvent consists of an exhibition of start-ups, talks, and competition finals.'
     };
   }
 } as ComponentOptions<Vue>);

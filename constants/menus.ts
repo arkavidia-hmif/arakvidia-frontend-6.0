@@ -97,7 +97,6 @@ export const dashboardMenus: Menu[] = [
   },
   {
     title: 'Arkavidia Talk',
-    route: '/dashboard/arkavidia-talk',
-    disabled: true
+    route: '/dashboard/arkavidia-talk'
   }
 ];

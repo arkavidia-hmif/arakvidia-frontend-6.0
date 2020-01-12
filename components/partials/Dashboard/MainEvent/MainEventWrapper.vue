@@ -19,18 +19,18 @@
 
 <script lang="ts">
 import { Component, Vue, Prop, Action } from 'nuxt-property-decorator';
-import TabMenu from '~/components/partials/Dashboard/PreEvent/TabMenu.vue';
-import { Registrant } from '~/api/preevent/types';
+import TabMenu from '~/components/partials/Dashboard/MainEvent/TabMenu.vue';
+import { Registrant } from '~/api/mainevent/types';
 
   @Component({
-    name: 'PreEventWrapper',
+    name: 'MainEventWrapper',
     components: { TabMenu }
   })
-export default class PreEventWrapper extends Vue {
+export default class MainEventWrapper extends Vue {
     @Prop({ default: '' }) slug?: string;
 
-    @Action('preevent/fetchRegistrantList') fetchRegistrantListAction;
-    @Action('preevent/fetchRegistrantDetail') fetchRegistrantDetailAction;
+    @Action('mainevent/fetchRegistrantList') fetchRegistrantListAction;
+    @Action('mainevent/fetchRegistrantDetail') fetchRegistrantDetailAction;
 
     registrantDetails: Registrant|null = null;
     isLoading: boolean = true;
@@ -40,8 +40,8 @@ export default class PreEventWrapper extends Vue {
       this.fetchRegistrantListAction()
         .then((registrants: Registrant[]) => {
           const registrant: Registrant|undefined = registrants.find((registrant: Registrant) => {
-            if (!registrant.preevent) { return false; }
-            return (registrant.preevent.slug === this.slug);
+            if (!registrant.mainevent) { return false; }
+            return (registrant.mainevent.slug === this.slug);
           });
 
           if (registrant) { return this.fetchRegistrantDetailAction(registrant.id); }
@@ -49,7 +49,7 @@ export default class PreEventWrapper extends Vue {
         })
         .then((registrant) => {
           if (registrant) { this.registrantDetails = registrant; }
-          else { this.$router.push(`/dashboard/preevent/`); }
+          else { this.$router.push(`/dashboard/arkavidia-talk/${this.slug}/daftar`); }
         })
         .finally(() => {
           this.isLoading = false;
