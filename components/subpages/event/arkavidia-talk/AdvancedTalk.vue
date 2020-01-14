@@ -4,7 +4,7 @@
       Advanced Talks
     </div>
     <div class="mt-4 grey--text text--darken-1">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      Seminar serta workshop berupa hands-on yang terfokus kepada technical dan pembicara akan lebih banyak berinteraksi langsung dengan peserta. Dengan mengikuti kegiatan ini, peserta dapat mendapatkan benefit berupa pengalaman pembelajaran yang lebih mendalam, sertifikat, dan free coffee break.
     </div>
     <div class="d-flex flex-column">
       <v-row justify="stretch">
