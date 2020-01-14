@@ -29,14 +29,14 @@
         <v-col :cols="12" :md="6">
           <SessionPanel
             class="mt-4"
-            talk-title="Mobile Engineering 101"
-            talk-desc="Lorem ipsum dolor sit amet woohoo. "
-            speaker-name="John Doe TBD"
-            speaker-role="The Mobile Guy, Jenius"
+            talk-title="ReactJS: Interruptible Rendering with Concurrent Mode (Experimental)"
+            talk-desc="Advanced Talk ini akan memiliki dua topik pembahasan yaitu ReactJS dan microservices. Salah satu topik yang dibahas adalah showcase fitur baru dari React yaitu concurrent mode yang dapat meningkatkan kinerja dari aplikasi secara signifikan. Selain itu, akan dibahas standar-standar yang dipakai oleh industri untuk membuat microservices."
+            speaker-name="Leo Tiofan Justicia"
+            speaker-role="Digital Banking Solution Developer, BTPN Jenius"
             session-title="Sesi 2"
             time="12.30 - 14.30"
             place="Basement CC Timur"
-            :image-url="require('~/assets/images/event/arkavtalk/dummy.jpeg')"
+            :image-url="require('~/assets/images/event/arkavtalk/speakers/jenius_leotj.jpg')"
             theme-color="#9106FF"
             to="/dashboard/arkavidia-talk/advanced-talk-2"
           />

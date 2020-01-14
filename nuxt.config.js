@@ -58,9 +58,9 @@ export default {
     treeShake: true,
     breakpoint: {
       thresholds: {
-        xs: 340,
-        sm: 540,
-        md: 800,
+        xs: 0,
+        sm: 600,
+        md: 960,
         lg: 1280,
         xl: 50000
       }
