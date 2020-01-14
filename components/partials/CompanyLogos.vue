@@ -28,6 +28,9 @@
             <a href="https://mekari.com" target="_blank">
               <v-img class="d-inline-block ma-2" style="vertical-align: middle;" :src="require('~/assets/images/logo/sponsors/mekari.png')" width="170" />
             </a>
+            <a href="https://www.mokapos.com" target="_blank">
+              <v-img class="d-inline-block ma-2" style="vertical-align: middle;" :src="require('~/assets/images/logo/sponsors/mokapos.png')" width="160" />
+            </a>
             <a href="https://icehousecorp.com" target="_blank">
               <v-img class="d-inline-block ma-2" style="vertical-align: middle;" :src="require('~/assets/images/logo/sponsors/icehouse.jpg')" width="180" />
             </a>
