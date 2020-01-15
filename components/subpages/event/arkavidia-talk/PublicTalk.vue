@@ -14,7 +14,7 @@
         class="mt-4"
         theme-color="#00B798"
         name="Sesi Pagi"
-        time="09.00 - 11.20"
+        time="09.00 - 13.00"
         place="Aula Timur"
       />
       <v-row justify="stretch">
@@ -48,7 +48,7 @@
         class="mt-4"
         theme-color="#307DE2"
         name="Sesi Siang"
-        time="13.30 - 16.20"
+        time="13.00 - 17.00"
         place="Aula Timur"
       />
       <v-row justify="stretch">
