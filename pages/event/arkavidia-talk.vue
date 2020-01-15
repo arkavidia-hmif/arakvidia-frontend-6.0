@@ -40,8 +40,8 @@ export default Vue.extend({
             'Tidak ada persyaratan khusus namun harap memperhatikan cakupan materi yang terdapat pada deskripsi. Peserta dianjurkan membawa laptop dan memiliki kuota data yang tersedia.'
         },
         {
-          question: 'Jika saya ingin menghadiri kedua pembicara sesi pagi/siang apakah saya harus mendaftar dua kali?',
-          answer: 'Satu tiket sesi pagi/siang berlaku untuk kedua pembicara pada sesi tersebut.'
+          question: 'Bagaimana jika saya hanya ingin menghadiri satu topik pada satu sesi public talks?',
+          answer: 'Tiket public talks dijual per sesi (pagi/siang) dengan satu sesi terdiri dari dua topik berbeda. Anda diperbolehkan untuk menghadiri satu topik saja.'
         },
         {
           question: 'Apakah saya dapat mengikuti advanced talk dan public talks secara bersamaan?',

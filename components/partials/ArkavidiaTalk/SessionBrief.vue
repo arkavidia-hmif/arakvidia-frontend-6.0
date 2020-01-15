@@ -18,10 +18,11 @@
     <div v-if="!!to">
       <v-btn
         v-if="!!to"
-        class="text-none mt-2 white"
+        class="text-none mt-3 white"
         :style="`color: ${themeColor}`"
-        elevation="0"
+        elevation="3"
         :to="to"
+        rounded
       >
         Daftar Sekarang
       </v-btn>
