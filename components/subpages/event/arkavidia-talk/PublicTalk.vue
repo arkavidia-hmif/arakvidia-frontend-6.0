@@ -6,7 +6,7 @@
     <div class="mt-4 grey--text text--darken-1">
       Seminar yang akan membahas tentang potensi dan pengaruh transformasi digital dari perspektif berbagai industri.
       Public talks ini akan terdiri dari sesi pagi dan sesi siang yang masing-masing mengundang dua pembicara hebat dari bidangnya masing-masing.
-      HTM: Rp20rb/sesi
+      HTM: Rp20rb/sesi.
     </div>
     <div class="d-flex flex-column">
       <SessionBrief
