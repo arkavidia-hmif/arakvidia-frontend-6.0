@@ -35,17 +35,22 @@ export default Vue.extend({
     return {
       faqItems: [
         {
-          question: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit?',
-          answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+          question: 'Apakah ada persyaratan khusus untuk advanced talk?',
+          answer:
+            'Tidak ada persyaratan khusus namun harap memperhatikan cakupan materi yang terdapat pada deskripsi. Peserta dianjurkan membawa laptop dan memiliki kuota data yang tersedia.'
         },
         {
-          question: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit?',
-          answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+          question: 'Jika saya ingin menghadiri kedua pembicara sesi pagi/siang apakah saya harus mendaftar dua kali?',
+          answer: 'Satu tiket sesi pagi/siang berlaku untuk kedua pembicara pada sesi tersebut.'
         },
-
         {
-          question: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit?',
-          answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+          question: 'Apakah saya dapat mengikuti advanced talk dan public talks secara bersamaan?',
+          answer:
+            'Peserta dapat mendaftar untuk seluruh sesi baik advanced talk maupun public talks namun harap memperhatikan jadwal karena ada sesi yang berjalan secara paralel. Panitia tidak bertanggung jawab apabila terdapat bentrok.'
+        },
+        {
+          question: 'Apakah tiket yang sudah dibeli dapat dikembalikan?',
+          answer: 'Tidak, tiket yang sudah dibeli tidak dapat dikembalikan.'
         }
       ]
     };

@@ -5,6 +5,9 @@
     </div>
     <div class="mt-4 mb-2 grey--text text--darken-1">
       Talkshow yang bertujuan membuka diskusi dua arah mengenai isu yang berada di dunia teknologi informasi.
+      Tahun ini talkshow akan bekerja sama dengn organisasi Femme in Stem dan akan mengangkat dua topik yaitu <i>women
+        empowerment</i> dan <i>careers in the tech industry</i>.
+      Mata acara ini gratis dan terbuka untuk umum.
     </div>
     <div class="d-flex flex-column">
       <v-row>

@@ -5,6 +5,8 @@
     </div>
     <div class="mt-4 grey--text text--darken-1">
       Seminar yang akan membahas tentang potensi dan pengaruh transformasi digital dari perspektif berbagai industri.
+      Public talks ini akan terdiri dari sesi pagi dan sesi siang yang masing-masing mengundang dua pembicara hebat dari bidangnya masing-masing.
+      HTM: Rp20rb/sesi
     </div>
     <div class="d-flex flex-column">
       <SessionBrief
@@ -52,7 +54,7 @@
         <v-col :cols="12" :md="6">
           <SessionPanel
             talk-title="How to Start Then Scale Your Business With Technology"
-            talk-desc="Membahas bagaimana AI pertama kali ditemukan dan sudah sejauh apa perkembangan AI dari awal ditemukan hingga sekarang."
+            talk-desc="Seminar ini akan membahas peran teknologi dalam membangun dan mengembangkan bisnis agar dapat scalable dan sustainable. Seminar akan memberi banyak insight terkait teknologi-teknologi terbaru yang sering dipakai di berbagai industri untuk membuatnya bisa bersaing."
             speaker-name="Elfino Sitompul"
             speaker-role="Chief Executive Officer, Matagi"
             :image-url="require('~/assets/images/event/arkavtalk/speakers/matagi_elfinos.jpg')"
