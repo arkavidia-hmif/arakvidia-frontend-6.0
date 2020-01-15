@@ -5,7 +5,8 @@
     </div>
     <div class="mt-4 grey--text text--darken-1">
       Seminar yang akan membahas tentang potensi dan pengaruh transformasi digital dari perspektif berbagai industri.
-      Public talks ini akan terdiri dari sesi pagi dan sesi siang yang masing-masing mengundang dua pembicara hebat dari bidangnya masing-masing.
+      Public talks ini akan terdiri dari sesi pagi dan sesi siang yang akan mengundang dua pembicara hebat dari
+      bidangnya masing-masing.
       HTM: Rp20rb/sesi
     </div>
     <div class="d-flex flex-column">
@@ -33,7 +34,7 @@
             talk-title="Optimizing Travel Using AI"
             talk-desc="Seminar ini akan membahas seputar implementasi Big Data dan Artificial intelligence untuk mengoptimasi pengalaman masyarakat dalam melakukan perjalanan dan destinasi."
             speaker-name="Maria Tjahjadi"
-            speaker-role="VP of Data, Tiket.com"
+            speaker-role="VP of Data Analytics, Tiket.com"
             :image-url="require('~/assets/images/event/arkavtalk/speakers/tiket_mariat.jpg')"
             theme-color="#00B798"
             to="/dashboard/arkavidia-talk/public-talk-1"
