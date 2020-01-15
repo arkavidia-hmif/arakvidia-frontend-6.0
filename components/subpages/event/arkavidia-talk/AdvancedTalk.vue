@@ -32,8 +32,8 @@
         <v-col :cols="12" :md="6">
           <SessionPanel
             class="mt-4"
-            talk-title="ReactJS: Interruptible Rendering with Concurrent Mode (Experimental)"
-            talk-desc="Advanced Talk ini akan memiliki dua topik pembahasan yaitu ReactJS dan microservices. Salah satu topik yang dibahas adalah showcase fitur baru dari React yaitu concurrent mode yang dapat meningkatkan kinerja dari aplikasi secara signifikan. Selain itu, akan dibahas standar-standar yang dipakai oleh industri untuk membuat microservices."
+            talk-title="Introduction to Concurrent Mode in React"
+            talk-desc="Advanced Talk ini akan membahas terkait teknologi baru di dunia frontend development. Salah satu topik yang dibahas adalah concurrent mode pada react yang dapat meningkatkan kinerja dari aplikasi secara signifikan. Target: Developer frontend"
             speaker-name="Leo Tiofan Justicia"
             speaker-role="Digital Banking Solution Developer, BTPN Jenius"
             session-title="Sesi 2"
