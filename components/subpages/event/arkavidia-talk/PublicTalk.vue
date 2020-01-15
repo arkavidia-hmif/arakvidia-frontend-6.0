@@ -16,6 +16,7 @@
         name="Sesi Pagi"
         time="09.00 - 13.00"
         place="Aula Timur"
+        to="/dashboard/arkavidia-talk/public-talk-1"
       />
       <v-row justify="stretch">
         <v-col :cols="12" :md="6">
@@ -26,7 +27,6 @@
             speaker-role="VP IT, PT Paragon Technology and Innovation"
             :image-url="require('~/assets/images/event/arkavtalk/speakers/paragon_joya.jpg')"
             theme-color="#00B798"
-            to="/dashboard/arkavidia-talk/public-talk-1"
           />
         </v-col>
         <v-col :cols="12" :md="6">
@@ -37,7 +37,6 @@
             speaker-role="VP of Data Analytics, Tiket.com"
             :image-url="require('~/assets/images/event/arkavtalk/speakers/tiket_mariat.jpg')"
             theme-color="#00B798"
-            to="/dashboard/arkavidia-talk/public-talk-1"
           />
         </v-col>
       </v-row>
@@ -50,6 +49,7 @@
         name="Sesi Siang"
         time="13.00 - 17.00"
         place="Aula Timur"
+        to="/dashboard/arkavidia-talk/public-talk-2"
       />
       <v-row justify="stretch">
         <v-col :cols="12" :md="6">
@@ -60,7 +60,6 @@
             speaker-role="Chief Executive Officer, Matagi"
             :image-url="require('~/assets/images/event/arkavtalk/speakers/matagi_elfinos.jpg')"
             theme-color="#307DE2"
-            to="/dashboard/arkavidia-talk/public-talk-2"
           />
         </v-col>
         <v-col :cols="12" :md="6">
@@ -71,7 +70,6 @@
             speaker-role="Direktur TIK, Ditjen Pajak"
             :image-url="require('~/assets/images/event/arkavtalk/speakers/djp_iwand.jpg')"
             theme-color="#307DE2"
-            to="/dashboard/arkavidia-talk/public-talk-2"
           />
         </v-col>
       </v-row>

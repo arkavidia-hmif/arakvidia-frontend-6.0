@@ -15,6 +15,17 @@
         </div>
       </v-row>
     </div>
+    <div v-if="!!to">
+      <v-btn
+        v-if="!!to"
+        class="text-none mt-2 white"
+        :style="`color: ${themeColor}`"
+        elevation="0"
+        :to="to"
+      >
+        Daftar Sekarang
+      </v-btn>
+    </div>
   </div>
 </template>
 
@@ -35,6 +46,11 @@ export default Vue.extend({
     place: {
       type: String,
       required: true
+    },
+    to: {
+      type: String,
+      required: false,
+      default: ''
     },
     themeColor: {
       type: String,

@@ -8,6 +8,7 @@
           :time="time"
           :place="place"
           class="mb-4"
+          :to="to"
         />
       </div>
       <v-row no-gutters class="fill-height">
@@ -35,19 +36,6 @@
           <p class="mt-4 grey--text text--darken-1">
             {{ talkDesc }}
           </p>
-          <div class="mt-2 mb-2" style="color: white;">
-            <v-btn
-              v-if="!!to"
-              large
-              rounded
-              :style="`background-color: ${themeColor}; color: white;`"
-              class="text-none mt-2"
-              elevation="0"
-              :to="to"
-            >
-              Daftar Sekarang
-            </v-btn>
-          </div>
         </v-col>
       </v-row>
     </div>
