@@ -34,7 +34,7 @@
             talk-title="Optimizing Travel Using AI"
             talk-desc="Seminar ini akan membahas seputar implementasi Big Data dan Artificial intelligence untuk mengoptimasi pengalaman masyarakat dalam melakukan perjalanan dan destinasi."
             speaker-name="Maria Tjahjadi"
-            speaker-role="VP of Data Analytics, Tiket.com"
+            speaker-role="VP of Data, Tiket.com"
             :image-url="require('~/assets/images/event/arkavtalk/speakers/tiket_mariat.jpg')"
             theme-color="#00B798"
             to="/dashboard/arkavidia-talk/public-talk-1"

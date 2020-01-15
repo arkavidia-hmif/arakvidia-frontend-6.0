@@ -7,7 +7,7 @@
       Seminar yang disertai mini workshop hands-on yang interaktif.
       Pada mata acara ini pembicara akan lebih banyak berinteraksi langsung dengan peserta dan topik bahasan lebih fokus pada teknis dan implementasi.
       Dengan mengikuti kegiatan ini, peserta dapat mendapatkan benefit berupa pengalaman pembelajaran yang lebih mendalam, sertifikat, dan free coffee break.
-      HTM Rp35rb/sesi.
+      HTM: Rp35rb/sesi.
     </div>
     <div class="d-flex flex-column">
       <v-row justify="stretch">
