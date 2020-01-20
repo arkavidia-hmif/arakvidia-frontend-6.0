@@ -2,25 +2,17 @@
   <div class="white">
     <v-divider />
     <v-container class="py-10">
-      <div align="center" />
       <v-row>
-        <v-col :cols="6" :sm="4" :md="2" :offset-md="1">
-          <div class="subtitle font-weight-bold">
-            Technology Partner:
-          </div>
-          <div class="mt-3">
-            <a href="http://www.mymatrix.net.id" target="_blank">
-              <v-img class="d-inline-block ma-2" style="vertical-align: middle;" :src="require('~/assets/images/logo/sponsors/mymatrix.png')" width="170" />
-            </a>
-          </div>
-        </v-col>
-        <v-col :cols="12" :md="7" :offset-md="1">
+        <v-col :cols="12" :md="6">
           <div class="subtitle font-weight-bold">
             Sponsored by:
           </div>
           <div class="sponsors-tier1 mt-2">
-            <a href="https://tiket.com">
+            <a href="https://tiket.com" target="_blank">
               <v-img class="d-inline-block ma-2" style="vertical-align: middle;" :src="require('~/assets/images/logo/sponsors/tiket.com.png')" width="220" />
+            </a>
+            <a href="https://www.jenius.com" target="_blank">
+              <v-img class="d-inline-block ma-2" style="vertical-align: middle;" :src="require('~/assets/images/logo/sponsors/jenius.png')" width="250" />
             </a>
             <a href="https://www.paragon-innovation.com" target="_blank">
               <v-img class="d-inline-block ma-2" style="vertical-align: middle;" :src="require('~/assets/images/logo/sponsors/paragon.png')" width="170" />
@@ -41,27 +33,51 @@
               <v-img class="d-inline-block ma-2" style="vertical-align: middle;" :src="require('~/assets/images/logo/sponsors/indodax.png')" width="100" />
             </a>
           </div>
-          <div class="sponsors-tier2 mt-2" />
         </v-col>
-      </v-row>
-      <v-row>
-        <v-col :cols="6" :sm="4" :md="2" :offset-md="1">
-          <div class="subtitle font-weight-bold">
-            Supported by:
-          </div>
-          <div class="mt-3">
-            <v-img :src="require('~/assets/images/logo/supported_footer.png')" width="100%" />
-          </div>
-        </v-col>
-        <v-col :cols="12" :md="7" :offset-md="1">
+        <v-col :cols="12" :md="6">
           <div class="subtitle font-weight-bold">
             Media Partners:
           </div>
           <div class="mt-3">
-            <v-img :src="require('~/assets/images/logo/medpart_footer.png')" width="100%" />
+            <v-img :src="require('~/assets/images/logo/partners/kumparan.png')" width="200" />
+            <v-img :src="require('~/assets/images/logo/medpart_footer.png')" width="100%" class="mt-2" />
             <v-img :src="require('~/assets/images/logo/medpart_footer_2.png')" width="100%" />
           </div>
         </v-col>
+      </v-row>
+      <v-row>
+        <v-col :cols="12" :md="3">
+          <div class="subtitle font-weight-bold">
+            Technology Partners:
+          </div>
+          <div class="mt-3">
+            <a href="http://www.mymatrix.net.id" target="_blank">
+              <v-img class="d-inline-block ma-2" style="vertical-align: middle;" :src="require('~/assets/images/logo/sponsors/mymatrix.png')" width="170" />
+            </a>
+          </div>
+        </v-col>
+        <v-col :cols="12" :md="3">
+          <div class="subtitle font-weight-bold">
+            Community Partners:
+          </div>
+          <div class="mt-3">
+            <a href="http://deeptech.id/" target="_blank">
+              <v-img class="d-inline-block ma-2" style="vertical-align: middle;" :src="require('~/assets/images/logo/partners/deeptech.png')" width="70" />
+            </a>
+            <a href="https://www.instagram.com/femmeinstem/" target="_blank">
+              <v-img class="d-inline-block ma-2" style="vertical-align: middle;" :src="require('~/assets/images/logo/partners/femme_in_stem.png')" width="140" />
+            </a>
+          </div>
+        </v-col>
+        <v-col :cols="12" :md="6">
+          <div class="subtitle font-weight-bold">
+            Supported by:
+          </div>
+          <div class="mt-3">
+            <v-img :src="require('~/assets/images/logo/supported_footer.png')" width="200" />
+          </div>
+        </v-col>
+        <v-col :cols="12" :md="7" :offset-md="1" />
       </v-row>
     </v-container>
   </div>
