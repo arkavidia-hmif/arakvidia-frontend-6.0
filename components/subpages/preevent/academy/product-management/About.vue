@@ -33,8 +33,8 @@
         align="center"
         align-self="center"
       >
-        <v-img width="100%" cover :src="require('~/assets/images/preevent/academy/img1.jpg')" />
-        <v-img width="100%" cover :src="require('~/assets/images/preevent/academy/img2.jpg')" />
+        <v-img width="100%" cover :src="require('~/assets/images/preevent/academy/product-management/img1.jpg')" />
+        <v-img width="100%" cover :src="require('~/assets/images/preevent/academy/product-management/img2.jpg')" />
       </v-col>
     </v-row>
   </v-container>

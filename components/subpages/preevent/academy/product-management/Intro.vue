@@ -9,7 +9,7 @@
             align="center"
             align-self="center"
           >
-            <v-img width="100%" cover :src="require('~/assets/images/preevent/academy/hero.jpg')" />
+            <v-img width="100%" cover :src="require('~/assets/images/preevent/academy/product-management/hero.jpg')" />
           </v-col>
           <v-col :cols="12" :md="6" align-self="center">
             <div class="display-1 font-weight-bold" style="color: #0B909A">

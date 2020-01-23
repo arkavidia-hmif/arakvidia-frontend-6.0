@@ -9,7 +9,7 @@
             align="center"
             align-self="center"
           >
-            <v-img width="100%" cover :src="require('~/assets/images/preevent/academy/hero.jpg')" />
+            <v-img width="100%" cover :src="require('~/assets/images/preevent/academy/software-engineering/hero.jpeg')" />
           </v-col>
           <v-col :cols="12" :md="6" align-self="center">
             <div class="display-1 font-weight-bold" style="color: #0B909A">
@@ -24,7 +24,7 @@
             <v-img :src="require('~/assets/images/logo/jenius.png')" width="150" class="mt-4" />
             <div class="mt-8">
               <a href="https://arkav.me/guidebook-arkavdemy-software-engineering" style="text-decoration: none;">
-                <v-btn large rounded outlined color="#0B909A" class="text-none mr-2 mt-2">
+                <v-btn large rounded outlined color="#0B909A" class="text-none mr-2 mt-2" disabled>
                   Download guidebook
                 </v-btn>
               </a>

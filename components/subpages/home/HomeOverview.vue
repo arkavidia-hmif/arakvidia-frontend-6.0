@@ -257,8 +257,8 @@ export default Vue.extend({
       ],
       eventImages: [
         {
-          image: require('~/assets/images/preevent/academy/hero.jpg'),
-          route: '/preevent/arkavidia-academy',
+          image: require('~/assets/images/preevent/academy/software-engineering/hero.jpeg'),
+          route: '/preevent/arkavidia-academy/software-engineering',
           title: 'Arkavidia Academy'
         },
         {
