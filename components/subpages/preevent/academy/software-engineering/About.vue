@@ -9,7 +9,7 @@
           Software Engineering Academy merupakan bootcamp atau workshop yang bertujuan untuk mengenalkan software engineering dan skill dasar dari seorang software engineer dan cara menguasainya. Software Engineering Academy meliputi:
         </p>
         <ol class="grey--text text--darken-1">
-          <li>How to develop front-end/li>
+          <li>How to develop front-end</li>
           <li>How to develop back-end</li>
           <li>Software Testing</li>
         </ol>
