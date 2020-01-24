@@ -23,18 +23,6 @@
             </div>
             <v-img :src="require('~/assets/images/logo/jenius.png')" width="150" class="mt-4" />
             <div class="mt-8">
-              <a href="https://arkav.me/guidebook-arkavdemy-software-engineering" style="text-decoration: none;">
-                <v-btn
-                  large
-                  rounded
-                  outlined
-                  color="#0B909A"
-                  class="text-none mr-2 mt-2"
-                  disabled
-                >
-                  Download guidebook
-                </v-btn>
-              </a>
               <v-btn
                 large
                 rounded
@@ -42,9 +30,8 @@
                 class="text-none mt-2"
                 elevation="0"
                 to="/dashboard/preevent/software-engineering-academy"
-                disabled
               >
-                Segera hadir
+                Daftar sekarang
               </v-btn>
             </div>
           </v-col>
