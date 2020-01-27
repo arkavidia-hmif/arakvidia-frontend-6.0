@@ -14,7 +14,7 @@
       theme-color="#FF8003"
       name="Talkshow"
       time="15.00 - 16.00"
-      place="Aula Timur"
+      place="Aula Timur ITB"
       to="/dashboard/arkavidia-talk/talkshow"
     />
     <div class="d-flex flex-column">
