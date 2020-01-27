@@ -15,7 +15,7 @@
         theme-color="#00B798"
         name="Sesi Pagi"
         time="09.00 - 13.00"
-        place="Aula Timur"
+        place="Aula Timur ITB"
         to="/dashboard/arkavidia-talk/public-talk-1"
       />
       <v-row justify="stretch">
@@ -48,7 +48,7 @@
         theme-color="#307DE2"
         name="Sesi Siang"
         time="13.00 - 17.00"
-        place="Aula Timur"
+        place="Aula Timur ITB"
         to="/dashboard/arkavidia-talk/public-talk-2"
       />
       <v-row justify="stretch">
