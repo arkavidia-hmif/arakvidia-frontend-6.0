@@ -30,8 +30,9 @@
                 class="text-none mt-2"
                 elevation="0"
                 to="/dashboard/preevent/software-engineering-academy"
+                disabled
               >
-                Daftar sekarang
+                Pendaftaran ditutup
               </v-btn>
             </div>
           </v-col>
