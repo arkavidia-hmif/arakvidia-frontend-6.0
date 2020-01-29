@@ -10,7 +10,7 @@
           :enabled="mainevent.isRegistrationOpen"
           :registered="!!registrants.find(registrant => registrant.mainevent.id === mainevent.id)"
           :participated="registrants.find(registrant => registrant.mainevent.id === mainevent.id).isParticipating"
-          :seatsRemaining="mainevent.seatsRemaining"
+          :seatsremaining="mainevent.seatsRemaining"
           :slug="mainevent.slug"
           :category="categoryMap[mainevent.category].title"
           :color="categoryMap[mainevent.category].color"
@@ -24,7 +24,7 @@
           :enabled="mainevent.isRegistrationOpen"
           :registered="!!registrants.find(registrant => registrant.mainevent.id === mainevent.id)"
           :participated="false"
-          :seatsRemaining="mainevent.seatsRemaining"
+          :seatsremaining="mainevent.seatsRemaining"
           :slug="mainevent.slug"
           :category="categoryMap[mainevent.category].title"
           :color="categoryMap[mainevent.category].color"
@@ -57,10 +57,6 @@ export default class DashboardIndex extends Vue {
     map[obj.key] = obj;
     return map;
   }, {});
-
-  log(item) {
-    console.log(item)
-  };
 
   mounted() {
     this.fetchEventListAction();

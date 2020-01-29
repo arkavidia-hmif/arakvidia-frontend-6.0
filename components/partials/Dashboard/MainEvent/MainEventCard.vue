@@ -17,15 +17,15 @@
     </v-card-text>
     <v-divider />
     <v-card-actions>
-      <template v-if="!participated && seatsRemaining == 0">
+      <template v-if="!participated && seatsremaining == 0">
         <v-spacer />
         <v-btn text class="teal--text text-none" disabled>
           Fully Booked
         </v-btn>
       </template>
       <template v-else-if="!registered">
-        <div v-if="enabled && seatsRemaining <= 10" class="ml-2">
-          {{ seatsRemaining }} kursi tersedia
+        <div v-if="enabled && seatsremaining <= 10" class="ml-2">
+          {{ seatsremaining }} kursi tersedia
         </div>
         <v-spacer />
         <v-btn v-if="enabled" text class="teal--text text-none" :to="`/dashboard/arkavidia-talk/${slug}/daftar`">
@@ -99,7 +99,7 @@ export default Vue.extend({
       required: false,
       default: false
     },
-    seatsRemaining: {
+    seatsremaining: {
       type: Number,
       required: false,
       default: 0
