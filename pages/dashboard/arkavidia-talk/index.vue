@@ -3,11 +3,28 @@
     <v-row v-if="events.length > 0" class="mt-4" align="stretch">
       <v-col v-for="mainevent in events" :key="mainevent.id" :cols="12" :lg="4" :sm="6">
         <MainEventCard
+          v-if="registrants.find(registrant => registrant.mainevent.id === mainevent.id)"
           :id="mainevent.id"
           style="height: 100%"
           :title="mainevent.shortDesc"
           :enabled="mainevent.isRegistrationOpen"
           :registered="!!registrants.find(registrant => registrant.mainevent.id === mainevent.id)"
+          :participated="registrants.find(registrant => registrant.mainevent.id === mainevent.id).isParticipating"
+          :seatsRemaining="mainevent.seatsRemaining"
+          :slug="mainevent.slug"
+          :category="categoryMap[mainevent.category].title"
+          :color="categoryMap[mainevent.category].color"
+          :time="eventDateRange(mainevent.beginTime, mainevent.endTime)"
+        />
+        <MainEventCard
+          v-else
+          :id="mainevent.id"
+          style="height: 100%"
+          :title="mainevent.shortDesc"
+          :enabled="mainevent.isRegistrationOpen"
+          :registered="!!registrants.find(registrant => registrant.mainevent.id === mainevent.id)"
+          :participated="false"
+          :seatsRemaining="mainevent.seatsRemaining"
           :slug="mainevent.slug"
           :category="categoryMap[mainevent.category].title"
           :color="categoryMap[mainevent.category].color"
@@ -40,6 +57,10 @@ export default class DashboardIndex extends Vue {
     map[obj.key] = obj;
     return map;
   }, {});
+
+  log(item) {
+    console.log(item)
+  };
 
   mounted() {
     this.fetchEventListAction();
