@@ -22,7 +22,7 @@
       </vue-typed-js>
       <div class="text-center mt-3">
         <p class="text-center body-1 main-subtitle">
-          Transforming soon, February 2020.
+          February, 8th 2020
         </p>
       </div>
       <v-btn rounded class="text-none mt-5" color="white" @click="() => $vuetify.goTo('#home-overview')">
