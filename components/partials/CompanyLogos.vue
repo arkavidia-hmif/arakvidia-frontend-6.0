@@ -40,8 +40,7 @@
           </div>
           <div class="mt-3">
             <v-img :src="require('~/assets/images/logo/partners/kumparan.png')" width="200" />
-            <v-img :src="require('~/assets/images/logo/medpart_footer.png')" width="100%" class="mt-2" />
-            <v-img :src="require('~/assets/images/logo/medpart_footer_2.png')" width="100%" />
+            <v-img :src="require('~/assets/images/logo/medpart.png')" width="100%" class="mt-2" />
           </div>
         </v-col>
       </v-row>
@@ -52,7 +51,7 @@
           </div>
           <div class="mt-3">
             <a href="http://www.mymatrix.net.id" target="_blank">
-              <v-img class="d-inline-block ma-2" style="vertical-align: middle;" :src="require('~/assets/images/logo/sponsors/mymatrix.png')" width="170" />
+              <v-img class="d-inline-block ma-2" style="vertical-align: middle;" :src="require('~/assets/images/logo/sponsors/mymatrix.png')" width="250" />
             </a>
           </div>
         </v-col>
