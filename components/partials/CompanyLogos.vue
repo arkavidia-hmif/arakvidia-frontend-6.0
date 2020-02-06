@@ -32,9 +32,6 @@
             <a href="https://indodax.com" target="_blank">
               <v-img class="d-inline-block ma-2" style="vertical-align: middle;" :src="require('~/assets/images/logo/sponsors/indodax.png')" width="100" />
             </a>
-            <a href="https://jojonomic.com/" target="_blank">
-              <v-img class="d-inline-block ma-2" style="vertical-align: middle;" :src="require('~/assets/images/logo/sponsors/jojonomic.png')" width="120" />
-            </a>
           </div>
         </v-col>
         <v-col :cols="12" :md="6">
