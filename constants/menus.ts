@@ -39,6 +39,10 @@ export const preEventMenus: Menu[] = [
     route: '/preevent/arkavidia-academy/product-management'
   },
   {
+    title: 'Software Engineering Academy',
+    route: '/preevent/arkavidia-academy/software-engineering'
+  },
+  {
     title: 'Technocamp',
     route: '/preevent/technocamp'
   },

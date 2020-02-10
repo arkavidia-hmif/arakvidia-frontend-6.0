@@ -13,7 +13,7 @@ export default class Profile extends Vue {
   }
 
   mounted() {
-    this.$router.replace('/preevent/arkavidia-academy/product-management');
+    this.$router.replace('/preevent/arkavidia-academy/software-engineering');
   }
 }
 </script>

@@ -11,6 +11,8 @@ export interface MainEvent {
   beginTime: Date;
   endTime: Date;
   order: number;
+  seatsAvailable: number;
+  seatsRemaining: number;
 }
 
 export interface Registrant {

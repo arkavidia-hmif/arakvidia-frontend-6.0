@@ -9,21 +9,21 @@
             align="center"
             align-self="center"
           >
-            <v-img width="100%" cover :src="require('~/assets/images/preevent/academy/product-management/hero.jpg')" />
+            <v-img width="100%" cover :src="require('~/assets/images/preevent/academy/software-engineering/hero.jpeg')" />
           </v-col>
           <v-col :cols="12" :md="6" align-self="center">
             <div class="display-1 font-weight-bold" style="color: #0B909A">
-              Product Management Academy
+              Software Engineering Academy
             </div>
             <p class="mt-4 mr-5 grey--text text--darken-1">
-              Ingin menjadi seorang Product Manager tapi tidak tahu mau mulai dari mana? Temukan jawabannya di Product Management Academy!
+              Tertarik menjadi seorang software engineer? Cari tahu dan pelajari skill apa yang harus kamu miliki di Software Engineering Academy!
             </p>
             <div class="subtitle grey--text">
               Bekerjasama dengan
             </div>
-            <v-img :src="require('~/assets/images/logo/mekari.png')" width="150" class="mt-4" />
+            <v-img :src="require('~/assets/images/logo/jenius.png')" width="150" class="mt-4" />
             <div class="mt-8">
-              <a href="https://arkav.me/guidebook-arkavdemy-product-management" style="text-decoration: none;">
+              <a href="https://arkav.me/guidebook-arkavdemy-software-engineering" style="text-decoration: none;">
                 <v-btn large rounded outlined color="#0B909A" class="text-none mr-2 mt-2">
                   Download guidebook
                 </v-btn>
@@ -34,7 +34,7 @@
                 color="primary"
                 class="text-none mt-2"
                 elevation="0"
-                to="/dashboard/preevent/product-management-academy"
+                to="/dashboard/preevent/software-engineering-academy"
                 disabled
               >
                 Pendaftaran ditutup
@@ -57,13 +57,13 @@
 import Vue from 'vue';
 
 export default Vue.extend({
-  name: 'PMAcademyIntro'
+  name: 'SEAcademyIntro'
 });
 </script>
 
 <style scoped>
   .vert-move {
-    -webkit-animation: mover .5s infinite alternate;
+    -webkit-animation:E mover .5s infinite alternate;
     animation: mover .5s infinite alternate;
   }
 
