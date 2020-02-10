@@ -92,13 +92,21 @@ export default {
     injected: true
   },
   router: {
-    middleware: 'auth'
+    middleware: 'auth',
+    base: process.env.BASE_PATH || '/'
   }
 };
 
 function getDotEnvFilename() {
   if (process.env.NODE_ENV === 'production') {
-    return (process.env.BUILD_ENV === 'staging') ? '.env.staging' : '.env.production';
+    switch (process.env.BUILD_ENV) {
+      case 'staging':
+        return '.env.staging';
+      case 'archive':
+        return '.env.archive';
+      default:
+        return '.env.production';
+    }
   }
   return '.env.development';
 }

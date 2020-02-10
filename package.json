@@ -8,6 +8,7 @@
     "dev": "nuxt",
     "generate": "nuxt generate",
     "generate-staging": "BUILD_ENV=staging nuxt generate",
+    "generate-archive": "BUILD_ENV=archive nuxt generate",
     "build": "nuxt build --spa",
     "staging": "BUILD_ENV=staging nuxt build --spa",
     "start": "nuxt start --spa",
